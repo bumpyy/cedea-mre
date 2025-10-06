@@ -28,7 +28,10 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
     --color-cedea-red: hsl(350, 100%, 36%);
+    --color-cedea-gold: hsl(37, 24%, 47%);
+    --font-display: "Anton", sans-serif;
 }
 
 @layer theme {

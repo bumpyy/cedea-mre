@@ -3,7 +3,7 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="font-poppins antialiased">
+    <body class="font-poppins bg-cedea-red antialiased">
 
         <x-header />
 

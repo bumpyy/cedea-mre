@@ -25,7 +25,7 @@
                                 'after:bg-transparent after:w-0 ': navigationMenu!='home'
                             }"
                             href="{{ route('home') }}">
-                            {{ __('nav.home') }}
+                            Beranda
                             {{-- <x-lucide-house class="size-4" /> --}}
                         </a>
 

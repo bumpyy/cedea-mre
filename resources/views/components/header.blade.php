@@ -8,5 +8,6 @@
         </a>
 
         <x-nav />
+
     </div>
 </header>

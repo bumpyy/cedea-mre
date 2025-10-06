@@ -37,8 +37,8 @@ class Nav extends Component
         // * ][]
         $this->nav_items = [
             [
-                'label' => 'faq',
-                'route' => '#',
+                'label' => 'Masuk',
+                'route' => route('login'),
                 'disable' => false,
                 'submenu' => [],
             ],
