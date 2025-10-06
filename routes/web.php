@@ -7,7 +7,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localize', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 ], function () {
     Route::get('/', function () {
         return view('welcome');
@@ -38,5 +38,7 @@ Route::group([
             )
             ->name('two-factor.show');
     });
+
+    require __DIR__.'/auth.php';
+
 });
-require __DIR__.'/auth.php';

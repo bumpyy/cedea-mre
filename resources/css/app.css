@@ -30,8 +30,11 @@
     --color-accent-foreground: var(--color-white);
 
     --color-cedea-red: hsl(350, 100%, 36%);
+    --color-cedea-dark: hsl(356, 71%, 38%);
+
     --color-cedea-gold: hsl(37, 24%, 47%);
-    --font-display: "Anton", sans-serif;
+    --font-anton: "Anton", sans-serif;
+    --font-bebas: "Bebas Neue", sans-serif;
 }
 
 @layer theme {
@@ -49,6 +52,12 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer components {
+    .grid-overlay {
+        @apply [&>*]:col-start-1 [&>*]:row-start-1;
     }
 }
 
