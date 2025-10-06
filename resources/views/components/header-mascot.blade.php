@@ -1,6 +1,6 @@
 @props(['type' => ''])
 
-<div {{ $attributes->merge(['class' => 'absolute h-full']) }}>
+<div {{ $attributes->merge(['class' => 'lg:absolute h-full']) }}>
     <img class="h-[130%]" src="{{ asset('img/eomuk-' . $type . '.png') }}" alt="eomuk-{{ $type }}">
     <div @class([
         'grid-overlay absolute w-[80%]',
