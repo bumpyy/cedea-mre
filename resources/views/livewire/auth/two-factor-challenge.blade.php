@@ -14,7 +14,7 @@
                     this.recovery_code = '';
 
                     $dispatch('clear-2fa-auth-code');
-            
+
                     $nextTick(() => {
                         this.showRecoveryInput
                             ? this.$refs.recovery_code?.focus()

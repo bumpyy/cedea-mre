@@ -48,12 +48,12 @@ class Nav extends Component
                 'disable' => false,
                 'submenu' => [],
             ],
-            [
-                'label' => 'Masuk',
-                'route' => route('login'),
-                'disable' => false,
-                'submenu' => [],
-            ],
+            // [
+            //     'label' => 'Masuk',
+            //     'route' => route('login'),
+            //     'disable' => false,
+            //     'submenu' => [],
+            // ],
 
         ];
     }

@@ -39,6 +39,30 @@
                             </li>
                         @endif
                     @endforeach
+                    <li class="gap-y-1 px-5 py-7 font-medium transition-colors"
+                        @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='home'"
+                        @mouseleave="navigationMenuLeave()">
+
+                        <a @class([
+                            'relative font-medium transition-colors after:absolute after:left-0 after:top-8 after:h-1 after:w-0 after:bg-transparent after:transition-all after:duration-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
+                            'after:!bg-white after:!w-1/2' =>
+                                url()->current() === route('login') ||
+                                url()->current() === route('dashboard'),
+                        ])
+                            :class="{
+                                'after:bg-white after:w-1/2': navigationMenu=='home',
+                                'after:bg-transparent after:w-0 ': navigationMenu!='home'
+                            }"
+                            href="{{ auth()->check() ? route('dashboard') : route('login') }}">
+                            @auth('admin')
+                                Login
+                            @else
+                                Dashboard
+                            @endauth
+                            {{-- <x-lucide-house class="size-4" /> --}}
+                        </a>
+
+                    </li>
                 </ul>
             </div>
 
@@ -107,7 +131,7 @@
         {{-- <x-search-modal /> --}}
 
         {{-- Locale Toggle --}}
-        <x-locale-toggler />
+        {{-- <x-locale-toggler /> --}}
 
         {{-- burger menu --}}
         <label class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center lg:hidden">

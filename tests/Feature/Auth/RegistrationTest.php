@@ -1,15 +1,16 @@
 <?php
 
-use Livewire\Volt\Volt;
+use App\Livewire\Auth\Register;
+use Livewire\Livewire;
 
 test('registration screen can be rendered', function () {
-    $response = $this->get(route('register'));
+    $response = $this->get('/register');
 
     $response->assertStatus(200);
 });
 
 test('new users can register', function () {
-    $response = Volt::test('auth.register')
+    $response = Livewire::test(Register::class)
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
         ->set('password', 'password')

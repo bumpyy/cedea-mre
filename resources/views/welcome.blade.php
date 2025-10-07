@@ -22,8 +22,8 @@
                         <span class="mx-auto">in seoul</span>
                     </h1>
                 </div>
-                <x-header-mascot class="-right-[38%] -top-14 h-full basis-1/2 lg:order-1" type="chili" />
-                <x-header-mascot class="-left-[38%] -top-14 h-full basis-1/2" type="cheese" />
+                <x-header-mascot class="-right-[30%] top-4 h-full basis-1/2 lg:order-1" type="chili" />
+                <x-header-mascot class="-left-[22%] top-12 h-full basis-1/2" type="cheese" />
             </div>
         </div>
     </div>

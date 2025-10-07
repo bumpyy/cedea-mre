@@ -1,11 +1,12 @@
 <?php
 
+use App\Livewire\Auth\Login;
 use App\Models\User;
 use Laravel\Fortify\Features;
-use Livewire\Volt\Volt as LivewireVolt;
+use Livewire\Livewire;
 
 test('login screen can be rendered', function () {
-    $response = $this->get(route('login'));
+    $response = $this->get('/login');
 
     $response->assertStatus(200);
 });
@@ -13,7 +14,7 @@ test('login screen can be rendered', function () {
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->withoutTwoFactor()->create();
 
-    $response = LivewireVolt::test('auth.login')
+    $response = Livewire::test(Login::class)
         ->set('email', $user->email)
         ->set('password', 'password')
         ->call('login');
@@ -28,7 +29,7 @@ test('users can authenticate using the login screen', function () {
 test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
-    $response = LivewireVolt::test('auth.login')
+    $response = Livewire::test(Login::class)
         ->set('email', $user->email)
         ->set('password', 'wrong-password')
         ->call('login');
@@ -56,7 +57,7 @@ test('users with two factor enabled are redirected to two factor challenge', fun
         'two_factor_confirmed_at' => now(),
     ])->save();
 
-    $response = LivewireVolt::test('auth.login')
+    $response = Livewire::test('auth.login')
         ->set('email', $user->email)
         ->set('password', 'password')
         ->call('login');
@@ -69,9 +70,9 @@ test('users with two factor enabled are redirected to two factor challenge', fun
 test('users can logout', function () {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->post(route('logout'));
+    $response = $this->actingAs($user)->post('/logout');
 
-    $response->assertRedirect(route('home'));
+    $response->assertRedirect('/');
 
     $this->assertGuest();
 });
