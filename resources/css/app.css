@@ -59,6 +59,17 @@
     .grid-overlay {
         @apply [&>*]:col-start-1 [&>*]:row-start-1;
     }
+
+    .asia-pattern-body {
+        background: url(../assets/patterns/asia-pattern.png) 15%
+                max(-25dvh, -10dvw) / max(30dvw, 20rem),
+            /* ****************************************************** */
+                url(../assets/patterns/asia-pattern.png) 110% max(20dvh, -30dvw) /
+                max(25dvw, 13rem),
+            /* ****************************************************** */
+                url(../assets/patterns/asia-pattern.png) -10% max(70dvh, 0dvw) /
+                max(15dvw, 8rem);
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {

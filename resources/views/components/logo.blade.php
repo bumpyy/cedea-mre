@@ -1,4 +1,4 @@
-<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189.3 174.55">
+<svg class="logo w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189.3 174.55">
     <g>
         <g>
             <rect y="0" width="189.3" height="174.55" style="fill: #BA0020;" />

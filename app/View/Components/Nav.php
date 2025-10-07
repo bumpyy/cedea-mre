@@ -37,6 +37,18 @@ class Nav extends Component
         // * ][]
         $this->nav_items = [
             [
+                'label' => 'Home',
+                'route' => route('home'),
+                'disable' => false,
+                'submenu' => [],
+            ],
+            [
+                'label' => 'Syarat & Ketentuan',
+                'route' => '#',
+                'disable' => false,
+                'submenu' => [],
+            ],
+            [
                 'label' => 'Masuk',
                 'route' => route('login'),
                 'disable' => false,

@@ -22,10 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Livewire::setUpdateRoute(function ($handle) {
-        //     return Route::post('/livewire/update', $handle)
-        //         ->middleware('web')
-        //         ->prefix(LaravelLocalization::setLocale());
-        // });
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle)
+                ->middleware('web')
+                ->prefix(LaravelLocalization::setLocale());
+        });
     }
 }

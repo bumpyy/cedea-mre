@@ -12,25 +12,6 @@
             <div class="relative">
                 <ul class="flex flex-1 list-none items-center justify-center">
                     {{-- home --}}
-                    <li class="gap-y-1 px-5 py-7 font-medium transition-colors"
-                        @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='home'"
-                        @mouseleave="navigationMenuLeave()">
-
-                        <a @class([
-                            'relative font-medium transition-colors after:absolute after:left-0 after:top-8 after:h-1 after:w-0 after:bg-transparent after:transition-all after:duration-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
-                            'after:!bg-white after:!w-1/2' => url()->current() === route('home'),
-                        ])
-                            :class="{
-                                'after:bg-white after:w-1/2': navigationMenu=='home',
-                                'after:bg-transparent after:w-0 ': navigationMenu!='home'
-                            }"
-                            href="{{ route('home') }}">
-                            Beranda
-                            {{-- <x-lucide-house class="size-4" /> --}}
-                        </a>
-
-                    </li>
-
                     @foreach ($nav_items as $item)
                         @if ($item['disable'])
                             <li class="cursor-not-allowed gap-y-1 px-5 py-7 font-medium opacity-60 transition-colors"
@@ -154,12 +135,7 @@
 
         {{-- nav items --}}
         <ul class="bg-cedea-red container flex w-full list-none flex-col justify-center gap-y-8 pb-16 pt-10 lg:hidden">
-            <li>
-                <a class="relative inline-flex cursor-pointer flex-col rounded-md font-medium transition-colors"
-                    href="{{ route('home') }}">
-                    Beranda
-                </a>
-            </li>
+
 
             @foreach ($nav_items as $item)
                 <li class="focus:outline-none">
