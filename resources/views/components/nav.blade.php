@@ -54,10 +54,10 @@
                                 'after:bg-transparent after:w-0 ': navigationMenu!='home'
                             }"
                             href="{{ auth()->check() ? route('dashboard') : route('login') }}">
-                            @auth('admin')
-                                Login
-                            @else
+                            @auth
                                 Dashboard
+                            @else
+                                Login
                             @endauth
                             {{-- <x-lucide-house class="size-4" /> --}}
                         </a>
