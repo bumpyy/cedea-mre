@@ -24,8 +24,10 @@
                     </h1>
                 </div>
 
-                <x-header-mascot class="h-full basis-1/2 lg:-left-[clamp(8%,_10vw,_22%)] lg:top-12" type="cheese" />
-                <x-header-mascot class="h-full basis-1/2 lg:-right-[clamp(10%,_10vw,_30%)] lg:top-4" type="chili" />
+                <x-header-mascot class="h-full lg:-left-[clamp(8%,_15vw,_25%)] lg:-top-4" type="cheese" />
+                <x-header-mascot
+                    class="h-full lg:-right-[clamp(10%,_13vw,_30%)] lg:-top-10 2xl:-right-[clamp(10%,_14vw,_30%)]"
+                    type="chili" />
             </div>
         </div>
 
