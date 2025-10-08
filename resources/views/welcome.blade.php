@@ -10,7 +10,8 @@
                     <img src="{{ asset('img/brand.png') }}" srcset="{{ asset('img/brand.svg') }}" alt="Cedea k-food logo">
                 </div>
             </div>
-            <div class="relative grid-cols-2 justify-items-center max-xl:grid">
+
+            <div class="relative grid-cols-2 justify-items-center max-lg:grid">
                 <div
                     class="bg-size-[100%_100%] rounded-4xl relative z-[1] col-span-full basis-full -rotate-3 bg-white bg-[url('../assets/patterns/paper.png')] bg-no-repeat bg-blend-multiply drop-shadow-md lg:rounded-[4rem]">
                     <h1
@@ -31,18 +32,42 @@
             </div>
         </div>
 
-        <div
-            class="bg-size-[100%_100%] container relative mx-auto flex h-full max-h-[25rem] min-h-[5rem] justify-end bg-[url('../assets/patterns/prize-bg-transparent.png')] bg-no-repeat">
+        <div class="container relative mx-auto">
             {{-- sticker --}}
             <div
-                class="bg-size-[100%_100%] text-cedea-red font-bebas rounded-4xl top-2/5 absolute -left-[2%] -translate-y-1/2 -rotate-6 bg-[url('../assets/patterns/paper.png')] bg-no-repeat px-6 py-8 text-center text-[clamp(1.5rem,_4vw,_3rem)] font-bold uppercase italic leading-none">
+                class="bg-size-[100%_100%] text-cedea-red font-bebas rounded-4xl top-2/5 absolute -left-[2%] z-[1] -translate-y-1/2 -rotate-6 bg-[url('../assets/patterns/paper.png')] bg-no-repeat px-6 py-8 text-center text-[clamp(1.5rem,_4vw,_3rem)] font-bold uppercase italic leading-none">
                 menangkan
                 <br />
                 hadiahnya
             </div>
-            <div class="w-3/4">
-                <div>
-                    <img src="{{ asset('img/plane.png') }}" alt="">
+            <div
+                class="bg-size-[100%_100%] relative flex items-center justify-center bg-no-repeat py-16 max-lg:flex-col lg:min-h-[5rem] lg:bg-[url('../assets/patterns/prize-bg-transparent.png')] lg:px-64">
+
+                <div class="relative">
+                    <div class="relative z-10 flex flex-col items-start">
+                        <p class="font-marimpa text-[clamp(1.5rem,_15vw,_30rem)] leading-none text-amber-300">10</p>
+                        <p class="font-montserrat -mt-4 flex flex-col pl-[clamp(1rem,_15vw,_2rem)] text-white">
+                            <span class="text-[clamp(1rem,_2.5vw,_10rem)] font-bold uppercase leading-none">tiket</span>
+                            <span class="text-[clamp(1rem,_2.5vw,_10rem)] font-bold uppercase leading-none">ke
+                                seoul</span>
+                            <span class="text-[clamp(1rem,_1.5vw,_10rem)] uppercase leading-none">2 tiket untuk 5
+                                pemenang</span>
+                        </p>
+                    </div>
+                    <img class="absolute right-0 top-2 z-0 lg:-right-40 lg:top-12 lg:-ml-28"
+                        src="{{ asset('img/plane.png') }}" alt="">
+                </div>
+
+                <div class="lg:ml-40">
+                    <img src="{{ asset('img/money.png') }}" alt="">
+                    <div class="flex items-start">
+                        <p class="font-marimpa text-[clamp(1.5rem,_5vw,_10rem)] leading-none text-amber-300">100</p>
+                        <p class="font-montserrat flex flex-col text-white">
+                            <span class="font-bold uppercase">Juta</span>
+                            <span class="font-bold uppercase">Rupiah</span>
+                            <span>untuk 10 pemenang</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
