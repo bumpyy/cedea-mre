@@ -1,14 +1,17 @@
 <footer class="bg-cedea-red shadow-nav rounded-t-[6rem] pb-2 lg:pb-6">
     <div class="container">
         <div class="grid grid-cols-1 gap-8 text-white lg:grid-cols-2">
-            <div class="clamp-[gap,4,12] max-footer-small:flex-col flex max-md:justify-center">
+            <div class="max-footer-small:flex-col flex gap-[clamp(1rem,.3rem_+_2.82vw,3rem)] max-md:justify-center">
                 <div
-                    class="clamp-[w,28,64] inline-block h-fit shrink-0 shadow-2xl shadow-black/25 drop-shadow-xl transition-transform duration-700">
+                    class="inline-block h-fit w-[clamp(7rem,_3.83rem_+_12.68vw,_16rem)] shrink-0 shadow-2xl shadow-black/25 drop-shadow-xl transition-transform duration-700">
                     <x-logo />
                 </div>
-                <div class="clamp-[py,2,10] text-left lg:col-span-6">
-                    <p class="clamp-[text,xl,2xl]">{{ __('footer.address.title') }}</p>
-                    <p class="clamp-[text,lg,xl]">{{ __('footer.address.subtitle') }}</p>
+                <div class="py-[clamp(.5rem,_-.2rem_+_2.82vw,_2.5rem)] text-left lg:col-span-6">
+                    <p
+                        class="text-[clamp(1.25rem,_1.16rem_+_.35vw,_1.5rem)] leading-[clamp(1.75rem,_1.66rem_+_.35vw,_2rem)]">
+                        {{ __('footer.address.title') }}</p>
+                    <p class="text-[clamp(1.125rem,_1.081rem_+_.176vw,_1.25rem)]">{{ __('footer.address.subtitle') }}
+                    </p>
                     <p>
                         {!! __('footer.address.street') !!}
                     </p>
@@ -23,7 +26,7 @@
                 </div>
 
             </div>
-            <div class="clamp-[py,2,10] space-y-4 lg:justify-self-end">
+            <div class="space-y-4 py-[clamp(.5rem,_-.2rem_+_2.82vw,_2.5rem)] lg:justify-self-end">
                 <p class="text-center"><strong>{{ __('footer.social.title') }}</strong></p>
                 <div class="flex flex-row flex-nowrap justify-center space-x-4">
                     <a class="size-8" href="https://www.facebook.com/CedeaSeafood" target="_blank">

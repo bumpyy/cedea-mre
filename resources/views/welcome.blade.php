@@ -6,7 +6,7 @@
 
         <x-home.prize />
 
-        <div class="container mx-auto flex items-center justify-center">
+        <div class="container flex items-center justify-center max-lg:flex-col">
             <x-home.how />
             <div>
                 <img src="{{ asset('img/zee.png') }}" alt="">
