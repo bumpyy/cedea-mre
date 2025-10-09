@@ -4,58 +4,48 @@
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form method="POST" wire:submit="register" class="flex flex-col gap-6">
+    <form class="flex flex-col gap-6" method="POST" wire:submit="register">
         <!-- Name -->
-        <flux:input
-            wire:model="name"
-            :label="__('Name')"
-            type="text"
-            required
-            autofocus
-            autocomplete="name"
-            :placeholder="__('Full name')"
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Name') }}</flux:label>
+            <flux:input class="text-black" name="name" type="text" wire:model="name" required autofocus
+                autocomplete="name" :placeholder="__('Full name')" />
+            <flux:error class="bg-white" name="name" />
+        </flux:field>
 
         <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Email address') }}</flux:label>
+            <flux:input class="text-black" name="email" type="email" wire:model="email" required
+                autocomplete="email" placeholder="email@example.com" />
+            <flux:error class="bg-white" name="email" />
+        </flux:field>
 
         <!-- Password -->
-        <flux:input
-            wire:model="password"
-            :label="__('Password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Password')"
-            viewable
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Password') }}</flux:label>
+            <flux:input class="text-black" name="password" type="password" wire:model="password" required
+                autocomplete="new-password" :placeholder="__('Password')" viewable />
+            <flux:error class="bg-white" name="password" />
+        </flux:field>
 
         <!-- Confirm Password -->
-        <flux:input
-            wire:model="password_confirmation"
-            :label="__('Confirm password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Confirm password')"
-            viewable
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Confirm password') }}</flux:label>
+            <flux:input class="text-black" name="password_confirmation" type="password"
+                wire:model="password_confirmation" required autocomplete="new-password"
+                :placeholder="__('Confirm password')" viewable />
+            <flux:error class="bg-white" name="password_confirmation" />
+        </flux:field>
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button class="w-full" type="submit" variant="primary">
                 {{ __('Create account') }}
             </flux:button>
         </div>
     </form>
 
-    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
+    <div class="space-x-1 text-center text-sm text-zinc-600 rtl:space-x-reverse dark:text-zinc-400">
         <span>{{ __('Already have an account?') }}</span>
         <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>

@@ -1,6 +1,6 @@
 <x-layouts.app>
 
-    <div class="h-[400dvh]">
+    <div>
         {{-- hero --}}
         <x-home.hero />
 

@@ -11,6 +11,7 @@
         <div class="asia-pattern-body min-h-dvh bg-no-repeat">
             <x-header />
             {{ $slot }}
+            <x-footer />
         </div>
     </div>
 

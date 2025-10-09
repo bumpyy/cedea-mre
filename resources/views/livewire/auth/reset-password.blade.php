@@ -6,8 +6,6 @@
 
     <form class="flex flex-col gap-6" method="POST" wire:submit="resetPassword">
         <!-- Email Address -->
-
-
         <flux:field>
             <flux:label class="text-white">Email</flux:label>
             <flux:input class="text-black" name="email" type="email" wire:model="email" autocomplete="email" required />
