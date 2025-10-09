@@ -4,40 +4,36 @@
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form method="POST" wire:submit="resetPassword" class="flex flex-col gap-6">
+    <form class="flex flex-col gap-6" method="POST" wire:submit="resetPassword">
         <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email')"
-            type="email"
-            required
-            autocomplete="email"
-        />
+
+
+        <flux:field>
+            <flux:label class="text-white">Email</flux:label>
+            <flux:input class="text-black" name="email" type="email" wire:model="email" autocomplete="email" required />
+            <flux:error class="bg-white" name="email" />
+        </flux:field>
+
 
         <!-- Password -->
-        <flux:input
-            wire:model="password"
-            :label="__('Password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Password')"
-            viewable
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Password') }}</flux:label>
+            <flux:input class="text-black" name="password" type="password" wire:model="password" required
+                autocomplete="new-password" :placeholder="__('Password')" viewable />
+            <flux:error class="bg-white" name="password" />
+        </flux:field>
 
         <!-- Confirm Password -->
-        <flux:input
-            wire:model="password_confirmation"
-            :label="__('Confirm password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Confirm password')"
-            viewable
-        />
+        <flux:field>
+            <flux:label class="text-white">{{ __('Confirm password') }}</flux:label>
+            <flux:input class="text-black" name="password_confirmation" type="password"
+                wire:model="password_confirmation" required autocomplete="new-password"
+                :placeholder="__('Confirm password')" viewable />
+            <flux:error class="bg-white" name="password_confirmation" />
+        </flux:field>
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button class="bg-cedea-red w-full drop-shadow-lg" type="submit" variant="primary">
                 {{ __('Reset password') }}
             </flux:button>
         </div>
