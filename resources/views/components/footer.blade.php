@@ -1,4 +1,4 @@
-<footer class="bg-cedea-red rounded-t-[4rem] pb-2 lg:pb-6">
+<footer class="bg-cedea-red shadow-nav rounded-t-[6rem] pb-2 lg:pb-6">
     <div class="container mx-auto">
         <div class="grid grid-cols-1 gap-8 text-white lg:grid-cols-2">
             <div class="~gap-4/12 max-footer-small:flex-col flex max-md:justify-center">
