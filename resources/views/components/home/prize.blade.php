@@ -39,7 +39,7 @@
                 <p class="font-montserrat flex flex-col text-white">
                     <span class="clamp-[text,base,3xl] font-bold uppercase leading-none">Juta</span>
                     <span class="clamp-[text,base,3xl] font-bold uppercase leading-none">Rupiah</span>
-                    <span class="clamp-[text,base,base] leading-none">untuk 10 pemenang</span>
+                    <span class="clamp-[text,base,lg] leading-none">untuk 10 pemenang</span>
                 </p>
             </div>
         </div>

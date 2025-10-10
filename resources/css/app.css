@@ -72,14 +72,20 @@
 @layer components {
     .asia-pattern-body {
         /* TODO: Lanjutin tambah pattern di BG */
+        /*? url('asset_path.ext') x_pos y_pos / size */
         background: url(../assets/patterns/asia-pattern.png) 15%
-                max(-25dvh, -10dvw) / max(30dvw, 20rem),
+                clamp(-2%, 50vw, -7%) / clamp(15rem, 50vw, 35rem),
             /* ****************************************************** */
-                url(../assets/patterns/asia-pattern.png) 110% max(20dvh, -30dvw) /
-                max(25dvw, 13rem),
+                url(../assets/patterns/asia-pattern.png) clamp(120%, 20vw, 150%)
+                10% / clamp(15rem, 50vw, 35rem),
             /* ****************************************************** */
-                url(../assets/patterns/asia-pattern.png) -10% max(70dvh, 0dvw) /
-                max(15dvw, 8rem);
+                url(../assets/patterns/asia-pattern.png) -10% 30% / clamp(1rem, 50vw +
+                        1rem, 18rem),
+            /* ****************************************************** */
+                url(../assets/patterns/asia-pattern.png) 111% 60% /
+                clamp(3rem, 50vw + 1rem, 25rem),
+            /* ****************************************************** */
+                url(../assets/patterns/asia-pattern.png) -7% 90% / clamp(15rem, 50vw, 35rem);
     }
 }
 
