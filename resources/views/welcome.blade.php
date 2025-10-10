@@ -1,14 +1,15 @@
 <x-layouts.app>
 
-    <div>
+    <div class="my-12">
         {{-- hero --}}
         <x-home.hero />
 
         <x-home.prize />
 
-        <div class="container flex items-center justify-center max-lg:flex-col">
+        <div class="container flex items-center justify-center gap-4 max-lg:flex-col">
             <x-home.how />
-            <div>
+
+            <div class="max-lg:order-0 max-lg:clamp-[mb,-44,-26rem]">
                 <img src="{{ asset('img/zee.png') }}" alt="">
             </div>
         </div>

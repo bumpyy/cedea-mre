@@ -89,7 +89,7 @@
 
 @utility container {
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
