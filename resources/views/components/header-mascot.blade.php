@@ -13,8 +13,8 @@
         '2xl:-left-48 2xl:-bottom-32 xl:-left-44 -right-8 -bottom-4  xl:-bottom-32 lg:-left-26 lg:-bottom-20 grid' =>
             $type === 'chili',
     ])>
-        <img class="z-0 opacity-80 max-lg:hidden" src="{{ asset('img/' . $type . '-mascot-border.png') }}"
+        <img class="z-[-1] max-lg:hidden" src="{{ asset('img/' . $type . '-mascot-border.png') }}"
             alt="eomuk-{{ $type }}-border">
-        <img class="z-[2]" src="{{ asset('img/' . $type . '-mascot.png') }}" alt="eomuk-{{ $type }}">
+        <img class="" src="{{ asset('img/' . $type . '-mascot.png') }}" alt="eomuk-{{ $type }}">
     </div>
 </div>

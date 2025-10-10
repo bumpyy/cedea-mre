@@ -38,6 +38,7 @@
     --color-accent-foreground: var(--color-white);
 
     --color-cedea-red: hsl(350, 100%, 36%);
+    --color-cedea-blue: hsl(222, 66%, 34%);
     --color-cedea-dark: hsl(356, 71%, 38%);
 
     --color-cedea-gold: hsl(37, 24%, 47%);
@@ -47,6 +48,7 @@
     --shadow-top-hover: 0px 0px 20px 1px rgba(0, 0, 0, 0.25);
 
     --drop-shadow-top: 0 0 15px rgb(0 0 0 / 0.04), 0 0 10px rgb(0 0 0 / 0.1);
+    --drop-shadow-nav: 0px 0px 18px 1px rgba(0, 0, 0, 0.5);
 }
 
 @layer theme {

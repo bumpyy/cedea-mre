@@ -6,6 +6,7 @@
                     class="clamp-[w,28,64] inline-block h-fit shrink-0 shadow-2xl shadow-black/25 drop-shadow-xl transition-transform duration-700">
                     <x-logo />
                 </div>
+
                 <div class="clamp-[py,2,10] text-left lg:col-span-6">
                     <p class="clamp-[text,xl,2xl]">{{ __('footer.address.title') }}</p>
                     <p class="clamp-[text,lg,xl]">{{ __('footer.address.subtitle') }}</p>
