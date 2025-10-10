@@ -70,11 +70,8 @@
 }
 
 @layer components {
-    .grid-overlay {
-        @apply [&>*]:col-start-1 [&>*]:row-start-1;
-    }
-
     .asia-pattern-body {
+        /* TODO: Lanjutin tambah pattern di BG */
         background: url(../assets/patterns/asia-pattern.png) 15%
                 max(-25dvh, -10dvw) / max(30dvw, 20rem),
             /* ****************************************************** */
@@ -84,6 +81,10 @@
                 url(../assets/patterns/asia-pattern.png) -10% max(70dvh, 0dvw) /
                 max(15dvw, 8rem);
     }
+}
+
+@utility grid-overlay {
+    @apply [&>*]:col-start-1 [&>*]:row-start-1;
 }
 
 @utility container {

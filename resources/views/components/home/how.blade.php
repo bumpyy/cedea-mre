@@ -1,4 +1,4 @@
-<di>
+<div class="flex flex-col gap-y-3">
     <div
         class="rounded-4xl relative grid items-center justify-center gap-x-12 gap-y-12 bg-white px-8 py-12 pt-24 drop-shadow-2xl md:grid-cols-3 lg:grid-rows-[1fr_auto]">
 
@@ -32,6 +32,7 @@
                 <div class="flex items-center justify-center">
                     <img src="{{ asset($item['image']) }}" alt="">
                 </div>
+
                 <div class='text-cedea-gold font-bebas flex flex-col items-center justify-start text-center'>
                     <p class="text-4xl uppercase">{{ $item['label'] }}</p>
                     <p>{{ $item['desc'] }}</p>
@@ -40,8 +41,10 @@
         @endforeach
 
     </div>
-    <a class="flex items-center justify-center uppercase text-white" href="#">
-        <span>Selengkapnya</span>
-        <x-lucide-arrow-right class="w-3" />
+    <a class="uppercase" href="#">
+        <p class="clamp-[text,base,xl] flex items-center justify-center font-bold text-white">
+            <span>Selengkapnya</span>
+            <x-lucide-arrow-right class="w-6" />
+        </p>
     </a>
-</di>
+</div>

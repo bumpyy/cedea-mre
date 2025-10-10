@@ -7,8 +7,8 @@
 
 <body class="font-poppins bg-[#e91f24] antialiased">
 
-    <div class="bg-radial to-cedea-dark from-30 h-full min-h-dvh from-transparent">
-        <div class="asia-pattern-body min-h-dvh bg-no-repeat">
+    <div class="bg-radial to-cedea-dark from-30 relative z-0 h-full min-h-dvh from-transparent">
+        <div class="asia-pattern-body relative z-0 min-h-dvh overflow-clip bg-no-repeat">
             <x-header />
             {{ $slot }}
             <x-footer />
