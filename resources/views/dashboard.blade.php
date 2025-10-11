@@ -1,9 +1,9 @@
 <x-layouts.app>
+    <div class="overflow-auto">
 
-    <div>
         <button
-            class="ms-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 sm:hidden"
-            data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+            class="ms-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 sm:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar"
             type="button">
             <span class="sr-only">Open sidebar</span>
             <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -13,14 +13,15 @@
                 </path>
             </svg>
         </button>
-        <aside class="fixed left-0 top-0 z-[1] h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
-            id="default-sidebar" aria-label="Sidebar">
-            <div class="h-full overflow-y-auto bg-gray-50 px-3 py-4">
-                <ul class="space-y-2 font-medium">
+
+        <aside class="fixed left-0 top-0 z-0 h-full w-52 -translate-x-full transition-transform sm:translate-x-0"
+            id="separator-sidebar" aria-label="Sidebar">
+            <div class="h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
+                <ul class="mt-8 space-y-2 font-medium">
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             href="#">
-                            <svg class="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            <svg class="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 22 21">
                                 <path
@@ -32,9 +33,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             href="#">
-                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 18 18">
                                 <path
@@ -42,13 +43,13 @@
                             </svg>
                             <span class="ms-3 flex-1 whitespace-nowrap">Kanban</span>
                             <span
-                                class="ms-3 inline-flex items-center justify-center rounded-full bg-gray-100 px-2 text-sm font-medium text-gray-800">Pro</span>
+                                class="ms-3 inline-flex items-center justify-center rounded-full bg-gray-100 px-2 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">Pro</span>
                         </a>
                     </li>
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             href="#">
-                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 20 20">
                                 <path
@@ -56,13 +57,13 @@
                             </svg>
                             <span class="ms-3 flex-1 whitespace-nowrap">Inbox</span>
                             <span
-                                class="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800">3</span>
+                                class="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">3</span>
                         </a>
                     </li>
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             href="#">
-                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 20 18">
                                 <path
@@ -72,9 +73,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             href="#">
-                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 viewBox="0 0 18 20">
                                 <path
@@ -83,26 +84,18 @@
                             <span class="ms-3 flex-1 whitespace-nowrap">Products</span>
                         </a>
                     </li>
+
+
+                </ul>
+                <ul class="mt-4 space-y-2 border-t border-gray-200 pt-4 font-medium dark:border-gray-700">
                     <li>
-                        <a class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
-                            href="#">
-                            <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 18 16">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
-                            </svg>
-                            <span class="ms-3 flex-1 whitespace-nowrap">Sign In</span>
-                        </a>
-                    </li>
-                    <li>
+
                         <form class="w-full" method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button
-                                class="group flex w-full cursor-pointer items-center rounded-lg p-2 text-start text-gray-900 hover:bg-gray-100"
-                                type="submit" href="#">
-                                <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                                class="group flex w-full cursor-pointer items-center rounded-lg p-2 text-start text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                type="submit">
+                                <svg class="h-5 w-5 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 20 20">
                                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
@@ -111,7 +104,7 @@
                                     <path
                                         d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
                                 </svg>
-                                <span class="ms-3 flex-1 whitespace-nowrap">Sign out</span>
+                                <span class="ms-3 flex-1 whitespace-nowrap">Sign Up</span>
                             </button>
                         </form>
 
@@ -119,11 +112,12 @@
                 </ul>
             </div>
         </aside>
-        <div class="p-4 sm:ml-64">
-            <div class="rounded-lg border-2 border-dashed border-gray-200 p-4">
+
+        <div class="my-20 p-4 sm:ml-52">
+            <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 dark:border-gray-700">
                 <div class="mb-4 grid grid-cols-3 gap-4">
-                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -131,8 +125,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -140,8 +134,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-24 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -150,8 +144,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="mb-4 flex h-48 items-center justify-center rounded-sm bg-gray-50">
-                    <p class="text-2xl text-gray-400">
+                <div class="mb-4 flex h-48 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                    <p class="text-2xl text-gray-400 dark:text-gray-500">
                         <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 18 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -160,8 +154,8 @@
                     </p>
                 </div>
                 <div class="mb-4 grid grid-cols-2 gap-4">
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -169,8 +163,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -178,8 +172,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -187,8 +181,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -197,8 +191,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="mb-4 flex h-48 items-center justify-center rounded-sm bg-gray-50">
-                    <p class="text-2xl text-gray-400">
+                <div class="mb-4 flex h-48 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                    <p class="text-2xl text-gray-400 dark:text-gray-500">
                         <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 18 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -207,8 +201,8 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -216,8 +210,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -225,8 +219,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -234,8 +228,8 @@
                             </svg>
                         </p>
                     </div>
-                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50">
-                        <p class="text-2xl text-gray-400">
+                    <div class="flex h-28 items-center justify-center rounded-sm bg-gray-50 dark:bg-gray-800">
+                        <p class="text-2xl text-gray-400 dark:text-gray-500">
                             <svg class="h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -247,5 +241,4 @@
             </div>
         </div>
     </div>
-
 </x-layouts.app>
