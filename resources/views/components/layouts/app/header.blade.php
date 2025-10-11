@@ -3,8 +3,8 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:header class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900" container>
+    <body class="min-h-screen bg-white">
+        <flux:header class="border-b border-zinc-200 bg-zinc-50 dark:bg-zinc-900" container>
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
 
             <a class="me-5 ms-2 flex items-center space-x-2 lg:ms-0 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>
@@ -44,7 +44,7 @@ class="cursor-pointer" :initials="auth()->user()->initials()"/>
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:text-white">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>
@@ -76,7 +76,7 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
         </flux:header>
 
         <!-- Mobile Menu -->
-        <flux:sidebar class="border-e border-zinc-200 bg-zinc-50 lg:hidden dark:border-zinc-700 dark:bg-zinc-900" stashable sticky>
+        <flux:sidebar class="border-e border-zinc-200 bg-zinc-50 lg:hidden dark:bg-zinc-900" stashable sticky>
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
             <a class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>

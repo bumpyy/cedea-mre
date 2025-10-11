@@ -1,4 +1,4 @@
-<footer class="bg-cedea-red shadow-nav clamp-[rounded-t,1.5rem,6rem] overflow-clip pb-2 lg:pb-6">
+<footer class="bg-cedea-red shadow-nav clamp-[rounded-t,1.5rem,6rem] relative z-10 overflow-clip pb-2 lg:pb-6">
     <div class="container">
         <div class="grid grid-cols-1 gap-8 text-white lg:grid-cols-2">
             <div class="clamp-[gap,4,12] max-footer-small:flex-col flex max-md:justify-center">

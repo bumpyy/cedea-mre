@@ -3,8 +3,8 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900" sticky stashable>
+    <body class="min-h-screen bg-white">
+        <flux:sidebar class="border-e border-zinc-200 bg-zinc-50" sticky stashable>
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
             <a class="me-5 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>
@@ -40,7 +40,7 @@ data-test="sidebar-menu-button" :name="auth()->user()->name" :initials="auth()->
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>
@@ -87,7 +87,7 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>
