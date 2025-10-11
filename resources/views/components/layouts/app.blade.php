@@ -5,9 +5,9 @@
     @include('partials.head')
 </head>
 
-<body class="font-poppins bg-[#e91f24] antialiased">
+<body class="font-poppins bg-[#e51b1f] antialiased">
 
-    <div class="bg-radial to-cedea-dark from-30 relative z-0 h-full min-h-dvh from-transparent">
+    <div class="bg-radial from-60 relative z-0 h-full min-h-dvh from-transparent to-[#952227]">
         <div class="asia-pattern-body relative z-0 min-h-dvh overflow-clip bg-no-repeat">
             <x-header />
             {{ $slot }}
