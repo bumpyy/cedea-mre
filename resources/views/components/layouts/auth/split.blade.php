@@ -3,9 +3,9 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="dark:bg-linear-to-b min-h-screen bg-white antialiased dark:to-neutral-900">
+    <body class="dark:bg-linear-to-b min-h-screen bg-white antialiased">
         <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-neutral-800">
+            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex">
                 <div class="absolute inset-0 bg-neutral-900"></div>
                 <a class="relative z-20 flex items-center text-lg font-medium" href="{{ route('home') }}" wire:navigate>
                     <span class="flex h-10 w-10 items-center justify-center rounded-md">

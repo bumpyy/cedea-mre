@@ -1,7 +1,5 @@
-<section class="w-full">
-    @include('partials.settings-heading')
-
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+<x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+    <section class="w-full">
         <form class="my-6 w-full space-y-6" wire:submit="updateProfileInformation">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
@@ -38,7 +36,6 @@
                 </x-action-message>
             </div>
         </form>
-
         <livewire:settings.delete-user-form />
-    </x-settings.layout>
-</section>
+    </section>
+</x-settings.layout>

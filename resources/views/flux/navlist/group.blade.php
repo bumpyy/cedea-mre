@@ -9,7 +9,7 @@
 <ui-disclosure data-flux-navlist-group {{ $attributes->class('group/disclosure') }}
     @if ($expanded === true) open @endif>
     <button
-        class="group/disclosure-button lg:h-8/80/[7%] mb-[2px] flex h-10 w-full items-center rounded-lg text-zinc-500 hover:bg-zinc-800/5 hover:text-zinc-800 dark:hover:text-white"
+        class="group/disclosure-button lg:h-8/80/[7%] mb-[2px] flex h-10 w-full items-center rounded-lg text-zinc-500 hover:bg-zinc-800/5 hover:text-zinc-800"
         type="button">
         <div class="pe-4 ps-3">
             <flux:icon.chevron-down class="size-3! group-data-open/disclosure-button:block hidden" />

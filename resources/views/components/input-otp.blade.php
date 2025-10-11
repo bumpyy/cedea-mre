@@ -106,7 +106,7 @@
                 autocomplete="off" @paste="handlePaste" @keydown="handleKeyDown({{ $x }}, $event)"
                 @focus="$el.select()" @input="$el.value = $el.value.replace(/[^0-9]/g, '').slice(0, 1)"
                 @class([
-                    'flex size-10 items-center justify-center border border-zinc-300 bg-accent-foreground text-center text-sm font-medium text-accent-content transition-colors focus:border-accent focus:border-2 focus:outline-none focus:relative focus:z-10 dark:focus:border-accent',
+                    'flex size-10 items-center justify-center border border-zinc-300 bg-accent-foreground text-center text-sm font-medium text-accent-content transition-colors focus:border-accent focus:border-2 focus:outline-none focus:relative focus:z-10',
                     'rounded-l-md' => $x === 1,
                     'rounded-r-md' => $x === $digits,
                     '-ml-px' => $x > 1,
