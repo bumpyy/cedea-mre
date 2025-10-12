@@ -112,6 +112,15 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
+html.is-changing .transition-fade {
+    transition: opacity 0.25s;
+    opacity: 1;
+}
+/* Define the styles for the unloaded pages */
+html.is-animating .transition-fade {
+    opacity: 0;
+}
+
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

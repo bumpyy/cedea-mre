@@ -1,3 +1,14 @@
+import SwupLivewirePlugin from "@swup/livewire-plugin";
+import Swup from "swup";
+
+const swup = new Swup({
+    plugins: [new SwupLivewirePlugin()],
+});
+
+swup.hooks.on("page:view", (visit) => {
+    console.log("New page: ", visit.to.url);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     Flux.dark = false;
     Flux.appearance = "light";

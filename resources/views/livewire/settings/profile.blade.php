@@ -1,10 +1,27 @@
 <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
-    <section class="w-full">
+    <section class="container w-full">
         <form class="my-6 w-full space-y-6" wire:submit="updateProfileInformation">
-            <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
+
+            <flux:field>
+                <flux:label class="text-white">Profile Image</flux:label>
+                <x-filepond::upload wire:model="profileImage" name="profileImage" />
+                <flux:error class="bg-white" name="profileImage" />
+            </flux:field>
+
+            <flux:field>
+                <flux:label class="text-white">{{ __('Name') }}</flux:label>
+                <flux:input class="text-black" name="name" type="text" wire:model="name" required autofocus
+                    autocomplete="name" />
+                <flux:error class="bg-white" name="name" />
+            </flux:field>
 
             <div>
-                <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
+                <flux:field>
+                    <flux:label class="text-white">{{ __('Email') }}</flux:label>
+                    <flux:input class="text-black" name="email" type="email" wire:model="email" required
+                        autocomplete="email" />
+                    <flux:error class="bg-white" name="email" />
+                </flux:field>
 
                 @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !auth()->user()->hasVerifiedEmail())
                     <div>
@@ -38,4 +55,6 @@
         </form>
         <livewire:settings.delete-user-form />
     </section>
+    @filepondScripts
+
 </x-settings.layout>

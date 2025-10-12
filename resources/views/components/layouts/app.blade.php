@@ -5,17 +5,20 @@
     @include('partials.head')
 </head>
 
-<body class="font-poppins relative h-full bg-[#e51b1f] antialiased">
-    <div class="bg-radial from-60 z-0 grid h-auto min-h-dvh from-transparent to-[#952227]">
-        <div class="asia-pattern-body z-0 h-full overflow-x-clip bg-no-repeat">
-            <x-header />
-            {{ $slot }}
+<body class="font-poppins relative h-full bg-[#e51b1f] antialiased" data-barba="wrapper">
+    <main class="transition-fade" id="swup">
+        <div class="bg-radial from-60 z-0 grid h-auto min-h-dvh from-transparent to-[#952227]">
+            <div class="asia-pattern-body z-0 h-full overflow-x-clip bg-no-repeat">
+                <x-header />
 
-            @if (request()->routeIs('home'))
-                <x-footer />
-            @endif
+                {{ $slot }}
+
+                @if (request()->routeIs('home'))
+                    <x-footer />
+                @endif
+            </div>
         </div>
-    </div>
+    </main>
     @fluxScripts
 </body>
 

@@ -1,7 +1,6 @@
 <x-layouts.app>
     <x-layouts.dashboard>
-        <section class="container">
-
-        </section>
+        <livewire:upload-form>
     </x-layouts.dashboard>
+    @filepondScripts
 </x-layouts.app>
