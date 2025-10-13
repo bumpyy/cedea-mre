@@ -1,4 +1,4 @@
-<div class="clamp-[gap,6,12] container mt-20 flex flex-col items-center justify-center">
+<div class="clamp-[gap,6,12] mt-20 flex flex-col items-center justify-center sm:container max-sm:mx-4">
 
     <div class="drop-shadow-nav relative flex w-[clamp(100%,100vw,105%)] flex-col items-center justify-center gap-16">
         <div class="grid w-full grid-cols-[1fr_auto_1fr] items-end justify-items-center">
@@ -20,7 +20,7 @@
                 <div
                     class="bg-size-[100%_100%] clamp-[rounded,3xl,4rem] -rotate-4 relative z-[1] h-fit w-[clamp(100%,_50vw_+_1rem,_130%)] justify-self-center bg-white bg-[url('../assets/patterns/paper-50.png')] bg-no-repeat bg-blend-multiply">
                     <h1
-                        class="font-anton text-cedea-blue mask-[url('../assets/patterns/scratch-transparent-1.png')] mask-size-[100%_100%] clamp-[px,2,16] clamp-[py,2,8] clamp-[text,4xl,9xl] text flex size-full flex-col items-center justify-center uppercase italic leading-none mix-blend-multiply before:pointer-events-none">
+                        class="font-anton text-cedea-blue mask-[url('../assets/patterns/scratch-transparent-1.png')] mask-size-[100%_100%] clamp-[px,2,16] clamp-[py,2,8] clamp-[text,3xl,9xl] text flex size-full flex-col items-center justify-center uppercase italic leading-none mix-blend-multiply before:pointer-events-none">
                         <span class="">Trip & Chill</span>
                         <span class="flex items-start">
                             <span class="font-bebas clamp-[text,lg,7xl]">bareng</span>

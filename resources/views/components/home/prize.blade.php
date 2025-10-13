@@ -27,7 +27,7 @@
                     </span>
                 </p>
             </div>
-            <img class="clamp-[left,2rem,11rem] clamp-[top,2rem,4rem] z-0 max-w-full max-lg:max-w-80 lg:absolute"
+            <img class="clamp-[left,2rem,11rem] clamp-[top,2rem,4rem] z-0 max-w-full max-lg:max-w-64 lg:absolute"
                 src="{{ asset('img/plane.png') }}" alt="">
         </div>
 
