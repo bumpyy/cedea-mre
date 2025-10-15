@@ -40,7 +40,7 @@
                         @endif
                     @endforeach
                     <li class="gap-y-1 px-5 py-7 font-medium transition-colors"
-                        @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='home'"
+                        @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='login'"
                         @mouseleave="navigationMenuLeave()">
 
                         <a @class([
@@ -121,6 +121,7 @@
                             </div>
                         @endif
                     @endforeach
+
                 </div>
             </div>
         </div>
@@ -153,14 +154,12 @@
         x-trap.inert.noscroll.noautofocus="mobileNavOpen" x-cloak
         :class="{
             'animate-in max-h-dvh h-screen slide-in-from-top py-4': mobileNavOpen,
-            'max-h-0 p-0':
+            'max-h-0 p-0 h-0':
                 !mobileNavOpen
         }">
 
         {{-- nav items --}}
         <ul class="bg-cedea-red container flex w-full list-none flex-col justify-center gap-y-8 pb-16 pt-10 lg:hidden">
-
-
             @foreach ($nav_items as $item)
                 <li class="focus:outline-none">
                     @if (!$item['disable'])
@@ -211,6 +210,17 @@
 
                 </li>
             @endforeach
+
+            <li>
+                <a class="relative inline-flex cursor-pointer flex-col rounded-md font-medium transition-colors"
+                    @click="closeMobileNav()" href="{{ auth()->check() ? route('dashboard') : route('login') }}">
+                    @auth
+                        Dashboard
+                    @else
+                        Login
+                    @endauth
+                </a>
+            </li>
         </ul>
 
     </nav>

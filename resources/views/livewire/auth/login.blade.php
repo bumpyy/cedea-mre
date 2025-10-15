@@ -23,24 +23,21 @@
             </flux:field>
 
             @if (Route::has('password.request'))
-                <flux:link class="absolute end-0 top-0 text-sm text-white" :href="route('password.request')"
-                    wire:navigate>
-                    {{ __('Forgot your password?') }}
+                <flux:link class="absolute end-0 top-0 text-sm text-white" :href="route('password.request')">
+                    Lupa password ?
                 </flux:link>
             @endif
         </div>
 
         <!-- Remember Me -->
-
-
         <flux:field variant="inline">
             <flux:checkbox wire:model="remember" />
-            <flux:label class="text-white">Remember</flux:label>
+            <flux:label class="text-white">Ingat saya</flux:label>
             <flux:error name="remember" />
         </flux:field>
 
-        <div class="flex items-center justify-end">
-            <flux:button class="w-full bg-amber-400" data-test="login-button" variant="primary" type="submit">
+        <div class="flex items-center justify-center">
+            <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
                 {{ __('Log in') }}
             </flux:button>
         </div>
