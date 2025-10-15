@@ -11,9 +11,10 @@ class SubmissionInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('invoice_number'),
+                TextEntry::make('receipt_number'),
                 TextEntry::make('user.name'),
-                TextEntry::make('status'),
+                TextEntry::make('status')
+                    ->badge(),
                 TextEntry::make('note')
                     ->placeholder('-'),
                 TextEntry::make('admin_id')

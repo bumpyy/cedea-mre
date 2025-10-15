@@ -18,6 +18,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
+use Kenepa\ResourceLock\ResourceLockPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -55,6 +57,12 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->authGuard('admin');
+            ->authGuard('admin')
+
+            ->plugins([
+                ResourceLockPlugin::make(),
+                FilamentLoggerPlugin::make(),
+            ]);
+
     }
 }

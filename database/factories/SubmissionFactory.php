@@ -17,7 +17,7 @@ class SubmissionFactory extends Factory
     public function definition(): array
     {
         return [
-            'invoice_number' => fake()->unique()->numerify('INV-########'),
+            'receipt_number' => fake()->unique()->numerify('INV-########'),
             'user_id' => \App\Models\User::factory(),
             'status' => 'pending',
             'note' => null,

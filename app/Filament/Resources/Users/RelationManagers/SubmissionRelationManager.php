@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\RelationManagers;
 
+use App\Enum\SubmissionStatusEnum;
 use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -11,6 +12,7 @@ use Filament\Actions\DissociateAction;
 use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -26,14 +28,14 @@ class SubmissionRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                TextInput::make('invoice_number')
+                TextInput::make('receipt_number')
                     ->required(),
-                TextInput::make('status')
+                Select::make('status')
+                    ->options(SubmissionStatusEnum::class)
+                    ->selectablePlaceholder(false)
                     ->required()
                     ->default('pending'),
                 TextInput::make('note'),
-                TextInput::make('admin_id')
-                    ->numeric(),
             ]);
     }
 
@@ -41,12 +43,13 @@ class SubmissionRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                TextEntry::make('invoice_number'),
-                TextEntry::make('status'),
+                TextEntry::make('receipt_number'),
+                TextEntry::make('status')
+                    ->badge(),
                 TextEntry::make('note')
                     ->placeholder('-'),
-                TextEntry::make('admin_id')
-                    ->numeric()
+                TextEntry::make('admin.name')
+                    ->default('-')
                     ->placeholder('-'),
                 TextEntry::make('created_at')
                     ->dateTime()
@@ -60,16 +63,16 @@ class SubmissionRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('invoice_number')
+            ->recordTitleAttribute('receipt_number')
             ->columns([
-                TextColumn::make('invoice_number')
+                TextColumn::make('receipt_number')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 TextColumn::make('note')
                     ->searchable(),
-                TextColumn::make('admin_id')
-                    ->numeric()
+                TextColumn::make('admin.name')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

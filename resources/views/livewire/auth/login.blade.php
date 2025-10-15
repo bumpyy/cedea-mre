@@ -6,20 +6,20 @@
 
     <form class="flex flex-col gap-6" method="POST" wire:submit="login">
         <!-- Email Address -->
-        <flux:field>
+        <flux:field class="text-5xl">
             <flux:label class="text-white">{{ __('Email address') }}</flux:label>
-            <flux:input class="text-black" name="email" type="email" wire:model="email" required autofocus
-                autocomplete="email" placeholder="email@example.com" />
-            <flux:error class="bg-white" name="email" />
+            <flux:input class="text-black" icon="user" name="email" type="email" wire:model="email" required
+                autofocus autocomplete="email" placeholder="email@example.com" />
+            <flux:error class="text-white" name="email" />
         </flux:field>
 
         <!-- Password -->
         <div class="relative">
             <flux:field>
                 <flux:label class="text-white">{{ __('Password') }}</flux:label>
-                <flux:input class="text-black" name="password" type="password" wire:model="password" required
-                    autocomplete="current-password" :placeholder="__('Password')" viewable />
-                <flux:error class="bg-white" name="password" />
+                <flux:input class="text-black" icon="lock-closed" name="password" type="password" wire:model="password"
+                    required autocomplete="current-password" :placeholder="__('Password')" viewable />
+                <flux:error class="text-white" name="password" />
             </flux:field>
 
             @if (Route::has('password.request'))
@@ -40,7 +40,7 @@
         </flux:field>
 
         <div class="flex items-center justify-end">
-            <flux:button class="w-full" data-test="login-button" variant="primary" type="submit">
+            <flux:button class="w-full bg-amber-400" data-test="login-button" variant="primary" type="submit">
                 {{ __('Log in') }}
             </flux:button>
         </div>
@@ -49,7 +49,7 @@
     @if (Route::has('register'))
         <div class="space-x-1 text-center text-sm text-white rtl:space-x-reverse">
             <span>{{ __('Don\'t have an account?') }}</span>
-            <flux:link class="text-white" :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
+            <flux:link class="text-white" :href="route('register')">{{ __('Sign up') }}</flux:link>
         </div>
     @endif
 </div>

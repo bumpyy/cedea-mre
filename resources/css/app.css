@@ -106,21 +106,66 @@
     @apply !mb-0 !leading-tight;
 }
 
+[data-flux-icon] {
+    @apply text-cedea-red;
+}
+
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
-
-html.is-changing .transition-fade {
-    transition: opacity 0.25s;
-    opacity: 1;
-}
-/* Define the styles for the unloaded pages */
-html.is-animating .transition-fade {
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    /* Kondisi Awal: Tersembunyi di atas layar dan tidak terlihat */
+    transform: translateY(-100%);
     opacity: 0;
+    visibility: hidden;
+    /* Transisi untuk pergerakan awal/akhir, diatur lebih lanjut oleh kelas */
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+#loading-screen.is-active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0vh);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Berhenti: Jeda di tengah (posisi 50vh) */
+/* Dipicu oleh JS di animation:out:await */
+#loading-screen.is-stopped {
+    /* Hapus transisi untuk menahan posisi (jeda) */
+    transition: none;
+    transform: translateY(0vh); /* Pastikan tetap di tengah */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. Keluar: Slide ke bawah sepenuhnya (100vh) */
+/* Dipicu oleh JS setelah jeda */
+#loading-screen.is-leaving {
+    /* Tambahkan kembali transisi untuk slide penuh ke bawah */
+    transform: translateY(100vh);
+    opacity: 0;
+    transition: transform 0.5s ease-in, opacity 0.3s 0.2s; /* Tambahkan sedikit delay pada opacity */
+    visibility: visible;
+}
+
+/* Pastikan #loading-screen benar-benar tersembunyi setelah transisi selesai
+ * dan saat halaman baru dimuat.
+ */
+html:not(.is-changing):not(.is-animating) #loading-screen:not(.is-active) {
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0s 0.7s, opacity 0s 0.7s, visibility 0s 0.7s;
+}
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

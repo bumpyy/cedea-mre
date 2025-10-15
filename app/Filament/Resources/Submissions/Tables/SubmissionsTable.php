@@ -15,17 +15,18 @@ class SubmissionsTable
     {
         return $table
             ->columns([
-                TextColumn::make('invoice_number')
+                TextColumn::make('receipt_number')
                     ->searchable(),
                 TextColumn::make('user.name')
                     ->sortable(),
                 TextColumn::make('status')
-                    ->searchable(),
+                    ->badge(),
+                TextColumn::make('admin.name')
+                    ->label('By Admin')
+                    ->default('-')
+                    ->sortable(),
                 TextColumn::make('note')
                     ->searchable(),
-                // TextColumn::make('admin_id')
-                //     ->numeric()
-                //     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -44,7 +45,7 @@ class SubmissionsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    // DeleteBulkAction::make(),
                 ]),
             ]);
     }

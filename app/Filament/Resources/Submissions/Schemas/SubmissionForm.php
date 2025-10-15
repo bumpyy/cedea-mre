@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Submissions\Schemas;
 
+use App\Enum\SubmissionStatusEnum;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -11,10 +13,10 @@ class SubmissionForm
     {
         return $schema
             ->components([
-                TextInput::make('invoice_number')
+                TextInput::make('receipt_number')
                     ->required(),
-
-                TextInput::make('status')
+                Select::make('status')
+                    ->options(SubmissionStatusEnum::class)
                     ->required()
                     ->default('pending'),
                 TextInput::make('note'),

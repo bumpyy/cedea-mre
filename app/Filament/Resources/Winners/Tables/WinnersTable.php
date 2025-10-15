@@ -15,7 +15,7 @@ class WinnersTable
     {
         return $table
             ->columns([
-                TextColumn::make('submission_id')
+                TextColumn::make('submission.receipt_number')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('prize')
