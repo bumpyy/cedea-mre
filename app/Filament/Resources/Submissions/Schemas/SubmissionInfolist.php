@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Filament\Resources\Submissions\Schemas;
+
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Schema;
+
+class SubmissionInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('invoice_number'),
+                TextEntry::make('user.name'),
+                TextEntry::make('status'),
+                TextEntry::make('note')
+                    ->placeholder('-'),
+                TextEntry::make('admin_id')
+                    ->numeric()
+                    ->placeholder('-'),
+                TextEntry::make('created_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('updated_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+            ]);
+    }
+}
