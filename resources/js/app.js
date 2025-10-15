@@ -2,6 +2,7 @@ import SwupLivewirePlugin from "@swup/livewire-plugin";
 import Swup from "swup";
 
 const swup = new Swup({
+    // cache: false,
     plugins: [new SwupLivewirePlugin()],
 });
 

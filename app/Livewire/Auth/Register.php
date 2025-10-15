@@ -18,9 +18,15 @@ class Register extends Component
 
     public string $email = '';
 
+    public string $address = '';
+
+    public string $phone = '';
+
     public string $password = '';
 
     public string $password_confirmation = '';
+
+    public bool $accept_terms = false;
 
     /**
      * Handle an incoming registration request.
@@ -30,7 +36,10 @@ class Register extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'accept_terms' => ['required', 'accepted'],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);

@@ -45,8 +45,8 @@
 
     @if (Route::has('register'))
         <div class="space-x-1 text-center text-sm text-white rtl:space-x-reverse">
-            <span>{{ __('Don\'t have an account?') }}</span>
-            <flux:link class="text-white" :href="route('register')">{{ __('Sign up') }}</flux:link>
+            <span>Belum punya akun?</span>
+            <flux:link class="font-bold text-white" :href="route('register')">Daftar Yuk</flux:link>
         </div>
     @endif
 </div>

@@ -1,7 +1,7 @@
 <x-layouts.app>
-    <x-layouts.dashboard>
-        <section class="container">
+    {{-- <x-layouts.dashboard> --}}
+    <section class="container">
 
-        </section>
-    </x-layouts.dashboard>
+    </section>
+    {{-- </x-layouts.dashboard> --}}
 </x-layouts.app>
