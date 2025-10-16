@@ -1,5 +1,4 @@
 <x-layouts.app>
-
     <div class="my-12">
         {{-- hero --}}
         <x-home.hero />
