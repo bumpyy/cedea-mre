@@ -14,6 +14,9 @@ test('new users can register', function () {
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
         ->set('password', 'password')
+        ->set('address', 'test address')
+        ->set('phone', 'test phone')
+        ->set('accept_terms', true)
         ->set('password_confirmation', 'password')
         ->call('register');
 
