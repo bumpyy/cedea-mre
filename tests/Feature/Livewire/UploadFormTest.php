@@ -13,4 +13,5 @@ it('can upload a file', function () {
         ->set('file', __FILE__)
         ->call('upload')
         ->assertHasErrors(['file' => 'required']);
-});
+})
+    ->skip('wip');

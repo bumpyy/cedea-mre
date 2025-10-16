@@ -26,3 +26,21 @@ test('new users can register', function () {
 
     $this->assertAuthenticated();
 });
+
+test('new users cannot register if term not accepted', function () {
+    $response = Livewire::test(Register::class)
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->set('password', 'password')
+        ->set('address', 'test address')
+        ->set('phone', 'test phone')
+        ->set('accept_terms', false)
+        ->set('password_confirmation', 'password')
+        ->call('register');
+
+    $response
+        ->assertHasErrors(['accept_terms']);
+
+    $this->assertGuest();
+
+});
