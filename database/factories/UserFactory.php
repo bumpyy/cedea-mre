@@ -28,6 +28,7 @@ class UserFactory extends Factory
         return [
             'name' => $name,
             'email' => str_replace(' ', '.', strtolower($name)).'@test.com',
+            'address' => fake()->address(),
             'phone' => fake()->phoneNumber('id'),
             // 'social' => array_map(
             //     fn ($key) => fn ($value) => fake()->safeUrl([$key => $value]), ['fb' => 'bumpyy', 'ig' => '@bumpyy']),
