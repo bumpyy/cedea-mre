@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->string('receipt_number')->unique();
+            $table->string('receipt_number')->unique()->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('status')->default('pending');
             $table->string('note')->nullable();

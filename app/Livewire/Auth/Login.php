@@ -42,7 +42,7 @@ class Login extends Component
                 'login.remember' => $this->remember,
             ]);
 
-            $this->redirect(route('two-factor.login'), navigate: true);
+            redirect(route('two-factor.login'));
 
             return;
         }

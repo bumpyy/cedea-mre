@@ -17,7 +17,7 @@ class VerifyEmail extends Component
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            redirect()->intended(default: route('dashboard', absolute: false));
 
             return;
         }
@@ -34,6 +34,6 @@ class VerifyEmail extends Component
     {
         $logout();
 
-        $this->redirect('/', navigate: true);
+        redirect('/');
     }
 }

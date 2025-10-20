@@ -43,6 +43,7 @@ class SubmissionsTable
                 ViewAction::make(),
                 EditAction::make(),
             ])
+            ->defaultSort('created_at', 'desc')
             ->toolbarActions([
                 BulkActionGroup::make([
                     // DeleteBulkAction::make(),

@@ -9,11 +9,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, InteractsWithMedia, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -66,9 +68,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all of the submission for the User
+     * Get all of the submissions for the User
      */
-    public function submission(): HasMany
+    public function submissions(): HasMany
     {
         return $this->hasMany(Submission::class);
     }

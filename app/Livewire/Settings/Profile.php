@@ -62,7 +62,7 @@ class Profile extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false));
+            redirect()->intended(default: route('dashboard', absolute: false));
 
             return;
         }

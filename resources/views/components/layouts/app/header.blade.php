@@ -7,12 +7,12 @@
         <flux:header class="border-b border-zinc-200 bg-zinc-50" container>
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
 
-            <a class="me-5 ms-2 flex items-center space-x-2 lg:ms-0 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>
+            <a class="me-5 ms-2 flex items-center space-x-2 lg:ms-0 rtl:space-x-reverse" href="{{ route('dashboard') }}">
                 <x-app-logo />
             </a>
 
             <flux:navbar class="-mb-px max-lg:hidden">
-                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
             </flux:navbar>
@@ -60,7 +60,7 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('profile.edit')" icon="cog">{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
@@ -79,13 +79,13 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
         <flux:sidebar class="border-e border-zinc-200 bg-zinc-50 lg:hidden" stashable sticky>
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-            <a class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>
+            <a class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}">
                 <x-app-logo />
             </a>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')">
-                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                     </flux:navlist.item>
                 </flux:navlist.group>

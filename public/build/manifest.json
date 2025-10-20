@@ -92,7 +92,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CHLnHDuR.css",
+    "file": "assets/app-CdIgTiYX.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -100,7 +100,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-B96FD_rO.js",
+    "file": "assets/app-CXYqEm_G.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

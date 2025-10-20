@@ -50,6 +50,6 @@ class Register extends Component
 
         Session::regenerate();
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        redirect(route('dashboard', absolute: false));
     }
 }

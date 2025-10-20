@@ -7,13 +7,13 @@
         <flux:sidebar class="border-e border-zinc-200 bg-zinc-50" sticky stashable>
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-            <a class="me-5 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}" wire:navigate>
+            <a class="me-5 flex items-center space-x-2 rtl:space-x-reverse" href="{{ route('dashboard') }}" >
                 <x-app-logo />
             </a>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group class="grid" :heading="__('Platform')">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -56,7 +56,7 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('profile.edit')" icon="cog" >{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
@@ -103,7 +103,7 @@ class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('profile.edit')" icon="cog" >{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
