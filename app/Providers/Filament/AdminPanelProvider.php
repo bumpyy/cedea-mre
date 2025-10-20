@@ -20,7 +20,6 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Kenepa\ResourceLock\ResourceLockPlugin;
-use SolutionForest\FilamentPanzoom\FilamentPanzoomPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -61,7 +60,6 @@ class AdminPanelProvider extends PanelProvider
             ->authGuard('admin')
 
             ->plugins([
-                FilamentPanzoomPlugin::make(),
                 ResourceLockPlugin::make(),
                 FilamentLoggerPlugin::make(),
             ]);
