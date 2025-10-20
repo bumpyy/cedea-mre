@@ -1,11 +1,13 @@
 <x-layouts.app>
-    <div class="font-montserrat text-cedea-gold container my-24 rounded-[3rem] bg-white p-8">
-        <div class="-mt-[40%] mb-8">
-            <x-home.hero />
+    <div
+        class="font-montserrat text-cedea-gold clamp-[p,12,28] clamp-[mt,5.5rem,30rem] container rounded-[3rem] bg-white">
+        <div class="-mt-[40%] mb-8 drop-shadow-2xl">
+            <img src="{{ asset('img/hero-2.png') }}" alt="">
         </div>
 
-        <h1 class="text-cedea-gold mb-4 text-4xl font-bold">
-            SYARAT DAN KETENTUAN PROGRAM MICROSITE “EOMUK BAR
+        <h1 class="text-cedea-gold clamp-[text,lg,5xl] mb-4 font-bold">
+            SYARAT DAN KETENTUAN <br>
+            PROGRAM MICROSITE “EOMUK BAR
         </h1>
 
         <div class="terms-list list">
@@ -118,7 +120,7 @@
                         </li>
                         <li>
                             Peringatan Penipuan:
-                            <ol>
+                            <ol class=".override-list list-inside" type="a" style="list-style-type: lower-alpha">
                                 <li>
                                     Penyelenggara tidak pernah meminta biaya apapun (termasuk pajak, ongkos kirim, atau
                                     administrasi) kepada peserta atau pemenang.
@@ -142,30 +144,29 @@
                                     Segala bentuk penipuan atau penyalahgunaan nama CEDEA akan diproses sesuai ketentuan
                                     hukum yang berlaku.
                                 </li>
-
-                                <li>
-                                    Penyelenggara tidak bertanggung jawab atas kesalahan data yang diisi peserta,
-                                    gangguan teknis
-                                    jaringan, atau keterlambatan pengiriman data akibat faktor di luar kendali.
-                                </li>
-
-                                <li>
-                                    Penyelenggara berhak sewaktu-waktu mengubah atau menghentikan Program, sebagian
-                                    maupun
-                                    seluruhnya, dengan pemberitahuan melalui microsite resmi.
-                                </li>
-
-                                <li>
-                                    Keputusan Penyelenggara bersifat final dan tidak dapat diganggu gugat.
-                                </li>
-
-                                <li>
-                                    Dengan mengikuti Program ini, peserta memberikan izin kepada Penyelenggara untuk
-                                    menggunakan data, foto, dan/atau nama peserta untuk keperluan publikasi Program
-                                    tanpa kompensasi tambahan.
-                                </li>
-
                             </ol>
+                        </li>
+
+                        <li>
+                            Penyelenggara tidak bertanggung jawab atas kesalahan data yang diisi peserta,
+                            gangguan teknis
+                            jaringan, atau keterlambatan pengiriman data akibat faktor di luar kendali.
+                        </li>
+
+                        <li>
+                            Penyelenggara berhak sewaktu-waktu mengubah atau menghentikan Program, sebagian
+                            maupun
+                            seluruhnya, dengan pemberitahuan melalui microsite resmi.
+                        </li>
+
+                        <li>
+                            Keputusan Penyelenggara bersifat final dan tidak dapat diganggu gugat.
+                        </li>
+
+                        <li>
+                            Dengan mengikuti Program ini, peserta memberikan izin kepada Penyelenggara untuk
+                            menggunakan data, foto, dan/atau nama peserta untuk keperluan publikasi Program
+                            tanpa kompensasi tambahan.
                         </li>
                     </ol>
                 </li>

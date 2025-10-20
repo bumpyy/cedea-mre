@@ -44,7 +44,7 @@ class Nav extends Component
             ],
             [
                 'label' => 'Syarat & Ketentuan',
-                'route' => '#',
+                'route' => route('terms'),
                 'disable' => false,
                 'submenu' => [],
             ],

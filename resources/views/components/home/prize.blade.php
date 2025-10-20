@@ -13,7 +13,7 @@
         <div class="relative">
             <div class="clamp-[gap,4,0] relative z-10 flex flex-col items-start">
                 <p class="font-marimpa text-[clamp(1.5rem,_15vw,_30rem)] leading-none text-amber-300">10</p>
-                <p class="font-montserrat clamp-[pl,4,8] -mt-4 flex flex-col text-white">
+                <p class="font-montserrat clamp-[pl,0,8] -mt-4 flex flex-col text-white">
                     <span class="clamp-[text,lg,5xl] font-bold uppercase leading-none">
                         tiket
                     </span>
@@ -27,7 +27,7 @@
                     </span>
                 </p>
             </div>
-            <img class="clamp-[left,2rem,11rem] clamp-[top,2rem,4rem] z-0 max-w-full max-lg:max-w-64 lg:absolute"
+            <img class="clamp-[left,0rem,11rem] clamp-[top,2rem,4rem] z-0 w-full max-w-[90%] max-lg:max-w-64 lg:absolute"
                 src="{{ asset('img/plane.png') }}" alt="">
         </div>
 

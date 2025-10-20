@@ -150,7 +150,7 @@ select:focus[data-flux-control] {
         }
     }
 
-    li:before {
+    ol:not([type]) > li:before {
         content: counters(item, ".") ". ";
         counter-increment: item;
         font-size: inherit;
