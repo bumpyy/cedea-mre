@@ -22,7 +22,7 @@ use Filament\Tables\Table;
 
 class SubmissionRelationManager extends RelationManager
 {
-    protected static string $relationship = 'submission';
+    protected static string $relationship = 'submissions';
 
     public function form(Schema $schema): Schema
     {

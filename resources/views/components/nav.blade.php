@@ -50,14 +50,14 @@
                                 url()->current() === route('dashboard'),
                         ])
                             :class="{
-                                'after:bg-white after:w-1/2': navigationMenu=='home',
-                                'after:bg-transparent after:w-0 ': navigationMenu!='home'
+                                'after:bg-white after:w-1/2': navigationMenu=='login',
+                                'after:bg-transparent after:w-0 ': navigationMenu!='login'
                             }"
                             href="{{ auth()->check() ? route('dashboard') : route('login') }}">
                             @auth
                                 Dashboard
                             @else
-                                Login
+                                Login / Register
                             @endauth
                             {{-- <x-lucide-house class="size-4" /> --}}
                         </a>

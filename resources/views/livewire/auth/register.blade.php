@@ -56,7 +56,7 @@
 
         {{-- Term --}}
         <flux:field variant="inline">
-            <flux:checkbox wire:model="terms" />
+            <flux:checkbox wire:model="accept_terms" />
             <flux:label>
                 <p class="text-white">
                     Dengan mendaftar saya setuju dengan</span>
@@ -65,7 +65,7 @@
                     </span>
                 </p>
             </flux:label>
-            <flux:error name="terms" />
+            <flux:error name="accept_terms" />
         </flux:field>
 
         <div class="flex items-center justify-end">
