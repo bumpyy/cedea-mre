@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::view('upload', 'upload-view')->name('upload');

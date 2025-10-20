@@ -39,22 +39,6 @@
     "file": "assets/Marimpa-esTYmbZE.woff2",
     "src": "resources/assets/fonts/Marimpa.woff2"
   },
-  "resources/assets/fonts/Montserrat-ExtraBoldItalic.woff": {
-    "file": "assets/Montserrat-ExtraBoldItalic-DuN1ljOG.woff",
-    "src": "resources/assets/fonts/Montserrat-ExtraBoldItalic.woff"
-  },
-  "resources/assets/fonts/Montserrat-ExtraBoldItalic.woff2": {
-    "file": "assets/Montserrat-ExtraBoldItalic-DGUZKelo.woff2",
-    "src": "resources/assets/fonts/Montserrat-ExtraBoldItalic.woff2"
-  },
-  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff": {
-    "file": "assets/Montserrat-SemiBoldItalic-D2Yvbx9g.woff",
-    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff"
-  },
-  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2": {
-    "file": "assets/Montserrat-SemiBoldItalic-Ci5OM5wQ.woff2",
-    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2"
-  },
   "resources/assets/fonts/Poppins-Medium.woff": {
     "file": "assets/Poppins-Medium-LVgVSt0Y.woff",
     "src": "resources/assets/fonts/Poppins-Medium.woff"
@@ -92,7 +76,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Bpk-YkGL.css",
+    "file": "assets/app-ByELn9tw.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [

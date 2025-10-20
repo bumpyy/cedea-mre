@@ -121,6 +121,42 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
+.terms-list {
+    ol {
+        counter-reset: item;
+    }
+    & > ol {
+        font-weight: var(--font-weight-normal);
+
+        & > li {
+            display: block;
+            font-size: var(--text-2xl);
+            font-weight: var(--font-weight-bold);
+
+            & ol {
+                font-weight: var(--font-weight-normal);
+                display: flex;
+                flex-direction: column;
+                row-gap: 1rem;
+            }
+
+            & > ol > li {
+                font-size: var(--text-xl);
+
+                & > ol > li {
+                    font-size: var(--text-lg);
+                }
+            }
+        }
+    }
+
+    li:before {
+        content: counters(item, ".") ". ";
+        counter-increment: item;
+        font-size: inherit;
+    }
+}
+
 body {
     --swup-overlay-theme-color: #2d2e82;
     --swup-overlay-theme-duration: 0.6s;
