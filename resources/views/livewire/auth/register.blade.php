@@ -68,7 +68,7 @@
             <flux:error name="accept_terms" />
         </flux:field>
 
-        <div class="flex items-center justify-end">
+        <div class="flex items-center justify-center">
             <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
                 Daftar sekarang
             </flux:button>
