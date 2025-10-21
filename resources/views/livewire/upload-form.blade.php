@@ -8,7 +8,12 @@
     </div>
     <form method="POST" wire:submit="submit">
         <x-filepond::upload required wire:model="file" />
-        <button type="submit">Submit</button>
+
+        <div class="flex items-center justify-center">
+            <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
+                Submit
+            </flux:button>
+        </div>
     </form>
     @if (session()->has('submission-error'))
         <div class="mt-4 text-red-600">
