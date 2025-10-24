@@ -7,10 +7,10 @@
         @enderror
     </div>
     <form method="POST" wire:submit="submit">
-        <x-filepond::upload required wire:model="file" />
+        <x-filepond::upload required wire:model="file" :credits="false" max-file-size="5MB" :accepted-file-types="['image/png', 'image/jpeg', 'image/jpg']" />
 
         <div class="flex items-center justify-center">
-            <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
+            <flux:button class="w-fit bg-amber-400 !px-8" data-test="submit-button" variant="primary" type="submit">
                 Submit
             </flux:button>
         </div>

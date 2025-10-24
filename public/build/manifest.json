@@ -1,90 +1,92 @@
 {
-    "resources/assets/fonts/Anton-Regular.woff": {
-        "file": "assets/Anton-Regular-BlEeBMxD.woff",
-        "src": "resources/assets/fonts/Anton-Regular.woff"
-    },
-    "resources/assets/fonts/Anton-Regular.woff2": {
-        "file": "assets/Anton-Regular-CbN_Wi6n.woff2",
-        "src": "resources/assets/fonts/Anton-Regular.woff2"
-    },
-    "resources/assets/fonts/BebasNeue.woff": {
-        "file": "assets/BebasNeue-DNUGtbY5.woff",
-        "src": "resources/assets/fonts/BebasNeue.woff"
-    },
-    "resources/assets/fonts/BebasNeue.woff2": {
-        "file": "assets/BebasNeue-BLPErh3J.woff2",
-        "src": "resources/assets/fonts/BebasNeue.woff2"
-    },
-    "resources/assets/fonts/BebasNeueBold.woff": {
-        "file": "assets/BebasNeueBold-C46nr6jN.woff",
-        "src": "resources/assets/fonts/BebasNeueBold.woff"
-    },
-    "resources/assets/fonts/BebasNeueBold.woff2": {
-        "file": "assets/BebasNeueBold-DPQKB4fX.woff2",
-        "src": "resources/assets/fonts/BebasNeueBold.woff2"
-    },
-    "resources/assets/fonts/FiraSansCondensed-Light.woff": {
-        "file": "assets/FiraSansCondensed-Light-9qAEhCUB.woff",
-        "src": "resources/assets/fonts/FiraSansCondensed-Light.woff"
-    },
-    "resources/assets/fonts/FiraSansCondensed-Light.woff2": {
-        "file": "assets/FiraSansCondensed-Light-BMwk5dkX.woff2",
-        "src": "resources/assets/fonts/FiraSansCondensed-Light.woff2"
-    },
-    "resources/assets/fonts/Marimpa.woff": {
-        "file": "assets/Marimpa-dcnWlS26.woff",
-        "src": "resources/assets/fonts/Marimpa.woff"
-    },
-    "resources/assets/fonts/Marimpa.woff2": {
-        "file": "assets/Marimpa-esTYmbZE.woff2",
-        "src": "resources/assets/fonts/Marimpa.woff2"
-    },
-    "resources/assets/fonts/Poppins-Medium.woff": {
-        "file": "assets/Poppins-Medium-LVgVSt0Y.woff",
-        "src": "resources/assets/fonts/Poppins-Medium.woff"
-    },
-    "resources/assets/fonts/Poppins-Medium.woff2": {
-        "file": "assets/Poppins-Medium-DTH7hWNJ.woff2",
-        "src": "resources/assets/fonts/Poppins-Medium.woff2"
-    },
-    "resources/assets/fonts/Poppins-SemiBold.woff": {
-        "file": "assets/Poppins-SemiBold-DxUT5rH1.woff",
-        "src": "resources/assets/fonts/Poppins-SemiBold.woff"
-    },
-    "resources/assets/fonts/Poppins-SemiBold.woff2": {
-        "file": "assets/Poppins-SemiBold-CNA5QnUt.woff2",
-        "src": "resources/assets/fonts/Poppins-SemiBold.woff2"
-    },
-    "resources/assets/patterns/asia-pattern.png": {
-        "file": "assets/asia-pattern-24UOOJwR.png",
-        "src": "resources/assets/patterns/asia-pattern.png"
-    },
-    "resources/assets/patterns/paper-50.png": {
-        "file": "assets/paper-50-C6bfE33Z.png",
-        "src": "resources/assets/patterns/paper-50.png"
-    },
-    "resources/assets/patterns/paper.png": {
-        "file": "assets/paper-D5YrDZpK.png",
-        "src": "resources/assets/patterns/paper.png"
-    },
-    "resources/assets/patterns/prize-bg-transparent.png": {
-        "file": "assets/prize-bg-transparent-BFXLpsV6.png",
-        "src": "resources/assets/patterns/prize-bg-transparent.png"
-    },
-    "resources/assets/patterns/scratch-transparent-1.png": {
-        "file": "assets/scratch-transparent-1-BPwdor2i.png",
-        "src": "resources/assets/patterns/scratch-transparent-1.png"
-    },
-    "resources/css/app.css": {
-        "file": "assets/app-CLNzlhts.css",
-        "src": "resources/css/app.css",
-        "isEntry": true,
-        "names": ["app.css"]
-    },
-    "resources/js/app.js": {
-        "file": "assets/app-CXYqEm_G.js",
-        "name": "app",
-        "src": "resources/js/app.js",
-        "isEntry": true
-    }
+  "resources/assets/fonts/Anton-Regular.woff": {
+    "file": "assets/Anton-Regular-BlEeBMxD.woff",
+    "src": "resources/assets/fonts/Anton-Regular.woff"
+  },
+  "resources/assets/fonts/Anton-Regular.woff2": {
+    "file": "assets/Anton-Regular-CbN_Wi6n.woff2",
+    "src": "resources/assets/fonts/Anton-Regular.woff2"
+  },
+  "resources/assets/fonts/BebasNeue.woff": {
+    "file": "assets/BebasNeue-DNUGtbY5.woff",
+    "src": "resources/assets/fonts/BebasNeue.woff"
+  },
+  "resources/assets/fonts/BebasNeue.woff2": {
+    "file": "assets/BebasNeue-BLPErh3J.woff2",
+    "src": "resources/assets/fonts/BebasNeue.woff2"
+  },
+  "resources/assets/fonts/BebasNeueBold.woff": {
+    "file": "assets/BebasNeueBold-C46nr6jN.woff",
+    "src": "resources/assets/fonts/BebasNeueBold.woff"
+  },
+  "resources/assets/fonts/BebasNeueBold.woff2": {
+    "file": "assets/BebasNeueBold-DPQKB4fX.woff2",
+    "src": "resources/assets/fonts/BebasNeueBold.woff2"
+  },
+  "resources/assets/fonts/FiraSansCondensed-Light.woff": {
+    "file": "assets/FiraSansCondensed-Light-9qAEhCUB.woff",
+    "src": "resources/assets/fonts/FiraSansCondensed-Light.woff"
+  },
+  "resources/assets/fonts/FiraSansCondensed-Light.woff2": {
+    "file": "assets/FiraSansCondensed-Light-BMwk5dkX.woff2",
+    "src": "resources/assets/fonts/FiraSansCondensed-Light.woff2"
+  },
+  "resources/assets/fonts/Marimpa.woff": {
+    "file": "assets/Marimpa-dcnWlS26.woff",
+    "src": "resources/assets/fonts/Marimpa.woff"
+  },
+  "resources/assets/fonts/Marimpa.woff2": {
+    "file": "assets/Marimpa-esTYmbZE.woff2",
+    "src": "resources/assets/fonts/Marimpa.woff2"
+  },
+  "resources/assets/fonts/Poppins-Medium.woff": {
+    "file": "assets/Poppins-Medium-LVgVSt0Y.woff",
+    "src": "resources/assets/fonts/Poppins-Medium.woff"
+  },
+  "resources/assets/fonts/Poppins-Medium.woff2": {
+    "file": "assets/Poppins-Medium-DTH7hWNJ.woff2",
+    "src": "resources/assets/fonts/Poppins-Medium.woff2"
+  },
+  "resources/assets/fonts/Poppins-SemiBold.woff": {
+    "file": "assets/Poppins-SemiBold-DxUT5rH1.woff",
+    "src": "resources/assets/fonts/Poppins-SemiBold.woff"
+  },
+  "resources/assets/fonts/Poppins-SemiBold.woff2": {
+    "file": "assets/Poppins-SemiBold-CNA5QnUt.woff2",
+    "src": "resources/assets/fonts/Poppins-SemiBold.woff2"
+  },
+  "resources/assets/patterns/asia-pattern.png": {
+    "file": "assets/asia-pattern-24UOOJwR.png",
+    "src": "resources/assets/patterns/asia-pattern.png"
+  },
+  "resources/assets/patterns/paper-50.png": {
+    "file": "assets/paper-50-C6bfE33Z.png",
+    "src": "resources/assets/patterns/paper-50.png"
+  },
+  "resources/assets/patterns/paper.png": {
+    "file": "assets/paper-D5YrDZpK.png",
+    "src": "resources/assets/patterns/paper.png"
+  },
+  "resources/assets/patterns/prize-bg-transparent.png": {
+    "file": "assets/prize-bg-transparent-BFXLpsV6.png",
+    "src": "resources/assets/patterns/prize-bg-transparent.png"
+  },
+  "resources/assets/patterns/scratch-transparent-1.png": {
+    "file": "assets/scratch-transparent-1-BPwdor2i.png",
+    "src": "resources/assets/patterns/scratch-transparent-1.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-B6Gh4Ztr.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CXYqEm_G.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
 }
