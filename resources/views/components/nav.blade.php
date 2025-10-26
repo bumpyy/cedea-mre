@@ -7,7 +7,7 @@
     <nav class="bg-cedea-red relative z-10 w-auto text-white" x-data="navigation">
 
         {{-- Desktop nav --}}
-        <div class="~lg:~text-xs/base relative max-lg:hidden">
+        <div class="relative max-lg:hidden">
             {{-- main nav --}}
             <div class="relative">
                 <ul class="flex flex-1 list-none items-center justify-center">
@@ -63,6 +63,29 @@
                         </a>
 
                     </li>
+
+                    @auth
+                        <li>
+                            <flux:dropdown class="text-white" align="end">
+                                <flux:profile class="[&_[data-flux-icon]]:text-white"
+                                    :initials="auth()->user()->initials()" />
+                                <flux:navmenu class="max-w-[12rem]">
+                                    <div class="px-2 py-1.5">
+                                        <flux:text size="sm">Signed in as</flux:text>
+                                        <flux:heading class="mt-1! truncate">{{ auth()->user()->email }}</flux:heading>
+                                    </div>
+
+                                    <form class="w-full" method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <flux:menu.item class="w-full cursor-pointer" data-test="logout-button"
+                                            as="button" type="submit" icon="arrow-right-start-on-rectangle">
+                                            {{ __('Log Out') }}
+                                        </flux:menu.item>
+                                    </form>
+                                </flux:navmenu>
+                            </flux:dropdown>
+                        </li>
+                    @endauth
                 </ul>
             </div>
 
@@ -220,6 +243,7 @@
                         Login
                     @endauth
                 </a>
+
             </li>
         </ul>
 

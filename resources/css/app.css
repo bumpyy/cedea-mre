@@ -111,9 +111,9 @@
     @apply !mb-0 !leading-tight;
 }
 
-[data-flux-icon] {
+/* [data-flux-icon] {
     @apply text-cedea-red;
-}
+} */
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],

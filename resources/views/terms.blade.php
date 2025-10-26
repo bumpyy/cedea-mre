@@ -10,7 +10,7 @@
             PROGRAM MICROSITE “EOMUK BAR
         </h1>
 
-        <div class="terms-list list">
+        <div class="terms-list list bg-white">
             <ol class="flex flex-col gap-4">
                 <li font>
                     Ketentuan Umum

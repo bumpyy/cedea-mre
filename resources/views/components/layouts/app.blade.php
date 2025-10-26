@@ -1,3 +1,4 @@
+@props(['gradient' => false])
 <!DOCTYPE html>
 <html class="swup-enabled" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -5,11 +6,17 @@
     @include('partials.head')
 </head>
 
-<body class="font-poppins bg-cedea-red relative h-full antialiased">
+<body @class([
+    'font-poppins bg-cedea-red relative h-full antialiased',
+    'bg-linear-[175deg] from-white from-50% to-50% to-cedea-red' => $gradient,
+])>
     <main class="" class="transition-main" id="swup">
-        <div class="transition-fade bg-radial from-60 z-0 grid h-auto min-h-dvh from-transparent to-[#952227]">
+        <div @class([
+            'transition-fade z-0 grid h-auto min-h-dvh',
+            'bg-radial from-60 from-transparent to-[#952227]' => !$gradient,
+        ])>
             <div
-                class="bg-size-[auto_80%] z-0 h-full overflow-x-clip bg-[url('../assets/patterns/asia-pattern.png')] bg-fixed bg-center bg-no-repeat">
+                class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip bg-[url('../assets/patterns/asia-pattern.png')] bg-center bg-no-repeat bg-blend-multiply">
                 <div class="box-border bg-cover bg-center shadow-[inset_0_0_70px_0_#00000060]">
                     <x-header />
 
@@ -23,7 +30,7 @@
         </div>
     </main>
 
-    <div class="bg-cedea-red overlay transition-overlay relative flex flex-col items-center justify-center"
+    <div class="bg-cedea-red overlay transition-overlay relative flex cursor-progress flex-col items-center justify-center"
         id="loading-screen">
         <div class="absolute -top-1/4 left-0 z-0 w-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -34,7 +41,7 @@
         </div>
 
         <div class="relative z-10">
-            <img src="{{ asset('img/loading.png') }}" alt="">
+            <img class="h-[100vh]" src="{{ asset('img/loading-2.png') }}" alt="">
         </div>
 
         <div class="absolute -bottom-1/3 left-0 z-0 w-full rotate-180">
