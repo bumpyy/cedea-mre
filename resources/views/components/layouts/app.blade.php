@@ -6,25 +6,24 @@
     @include('partials.head')
 </head>
 
-<body @class([
-    'font-poppins bg-cedea-red relative h-full antialiased',
-    'bg-linear-[175deg] from-white from-50% to-50% to-cedea-red' => $gradient,
-])>
+<body @class(['font-poppins bg-cedea-red relative h-full antialiased'])>
     <main class="" class="transition-main" id="swup">
         <div @class([
-            'transition-fade z-0 grid h-auto min-h-dvh',
-            'bg-radial from-60 from-transparent to-[#952227]' => !$gradient,
+            'bg-linear-[175deg] from-white from-50% to-50% to-cedea-red' => $gradient,
         ])>
-            <div
-                class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip bg-[url('../assets/patterns/asia-pattern.png')] bg-center bg-no-repeat bg-blend-multiply">
-                <div class="box-border bg-cover bg-center shadow-[inset_0_0_70px_0_#00000060]">
-                    <x-header />
-
-                    {{ $slot }}
-
-                    @if (request()->routeIs('home'))
-                        <x-footer />
-                    @endif
+            <div @class([
+                'transition-fade z-0 grid h-auto min-h-dvh',
+                'bg-radial from-60 from-transparent to-[#952227]' => !$gradient,
+            ])>
+                <div
+                    class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip bg-[url('../assets/patterns/asia-pattern.png')] bg-center bg-no-repeat bg-blend-multiply">
+                    <div class="box-border bg-cover bg-center shadow-[inset_0_0_70px_0_#00000060]">
+                        <x-header />
+                        {{ $slot }}
+                        @if (request()->routeIs('home'))
+                            <x-footer />
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
