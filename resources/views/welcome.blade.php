@@ -1,5 +1,5 @@
 <x-layouts.app :gradient='true'>
-    <div class="my-12">
+    <div class="container">
 
         <div class="flex justify-center">
             <img class="max-w-80" src="{{ asset('img/cedea-kfood.png') }}" alt="">
