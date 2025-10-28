@@ -21,6 +21,9 @@ html.is-animating.is-rendering .transition-main {
     opacity: 0;
     transform: translate3d(0, calc(-1 * 100% * var(--overlay-direction, 1)), 0);
     pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 html.is-changing .transition-overlay {

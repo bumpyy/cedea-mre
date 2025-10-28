@@ -1,8 +1,9 @@
 @import "tailwindcss";
-@plugin "tailwind-clamp";
 @import "../../vendor/livewire/flux/dist/flux.css";
 @import "./fonts.css";
 @import "./transitions.css";
+
+@plugin "tailwind-clamp";
 
 @source "../views";
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';

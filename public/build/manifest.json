@@ -55,9 +55,17 @@
     "file": "assets/Poppins-SemiBold-CNA5QnUt.woff2",
     "src": "resources/assets/fonts/Poppins-SemiBold.woff2"
   },
+  "resources/assets/patterns/asia-pattern-1.png": {
+    "file": "assets/asia-pattern-1-Bq0GsITm.png",
+    "src": "resources/assets/patterns/asia-pattern-1.png"
+  },
   "resources/assets/patterns/asia-pattern.png": {
-    "file": "assets/asia-pattern-24UOOJwR.png",
+    "file": "assets/asia-pattern-DMYXpM2Y.png",
     "src": "resources/assets/patterns/asia-pattern.png"
+  },
+  "resources/assets/patterns/how-bg-pattern.png": {
+    "file": "assets/how-bg-pattern-C0futOB5.png",
+    "src": "resources/assets/patterns/how-bg-pattern.png"
   },
   "resources/assets/patterns/paper-50.png": {
     "file": "assets/paper-50-C6bfE33Z.png",
@@ -76,7 +84,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-C5Ol4wlv.css",
+    "file": "assets/app-Ctpi2c6C.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [

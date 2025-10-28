@@ -57,7 +57,7 @@
             </div>
 
             <div
-                class="relative flex items-center gap-2 rounded-3xl bg-white bg-[url('/../public/img/how-bg-pattern.png')] bg-bottom bg-repeat-x p-12 max-md:flex-col">
+                class="relative flex items-center gap-2 rounded-3xl bg-white bg-[url('../assets/patterns/how-bg-pattern.png')] bg-bottom bg-repeat-x p-12 max-md:flex-col">
                 <div class="basis-full">
                     <img src="{{ asset('img/how-heading.png') }}" alt="">
                 </div>

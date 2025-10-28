@@ -9,7 +9,9 @@
 
     <div class="flex w-full items-center justify-between">
         <div>
-            <p class="font-bold">{{ $submission->receipt_number ?? '-' }}</p>
+            <p class="font-bold">
+                {{ $submission->created_at ? $submission->created_at->format('d F Y, g:i a') : '-' }}
+            </p>
             <p @class([
                 'uppercase',
                 'text-yellow-500' =>

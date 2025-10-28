@@ -19,7 +19,7 @@
                 <div class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip">
                     <div class="box-border bg-cover py-12 shadow-[inset_0_0_70px_0_#00000060]">
                         <div
-                            class="bg-size-[65%] bg-position-[center_top_15%] bg-[url('/../public/img/asia-pattern.png')] bg-no-repeat bg-blend-multiply">
+                            class="bg-size-[65%] bg-position-[center_top_15%] bg-[url('../assets/patterns/asia-pattern.png')] bg-no-repeat bg-blend-multiply">
                             {{ $slot }}
                         </div>
                     </div>
@@ -41,8 +41,11 @@
             </svg>
         </div> --}}
 
-        <div class="relative z-10">
-            <img class="max-h-[85vh]" src="{{ asset('img/loading-2.png') }}" alt="">
+        <div
+            class="bg-position-[center_top_15%] bg-size-[90%] overflow-visible bg-[url('../assets/patterns/asia-pattern-1.png')] bg-no-repeat bg-blend-multiply">
+            <div class="relative z-10">
+                <img class="max-h-[85vh]" src="{{ asset('img/loading-2.png') }}" alt="">
+            </div>
         </div>
 
         {{-- <div class="absolute -bottom-1/3 left-0 z-0 w-full rotate-180">

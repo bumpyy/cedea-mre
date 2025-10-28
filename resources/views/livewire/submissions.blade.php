@@ -10,6 +10,8 @@
             @empty
                 <p>Belum ada riwayat undian</p>
             @endforelse
+
+            {{ $userSubmissions->links(data: ['scrollTo' => false]) }}
         </div>
     </div>
 

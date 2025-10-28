@@ -33,10 +33,10 @@ class UploadForm extends ModalComponent
                 'status' => SubmissionStatusEnum::PENDING,
             ]);
 
-            $this->file->store('submissions', 'public');
-
-            $media = $submission->addMedia($this->file->getPathname())
+            $submission->addMedia($this->file->getPathname())
                 ->toMediaCollection('submissions');
+
+            $this->reset('file');
 
             $this->closeModalWithEvents([
                 Submissions::class => 'submission-created',
