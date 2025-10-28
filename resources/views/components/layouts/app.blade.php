@@ -10,16 +10,18 @@
     <main class="transition-main" id="swup">
         <x-header />
         <div @class([
-            'bg-linear-[175deg] from-white from-50% to-50% to-cedea-red' => $gradient,
+            'bg-linear-[175deg] from-white from-35% to-35% to-cedea-red' => $gradient,
         ])>
             <div @class([
                 'transition-fade z-0 grid h-auto',
                 'bg-radial from-60 from-transparent to-[#952227]' => !$gradient,
             ])>
-                <div
-                    class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip bg-[url('../assets/patterns/asia-pattern.png')] bg-center bg-no-repeat bg-blend-multiply">
-                    <div class="box-border bg-cover bg-center py-12 shadow-[inset_0_0_70px_0_#00000060]">
-                        {{ $slot }}
+                <div class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip">
+                    <div class="box-border bg-cover py-12 shadow-[inset_0_0_70px_0_#00000060]">
+                        <div
+                            class="bg-size-[65%] bg-position-[center_top_15%] bg-[url('/../public/img/asia-pattern.png')] bg-no-repeat bg-blend-multiply">
+                            {{ $slot }}
+                        </div>
                     </div>
                 </div>
             </div>
