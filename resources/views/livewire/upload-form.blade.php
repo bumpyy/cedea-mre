@@ -1,16 +1,24 @@
-<div class="flex flex-col rounded-[2rem] bg-white p-8">
-    <div class="text-cedea-red mb-8 flex flex-col text-center text-xl">
-        <h2>Silahkan lampirkan</h2>
-        <p class="font-bold">maksimal 1 struk pembelian (Max 5MB/struk)</p>
-        @error('file')
-            <p class="mt-2 text-red-600">{{ $message }}</p>
-        @enderror
-    </div>
+<div class="flex flex-col rounded-[2rem] bg-white p-8" class="text-cedea-red mb-8 flex flex-col text-center text-xl"
+    x-data="{ uploaded: false, uploading: false }" x-on:filepond-upload-started="uploading = true"
+    x-on:filepond-upload-completed="
+        uploading = false;
+        uploaded = true;
+    "
+    x-on:filepond-upload-reverted="
+    uploading = false;
+    uploaded = false;
+    "
+    x-on:filepond-upload-file-removed="
+    uploading = false;
+    uploaded = false;
+    ">
+
     <form method="POST" wire:submit="submit">
         <x-filepond::upload required wire:model="file" :credits="false" max-file-size="5MB" :accepted-file-types="['image/png', 'image/jpeg', 'image/jpg']" />
 
         <div class="flex items-center justify-center">
-            <flux:button class="w-fit bg-amber-400 !px-8" data-test="submit-button" variant="primary" type="submit">
+            <flux:button class="w-fit bg-amber-400 !px-8" data-test="submit-button" x-bind:loading="uploading"
+                variant="primary" type="submit">
                 Submit
             </flux:button>
         </div>
@@ -20,4 +28,4 @@
             <p>{{ session()->get('submission-error') }}</p>
         </div>
     @endif
-</div>
+    </>

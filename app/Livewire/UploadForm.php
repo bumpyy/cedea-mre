@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Enum\SubmissionStatusEnum;
+use App\Models\Submission;
+use Illuminate\Support\Str;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\LivewireFilepond\WithFilePond;
 
@@ -28,9 +30,19 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
+        $this->validate();
+
         try {
             $submission = auth()->user()->submissions()->create([
                 'status' => SubmissionStatusEnum::PENDING,
+                'uuid' => (function () {
+                    $uuid = Str::uuid();
+                    while (Submission::where('uuid', $uuid)->exists()) {
+                        $uuid = Str::uuid();
+                    }
+
+                    return $uuid;
+                })(),
             ]);
 
             $submission->addMedia($this->file->getPathname())

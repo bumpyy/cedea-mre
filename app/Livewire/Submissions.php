@@ -23,7 +23,7 @@ class Submissions extends Component
     public function render()
     {
         return view('livewire.submissions', [
-            'userSubmissions' => auth()->user()->submissions()->paginate(5),
+            'userSubmissions' => auth()->user()->submissions()->latest()->paginate(3),
         ]);
     }
 }

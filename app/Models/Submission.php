@@ -32,6 +32,18 @@ class Submission extends Model implements HasMedia
     ];
 
     /**
+     * Register the media collections
+     */
+    public function registerMediaCollections(): void
+    {
+
+        $this->addMediaCollection('submission')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpg', 'image/jpeg', 'image/png']);
+
+    }
+
+    /**
      * Get the user that owns the Submission
      */
     public function user(): BelongsTo

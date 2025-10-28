@@ -38,4 +38,13 @@ enum SubmissionStatusEnum: string implements HasColor, HasIcon, HasLabel
             self::REJECTED => 'heroicon-m-x-circle',
         };
     }
+
+    public function getDescription(): ?string
+    {
+        return match ($this) {
+            self::PENDING => 'Submission kamu sedang direview oleh tim kami',
+            self::ACCEPTED => 'Submission kamu telah diverifikasi oleh tim kami',
+            self::REJECTED => 'Submission kamu ditolak oleh tim kami',
+        };
+    }
 }

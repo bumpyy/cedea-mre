@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Submission>
@@ -22,6 +23,7 @@ class SubmissionFactory extends Factory
             'status' => 'pending',
             'note' => null,
             'admin_id' => null,
+            'uuid' => Str::uuid(),
         ];
     }
 
