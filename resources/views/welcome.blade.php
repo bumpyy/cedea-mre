@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="group -z-10 -mt-12 w-full basis-3/5 max-md:absolute md:-ml-12 md:-mt-24 md:flex">
+            <div class="group -mt-12 w-full basis-3/5 max-md:absolute max-md:-z-10 md:-ml-12 md:-mt-24 md:flex">
                 <img class="w-2/5 -rotate-3 drop-shadow-2xl transition-[rotate] duration-[600ms] ease-in-out group-hover:-rotate-1 max-md:absolute max-md:-left-16 md:ml-20"
                     src="{{ asset('img/eomuk-cheese-4.png') }}" alt="">
                 <img class="w-2/5 rotate-6 drop-shadow-2xl transition-[rotate] duration-[600ms] ease-in-out group-hover:rotate-3 max-md:absolute max-md:-right-16 md:-ml-[5.3rem] md:mt-16"
