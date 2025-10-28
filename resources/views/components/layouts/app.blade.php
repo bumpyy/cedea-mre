@@ -40,7 +40,7 @@
         </div>
 
         <div class="relative z-10">
-            <img class="h-[100vh]" src="{{ asset('img/loading-2.png') }}" alt="">
+            <img class="max-h-[85vh]" src="{{ asset('img/loading-2.png') }}" alt="">
         </div>
 
         <div class="absolute -bottom-1/3 left-0 z-0 w-full rotate-180">
