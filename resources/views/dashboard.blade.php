@@ -3,7 +3,7 @@
     <section class="container flex flex-col gap-y-12 pb-32 pt-10">
 
         <div
-            class="max-md:grid-overlay overflo relative grid overflow-x-hidden rounded-[3.5rem] bg-white md:grid-cols-2">
+            class="max-md:grid-overlay overflo relative grid overflow-x-hidden rounded-2xl bg-white md:grid-cols-2 md:rounded-[3.5rem]">
 
             <div class="z-[1] p-6 text-lg leading-relaxed md:p-12">
                 <h1 class="text-cedea-blue mb-2 text-3xl font-bold md:mb-12 md:text-5xl">Halo, {{ auth()->user()->name }}

@@ -245,6 +245,25 @@
                 </a>
 
             </li>
+
+            @auth
+                <li class="text-white">
+                    <div class="py-1.5">
+                        <flux:text class="text-white" size="sm ">Signed in as</flux:text>
+                        <flux:heading class="mt-1! truncate text-white">{{ auth()->user()->email }}</flux:heading>
+                    </div>
+
+                    <form class="w-full" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <flux:menu.item class="w-full cursor-pointer !text-white" data-test="logout-button"
+                            as="button" type="submit" icon="arrow-right-start-on-rectangle">
+                            {{ __('Log Out') }}
+                        </flux:menu.item>
+                    </form>
+
+                </li>
+            @endauth
+
         </ul>
 
     </nav>
