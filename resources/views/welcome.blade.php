@@ -17,17 +17,17 @@
             </div>
 
             <div
-                class="group -mt-12 w-full basis-3/5 max-md:absolute max-md:-z-0 md:relative md:-ml-12 md:-mt-24 md:flex [&:hover>div>img.peer:not(:hover)~img]:scale-50 [&:hover>div>img.peer:not(:hover)~img]:opacity-0">
+                class="-mt-12 w-full basis-3/5 max-md:absolute max-md:-z-0 md:relative md:-ml-12 md:-mt-24 md:flex [&:hover>div>img.peer:not(:hover)~img]:scale-50 [&:hover>div>img.peer:not(:hover)~img]:opacity-0">
 
 
                 <div class="w-2/5 drop-shadow-2xl hover:z-[1] max-md:absolute max-md:-left-10 md:relative md:ml-20">
                     <img class="peer relative -rotate-3 transition-[rotate,scale] duration-[600ms] ease-in-out hover:scale-105 group-hover:-rotate-1"
                         src="{{ asset('img/eomuk-cheese-4.png') }}" alt="">
 
-                    <img class="absolute bottom-0 w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out group-hover:scale-50 group-hover:opacity-0 peer-hover:scale-100 peer-hover:opacity-100 max-md:-right-[10%] max-md:-scale-x-100 md:-left-[22%] md:bottom-[30%]"
+                    <img class="absolute bottom-0 w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out max-md:-right-[10%] max-md:-scale-x-100 md:-left-[22%] md:bottom-[30%]"
                         src="{{ asset('img/cheese-combine.png') }}" alt="">
 
-                    <img class="absolute -left-[5%] bottom-0 w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out group-hover:scale-50 group-hover:opacity-0 peer-hover:scale-100 peer-hover:opacity-100 md:-left-[15%] md:bottom-[5%]"
+                    <img class="absolute -left-[5%] bottom-0 w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out md:-left-[15%] md:bottom-[5%]"
                         src="{{ asset('img/cheese-mascot-plus-border-2.png') }}" alt="">
                 </div>
 
@@ -36,10 +36,10 @@
                     <img class="peer rotate-3 transition-[rotate,scale] duration-[600ms] ease-in-out hover:scale-105 group-hover:rotate-3 md:rotate-6"
                         src="{{ asset('img/eomuk-chili-4.png') }}" alt="">
 
-                    <img class="absolute bottom-0 w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out group-hover:scale-50 group-hover:opacity-0 peer-hover:scale-100 peer-hover:opacity-100 max-md:-left-[18%] max-md:-scale-x-100 md:-right-[22%] md:bottom-[30%]"
+                    <img class="absolute bottom-0 w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out max-md:-left-[18%] max-md:-scale-x-100 md:-right-[22%] md:bottom-[30%]"
                         src="{{ asset('img/chili-combine.png') }}" alt="">
 
-                    <img class="absolute -right-[25%] bottom-0 w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out group-hover:scale-50 group-hover:opacity-0 peer-hover:scale-100 peer-hover:opacity-100"
+                    <img class="absolute -right-[25%] bottom-0 w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out"
                         src="{{ asset('img/chili-mascot-plus-border-2.png') }}" alt="">
                 </div>
 
@@ -62,7 +62,8 @@
                     <img src="{{ asset('img/how-heading.png') }}" alt="">
                 </div>
 
-                <ol class="grid gap-x-6 gap-y-12 uppercase md:grid-cols-3 md:grid-rows-[auto_minmax(40%,1fr)]">
+                <ol
+                    class="font-poppings grid gap-x-6 gap-y-12 font-bold uppercase md:grid-cols-3 md:grid-rows-[auto_minmax(40%,1fr)]">
                     <x-how-item img="{{ asset('img/how-eomuk.png') }}" text="beli cedea snack korea eomuk bar"
                         number="1" />
                     <x-how-item img="{{ asset('img/how-qr.png') }}"

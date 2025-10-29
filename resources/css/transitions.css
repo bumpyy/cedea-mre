@@ -2,13 +2,13 @@ html.is-changing .transition-main {
     transition: transform 400ms ease-in-out;
 }
 
-html.is-animating.is-leaving .transition-main {
+/* html.is-animating.is-leaving .transition-main {
     transform: translateY(calc(1 * 5vh * var(--overlay-direction, 1)));
 }
 
 html.is-animating.is-rendering .transition-main {
     transform: translateY(calc(-1 * 5vh * var(--overlay-direction, 1)));
-}
+} */
 
 .transition-overlay {
     position: fixed;
@@ -20,7 +20,7 @@ html.is-animating.is-rendering .transition-main {
     background-color: var(--color-cedea-red);
     opacity: 0;
     transform: translate3d(0, calc(-1 * 100% * var(--overlay-direction, 1)), 0);
-    pointer-events: none;
+    /* pointer-events: none; */
     display: flex;
     justify-content: center;
     align-items: center;

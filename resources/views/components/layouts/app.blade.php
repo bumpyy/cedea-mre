@@ -31,8 +31,7 @@
         @endif
     </main>
 
-    <div class="bg-cedea-red overlay transition-overlay relative flex cursor-progress flex-col items-center justify-center"
-        id="loading-screen">
+    <div class="bg-cedea-red transition-overlay relative cursor-progress" id="loading-screen">
         {{-- <div class="absolute -top-1/4 left-0 z-0 w-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#b8001f" fill-opacity="1"
@@ -42,9 +41,12 @@
         </div> --}}
 
         <div
-            class="bg-position-[center_top_15%] bg-size-[90%] overflow-visible bg-[url('../assets/patterns/asia-pattern-1.png')] bg-no-repeat bg-blend-multiply">
+            class="bg-position-[center_top_15%] bg-size-[90%] relative flex h-full flex-col items-center justify-start bg-[url('../assets/patterns/asia-pattern-1.png')] bg-no-repeat bg-blend-multiply">
+            <div class="">
+                <img class="max-w-[140px] md:max-w-[280px]" src="{{ asset('img/cedea-kfood.png') }}" alt="">
+            </div>
             <div class="relative z-10">
-                <img class="max-h-[85vh]" src="{{ asset('img/loading-2.png') }}" alt="">
+                <img class="max-h-[70vh]" src="{{ asset('img/loading-3.png') }}" alt="">
             </div>
         </div>
 

@@ -39,6 +39,30 @@
     "file": "assets/Marimpa-esTYmbZE.woff2",
     "src": "resources/assets/fonts/Marimpa.woff2"
   },
+  "resources/assets/fonts/MyriadPro-Bold.woff": {
+    "file": "assets/MyriadPro-Bold-DU61Ko2q.woff",
+    "src": "resources/assets/fonts/MyriadPro-Bold.woff"
+  },
+  "resources/assets/fonts/MyriadPro-Bold.woff2": {
+    "file": "assets/MyriadPro-Bold-zG4D89kw.woff2",
+    "src": "resources/assets/fonts/MyriadPro-Bold.woff2"
+  },
+  "resources/assets/fonts/MyriadPro-Regular.woff": {
+    "file": "assets/MyriadPro-Regular-BUWPKxVA.woff",
+    "src": "resources/assets/fonts/MyriadPro-Regular.woff"
+  },
+  "resources/assets/fonts/MyriadPro-Regular.woff2": {
+    "file": "assets/MyriadPro-Regular-50XRb6xz.woff2",
+    "src": "resources/assets/fonts/MyriadPro-Regular.woff2"
+  },
+  "resources/assets/fonts/MyriadPro-SemiboldIt.woff": {
+    "file": "assets/MyriadPro-SemiboldIt-Dro2XJLS.woff",
+    "src": "resources/assets/fonts/MyriadPro-SemiboldIt.woff"
+  },
+  "resources/assets/fonts/MyriadPro-SemiboldIt.woff2": {
+    "file": "assets/MyriadPro-SemiboldIt-6D2EO4Uh.woff2",
+    "src": "resources/assets/fonts/MyriadPro-SemiboldIt.woff2"
+  },
   "resources/assets/fonts/Poppins-Medium.woff": {
     "file": "assets/Poppins-Medium-LVgVSt0Y.woff",
     "src": "resources/assets/fonts/Poppins-Medium.woff"
@@ -84,7 +108,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DFdpuXAa.css",
+    "file": "assets/app-jVIbTpEW.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
