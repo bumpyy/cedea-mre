@@ -11,7 +11,7 @@
 
     <div class="flex w-full items-center justify-between">
         <div>
-            <p class="font-bold">
+            <p class="font-bold max-md:text-sm">
                 {{ $submission->uuid ? $submission->uuid : '-' }}
             </p>
             <p @class([
@@ -23,8 +23,8 @@
                 'text-red-500' =>
                     $submission->status == \App\Enum\SubmissionStatusEnum::REJECTED,
             ])>{{ $submission->status->value }}</p>
-            <p class="text-sm opacity-70">{{ $submission->status->getDescription() }}</p>
-            <p class="text-sm opacity-70">
+            <p class="text-xs opacity-70 md:text-sm">{{ $submission->status->getDescription() }}</p>
+            <p class="text-xs opacity-70 md:text-sm">
                 {{ $submission->created_at ? $submission->created_at->format('d F Y, g:i a') : '-' }}</p>
         </div>
 

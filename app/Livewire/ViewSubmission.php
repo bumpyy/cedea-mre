@@ -7,6 +7,8 @@ use LivewireUI\Modal\ModalComponent;
 
 class ViewSubmission extends ModalComponent
 {
+    public $submission;
+
     public function mount($id)
     {
         try {
