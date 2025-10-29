@@ -23,9 +23,8 @@
 
         <!-- Address -->
         <flux:field>
-            <flux:label class="text-white">Alamat</flux:label>
-            <flux:textarea class="text-black" name="address" wire:model="address" required
-                placeholder="Alamat lengkap" />
+            <flux:label class="text-white">Alamat <span class="ml-2 text-xs text-gray-400">Optional</span></flux:label>
+            <flux:textarea class="text-black" name="address" wire:model="address" placeholder="Alamat lengkap" />
             <flux:error class="" name="address" />
         </flux:field>
 

@@ -36,7 +36,7 @@ class Register extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'address' => ['required', 'string', 'max:255'],
+            'address' => ['string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'accept_terms' => ['required', 'accepted'],

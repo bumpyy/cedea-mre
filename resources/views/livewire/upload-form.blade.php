@@ -14,19 +14,25 @@
     uploaded = false;
     ">
 
-    <form method="POST" wire:submit="submit">
-        <x-filepond::upload required wire:model="file" :credits="false" max-file-size="5MB" :accepted-file-types="['image/png', 'image/jpeg', 'image/jpg']" />
-
-        <div class="flex items-center justify-center">
-            <flux:button class="w-fit bg-amber-400 !px-8" data-test="submit-button" x-bind:loading="uploading"
-                variant="primary" type="submit">
-                Submit
-            </flux:button>
-        </div>
-    </form>
-    @if (session()->has('submission-error'))
+    @if (!auth()->user()->hasVerifiedEmail())
         <div class="mt-4 text-red-600">
-            <p>{{ session()->get('submission-error') }}</p>
+            <p>Anda perlu memverifikasi alamat email Anda sebelum mengirimkan struk.</p>
         </div>
+    @else
+        <form method="POST" wire:submit="submit">
+            <x-filepond::upload required wire:model="file" :credits="false" max-file-size="5MB" :accepted-file-types="['image/png', 'image/jpeg', 'image/jpg']" />
+
+            <div class="flex items-center justify-center">
+                <flux:button class="w-fit bg-amber-400 !px-8" data-test="submit-button" x-bind:loading="uploading"
+                    variant="primary" type="submit">
+                    Submit
+                </flux:button>
+            </div>
+        </form>
+        @if (session()->has('submission-error'))
+            <div class="mt-4 text-red-600">
+                <p>{{ session()->get('submission-error') }}</p>
+            </div>
+        @endif
     @endif
-    </>
+</div>
