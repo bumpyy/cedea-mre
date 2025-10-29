@@ -1,82 +1,86 @@
 <x-layouts.app>
-    <div
-        class="font-montserrat text-cedea-gold clamp-[p,12,28] clamp-[mt,5.5rem,30rem] container rounded-[3rem] bg-white">
+    <div class="font-montserrat clamp-[p,12,28] clamp-[mt,5.5rem,30rem] container rounded-[3rem] bg-white">
         <div class="-mt-[40%] mb-8 drop-shadow-2xl">
-            <img src="{{ asset('img/hero-2.png') }}" alt="">
+            <img src="{{ asset('img/hero-4.png') }}" alt="">
         </div>
 
-        <h1 class="text-cedea-gold clamp-[text,lg,5xl] mb-4 font-bold">
-            SYARAT DAN KETENTUAN <br>
-            PROGRAM MICROSITE “EOMUK BAR
+        <h1 class="clamp-[text,lg,5xl] mb-4 font-bold">
+            SYARAT DAN KETENTUAN PROGRAM
+            <br>
+            “EOMUK BAR CHILL IN SEOUL”
         </h1>
 
         <div class="terms-list list bg-white">
             <ol class="flex flex-col gap-4">
-                <li font>
+                <li>
                     Ketentuan Umum
                     <ol>
                         <li>
-                            Program “EOMUK BAR” diselenggarakan oleh PT CITRA DIMENSI ATHARI sebagai bentuk
-                            apresiasi
-                            kepada konsumen produk CEDEA Eomuk Bar.
+                            Program “EOMUK BAR CHILL IN SEOUL” diselenggarakan oleh <strong>PT CitraDimensi
+                                Arthali</strong> sebagai
+                            bentuk apresiasi kepada konsumen produk <strong>CEDEA Snack Korea Eomuk Bar</strong>.
                         </li>
                         <li>
-                            Program berlangsung selama periode *Tanggal mulai* hingga *Tanggal selesai*.
+                            Program berlangsung selama periode 17 November 2025 hingga <strong>17 Februari
+                                2026</strong>.
                         </li>
                         <li>
                             Program ini terbuka untuk seluruh warga negara Indonesia yang berdomisili di wilayah
-                            Republik Indonesia dan berusia minimal 17 tahun pada saat mengikuti Program.
+                            Republik Indonesia dan berusia minimal 13 tahun pada saat mengikuti program. Peserta wajib
+                            memiliki kartu identitas resmi yang masih berlaku seperti KTP, SIM, atau Kartu Pelajar.
                         </li>
                         <li>
-                            Untuk mengikuti Program, peserta wajib:
-                            <ol>
-                                <li>
-                                    Membeli produk CEDEA Eomuk Bar selama Periode Program.
+                            Program ini tidak berlaku bagi karyawan PT CitraDimensi Arthali, Biro Iklan, dan
+                            keluarganya.
+                        </li>
+
+                        <li>Untuk mengikuti Program, peserta wajib:
+                            <ol type="a">
+                                <li>Membeli produk <strong>CEDEA Snack Korea Eomuk Bar</strong> selama Periode Program.
                                 </li>
-                                <li>
-                                    Memindai (scan) barcode yang terdapat pada kemasan produk untuk mengakses
-                                    microsite
-                                    resmi : *linknya*
-                                </li>
-                                <li>
-                                    Mengunggah foto struk pembelian yang masih berlaku ke dalam microsite sesuai
-                                    petunjuk
-                                    yang
-                                    tersedia.
-                                </li>
+                                <li><strong>Memindai (scan) barcode</strong> yang terdapat pada kemasan produk untuk
+                                    mengakses <strong>microsite resmi di *linknya*.</strong></li>
+                                <li><strong>Mengunggah foto struk pembelian</strong> yang masih berlaku ke dalam
+                                    microsite sesuai petunjuk yang tersedia.</li>
                             </ol>
                         </li>
 
                         <li>
-                            Setiap struk pembelian yang sah akan dihitung sebagai 1 (satu) kesempatan undian.
+                            Setiap struk pembelian yang sah akan dihitung sebagai <strong>1 (satu) kesempatan undian
+                                (tidak berlaku kelipatan)</strong>
                         </li>
+
                         <li>
                             Peserta dapat mengirimkan lebih dari satu struk pembelian selama struk tersebut memenuhi
                             syarat.
                         </li>
-                        <li>
-                            Penyelenggara berhak menolak atau mendiskualifikasi peserta yang dianggap melanggar
-                            ketentuan, memberikan data tidak valid, atau melakukan tindakan curang.
-                        </li>
+
+                        <li>Penyelenggara berhak menolak atau mendiskualifikasi peserta yang dianggap melanggar
+                            ketentuan, memberikan data tidak valid, atau melakukan tindakan curang.</li>
+
                         <li>
                             Dengan mengikuti Program ini, peserta dianggap telah membaca, memahami, dan menyetujui
                             seluruh Syarat dan Ketentuan tanpa adanya paksaan dari pihak manapun.
                         </li>
+
                     </ol>
                 </li>
 
-                <li>
-                    Ketentuan Struk Sah
+                <li>Ketentuan Struk Sah
                     <ol>
-                        <li>Struk pembelian yang diunggah harus merupakan struk asli (bukan fotokopi atau hasil
-                            edit) dari
-                            toko, minimarket, atau supermarket resmi.</li>
-                        <li>Struk harus memuat informasi lengkap: nama toko, tanggal transaksi, nama produk CEDEA
-                            Eomuk
-                            Bar, serta nominal pembelian.</li>
-                        <li>Struk yang buram, rusak, tidak terbaca, atau tidak mencantumkan produk CEDEA Eomuk Bar
-                            dianggap tidak sah.</li>
-                        <li>Setiap struk hanya dapat digunakan 1 (satu) kali untuk mengikuti undian.</li>
+                        <li>Struk pembelian yang diunggah harus merupakan <strong>struk asli (bukan fotokopi atau hasil
+                                edit)</strong>
+                            dari toko, minimarket, atau supermarket resmi.</li>
+
+                        <li>Struk harus <strong>memuat informasi lengkap:</strong> nama toko, tanggal transaksi, nama
+                            produk <strong>CEDEA Snack Korea Eomuk Bar</strong> serta nominal pembelian.</li>
+
+                        <li> Struk yang buram, rusak, tidak terbaca, atau tidak tercantum produk <strong>CEDEA Snack
+                                Korea Eomuk Bar</strong> dianggap tidak sah. </li>
+
+                        <li> Setiap struk hanya dapat digunakan <strong>1 (satu) kali</strong> untuk mengikuti undian.
+                        </li>
+
                         <li>Penyelenggara berhak menolak struk yang tidak memenuhi syarat atau diduga palsu.</li>
                     </ol>
                 </li>
@@ -84,90 +88,67 @@
                 <li>
                     Ketentuan Hadiah
                     <ol>
-                        <li>
-                            Hadiah undian akan diberikan kepada peserta yang terpilih melalui proses pengundian yang
-                            dilakukan secara acak dan transparan oleh Penyelenggara.
+                        <li>Hadiah undian akan diberikan kepada peserta yang terpilih melalui proses pengundian yang
+                            dilakukan secara acak dan transparan oleh Penyelenggara.</li>
+                        <li>Pemenang akan dihubungi oleh pihak Penyelenggara melalui <strong>nomor telepon atau email
+                                resmi yang terdaftar</strong> di microsite.</li>
+                        <li>Hadiah <strong>tidak dapat ditukar</strong> dengan uang tunai atau bentuk lain, dan
+                            <strong>tidak dapat dipindah tangankan</strong> kepada pihak lain.
                         </li>
+
+                        <li>Pajak hadiah (jika ada) akan ditanggung oleh Penyelenggara sesuai peraturan perpajakan yang
+                            berlaku.</li>
+
                         <li>
-                            Jenis dan jumlah hadiah akan diumumkan melalui microsite resmi dan kanal media sosial CEDEA.
-                        </li>
-                        <li>
-                            Pemenang akan dihubungi oleh pihak Penyelenggara melalui nomor telepon atau email resmi
-                            yang terdaftar di microsite.
-                        </li>
-                        <li>
-                            Hadiah tidak dapat ditukar dengan uang tunai atau bentuk lain, dan tidak dapat dipindah
-                            tangankan kepada pihak lain.
-                        </li>
-                        <li>
-                            Pajak hadiah (jika ada) akan ditanggung oleh Penyelenggara sesuai peraturan perpajakan yang
-                            berlaku.
-                        </li>
-                        <li>
-                            Jika pemenang tidak dapat dihubungi dalam waktu 30 (Tiga puluh) hari kalender setelah
-                            pengumuman, maka hadiah dianggap hangus dan Penyelenggara berhak menunjuk pemenang
-                            pengganti.
+                            Jika pemenang tidak dapat dihubungi dalam waktu <strong>30 (Tiga puluh) hari
+                                kalender</strong> setelah pengumuman, maka hadiah dianggap hangus dan Penyelenggara
+                            berhak menunjuk pemenang pengganti.
                         </li>
                     </ol>
                 </li>
 
-                <li>
-                    lain-lain
+                <li>Lain-lain
                     <ol>
-                        <li>
-                            Program ini tidak dipungut biaya apapun. Hati-hati terhadap penipuan yang mengatasnamakan
-                            CEDEA atau pihak Penyelenggara.
-                        </li>
-                        <li>
-                            Peringatan Penipuan:
-                            <ol class=".override-list list-inside" type="a" style="list-style-type: lower-alpha">
+                        <li>Program ini tidak dipungut biaya apapun. Hati-hati terhadap penipuan yang mengatasnamakan
+                            CEDEA atau pihak Penyelenggara.</li>
+                        <li>Peringatan Penipuan:
+                            <ol type="a">
                                 <li>
-                                    Penyelenggara tidak pernah meminta biaya apapun (termasuk pajak, ongkos kirim, atau
+                                    Penyelenggara <strong>tidak pernah meminta biaya apapun</strong> (termasuk pajak,
+                                    ongkos kirim, atau
                                     administrasi) kepada peserta atau pemenang.
                                 </li>
+                                <li>Hati-hati terhadap pihak yang mengatasnamakan <strong>CEDEA atau PT CitraDimensi
+                                        Arthali</strong> dan
+                                    meminta data pribadi, kode OTP, atau transfer uang dengan alasan apapun.</li>
 
-                                <li>
-                                    Hati-hati terhadap pihak yang mengatasnamakan CEDEA atau PT CEDEA SEAFOOD INDONESIA
-                                    dan meminta data pribadi, kode OTP, atau transfer uang dengan alasan apapun.
-                                </li>
+                                <li>Informasi resmi terkait Program hanya disampaikan melalui:
 
-                                <li>
-                                    Informasi resmi terkait Program hanya disampaikan melalui:
                                     <div>
-                                        <p>Microsite: Link micrositenya</p>
-                                        <p>Instagram resmi CEDEA: @cedeaseafood</p>
-                                        <p>Email resmi: email resmi CEDEA</p>
+                                        <p>Microsite:
+                                            <strong>https://cedeaseafood.com/eomuk-bar-chill-in-seoul?source=packaging</strong>
+                                        </p>
+                                        <p>Instagram resmi CEDEA: <strong>@cedeaseafood</strong></p>
+                                        <p>Email resmi: <strong>email resmi CEDEA</strong></p>
                                     </div>
                                 </li>
 
                                 <li>
                                     Segala bentuk penipuan atau penyalahgunaan nama CEDEA akan diproses sesuai ketentuan
-                                    hukum yang berlaku.
+                                    hukum
+                                    yang berlaku.
                                 </li>
                             </ol>
                         </li>
 
-                        <li>
-                            Penyelenggara tidak bertanggung jawab atas kesalahan data yang diisi peserta,
-                            gangguan teknis
-                            jaringan, atau keterlambatan pengiriman data akibat faktor di luar kendali.
-                        </li>
-
-                        <li>
-                            Penyelenggara berhak sewaktu-waktu mengubah atau menghentikan Program, sebagian
-                            maupun
-                            seluruhnya, dengan pemberitahuan melalui microsite resmi.
-                        </li>
-
-                        <li>
-                            Keputusan Penyelenggara bersifat final dan tidak dapat diganggu gugat.
-                        </li>
-
-                        <li>
-                            Dengan mengikuti Program ini, peserta memberikan izin kepada Penyelenggara untuk
-                            menggunakan data, foto, dan/atau nama peserta untuk keperluan publikasi Program
-                            tanpa kompensasi tambahan.
-                        </li>
+                        <li>Penyelenggara tidak bertanggung jawab atas kesalahan data yang diisi peserta, gangguan
+                            teknis jaringan, atau keterlambatan pengiriman data akibat faktor di luar kendali.</li>
+                        <li>Penyelenggara berhak sewaktu-waktu mengubah atau menghentikan Program, sebagian maupun
+                            seluruhnya, dengan pemberitahuan melalui microsite resmi.</li>
+                        <li>Keputusan Penyelenggara bersifat <strong>final dan tidak dapat diganggu gugat.</strong></li>
+                        <li>Dengan mengikuti Program ini, peserta memberikan izin kepada Penyelenggara untuk menggunakan
+                            data, foto, dan/atau nama peserta untuk keperluan publikasi Program tanpa kompensasi
+                            tambahan.</li>
                     </ol>
                 </li>
             </ol>
