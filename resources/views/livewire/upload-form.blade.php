@@ -1,5 +1,6 @@
-<div class="flex flex-col rounded-[2rem] bg-white p-8" class="text-cedea-red mb-8 flex flex-col text-center text-xl"
-    x-data="{ uploaded: false, uploading: false }" x-on:filepond-upload-started="uploading = true"
+<div class="flex flex-col rounded-[2rem] bg-white p-4 md:p-8"
+    class="text-cedea-red mb-8 flex flex-col text-center text-xl" x-data="{ uploaded: false, uploading: false }"
+    x-on:filepond-upload-started="uploading = true"
     x-on:filepond-upload-completed="
         uploading = false;
         uploaded = true;

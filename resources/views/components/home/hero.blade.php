@@ -9,7 +9,7 @@
                 <x-mascot type="cheese" />
 
                 {{-- <div
-                    class="bg-size-[200%_200%] shadow-top clamp-[mb,4,8] relative mx-auto w-fit overflow-clip rounded-full bg-[url('../assets/patterns/paper-50.png')] bg-no-repeat">
+                    class="bg-size-[200%_200%] shadow-top clamp-[mb,4,8] relative mx-auto w-fit overflow-hidden rounded-full bg-[url('../assets/patterns/paper-50.png')] bg-no-repeat">
                     <div
                         class="bg-radial to-cedea-dark/10 from-30 clamp-[w,7rem,17rem] clamp-[px,4,10] clamp-[py,2,4] from-transparent">
                         <img src="{{ asset('img/brand.png') }}" srcset="{{ asset('img/brand.svg') }}"

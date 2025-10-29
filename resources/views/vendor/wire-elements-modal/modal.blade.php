@@ -12,7 +12,7 @@
 
     <div class="fixed inset-0 z-10 overflow-y-auto" x-data="LivewireUIModal()" x-on:close.stop="setShowPropertyTo(false)"
         x-on:keydown.escape.window="show && closeModalOnEscape()" x-show="show" style="display: none;">
-        <div class="flex min-h-dvh items-end justify-center px-4 pb-10 pt-4 text-center sm:block sm:p-0">
+        <div class="flex min-h-dvh items-center justify-center px-4 pb-10 pt-4 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transform transition-all" x-show="show" x-on:click="closeModalOnClickAway()"
                 x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"

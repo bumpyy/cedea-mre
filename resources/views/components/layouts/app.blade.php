@@ -16,7 +16,7 @@
                 'transition-fade z-0 grid h-auto',
                 'bg-radial from-60 from-transparent to-[#952227]' => !$gradient,
             ])>
-                <div class="bg-size-[auto_80vw] z-0 h-full overflow-x-clip">
+                <div class="bg-size-[auto_80vw] z-0 h-full overflow-x-hidden">
                     <div class="box-border bg-cover py-12 shadow-[inset_0_0_70px_0_#00000060]">
                         <div
                             class="bg-size-[65%] bg-position-[center_top_15%] bg-[url('../assets/patterns/asia-pattern.png')] bg-no-repeat bg-blend-multiply">
@@ -41,11 +41,11 @@
         </div> --}}
 
         <div
-            class="bg-position-[center_top_15%] bg-size-[90%] relative flex h-full flex-col items-center justify-start bg-[url('../assets/patterns/asia-pattern-1.png')] bg-no-repeat bg-blend-multiply">
+            class="md:bg-position-[center_top_15%] bg-size-[90%] relative flex h-full flex-col items-center justify-start bg-[url('../assets/patterns/asia-pattern-1.png')] bg-center bg-no-repeat bg-blend-multiply">
             <div class="">
                 <img class="max-w-[140px] md:max-w-[280px]" src="{{ asset('img/cedea-kfood.png') }}" alt="">
             </div>
-            <div class="relative z-10">
+            <div class="relative z-10 flex h-full items-center px-4">
                 <img class="max-h-[70vh]" src="{{ asset('img/loading-3.png') }}" alt="">
             </div>
         </div>
