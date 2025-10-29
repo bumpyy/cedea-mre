@@ -5,7 +5,7 @@
             <img class="max-w-[140px] md:max-w-[280px]" src="{{ asset('img/cedea-kfood.png') }}" alt="Cedea & K-Food Logo">
         </div>
 
-        <div class="relative flex max-md:flex-col">
+        <div class="relative flex max-md:flex-col md:gap-x-8">
             <div class="flex flex-col items-center justify-start gap-4 max-md:z-[1]">
                 <div class="w-1/2 md:w-1/3 lg:w-3/5">
                     <img class="max-md:drop-shadow-xl" src="{{ asset('img/eomuk-bar-text.png') }}"
@@ -73,6 +73,11 @@
                 </ol>
 
             </div>
+        </div>
+
+        <div
+            class="font-poppings mx-auto mt-6 w-full rounded-full bg-[#FCC500] px-2 py-4 text-center text-2xl font-extrabold uppercase text-white drop-shadow-2xl md:mt-12 md:w-4/5 md:text-7xl">
+            <a href="{{ route('login') }}">join sekarang</a>
         </div>
 
 </x-layouts.app>
