@@ -6,7 +6,7 @@
             <img src="{{ asset('img/hero-4.png') }}" alt="">
         </div>
 
-        <div class="max-md:grid-overlay relative grid rounded-2xl bg-white md:grid-cols-2 md:rounded-[3.5rem]">
+        <div class="max-md:grid-overlay md:rounded-4xl relative grid rounded-2xl bg-white md:grid-cols-2">
 
             <div class="z-[1] p-6 text-lg leading-relaxed md:p-12">
                 <h1 class="text-cedea-blue mb-2 text-3xl font-bold md:mb-12 md:text-5xl">Halo, {{ auth()->user()->name }}
