@@ -1,7 +1,7 @@
 <footer class="bg-cedea-red shadow-nav clamp-[rounded-t,1.5rem,6rem] relative z-10 overflow-hidden pb-2 lg:pb-6">
     <div class="container">
         <div class="grid grid-cols-1 gap-8 text-white lg:grid-cols-2">
-            <div class="clamp-[gap,4,12] max-footer-small:flex-col flex max-md:justify-center">
+            <div class="clamp-[gap,4,12] max-[25rem]:flex-col flex max-md:justify-center">
                 <div
                     class="clamp-[w,28,64] inline-block h-fit shrink-0 shadow-2xl shadow-black/25 drop-shadow-xl transition-transform duration-700">
                     <x-logo />
@@ -24,6 +24,7 @@
                 </div>
 
             </div>
+
             <div class="clamp-[py,2,10] space-y-4 lg:justify-self-end">
                 <p class="text-center"><strong>{{ __('footer.social.title') }}</strong></p>
                 <div class="flex flex-row flex-nowrap justify-center space-x-4">

@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+    <x-auth-header title="Buat akun" description="Masukkan detail Anda di bawah ini untuk membuat akun Anda" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
@@ -38,7 +38,7 @@
 
         <!-- Password -->
         <flux:field>
-            <flux:label class="text-white">{{ __('Password') }}</flux:label>
+            <flux:label class="text-white">Password</flux:label>
             <flux:input class="text-black" name="password" type="password" wire:model="password" required
                 autocomplete="new-password" :placeholder="__('Password')" viewable />
             <flux:error class="" name="password" />
@@ -46,7 +46,7 @@
 
         <!-- Confirm Password -->
         <flux:field>
-            <flux:label class="text-white">{{ __('Confirm password') }}</flux:label>
+            <flux:label class="text-white">Confirm password</flux:label>
             <flux:input class="text-black" name="password_confirmation" type="password"
                 wire:model="password_confirmation" required autocomplete="new-password"
                 :placeholder="__('Confirm password')" viewable />

@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+    <x-auth-header :title="__('Masuk ke akun Anda')" :description="__('Masukkan email dan kata sandi Anda di bawah ini untuk masuk')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
@@ -7,7 +7,7 @@
     <form class="flex flex-col gap-6" method="POST" wire:submit="login">
         <!-- Email Address -->
         <flux:field class="text-5xl">
-            <flux:label class="text-white">{{ __('Email address') }}</flux:label>
+            <flux:label class="text-white">Alamat email</flux:label>
             <flux:input class="text-black" icon="user" name="email" type="email" wire:model="email" required
                 autofocus autocomplete="email" placeholder="email@example.com" />
             <flux:error class="text-white" name="email" />
@@ -16,9 +16,9 @@
         <!-- Password -->
         <div class="relative">
             <flux:field>
-                <flux:label class="text-white">{{ __('Password') }}</flux:label>
+                <flux:label class="text-white">Password</flux:label>
                 <flux:input class="text-black" icon="lock-closed" name="password" type="password" wire:model="password"
-                    required autocomplete="current-password" :placeholder="__('Password')" viewable />
+                    required autocomplete="current-password" placeholder="Password" viewable />
                 <flux:error class="text-white" name="password" />
             </flux:field>
 
@@ -38,7 +38,7 @@
 
         <div class="flex items-center justify-center">
             <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
-                {{ __('Log in') }}
+                Log in
             </flux:button>
         </div>
     </form>

@@ -6,21 +6,21 @@
         </div>
 
         <div class="relative grid grid-cols-2 gap-x-4 md:flex md:gap-x-8">
-            <div class="flex flex-col items-center justify-start gap-4 max-md:z-[1] max-md:w-fit">
-                <div class="w-4/5 sm:w-1/3 lg:w-3/5">
+            <div class="flex flex-col items-center justify-start gap-2 max-md:z-[1] max-md:w-fit sm:gap-4">
+                <div class="w-11/12 sm:w-1/3 lg:w-3/5">
                     <img class="max-md:drop-shadow-xl" src="{{ asset('img/eomuk-bar-text.png') }}"
                         alt="snack ala korea Eomuk Bar">
                     <div class="absolute -left-[5%] -top-[15%] w-1/4 sm:hidden">
                         <img src="{{ asset('img/label-baru.png') }}" alt="">
                     </div>
                 </div>
-                <div class="w-4/5 sm:w-2/3 lg:w-11/12">
+                <div class="w-11/12 sm:w-2/3 lg:w-11/12">
                     <img src="{{ asset('img/enak-bar-bar.png') }}" alt="Enaknya Bar Bar">
                 </div>
             </div>
 
             <div
-                class="relative flex w-full basis-full max-md:-z-0 sm:-mt-12 md:-ml-12 md:-mt-24 md:basis-3/5 md:[&:hover>div>div>img.peer:not(:hover)~img]:scale-50 md:[&:hover>div>div>img.peer:not(:hover)~img]:opacity-0">
+                class="relative -mt-[5%] flex w-full basis-full max-md:-z-0 sm:-mt-12 md:-ml-12 md:-mt-24 md:basis-3/5 md:[&:hover>div>div>img.peer:not(:hover)~img]:scale-50 md:[&:hover>div>div>img.peer:not(:hover)~img]:opacity-0">
 
                 {{--  cheese eomuk --}}
                 <div class="w-1/2 drop-shadow-2xl hover:z-[1] md:relative md:ml-20">
@@ -37,7 +37,6 @@
                 </div>
 
                 {{--  chili eomuk --}}
-
                 <div class="-ml-[8%] mt-[10%] w-1/2 drop-shadow-2xl hover:z-[1] md:relative md:-ml-[5.3rem] md:mt-14">
                     <div class="group relative">
                         <img class="peer rotate-3 transition-[rotate,scale] duration-[600ms] ease-in-out hover:scale-105 group-hover:rotate-3 md:rotate-6"
