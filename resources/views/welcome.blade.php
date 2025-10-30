@@ -71,8 +71,8 @@
                 </div>
 
                 <ol
-                    class="font-poppings grid gap-x-6 gap-y-12 font-bold uppercase md:grid-cols-3 md:grid-rows-[auto_minmax(40%,1fr)]">
-                    <x-how-item img="{{ asset('img/how-eomuk.png') }}" text="beli cedea snack korea eomuk bar"
+                    class="font-poppings grid gap-x-6 gap-y-12 font-bold uppercase md:grid-cols-3 md:grid-rows-[auto_minmax(auto,1fr)]">
+                    <x-how-item img="{{ asset('img/how-eomuk.png') }}" text="beli cedea snack korea <br/> eomuk bar"
                         number="1" />
                     <x-how-item img="{{ asset('img/how-qr.png') }}"
                         text="scan qr code pada kemasan cedea snack korea eomuk bar" number="2" />
