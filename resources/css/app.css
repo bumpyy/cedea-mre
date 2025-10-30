@@ -128,29 +128,24 @@ select:focus[data-flux-control] {
         counter-reset: item;
     }
     & > ol {
-        font-weight: var(--font-weight-normal);
+        @apply font-normal;
 
         & > li {
-            display: block;
-            font-size: var(--text-xl);
-            font-weight: var(--font-weight-bold);
+            @apply block text-lg md:text-xl font-bold;
 
             & ol {
-                font-weight: var(--font-weight-normal);
-                display: flex;
-                flex-direction: column;
-                row-gap: 1rem;
+                @apply flex font-normal flex-col gap-y-4;
             }
 
             & > ol > li {
-                font-size: var(--text-lg);
+                @apply text-base md:text-lg;
 
                 & > ol {
                     list-style-position: inside;
                     list-style-type: lower-alpha;
 
                     & > li {
-                        font-size: var(--text-base);
+                        @apply text-sm md:text-base;
                     }
                 }
             }
