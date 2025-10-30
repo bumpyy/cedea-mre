@@ -30,8 +30,8 @@
                             memiliki kartu identitas resmi yang masih berlaku seperti KTP, SIM, atau Kartu Pelajar.
                         </li>
                         <li>
-                            Program ini tidak berlaku bagi karyawan PT CitraDimensi Arthali, Biro Iklan, dan
-                            keluarganya.
+                            Program ini tidak berlaku bagi karyawan PT CitraDimensi Arthali, agency biro iklan, agency
+                            outsourcing (SPG/SPB/MD/TL) dan karyawan kontrak/paruh waktu.
                         </li>
 
                         <li>Untuk mengikuti Program, peserta wajib:

@@ -58,9 +58,9 @@
             <flux:checkbox wire:model="accept_terms" />
             <flux:label>
                 <p class="text-white">
-                    Dengan mendaftar saya setuju dengan</span>
+                    Dengan mendaftar, saya setuju dengan</span>
                     <span class="font-bold">
-                        Syarat & Ketentuan Program Undian CEDEA Eomuk Bar RTE
+                        Syarat & Ketentuan yang berlaku
                     </span>
                 </p>
             </flux:label>
