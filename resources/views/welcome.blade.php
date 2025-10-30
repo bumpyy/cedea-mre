@@ -75,7 +75,7 @@
                     <x-how-item img="{{ asset('img/how-eomuk.png') }}" text="beli cedea snack korea <br/> eomuk bar"
                         number="1" />
                     <x-how-item img="{{ asset('img/how-qr.png') }}"
-                        text="scan qr code pada kemasan cedea snack korea eomuk bar" number="2" />
+                        text="scan qr code pada kemasan cedea snack korea <br/> eomuk bar" number="2" />
                     <x-how-item img="{{ asset('img/how-prize.png') }}"
                         text="menangkan liburan ke korea & uang tunai ratusan juta" number="3" />
                 </ol>
