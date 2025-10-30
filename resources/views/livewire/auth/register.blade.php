@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-6">
-    <x-auth-header title="Buat akun" description="Masukkan detail Anda di bawah ini untuk membuat akun Anda" />
+    <x-auth-header title="Buat akun" description="Isi data di bawah untuk membuat akun" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
