@@ -20,6 +20,6 @@
 
      <div class="space-x-1 text-center text-sm text-zinc-400 rtl:space-x-reverse">
          <span>Atau, kembali ke</span>
-         <flux:link class="text-white" :href="route('login')">{{ __('log in') }}</flux:link>
+         <flux:link class="text-white" :href="route('login')">log in</flux:link>
      </div>
  </div>
