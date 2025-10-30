@@ -1,6 +1,11 @@
 <x-layouts.app>
     {{-- <x-layouts.dashboard> --}}
-    <section class="container flex flex-col gap-y-12 pb-32 pt-10">
+    <section class="container -mt-12 flex flex-col gap-y-12 pb-32">
+
+        <div class="-ml-[7%] mb-4 md:mb-20">
+            <img src="{{ asset('img/hero-4.png') }}" alt="">
+        </div>
+
         <div class="max-md:grid-overlay relative grid rounded-2xl bg-white md:grid-cols-2 md:rounded-[3.5rem]">
 
             <div class="z-[1] p-6 text-lg leading-relaxed md:p-12">

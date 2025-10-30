@@ -46,7 +46,7 @@
                 <img class="max-w-[140px] md:max-w-[280px]" src="{{ asset('img/cedea-kfood.png') }}" alt="">
             </div>
             <div class="relative z-10 flex h-full items-center px-4">
-                <img class="max-h-[70vh]" src="{{ asset('img/loading-3.png') }}" alt="">
+                <img class="max-h-[70vh]" src="{{ asset('img/loading-4.png') }}" alt="">
             </div>
         </div>
 

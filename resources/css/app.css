@@ -132,7 +132,7 @@ select:focus[data-flux-control] {
 
         & > li {
             display: block;
-            font-size: var(--text-2xl);
+            font-size: var(--text-xl);
             font-weight: var(--font-weight-bold);
 
             & ol {
@@ -143,14 +143,14 @@ select:focus[data-flux-control] {
             }
 
             & > ol > li {
-                font-size: var(--text-xl);
+                font-size: var(--text-lg);
 
                 & > ol {
                     list-style-position: inside;
                     list-style-type: lower-alpha;
 
                     & > li {
-                        font-size: var(--text-lg);
+                        font-size: var(--text-base);
                     }
                 }
             }
