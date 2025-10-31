@@ -54,9 +54,9 @@ class Register extends Component
     {
         $baseRule = [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['max:255', 'unique:'.User::class],
+
             'address' => ['string', 'max:255'],
-            'phone' => ['max:255', 'unique:'.User::class],
+
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'accept_terms' => ['required', 'accepted'],
         ];
@@ -77,6 +77,14 @@ class Register extends Component
 
             $this->phone = null;
 
+        }
+
+        if ($this->email && $this->phone) {
+            $baseRule = [
+                ...$baseRule,
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+                'phone' => ['required', 'string', 'max:255'],
+            ];
         }
 
         $validated = $this->validate([
