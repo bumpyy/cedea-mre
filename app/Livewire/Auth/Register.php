@@ -76,7 +76,6 @@ class Register extends Component
             ];
 
             $this->phone = null;
-
         }
 
         if ($this->email && $this->phone) {
@@ -93,8 +92,11 @@ class Register extends Component
 
         $validated['password'] = Hash::make($validated['password']);
 
-        // event(new Registered(($user = User::create($validated))));
-        $user = User::create($validated);
+        if ($this->email) {
+            event(new Registered(($user = User::create($validated))));
+        } else {
+            $user = User::create($validated);
+        }
 
         Auth::login($user);
 
