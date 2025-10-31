@@ -66,7 +66,7 @@ class Register extends Component
                 ...$baseRule,
                 'phone' => ['required', 'string', 'max:255'],
             ];
-            $this->phone = null;
+            $this->email = null;
         }
 
         if (! $this->phone) {
@@ -75,7 +75,7 @@ class Register extends Component
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             ];
 
-            $this->email = null;
+            $this->phone = null;
 
         }
 
