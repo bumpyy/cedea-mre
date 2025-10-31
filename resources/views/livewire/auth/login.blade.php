@@ -5,12 +5,12 @@
     <x-auth-session-status class="text-center" :status="session('status')" />
 
     <form class="flex flex-col gap-6" method="POST" wire:submit="login">
-        <!-- Email Address -->
+        <!-- Email Address or Phone -->
         <flux:field class="text-5xl">
-            <flux:label class="text-white">Alamat email</flux:label>
-            <flux:input class="text-black" icon="user" name="email" type="email" wire:model="email" required
-                autofocus autocomplete="email" placeholder="email@example.com" />
-            <flux:error class="text-white" name="email" />
+            <flux:label class="text-white">Alamat email atau nomor handphone</flux:label>
+            <flux:input class="text-black" icon="user" name="emailOrPhone" wire:model="emailOrPhone" required
+                autofocus autocomplete="email" />
+            <flux:error class="text-white" name="emailOrPhone" />
         </flux:field>
 
         <!-- Password -->
