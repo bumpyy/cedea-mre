@@ -13,7 +13,7 @@
                 </h1>
                 <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
 
-                @if (!auth()->user()->hasVerifiedEmail())
+                @if (!empty(auth()->user()->email) && !auth()->user()->hasVerifiedEmail())
                     <livewire:dashboard-email-verify>
                     @else
                         <p class="max-md:text-sm">{{ auth()->user()->email }}</p>

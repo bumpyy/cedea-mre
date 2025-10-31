@@ -30,10 +30,6 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
-        if (! auth()->user()->hasVerifiedEmail()) {
-            return;
-        }
-
         $this->validate();
 
         try {

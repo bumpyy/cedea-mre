@@ -113,6 +113,14 @@
     @apply !mb-0 !leading-tight;
 }
 
+[data-flux-input-group-prefix] {
+    @apply text-white;
+}
+
+form.auth [data-flux-error] {
+    @apply text-white;
+}
+
 /* [data-flux-icon] {
     @apply text-cedea-red;
 } */

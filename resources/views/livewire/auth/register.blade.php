@@ -4,7 +4,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form class="flex flex-col gap-6" method="POST" wire:submit="register">
+    <form class="auth flex flex-col gap-6" method="POST" wire:submit="register">
         <!-- Name -->
         <flux:field>
             <flux:label class="text-white">Nama lengkap</flux:label>
@@ -16,8 +16,8 @@
         <!-- Email Address -->
         <flux:field>
             <flux:label class="text-white">E-mail</flux:label>
-            <flux:input class="text-black" name="email" type="email" wire:model="email" required
-                autocomplete="email" placeholder="email@example.com" />
+            <flux:input class="text-black" name="email" type="email" wire:model="email" autocomplete="email"
+                placeholder="email@example.com" />
             <flux:error class="" name="email" />
         </flux:field>
 
@@ -31,8 +31,14 @@
         <!-- no hp -->
         <flux:field>
             <flux:label class="text-white">No. HP</flux:label>
-            <flux:input class="text-black" name="phone" type="phone" wire:model="phone" required
-                autocomplete="phone" placeholder="Isi nomor handphone kamu" />
+
+            <flux:input.group>
+                <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix>
+                <flux:input class="text-black" name="phone" type="phone" wire:model="phone" autocomplete="phone"
+                    placeholder="Isi nomor handphone kamu" />
+            </flux:input.group>
+
+
             <flux:error class="" name="phone" />
         </flux:field>
 
