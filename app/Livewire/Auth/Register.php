@@ -54,9 +54,9 @@ class Register extends Component
     {
         $baseRule = [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['max:255', 'unique:'.User::class],
             'address' => ['string', 'max:255'],
-            'phone' => ['string', 'max:255', 'unique:'.User::class],
+            'phone' => ['max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'accept_terms' => ['required', 'accepted'],
         ];
