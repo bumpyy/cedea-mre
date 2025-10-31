@@ -16,11 +16,11 @@ class Register extends Component
 {
     public string $name = '';
 
-    public string $email = '';
+    public string $email;
 
     public string $address = '';
 
-    public string $phone = '';
+    public string $phone;
 
     public string $password = '';
 
