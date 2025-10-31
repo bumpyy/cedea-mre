@@ -64,7 +64,7 @@ class Register extends Component
         if (! $this->email) {
             $baseRule = [
                 ...$baseRule,
-                'phone' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255', 'unique:'.User::class],
             ];
             $this->email = null;
         }
