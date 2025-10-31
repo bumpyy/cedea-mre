@@ -16,11 +16,11 @@ class Register extends Component
 {
     public string $name = '';
 
-    public string $email;
+    public $email;
 
     public string $address = '';
 
-    public string $phone;
+    public $phone;
 
     public string $password = '';
 
@@ -66,6 +66,7 @@ class Register extends Component
                 ...$baseRule,
                 'phone' => ['required', 'string', 'max:255'],
             ];
+            $this->phone = null;
         }
 
         if (! $this->phone) {
@@ -73,6 +74,9 @@ class Register extends Component
                 ...$baseRule,
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             ];
+
+            $this->email = null;
+
         }
 
         $validated = $this->validate([
