@@ -8,6 +8,7 @@
     "dependencies": {
         "@alpinejs/focus": "^3.15.0",
         "@barba/core": "^2.10.3",
+        "@benbjurstrom/alpinejs-zoomable": "^0.5.0",
         "@swup/debug-plugin": "^4.1.0",
         "@swup/js-plugin": "^3.2.0",
         "@swup/livewire-plugin": "^2.0.1",

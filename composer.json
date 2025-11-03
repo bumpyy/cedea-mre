@@ -22,6 +22,7 @@
         "mallardduck/blade-lucide-icons": "^1.23",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-medialibrary": "^11.15",
+        "spatie/laravel-one-time-passwords": "^1.0",
         "spatie/livewire-filepond": "^1.5",
         "wire-elements/modal": "^3.0"
     },
