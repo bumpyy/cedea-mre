@@ -13,8 +13,7 @@ class SubmissionForm
     {
         return $schema
             ->components([
-                TextInput::make('receipt_number')
-                    ->required(),
+                TextInput::make('receipt_number'),
                 Select::make('status')
                     ->options(SubmissionStatusEnum::class)
                     ->required()
