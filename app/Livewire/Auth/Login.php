@@ -56,15 +56,49 @@ class Login extends Component
     }
 
     /**
+     * Handle an incoming authentication request.
+     */
+    public function loginOtp($oneTimePassword): void
+    {
+        $this->validate();
+
+        $this->ensureIsNotRateLimited();
+
+        $user = $this->validateCredentials();
+
+        $result = $user->attemptLoginUsingOneTimePassword($oneTimePassword);
+
+        if ($result->isOk()) {
+            // it is best practice to regenerate the session id after a login
+            Session::regenerate();
+
+            redirect()->intended('dashboard');
+        }
+
+        throw ValidationException::withMessages([
+            'one_time_password' => $result->validationMessage(),
+        ]);
+
+        Auth::login($user, $this->remember);
+
+        RateLimiter::clear($this->throttleKey());
+        Session::regenerate();
+
+        redirect()->intended(route('dashboard', absolute: false));
+    }
+
+    /**
      * Validate the user's credentials.
      */
     protected function validateCredentials(): User
     {
-        $user = Auth::getProvider()->retrieveByCredentials(['email' => $this->emailOrPhone, 'password' => $this->password]);
-
-        if (! $user) {
-            $user = Auth::getProvider()->retrieveByCredentials(['phone' => $this->emailOrPhone, 'password' => $this->password]);
+        if (filter_var($this->emailOrPhone, FILTER_VALIDATE_EMAIL)) {
+            $credentials = ['email' => $this->emailOrPhone];
+        } else {
+            $credentials = ['phone' => $this->emailOrPhone];
         }
+
+        $user = Auth::getProvider()->retrieveByCredentials([...$credentials, 'password' => $this->password]);
 
         if (! $user || ! Auth::getProvider()->validateCredentials($user, ['password' => $this->password])) {
             RateLimiter::hit($this->throttleKey());

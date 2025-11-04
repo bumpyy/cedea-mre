@@ -15,7 +15,7 @@ test('users can authenticate using the login screen', function () {
     $user = User::factory()->withoutTwoFactor()->create();
 
     $response = Livewire::test(Login::class)
-        ->set('email', $user->email)
+        ->set('emailOrPhone', $user->email)
         ->set('password', 'password')
         ->call('login');
 
@@ -30,11 +30,11 @@ test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
     $response = Livewire::test(Login::class)
-        ->set('email', $user->email)
+        ->set('emailOrPhone', $user->email)
         ->set('password', 'wrong-password')
         ->call('login');
 
-    $response->assertHasErrors('email');
+    $response->assertHasErrors('emailOrPhone');
 
     $this->assertGuest();
 });
