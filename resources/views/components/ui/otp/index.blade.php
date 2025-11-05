@@ -45,7 +45,7 @@
 
             // Sync with Livewire state
             let wireModel = this?.$root.getAttributeNames().find(n => n.startsWith('wire:model'))
-
+            console.log(value);
             if (this.$wire && wireModel) {
                 let prop = this.$root.getAttribute(wireModel)
                 this.$wire.set(prop, value, wireModel?.includes('.live'));

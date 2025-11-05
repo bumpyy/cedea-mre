@@ -24,7 +24,7 @@ class Login extends Component
     #[Validate('string')]
     public string $password = '';
 
-    public ?User $user;
+    public ?User $otpUser;
 
     public bool $remember = false;
 
@@ -34,11 +34,12 @@ class Login extends Component
     #[Locked]
     public bool $usingPhone = false;
 
-    public string $otpCode;
+    public string $otpCode = '';
 
     public function login(): void
     {
         if ($this->showOtpForm) {
+
             $this->loginOtp($this->otpCode);
 
             return;
@@ -50,9 +51,9 @@ class Login extends Component
             return;
         }
 
-        $this->user = User::where('email', $this->emailOrPhone)->orWhere('phone', $this->emailOrPhone)->first();
+        $this->otpUser = User::where('email', $this->emailOrPhone)->orWhere('phone', $this->emailOrPhone)->first();
 
-        if (! $this->user) {
+        if (! $this->otpUser) {
             throw ValidationException::withMessages([
                 'emailOrPhone' => __('auth.failed'),
             ]);
@@ -60,7 +61,7 @@ class Login extends Component
 
         if (isEmail($this->emailOrPhone)) {
             $this->usingPhone = false;
-            $this->user->sendOneTimePassword();
+            $this->otpUser->sendOneTimePassword();
         } else {
             $this->usingPhone = true;
         }
@@ -70,7 +71,7 @@ class Login extends Component
 
     public function resendOtp(): void
     {
-        $this->user->sendOneTimePassword();
+        $this->otpUser->sendOneTimePassword();
     }
 
     private function toggleShowOtpForm(): void
@@ -125,7 +126,7 @@ class Login extends Component
     {
         $this->ensureIsNotRateLimited();
 
-        $result = $this->user->attemptLoginUsingOneTimePassword($oneTimePassword, remember: $this->remember);
+        $result = $this->otpUser->attemptLoginUsingOneTimePassword($oneTimePassword, remember: $this->remember);
 
         if ($result->isOk()) {
             // it is best practice to regenerate the session id after a login

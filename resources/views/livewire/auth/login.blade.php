@@ -10,13 +10,12 @@
             <flux:field class="text-5xl">
                 <flux:label class="text-white">Alamat email atau nomor handphone</flux:label>
 
-                <flux:input.group>
-                    @if ($emailOrPhone && !isEmail($emailOrPhone))
-                        <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix>
-                    @endif
-                    <flux:input class="text-black" :icon="$emailOrPhone && !isEmail($emailOrPhone) ? null : 'user'"
-                        name="emailOrPhone" wire:model.live="emailOrPhone" required autofocus autocomplete="email" />
-                </flux:input.group>
+
+                <flux:input class="text-black" icon="user" name="emailOrPhone" wire:model="emailOrPhone" required
+                    autofocus autocomplete="email" />
+
+                <flux:error class="text-white" name="emailOrPhone" />
+
 
             </flux:field>
 
@@ -54,7 +53,7 @@
             <div class="relative mx-auto max-w-md">
                 <x-ui.otp title="Verifikasi Nomor telepon"
                     desc="Masukkan kode verifikasi 6 digit yang dikirim ke {{ $usingPhone ? 'nomor Whatsapp' : 'email' }} kamu."
-                    wire:model="otpCode" :length="6" />
+                    wire:model.live="otpCode" :length="6" />
             </div>
         @endif
     </form>
