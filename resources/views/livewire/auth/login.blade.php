@@ -53,7 +53,7 @@
             <div class="relative mx-auto max-w-md">
                 <x-ui.otp title="Verifikasi Nomor telepon"
                     desc="Masukkan kode verifikasi 6 digit yang dikirim ke {{ $usingPhone ? 'nomor Whatsapp' : 'email' }} kamu."
-                    wire:model.live="otpCode" :length="6" />
+                    wire:model="otpCode" :length="6" />
             </div>
         @endif
     </form>
