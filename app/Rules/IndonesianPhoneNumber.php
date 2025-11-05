@@ -15,7 +15,7 @@ class IndonesianPhoneNumber implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         // Validasi format nomor telepon Indonesia
-        if (preg_match('/^+628[0-9]{8,12}$/', $value)) {
+        if (! checkPhoneFormat($value)) {
             $fail('Format nomor telepon tidak valid. Harap gunakan format +628xxxxxxxxxx.');
         }
     }

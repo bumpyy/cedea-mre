@@ -11,13 +11,13 @@
             <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
         </a>
         <div class="relative">
-            <div class="absolute -left-3/4 bottom-0 max-md:hidden md:h-[70dvh]">
+            <div class="-left-11/12 absolute bottom-0 max-md:hidden md:h-[70dvh]">
                 <img class="h-full w-auto" src="{{ asset('img/eomuk-cheese-mascot-2.png') }}" alt="">
             </div>
             <div class="flex flex-col gap-6">
                 {{ $slot }}
             </div>
-            <div class="-right-3/5 absolute bottom-0 max-md:hidden md:h-[70dvh]">
+            <div class="-right-4/5 absolute bottom-0 max-md:hidden md:h-[70dvh]">
                 <img class="h-full w-auto" src="{{ asset('img/eomuk-chili-mascot-2.png') }}" alt="">
             </div>
         </div>

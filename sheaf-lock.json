@@ -1,0 +1,9 @@
+{
+    "files": [],
+    "helpers": [],
+    "internalDependencies": {
+        "separator": [
+            "otp"
+        ]
+    }
+}

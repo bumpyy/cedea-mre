@@ -18,9 +18,13 @@
                     @else
                         <p class="max-md:text-sm">{{ auth()->user()->email }}</p>
                 @endif
-
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
-                <p class="max-md:text-sm">{{ auth()->user()->phone }}</p>
+
+                @if (!empty(auth()->user()->email) && !auth()->user()->hasVerifiedEmail())
+                    <livewire:dashboard-phone-verify>
+                    @else
+                        <p class="max-md:text-sm">{{ auth()->user()->phone }}</p>
+                @endif
             </div>
 
             <div class="relative z-[0]">

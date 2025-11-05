@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Features;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -20,15 +21,77 @@ class Login extends Component
     #[Validate('required|string')]
     public string $emailOrPhone = '';
 
-    #[Validate('required|string')]
+    #[Validate('string')]
     public string $password = '';
 
+    public ?User $user;
+
     public bool $remember = false;
+
+    #[Locked]
+    public bool $showOtpForm = false;
+
+    #[Locked]
+    public bool $usingPhone = false;
+
+    public string $otpCode;
+
+    public function login(): void
+    {
+        if ($this->showOtpForm) {
+            $this->loginOtp($this->otpCode);
+
+            return;
+        }
+
+        if ($this->password) {
+            $this->loginPassword();
+
+            return;
+        }
+
+        $this->user = User::where('email', $this->emailOrPhone)->orWhere('phone', $this->emailOrPhone)->first();
+
+        if (! $this->user) {
+            throw ValidationException::withMessages([
+                'emailOrPhone' => __('auth.failed'),
+            ]);
+        }
+
+        if (isEmail($this->emailOrPhone)) {
+            $this->usingPhone = false;
+            $this->user->sendOneTimePassword();
+        } else {
+            $this->usingPhone = true;
+        }
+
+        $this->showOtpForm = true;
+    }
+
+    public function resendOtp(): void
+    {
+        $this->user->sendOneTimePassword();
+    }
+
+    private function toggleShowOtpForm(): void
+    {
+        $this->showOtpForm = ! $this->showOtpForm;
+    }
+
+    private function toggleUsingPhone(): void
+    {
+        $this->usingPhone = ! $this->usingPhone;
+    }
+
+    public function resetForm(): void
+    {
+        $this->reset();
+    }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    private function loginPassword(): void
     {
         $this->validate();
 
@@ -58,33 +121,22 @@ class Login extends Component
     /**
      * Handle an incoming authentication request.
      */
-    public function loginOtp($oneTimePassword): void
+    private function loginOtp($oneTimePassword): void
     {
-        $this->validate();
-
         $this->ensureIsNotRateLimited();
 
-        $user = $this->validateCredentials();
-
-        $result = $user->attemptLoginUsingOneTimePassword($oneTimePassword);
+        $result = $this->user->attemptLoginUsingOneTimePassword($oneTimePassword, remember: $this->remember);
 
         if ($result->isOk()) {
             // it is best practice to regenerate the session id after a login
             Session::regenerate();
 
-            redirect()->intended('dashboard');
+            redirect()->intended(route('dashboard', absolute: false));
         }
 
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);
-
-        Auth::login($user, $this->remember);
-
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
-
-        redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**

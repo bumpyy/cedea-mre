@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use App\Rules\IndonesianPhoneNumber;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -61,10 +62,13 @@ class Register extends Component
             'accept_terms' => ['required', 'accepted'],
         ];
 
+        $phoneRule = ['required', 'string', 'max:12', 'unique:'.User::class, new IndonesianPhoneNumber];
+        $emailRule = ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class];
+
         if (! $this->email) {
             $baseRule = [
                 ...$baseRule,
-                'phone' => ['required', 'string', 'max:255', 'unique:'.User::class],
+                'phone' => $phoneRule,
             ];
             $this->email = null;
         }
@@ -72,7 +76,7 @@ class Register extends Component
         if (! $this->phone) {
             $baseRule = [
                 ...$baseRule,
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+                'email' => $emailRule,
             ];
 
             $this->phone = null;
@@ -81,8 +85,8 @@ class Register extends Component
         if ($this->email && $this->phone) {
             $baseRule = [
                 ...$baseRule,
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-                'phone' => ['required', 'string', 'max:255'],
+                'email' => $emailRule,
+                'phone' => $phoneRule,
             ];
         }
 

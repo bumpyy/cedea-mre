@@ -71,6 +71,28 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     }
 
     /**
+     * Determine if the user has verified their Whatsapp.
+     *
+     * @return bool
+     */
+    public function hasVerifiedPhone()
+    {
+        return ! is_null($this->phone_verified_at);
+    }
+
+    /**
+     * Mark the given user's Whatsapp as verified.
+     *
+     * @return bool
+     */
+    public function markPhoneAsVerified()
+    {
+        return $this->forceFill([
+            'phone_verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
+
+    /**
      * Get all of the submissions for the User
      */
     public function submissions(): HasMany
