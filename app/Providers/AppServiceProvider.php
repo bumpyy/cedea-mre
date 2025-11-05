@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
         //         ->prefix(LaravelLocalization::setLocale());
         // });
 
-        Event::listen(function (MicrosoftGraphCallbackReceived $event) {
-            session()->put('microsoftgraph-access-data', $event->accessData);
-        });
+        // Event::listen(function (MicrosoftGraphCallbackReceived $event) {
+        //     session()->put('microsoftgraph-access-data', $event->accessData);
+        // });
     }
 }

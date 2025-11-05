@@ -182,3 +182,7 @@ body {
 .filepond--credits {
     display: none;
 }
+
+[x-cloak] {
+    display: none;
+}

@@ -12,6 +12,7 @@
         "php": "^8.2",
         "filament/filament": "^4.0",
         "filament/spatie-laravel-media-library-plugin": "^4.1",
+        "innoge/laravel-msgraph-mail": "^1.4",
         "jacobtims/filament-logger": "^1.0",
         "kenepa/resource-lock": "^4.0",
         "laravel/fortify": "^1.30",
