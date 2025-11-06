@@ -92,6 +92,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         ])->save();
     }
 
+    public function isVerified()
+    {
+        return $this->hasVerifiedPhone() || $this->hasVerifiedEmail();
+    }
+
     /**
      * Get all of the submissions for the User
      */

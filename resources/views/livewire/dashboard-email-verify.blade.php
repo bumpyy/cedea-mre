@@ -8,7 +8,7 @@
 
     </div>
     @if (session('status') == 'verification-link-sent')
-        <flux:text class="!dark:text-green-400 font-medium !text-green-600">
+        <flux:text class="!dark:text-green-400 text-green-600! font-medium">
             Tautan verifikasi baru telah dikirim ke alamat surel yang Anda berikan saat registrasi.
         </flux:text>
     @endif

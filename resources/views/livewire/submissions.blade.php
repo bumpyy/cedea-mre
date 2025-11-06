@@ -1,5 +1,5 @@
 <div class="grid gap-6 md:grid-cols-[60%_1fr]">
-    <div class="rounded-2xl bg-white p-4 max-md:order-2 md:rounded-[2rem] md:p-8">
+    <div class="md:rounded-4xl rounded-2xl bg-white p-4 max-md:order-2 md:p-8">
         <h2 class="text-cedea-blue text-xl font-bold md:text-2xl">Riwayat Struk Undian Saya</h2>
 
         <hr class="my-4 h-1 bg-gray-400/50" />
@@ -16,27 +16,19 @@
     </div>
 
     <div class="order-1 flex cursor-pointer flex-col gap-4 text-white"
-        @if (empty(auth()->user()->email)) @if (auth()->user()->hasVerifiedEmail())
-                        Harap verifikasi email Anda terlebih dahulu
-                    @else
-    wire:click="$dispatch('openModal', { component: 'upload-form' })" @endif
-    @else wire:click="$dispatch('openModal', { component: 'upload-form' })" @endif>
+        @if (auth()->user()->isVerified()) wire:click="$dispatch('openModal', { component: 'upload-form' })" @endif>
         <div @class([
-            'flex h-full flex-col items-center justify-center rounded-2xl bg-white p-4 text-center md:rounded-[2rem] md:p-8',
-            // 'grayscale' => !auth()->user()->hasVerifiedEmail(),
+            'flex h-full flex-col items-center justify-center rounded-2xl bg-white p-4 text-center md:rounded-4xl md:p-8',
+            'grayscale' => !auth()->user()->isVerified(),
         ])>
             <img class="text-cedea-red max-w-1/6" src="{{ asset('img/receipt-up.svg') }}" />
             <p @class([
                 'text-cedea-red font-montserrat text-xl font-bold md:w-2/3 md:text-3xl',
             ])>
-                @if (empty(auth()->user()->email))
-                    @if (auth()->user()->hasVerifiedEmail())
-                        Harap verifikasi email Anda terlebih dahulu
-                    @else
-                        Upload foto struk disini
-                    @endif
-                @else
+                @if (auth()->user()->isVerified())
                     Upload foto struk disini
+                @else
+                    Harap verifikasi akun Anda terlebih dahulu
                 @endif
             </p>
         </div>

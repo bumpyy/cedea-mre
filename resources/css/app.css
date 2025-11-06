@@ -98,7 +98,7 @@
 }
 
 @utility grid-overlay {
-    @apply [&>*]:col-start-1 [&>*]:row-start-1;
+    @apply *:col-start-1 *:row-start-1;
 }
 
 @utility container {
@@ -111,7 +111,7 @@
 }
 
 [data-flux-label] {
-    @apply !mb-0 !leading-tight;
+    @apply mb-0! leading-tight!;
 }
 
 [data-flux-input-group-prefix] {

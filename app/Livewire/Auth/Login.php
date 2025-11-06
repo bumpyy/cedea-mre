@@ -14,6 +14,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 
 #[Layout('components.layouts.auth')]
 class Login extends Component
@@ -59,7 +60,7 @@ class Login extends Component
         }
 
         if ($this->showOtpForm) {
-            $this->loginOtp($this->otpCode);
+            $this->loginOtp();
 
             return;
         }
@@ -134,15 +135,33 @@ class Login extends Component
     /**
      * Handle an incoming authentication request.
      */
-    private function loginOtp($oneTimePassword): void
+    private function loginOtp(): void
     {
         $this->ensureIsNotRateLimited();
 
-        $result = $this->otpUser->attemptLoginUsingOneTimePassword($oneTimePassword, remember: $this->remember);
+        if (! isEmail($this->emailOrPhone) && env('MOCK_PHONE_OTP', false)) {
+            $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
+        } else {
+            $result = $this->otpUser->attemptLoginUsingOneTimePassword($this->otpCode, remember: $this->remember);
+        }
 
         if ($result->isOk()) {
+            if (env('MOCK_PHONE_OTP', false)) {
+                Auth::login($this->otpUser, $this->remember);
+            }
+
             // it is best practice to regenerate the session id after a login
             Session::regenerate();
+
+            if (isEmail($this->emailOrPhone)) {
+                if (auth()->user() && ! auth()->user()->hasVerifiedEmail()) {
+                    auth()->user()->markEmailAsVerified();
+                }
+            } else {
+                if (auth()->user() && ! auth()->user()->hasVerifiedPhone()) {
+                    auth()->user()->markPhoneAsVerified();
+                }
+            }
 
             redirect()->intended(route('dashboard', absolute: false));
         }

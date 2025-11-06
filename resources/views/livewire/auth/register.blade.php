@@ -73,7 +73,7 @@
         </flux:field>
 
         <div class="flex items-center justify-center">
-            <flux:button class="w-fit bg-amber-400 !px-8" data-test="login-button" variant="primary" type="submit">
+            <flux:button class="px-8! w-fit bg-amber-400" data-test="login-button" variant="primary" type="submit">
                 Daftar sekarang
             </flux:button>
         </div>
