@@ -33,7 +33,7 @@
             <flux:label class="text-white">No. HP</flux:label>
 
             <flux:input.group>
-                <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix>
+                {{-- <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix> --}}
                 <flux:input class="text-black" name="phone" type="phone" wire:model="phone" autocomplete="phone"
                     placeholder="Isi nomor handphone kamu" />
             </flux:input.group>

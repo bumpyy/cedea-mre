@@ -38,14 +38,20 @@ class Login extends Component
 
     protected function rules()
     {
-        return [
-            'emailOrPhone' => isEmail($this->emailOrPhone) ? 'email' : 'phone:ID'.'|required|string',
+        $emailRule = ['emailOrPhone' => isEmail($this->emailOrPhone) ? 'email' : 'phone:ID'.'|required|string'];
+
+        return $this->password ? [
+            ...$emailRule,
             'password' => 'required|min:3',
+        ] : [
+            ...$emailRule,
         ];
     }
 
     public function login(): void
     {
+        $this->validate();
+
         if ($this->password) {
             $this->loginPassword();
 
@@ -101,7 +107,6 @@ class Login extends Component
      */
     private function loginPassword(): void
     {
-        $this->validate();
 
         $this->ensureIsNotRateLimited();
 
