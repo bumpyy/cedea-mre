@@ -51,7 +51,7 @@
             </div>
         @else
             <div class="relative mx-auto max-w-md">
-                <x-ui.otp title="Verifikasi Nomor telepon"
+                <x-ui.otp title="Verifikasi {{ $usingPhone ? 'Whatsapp' : 'E-mail' }}"
                     desc="Masukkan kode verifikasi 6 digit yang dikirim ke {{ $usingPhone ? 'nomor Whatsapp' : 'email' }} kamu."
                     wire:model="otpCode" :length="6" />
             </div>

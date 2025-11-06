@@ -11,7 +11,7 @@
     @else
         <div class="inline-flex flex-col gap-4">
             <form method="POST" wire:submit="verifyOtp">
-                <x-ui.otp title="Verifikasi Nomor telepon"
+                <x-ui.otp title="Verifikasi Whatsapp"
                     desc="Masukkan kode verifikasi 6 digit yang dikirim ke nomor Whatsapp kamu." wire:model="otpCode"
                     :length="6" />
             </form>
