@@ -16,14 +16,27 @@
                 @if (!empty(auth()->user()->email) && !auth()->user()->hasVerifiedEmail())
                     <livewire:dashboard-email-verify>
                     @else
-                        <p class="max-md:text-sm">{{ auth()->user()->email }}</p>
+                        <p class="inline-flex items-center max-md:text-sm">
+                            {{ auth()->user()->email }}
+                            @if (auth()->user()->hasVerifiedEmail())
+                                <span class="ml-2 inline-block size-6 rounded-full text-green-300">
+                                    <x-lucide-badge-check />
+                                </span>
+                            @endif
+                        </p>
                 @endif
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
 
                 @if (!empty(auth()->user()->phone) && !auth()->user()->hasVerifiedPhone())
                     <livewire:dashboard-phone-verify>
                     @else
-                        <p class="max-md:text-sm">{{ auth()->user()->phone }}</p>
+                        <p class="inline-flex items-center max-md:text-sm">{{ auth()->user()->phone }}
+                            @if (auth()->user()->hasVerifiedPhone())
+                                <span class="ml-2 inline-block size-6 rounded-full text-green-300">
+                                    <x-lucide-badge-check />
+                                </span>
+                            @endif
+                        </p>
                 @endif
             </div>
 
