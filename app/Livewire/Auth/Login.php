@@ -36,17 +36,24 @@ class Login extends Component
 
     public string $otpCode = '';
 
+    protected function rules()
+    {
+        return [
+            'emailOrPhone' => isEmail($this->emailOrPhone) ? 'email' : 'phone:ID'.'|required|string',
+            'password' => 'required|min:3',
+        ];
+    }
+
     public function login(): void
     {
-        if ($this->showOtpForm) {
-
-            $this->loginOtp($this->otpCode);
+        if ($this->password) {
+            $this->loginPassword();
 
             return;
         }
 
-        if ($this->password) {
-            $this->loginPassword();
+        if ($this->showOtpForm) {
+            $this->loginOtp($this->otpCode);
 
             return;
         }
@@ -100,16 +107,16 @@ class Login extends Component
 
         $user = $this->validateCredentials();
 
-        if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
-            Session::put([
-                'login.id' => $user->getKey(),
-                'login.remember' => $this->remember,
-            ]);
+        // if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
+        //     Session::put([
+        //         'login.id' => $user->getKey(),
+        //         'login.remember' => $this->remember,
+        //     ]);
 
-            redirect(route('two-factor.login'));
+        //     redirect(route('two-factor.login'));
 
-            return;
-        }
+        //     return;
+        // }
 
         Auth::login($user, $this->remember);
 

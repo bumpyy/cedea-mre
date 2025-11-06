@@ -8,7 +8,7 @@
     'desc' => null,
 ])
 
-<div class="mx-auto max-w-md rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8" x-data="{
+<div class="max-w-md rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8" x-data="{
     state: '',
     inputs: [],
     length: @js($length),

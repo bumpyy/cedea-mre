@@ -2,25 +2,63 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class DashboardPhoneVerify extends Component
 {
     #[Locked]
-    public bool $openOtpForm = false;
+    public bool $showOtpForm = false;
 
-    #[Locked]
     public string $otpCode = '';
+
+    public function resetForm(): void
+    {
+        $this->reset();
+    }
+
+    public function handleShowOtpForm(): void
+    {
+        $this->showOtpForm = true;
+        $this->sendOtp();
+    }
 
     public function sendOtp(): void
     {
-        auth()->user()->createOneTimePassword();
+        $this->resendOtp();
     }
 
     public function resendOtp(): void
     {
-        auth()->user()->sendOneTimePassword();
+
+        if (Auth::user()->hasVerifiedPhone()) {
+            $this->showOtpForm = false;
+            redirect()->intended(default: route('dashboard', absolute: false));
+
+            return;
+        }
+
+        // TODO: Handle whatsapp api to send otp
+        auth()->user()->createOneTimePassword();
+    }
+
+    public function verifyOtp(): void
+    {
+        if (env('MOCK_PHONE_OTP', false)) {
+            $result = Auth::user()->consumeOneTimePassword($this->otpCode);
+            if ($result->isOk()) {
+                $this->showOtpForm = false;
+                Auth::user()->markPhoneAsVerified();
+                redirect()->intended(default: route('dashboard', absolute: false));
+            }
+
+            throw ValidationException::withMessages([
+                'one_time_password' => $result->validationMessage(),
+            ]);
+        }
+
     }
 
     public function render()

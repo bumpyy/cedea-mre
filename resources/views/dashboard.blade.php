@@ -20,7 +20,7 @@
                 @endif
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
 
-                @if (!empty(auth()->user()->email) && !auth()->user()->hasVerifiedEmail())
+                @if (!empty(auth()->user()->phone) && !auth()->user()->hasVerifiedPhone())
                     <livewire:dashboard-phone-verify>
                     @else
                         <p class="max-md:text-sm">{{ auth()->user()->phone }}</p>
