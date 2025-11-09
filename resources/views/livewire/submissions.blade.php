@@ -15,12 +15,13 @@
         </div>
     </div>
 
-    <div class="order-1 flex cursor-pointer flex-col gap-4 text-white"
-        @if (auth()->user()->isVerified()) wire:click="$dispatch('openModal', { component: 'upload-form' })" @endif>
-        <div @class([
-            'flex h-full flex-col items-center justify-center rounded-2xl bg-white p-4 text-center md:rounded-4xl md:p-8',
-            'grayscale' => !auth()->user()->isVerified(),
-        ])>
+    <div class="order-1 flex flex-col gap-4 text-white">
+        <div @if (auth()->user()->isVerified()) wire:click="$dispatch('openModal', { component: 'upload-form' })" @endif
+            @class([
+                'flex h-full flex-col  items-center justify-center rounded-2xl bg-white p-4 text-center md:rounded-4xl md:p-8',
+                'grayscale' => !auth()->user()->isVerified(),
+                'cursor-pointer' => auth()->user()->isVerified(),
+            ])>
             <img class="text-cedea-red max-w-1/6" src="{{ asset('img/receipt-up.svg') }}" />
             <p @class([
                 'text-cedea-red font-montserrat text-xl font-bold md:w-2/3 md:text-3xl',

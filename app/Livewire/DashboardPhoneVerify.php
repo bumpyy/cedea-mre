@@ -47,6 +47,7 @@ class DashboardPhoneVerify extends Component
 
     public function verifyOtp(): void
     {
+
         if (env('MOCK_PHONE_OTP', false)) {
             $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
         } else {
