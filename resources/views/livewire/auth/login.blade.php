@@ -20,8 +20,8 @@
         <!-- Password -->
         <div class="relative">
             <flux:field>
-                <flux:label class="flex justify-between text-white">Password <span
-                        class="text-xs text-white/80">kosongkan untuk login dengan otp</span>
+                <flux:label class="flex justify-between text-white">
+                    Password
                 </flux:label>
                 <flux:input class="text-black" icon="lock-closed" name="password" type="password" wire:model="password"
                     autocomplete="current-password" placeholder="Password" viewable />
