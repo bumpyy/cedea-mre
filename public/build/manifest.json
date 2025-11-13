@@ -108,7 +108,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BpZtoO_L.css",
+    "file": "assets/app-BvZxo5Oy.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -117,7 +117,7 @@
     ]
   },
   "resources/css/filament/admin/theme.css": {
-    "file": "assets/theme-CrLrlfhx.css",
+    "file": "assets/theme-BOY8QSjw.css",
     "src": "resources/css/filament/admin/theme.css",
     "isEntry": true,
     "name": "theme",

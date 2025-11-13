@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use Asmit\ResizedColumn\ResizedColumnPlugin;
+use Cmsmaxinc\FilamentErrorPages\FilamentErrorPagesPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -67,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentPanzoomPlugin::make(),
                 ResourceLockPlugin::make(),
                 FilamentLoggerPlugin::make(),
+                FilamentErrorPagesPlugin::make(),
                 FilamentLaravelLogPlugin::make()
                     ->navigationGroup('System')
                  // ->navigationParentItem('Tools')

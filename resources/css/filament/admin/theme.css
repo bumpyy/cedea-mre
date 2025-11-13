@@ -7,3 +7,4 @@
 @source '../../../../vendor/saade/filament-laravel-log/resources/views/**/*.blade.php';
 @source '../../../../vendor/jaocero/radio-deck/resources/views';
 @source '../../../../vendor/solution-forest/filament-panzoom/resources/views/**/*.blade.php';
+@source '../../../../vendor/cmsmaxinc/filament-error-pages/resources/**/*.blade.php';
