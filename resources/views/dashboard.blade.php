@@ -58,6 +58,5 @@
     </section>
 
     @filepondScripts
-    @livewire('wire-elements-modal')
     {{-- </x-layouts.dashboard> --}}
 </x-layouts.app>

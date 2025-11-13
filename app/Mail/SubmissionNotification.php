@@ -35,7 +35,7 @@ class SubmissionNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.submission',
+            view: 'mail.submission-rejected',
         );
     }
 

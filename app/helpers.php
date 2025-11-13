@@ -9,7 +9,7 @@ if (! function_exists('checkPhoneFormat')) {
      */
     function checkPhoneFormat(string $input): bool
     {
-        $phoneRegex = '/8[0-9]{8,12}$/';
+        $phoneRegex = '/62[0-9]{8,16}$/';
 
         return preg_match($phoneRegex, $input);
     }
