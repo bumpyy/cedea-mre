@@ -2,12 +2,19 @@
 
 namespace App\Filament\Resources\Submissions\Pages;
 
+use App\Enum\SubmissionStatusEnum;
 use App\Filament\Resources\Submissions\SubmissionResource;
+use App\Models\Submission;
+use Asmit\ResizedColumn\HasResizableColumn;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Schemas\Components\Tabs\Tab;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListSubmissions extends ListRecords
 {
+    use HasResizableColumn;
+
     protected static string $resource = SubmissionResource::class;
 
     protected function getHeaderActions(): array
@@ -15,5 +22,32 @@ class ListSubmissions extends ListRecords
         return [
             // CreateAction::make(),
         ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(),
+            SubmissionStatusEnum::PENDING->value => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', SubmissionStatusEnum::PENDING))
+                ->badge(Submission::query()->where('status', SubmissionStatusEnum::PENDING)->count())
+                ->badgeColor(SubmissionStatusEnum::PENDING->getColor())
+                ->icon(SubmissionStatusEnum::PENDING->getIcon()),
+            SubmissionStatusEnum::ACCEPTED->value => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', SubmissionStatusEnum::ACCEPTED))
+                ->badge(Submission::query()->where('status', SubmissionStatusEnum::ACCEPTED)->count())
+                ->badgeColor(SubmissionStatusEnum::ACCEPTED->getColor())
+                ->icon(SubmissionStatusEnum::ACCEPTED->getIcon()),
+            SubmissionStatusEnum::REJECTED->value => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', SubmissionStatusEnum::REJECTED))
+                ->badge(Submission::query()->where('status', SubmissionStatusEnum::REJECTED)->count())
+                ->badgeColor(SubmissionStatusEnum::REJECTED->getColor())
+                ->icon(SubmissionStatusEnum::REJECTED->getIcon()),
+        ];
+    }
+
+    public function getDefaultActiveTab(): string|int|null
+    {
+        return SubmissionStatusEnum::PENDING->value;
     }
 }

@@ -10,7 +10,6 @@ return [
 
     'quality.title' => 'Mutu yang Tetap Terjaga',
     'quality.detail' => 'CEDEA SEAFOOD diproduksi oleh PT CitraDimensi Arthali yang berkomitmen untuk terus menghasilkan makanan beku dari ikan olahan terbaik dengan penerapan GMP, HACCP, ISO 22000, BPOM, Halal.',
-    'marketplace.title' => '<span>Nggak Ada Waktu Belanja?</span> <br> <span>Pesan Online Solusinya!</span>'
-
+    'marketplace.title' => '<span>Nggak Ada Waktu Belanja?</span> <br> <span>Pesan Online Solusinya!</span>',
 
 ];

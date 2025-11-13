@@ -9,13 +9,13 @@
         <div class="max-md:grid-overlay md:rounded-4xl relative grid rounded-2xl bg-white md:grid-cols-2">
 
             <div class="z-1 flex flex-col p-6 text-lg leading-relaxed md:p-12">
-                <h1 class="text-cedea-blue mb-2 text-3xl font-bold md:mb-12 md:text-5xl">Halo, {{ auth()->user()->name }}
+                <h1 class="text-cedea-blue mb-2 text-3xl font-bold md:mb-12 md:text-5xl">
+                    Halo, {{ auth()->user()->name }}
                 </h1>
 
                 <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
 
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
-
                 @if (!auth()->user()->isVerified())
                     <p class="text-cedea-red/70 max-md:text-xs">Silahkan verifikasi email atau whatsapp anda terlebih
                         dahulu</p>
@@ -28,7 +28,7 @@
                             {{ auth()->user()->email }}
                             @if (auth()->user()->hasVerifiedEmail())
                                 <span class="ml-2 inline-block size-6 rounded-full text-green-300">
-                                    <x-lucide-badge-check />
+                                    <x-lucide-circle-check-big />
                                 </span>
                             @endif
                         </p>
@@ -40,7 +40,7 @@
                         <p class="inline-flex items-center max-md:text-sm">{{ auth()->user()->phone }}
                             @if (auth()->user()->hasVerifiedPhone())
                                 <span class="ml-2 inline-block size-6 rounded-full text-green-300">
-                                    <x-lucide-badge-check />
+                                    <x-lucide-circle-check-big />
                                 </span>
                             @endif
                         </p>

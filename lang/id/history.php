@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 return [
@@ -23,5 +22,5 @@ return [
     '2022.detail' => 'Perusahaan semakin maju, dan mulai melakukan promosi dan iklan di TV lokal, theme park, hingga acara - acara musik di Indonesia, hingga saat ini CEDEA menjadi market leader di antara produsen ikan olahan beku indonesia.',
 
     '2024.title' => 'Berdiri Pabrik Baru',
-    '2024.detail' => 'PT. CitraDimensi Arthali kembali memperluas perusahaan dengan membangun pabrik baru di kota Semarang, Jawa Tengah.'
+    '2024.detail' => 'PT. CitraDimensi Arthali kembali memperluas perusahaan dengan membangun pabrik baru di kota Semarang, Jawa Tengah.',
 ];

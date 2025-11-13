@@ -59,18 +59,22 @@
         </flux:field>
 
         {{-- Term --}}
-        <flux:field variant="inline">
-            <flux:checkbox wire:model="accept_terms" />
+        <div class="flex gap-2">
+            <flux:field variant="inline">
+                <flux:checkbox wire:model="accept_terms" />
+
+                <flux:error name="accept_terms" />
+            </flux:field>
             <flux:label>
-                <p class="text-white">
-                    Dengan mendaftar, saya setuju dengan</span>
+                <p class="cursor-pointer text-white" wire:click="$dispatch('openModal', { component: 'terms-list' })">
+                    Dengan mendaftar, saya setuju dengan
                     <span class="font-bold">
                         Syarat & Ketentuan yang berlaku
                     </span>
                 </p>
             </flux:label>
-            <flux:error name="accept_terms" />
-        </flux:field>
+        </div>
+
 
         <div class="flex items-center justify-center">
             <flux:button class="px-8! w-fit bg-amber-400" data-test="login-button" variant="primary" type="submit">

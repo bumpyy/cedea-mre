@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 #[Layout('components.layouts.auth')]
@@ -48,11 +49,23 @@ class Register extends Component
         'accept_terms' => 'Syarat & Ketentuan',
     ];
 
+    #[On('accept-terms')]
+    public function acceptTerms(): void
+    {
+        $this->accept_terms = true;
+    }
+
     /**
      * Handle an incoming registration request.
      */
     public function register(): void
     {
+        if (! $this->accept_terms) {
+            $this->dispatch('openModal', component: 'terms-list');
+
+            return;
+        }
+
         $baseRule = [
             'name' => ['required', 'string', 'max:255'],
 
@@ -62,33 +75,39 @@ class Register extends Component
             'accept_terms' => ['required', 'accepted'],
         ];
 
-        $phoneRule = ['required', 'string', 'max:12', 'unique:'.User::class, new IndonesianPhoneNumber];
+        $phoneRule = ['required', 'string', 'unique:'.User::class, new IndonesianPhoneNumber];
         $emailRule = ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class];
 
-        if (! $this->email) {
-            $baseRule = [
-                ...$baseRule,
-                'phone' => $phoneRule,
-            ];
-            $this->email = null;
-        }
+        // if (! $this->email) {
+        //     $baseRule = [
+        //         ...$baseRule,
+        //         'phone' => $phoneRule,
+        //     ];
+        //     $this->email = null;
+        // }
 
-        if (! $this->phone) {
-            $baseRule = [
-                ...$baseRule,
-                'email' => $emailRule,
-            ];
+        // if (! $this->phone) {
+        //     $baseRule = [
+        //         ...$baseRule,
+        //         'email' => $emailRule,
+        //     ];
 
-            $this->phone = null;
-        }
+        //     $this->phone = null;
+        // }
 
-        if ($this->email && $this->phone) {
-            $baseRule = [
-                ...$baseRule,
-                'email' => $emailRule,
-                'phone' => $phoneRule,
-            ];
-        }
+        // if ($this->email && $this->phone) {
+        //     $baseRule = [
+        //         ...$baseRule,
+        //         'email' => $emailRule,
+        //         'phone' => $phoneRule,
+        //     ];
+        // }
+
+        $baseRule = [
+            ...$baseRule,
+            'email' => $emailRule,
+            'phone' => $phoneRule,
+        ];
 
         $validated = $this->validate([
             ...$baseRule,

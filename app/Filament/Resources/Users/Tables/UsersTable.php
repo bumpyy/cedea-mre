@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use Deldius\UserField\UserColumn;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
 
 class UsersTable
 {
@@ -15,17 +18,23 @@ class UsersTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('email')
+
+                UserColumn::make('id')
+                    ->size(Size::Small) // Set avatar size
+                    ->label('User')// Column label
+                ,
+                // TextColumn::make('name')
+                //     ->toggleable(isToggledHiddenByDefault: true)
+                //     ->searchable(),
+                CopyableTextColumn::make('email')
                     ->label('Email address')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                TextColumn::make('phone')
-                    ->searchable(),
+                CopyableTextColumn::make('phone'),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('two_factor_confirmed_at')
+                TextColumn::make('phone_verified_at')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
@@ -48,6 +57,9 @@ class UsersTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->searchable(['name', 'email', 'phone'])
+            ->searchPlaceholder('Search (Name, Email, Phone)');
+
     }
 }

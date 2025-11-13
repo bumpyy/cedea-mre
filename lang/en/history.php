@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 return [
@@ -23,5 +22,5 @@ return [
     '2022.detail' => 'The company continued to grow and began to promote and advertise on local TV, theme parks, and music events in Indonesia, making CEDEA the market leader among frozen fish producers in Indonesia.',
 
     '2024.title' => 'Building a New Factory',
-    '2024.detail' => 'PT. CitraDimensi Arthali expanded its company by building a new factory in Semarang, Central Java.'
+    '2024.detail' => 'PT. CitraDimensi Arthali expanded its company by building a new factory in Semarang, Central Java.',
 ];

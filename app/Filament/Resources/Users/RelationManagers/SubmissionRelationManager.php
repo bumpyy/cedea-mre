@@ -2,7 +2,8 @@
 
 namespace App\Filament\Resources\Users\RelationManagers;
 
-use App\Enum\SubmissionStatusEnum;
+use App\Filament\Resources\Submissions\Schemas\SubmissionForm;
+use App\Filament\Resources\Submissions\Schemas\SubmissionInfolist;
 use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -12,9 +13,6 @@ use Filament\Actions\DissociateAction;
 use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -26,38 +24,14 @@ class SubmissionRelationManager extends RelationManager
 
     public function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('receipt_number')
-                    ->required(),
-                Select::make('status')
-                    ->options(SubmissionStatusEnum::class)
-                    ->selectablePlaceholder(false)
-                    ->required()
-                    ->default('pending'),
-                TextInput::make('note'),
-            ]);
+        return SubmissionForm::configure($schema);
+
     }
 
     public function infolist(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextEntry::make('receipt_number'),
-                TextEntry::make('status')
-                    ->badge(),
-                TextEntry::make('note')
-                    ->placeholder('-'),
-                TextEntry::make('admin.name')
-                    ->default('-')
-                    ->placeholder('-'),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-            ]);
+        return SubmissionInfolist::configure($schema);
+
     }
 
     public function table(Table $table): Table
@@ -65,6 +39,8 @@ class SubmissionRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('receipt_number')
             ->columns([
+                TextColumn::make('uuid')
+                    ->searchable(),
                 TextColumn::make('receipt_number')
                     ->searchable(),
                 TextColumn::make('status')
@@ -94,12 +70,12 @@ class SubmissionRelationManager extends RelationManager
                 ViewAction::make(),
                 EditAction::make(),
                 // DissociateAction::make(),
-                DeleteAction::make(),
+                // DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DissociateBulkAction::make(),
-                    DeleteBulkAction::make(),
+                    // DissociateBulkAction::make(),
+                    // DeleteBulkAction::make(),
                 ]),
             ])
             ->defaultGroup('status');

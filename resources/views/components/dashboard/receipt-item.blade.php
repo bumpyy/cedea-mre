@@ -4,7 +4,7 @@
 <div
     class="text-cedea-gold flex items-center gap-4 rounded-lg border p-2 pr-6 transition-[background] hover:bg-slate-300/50">
     <div class="bg-cedea-gold shrink basis-20 cursor-pointer rounded-md p-4"
-        wire:click="$dispatch('openModal', { component: 'view-submission', arguments: { id: {{ $submission->id }} } })"
+        wire:click="$dispatch('openModal', { component: 'view-submission', arguments: { uuid: '{{ $submission->uuid }}' } })"
         wire:key="{{ $submission->id }}">
         <img class="text-white" alt="receipt-icon" src="{{ asset('img/receipt.svg') }}" />
     </div>

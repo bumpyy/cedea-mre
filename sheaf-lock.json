@@ -4,6 +4,13 @@
     "internalDependencies": {
         "separator": [
             "otp"
+        ],
+        "icon": [
+            "button",
+            "key-value"
+        ],
+        "button": [
+            "key-value"
         ]
     }
 }

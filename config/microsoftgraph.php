@@ -1,6 +1,7 @@
 <?php
+
 return [
-   /*
+    /*
    |--------------------------------------------------------------------------
    | Microsoft Graph OAuth2 Credentials
    |--------------------------------------------------------------------------
@@ -9,11 +10,11 @@ return [
    | using OAuth2. You must configure these in your Azure AD App Registration.
    |
    */
-   'tenant' => env('MS_TENANT_ID'),
-   'client_id' => env('MS_CLIENT_ID'),
-   'client_secret' => env('MS_CLIENT_SECRET'),
-   'redirect' => env('MS_REDIRECT_URL'),
-   /*
+    'tenant' => env('MS_TENANT_ID'),
+    'client_id' => env('MS_CLIENT_ID'),
+    'client_secret' => env('MS_CLIENT_SECRET'),
+    'redirect' => env('MS_REDIRECT_URL'),
+    /*
    |--------------------------------------------------------------------------
    | Post-OAuth Redirect
    |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ return [
    | to this URL. This can be a dashboard or confirmation page.
    |
    */
-   'redirect_after_callback' => env('MS_REDIRECT_AFTER_CALLBACK_URL', '/'),
-   /*
+    'redirect_after_callback' => env('MS_REDIRECT_AFTER_CALLBACK_URL', '/'),
+    /*
    |--------------------------------------------------------------------------
    | OneDrive Root Path
    |--------------------------------------------------------------------------
@@ -32,8 +33,8 @@ return [
    | the default root directory here (optional).
    |
    */
-   'onedrive_root' => env('MS_ONEDRIVE_ROOT', '/'),
-   /*
+    'onedrive_root' => env('MS_ONEDRIVE_ROOT', '/'),
+    /*
    |--------------------------------------------------------------------------
    | Single User Mode (No-Reply Emails)
    |--------------------------------------------------------------------------
@@ -47,8 +48,8 @@ return [
    | disable the OAuth routes to prevent further access.
    |
    */
-   'single_user' => env('MICROSOFTGRAPH_SINGLE_USER', false),
-   /*
+    'single_user' => env('MICROSOFTGRAPH_SINGLE_USER', false),
+    /*
    |--------------------------------------------------------------------------
    | Enable OAuth Routes
    |--------------------------------------------------------------------------
@@ -60,5 +61,5 @@ return [
    | Set this to false after setup for security.
    |
    */
-   'enable_oauth_routes' => env('MICROSOFTGRAPH_ENABLE_OAUTH', false),
+    'enable_oauth_routes' => env('MICROSOFTGRAPH_ENABLE_OAUTH', false),
 ];

@@ -8,6 +8,6 @@ return [
     'slider.title' => 'Explore Recipes with These Products',
 
     'keyword' => 'Keyword',
-    'type' => "Type",
+    'type' => 'Type',
     'product' => 'Product',
 ];

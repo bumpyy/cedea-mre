@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -41,13 +43,65 @@ class DashboardPhoneVerify extends Component
             return;
         }
 
+        $otp = auth()->user()->createOneTimePassword();
+
         // TODO: Handle whatsapp api to send otp
-        auth()->user()->createOneTimePassword();
+        // TODO: clean up
+        try {
+            $response = Http::withHeaders([
+                'Qiscus-App-Id' => config('qiscus.app_id'),
+                'Qiscus-Secret-Key' => config('qiscus.secret_key'),
+            ])->post(config('qiscus.base_url').'/whatsapp/v1/'.config('qiscus.app_id').'/'.config('qiscus.channel_id').'/messages', [
+                'to' => auth()->user()->phone,
+                'type' => 'template',
+                'template' => [
+                    'namespace' => config('qiscus.otp_namespace'),
+                    'name' => config('qiscus.otp_template_name'),
+                    'language' => [
+                        'policy' => 'deterministic',
+                        'code' => 'id',
+                    ],
+                    'components' => [
+                        [
+                            'type' => 'body',
+                            'parameters' => [
+                                [
+                                    'type' => 'text',
+                                    'text' => $otp->password,
+                                ],
+                            ],
+                        ],
+                        [
+                            'type' => 'button',
+                            'sub_type' => 'url',
+                            'index' => '0',
+                            'parameters' => [
+                                [
+                                    'type' => 'text',
+                                    'text' => $otp->password,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]);
+
+            if (! $response->successful()) {
+                Log::error($response->status().': '.$response->body());
+                throw ValidationException::withMessages([
+                    'one_time_password' => $response->body(),
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw ValidationException::withMessages([
+                'one_time_password' => $e->getMessage(),
+            ]);
+        }
     }
 
     public function verifyOtp(): void
     {
-
         if (env('MOCK_PHONE_OTP', false)) {
             $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
         } else {

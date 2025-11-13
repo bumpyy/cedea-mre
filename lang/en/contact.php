@@ -47,7 +47,6 @@ return [
     'form.purpose.career' => 'Career',
     'form.purpose.others' => 'Others',
 
-
     'submit' => 'Send',
 
 ];

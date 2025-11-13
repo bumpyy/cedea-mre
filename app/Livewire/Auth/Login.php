@@ -11,10 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Features;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 
 #[Layout('components.layouts.auth')]
 class Login extends Component
@@ -22,107 +20,32 @@ class Login extends Component
     #[Validate('required|string')]
     public string $emailOrPhone = '';
 
-    #[Validate('string')]
+    #[Validate('required|string')]
     public string $password = '';
 
-    public ?User $otpUser;
-
     public bool $remember = false;
-
-    #[Locked]
-    public bool $showOtpForm = false;
-
-    #[Locked]
-    public bool $usingPhone = false;
-
-    public string $otpCode = '';
-
-    protected function rules()
-    {
-        $emailRule = ['emailOrPhone' => isEmail($this->emailOrPhone) ? 'email' : 'phone:ID'.'|required|string'];
-
-        return $this->password ? [
-            ...$emailRule,
-            'password' => 'required|min:3',
-        ] : [
-            ...$emailRule,
-        ];
-    }
-
-    public function login(): void
-    {
-        $this->validate();
-
-        if ($this->password) {
-            $this->loginPassword();
-
-            return;
-        }
-
-        if ($this->showOtpForm) {
-            $this->loginOtp();
-
-            return;
-        }
-
-        $this->otpUser = User::where('email', $this->emailOrPhone)->orWhere('phone', $this->emailOrPhone)->first();
-
-        if (! $this->otpUser) {
-            throw ValidationException::withMessages([
-                'emailOrPhone' => __('auth.failed'),
-            ]);
-        }
-
-        if (isEmail($this->emailOrPhone)) {
-            $this->usingPhone = false;
-            $this->otpUser->sendOneTimePassword();
-        } else {
-            $this->usingPhone = true;
-        }
-
-        $this->showOtpForm = true;
-    }
-
-    public function resendOtp(): void
-    {
-        $this->otpUser->sendOneTimePassword();
-    }
-
-    private function toggleShowOtpForm(): void
-    {
-        $this->showOtpForm = ! $this->showOtpForm;
-    }
-
-    private function toggleUsingPhone(): void
-    {
-        $this->usingPhone = ! $this->usingPhone;
-    }
-
-    public function resetForm(): void
-    {
-        $this->reset();
-    }
 
     /**
      * Handle an incoming authentication request.
      */
-    private function loginPassword(): void
+    public function login(): void
     {
+        $this->validate();
 
         $this->ensureIsNotRateLimited();
 
         $user = $this->validateCredentials();
 
-        // if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
-        //     Session::put([
-        //         'login.id' => $user->getKey(),
-        //         'login.remember' => $this->remember,
-        //     ]);
+        if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
+            Session::put([
+                'login.id' => $user->getKey(),
+                'login.remember' => $this->remember,
+            ]);
 
-        //     redirect(route('two-factor.login'));
+            redirect(route('two-factor.login'));
 
-        //     return;
-        // }
+            return;
+        }
 
         Auth::login($user, $this->remember);
 
@@ -133,50 +56,11 @@ class Login extends Component
     }
 
     /**
-     * Handle an incoming authentication request.
-     */
-    private function loginOtp(): void
-    {
-        $this->ensureIsNotRateLimited();
-
-        if (! isEmail($this->emailOrPhone) && env('MOCK_PHONE_OTP', false)) {
-            $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
-        } else {
-            $result = $this->otpUser->attemptLoginUsingOneTimePassword($this->otpCode, remember: $this->remember);
-        }
-
-        if ($result->isOk()) {
-            if (env('MOCK_PHONE_OTP', false)) {
-                Auth::login($this->otpUser, $this->remember);
-            }
-
-            // it is best practice to regenerate the session id after a login
-            Session::regenerate();
-
-            if (isEmail($this->emailOrPhone)) {
-                if (auth()->user() && ! auth()->user()->hasVerifiedEmail()) {
-                    auth()->user()->markEmailAsVerified();
-                }
-            } else {
-                if (auth()->user() && ! auth()->user()->hasVerifiedPhone()) {
-                    auth()->user()->markPhoneAsVerified();
-                }
-            }
-
-            redirect()->intended(route('dashboard', absolute: false));
-        }
-
-        throw ValidationException::withMessages([
-            'one_time_password' => $result->validationMessage(),
-        ]);
-    }
-
-    /**
      * Validate the user's credentials.
      */
     protected function validateCredentials(): User
     {
-        if (filter_var($this->emailOrPhone, FILTER_VALIDATE_EMAIL)) {
+        if (isEmail($this->emailOrPhone)) {
             $credentials = ['email' => $this->emailOrPhone];
         } else {
             $credentials = ['phone' => $this->emailOrPhone];

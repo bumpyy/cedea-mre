@@ -24,7 +24,7 @@ enum SubmissionStatusEnum: string implements HasColor, HasIcon, HasLabel
     public function getColor(): string
     {
         return match ($this) {
-            self::PENDING => 'yellow',
+            self::PENDING => 'warning',
             self::ACCEPTED => 'success',
             self::REJECTED => 'danger',
         };

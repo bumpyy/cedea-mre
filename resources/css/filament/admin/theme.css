@@ -1,0 +1,9 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+@import "../../../../vendor/saade/filament-laravel-log/resources/css/filament-laravel-log.css";
+@source '../../../../vendor/saade/filament-laravel-log/resources/views/**/*.blade.php';
+@source '../../../../vendor/jaocero/radio-deck/resources/views';
+@source '../../../../vendor/solution-forest/filament-panzoom/resources/views/**/*.blade.php';

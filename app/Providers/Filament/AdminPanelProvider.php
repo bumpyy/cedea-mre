@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Asmit\ResizedColumn\ResizedColumnPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -20,6 +21,8 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Kenepa\ResourceLock\ResourceLockPlugin;
+use Saade\FilamentLaravelLog\FilamentLaravelLogPlugin;
+use SolutionForest\FilamentPanzoom\FilamentPanzoomPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -58,10 +61,21 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->authGuard('admin')
-
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugins([
+                ResizedColumnPlugin::make(),
+                FilamentPanzoomPlugin::make(),
                 ResourceLockPlugin::make(),
                 FilamentLoggerPlugin::make(),
+                FilamentLaravelLogPlugin::make()
+                    ->navigationGroup('System')
+                 // ->navigationParentItem('Tools')
+                    ->navigationLabel('Logs')
+                    ->navigationIcon('heroicon-o-bug-ant')
+                    ->activeNavigationIcon('heroicon-s-bug-ant')
+                    ->navigationSort(1)
+                    ->title('Application Logs')
+                    ->slug('logs'),
             ]);
 
     }
