@@ -1,3 +1,3 @@
-<x-layouts.auth {{ $attributes }}>
+<x-layouts.auth>
     <livewire:auth.login />
 </x-layouts.auth>
