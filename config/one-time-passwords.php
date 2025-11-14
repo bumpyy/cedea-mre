@@ -16,7 +16,7 @@ return [
      * When this option is active, we'll try to ensure that the one-time password can only
      * be consumed on the platform where it was requested on
      */
-    'enforce_same_origin' => true,
+    'enforce_same_origin' => false,
 
     /*
      * This class is responsible to enforce that the one-time password can only be consumed on
