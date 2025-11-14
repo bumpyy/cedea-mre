@@ -38,7 +38,7 @@
                     placeholder="Isi nomor handphone kamu (cth: 62823xxxxxxx)" />
             </flux:input.group>
 
-            <flux:error class="" name="phone" />
+            <flux:error class="" name="phone_formatted" />
         </flux:field>
 
         <!-- Password -->

@@ -4,8 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,8 +72,8 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             // $contact->phone = '08123...'
             // Contact::create(['phone' => '08123...'])
             set: fn ($value) => [
-                'phone_original' => $value, // Simpan nilai asli
-                'phone' => formatPhoneNumber($value), // Simpan nilai yang diformat
+                'phone' => $value,
+                'phone_formatted' => formatPhoneNumber($value),
             ],
         );
     }
@@ -130,8 +130,9 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         parent::boot();
 
         static::creating(function ($user) {
-            $user->phone_original = $user->phone;
-            $user->phone = formatPhoneNumber($user->phone);
+            if (! $user->phone_formatted) {
+                $user->phone_formatted = formatPhoneNumber($user->phone);
+            }
         });
     }
 }

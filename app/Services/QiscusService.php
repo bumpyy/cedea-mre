@@ -43,7 +43,7 @@ class QiscusService
     public function sendOtp(User $user, string $otp): void
     {
         $url = "{$this->baseUrl}/whatsapp/v1/{$this->appId}/{$this->channelId}/messages";
-        $payload = $this->buildTemplatePayload($user->phone, $otp);
+        $payload = $this->buildTemplatePayload($user->phone_formatted, $otp);
 
         try {
             $response = Http::withHeaders([

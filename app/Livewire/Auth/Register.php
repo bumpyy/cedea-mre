@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -24,6 +25,9 @@ class Register extends Component
 
     public $phone;
 
+    #[Locked]
+    public string $phone_formatted;
+
     public string $password = '';
 
     public string $password_confirmation = '';
@@ -35,15 +39,15 @@ class Register extends Component
         'email.unique' => 'Alamat email sudah terdaftar.',
         'email.email' => 'Alamat email tidak valid.',
         'email.required' => 'Alamat email atau nomor handphone harus diisi.',
-        'phone.required' => 'Alamat email atau nomor handphone harus diisi.',
-        'phone.unique' => 'Nomor handphone sudah terdaftar.',
+        'phone_formatted.required' => 'Alamat email atau nomor handphone harus diisi.',
+        'phone_formatted.unique' => 'Nomor handphone sudah terdaftar.',
         'password.confirmed' => 'Kata sandi tidak cocok.',
         'accept_terms.accepted' => 'Anda harus menyetujui Syarat & Ketentuan.',
     ];
 
     protected $validationAttributes = [
         'name' => 'Nama lengkap',
-        'phone' => 'Nomor handphone',
+        'phone_formatted' => 'Nomor handphone',
         'address' => 'Alamat',
         'email' => 'Alamat email',
         'accept_terms' => 'Syarat & Ketentuan',
@@ -106,15 +110,17 @@ class Register extends Component
         $baseRule = [
             ...$baseRule,
             'email' => $emailRule,
-            'phone' => $phoneRule,
+            'phone_formatted' => $phoneRule,
         ];
+
+        $this->phone_formatted = formatPhoneNumber($this->phone);
 
         $validated = $this->validate([
             ...$baseRule,
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
-        $validated['formatted_phone'] = formatPhoneNumber($validated['phone']);
+        $validated['phone'] = $this->phone;
 
         if ($this->email) {
             event(new Registered(($user = User::create($validated))));
