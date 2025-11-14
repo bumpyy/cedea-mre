@@ -131,7 +131,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
         static::creating(function ($user) {
             $user->phone_original = $user->phone;
-            $user->phone = formatPhoneTo62($user->phone);
+            $user->phone = formatPhoneNumber($user->phone);
         });
     }
 }
