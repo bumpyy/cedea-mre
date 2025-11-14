@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Exceptions\WhatsAppException;
-use App\Services\QiscusService;          // Import our new service
+use App\Services\QiscusService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
@@ -65,15 +65,17 @@ class DashboardPhoneVerify extends Component
     #[On('otp-complete')]
     public function verifyOtp(): void
     {
+        $user = Auth::user();
         if (env('MOCK_PHONE_OTP', false)) {
             $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
         } else {
-            $result = Auth::user()->consumeOneTimePassword($this->otpCode);
+            $result = $user->consumeOneTimePassword($this->otpCode);
         }
 
         if ($result->isOk()) {
             $this->showOtpForm = false;
-            Auth::user()->markPhoneAsVerified();
+            $user->markPhoneAsVerified();
+            app(QiscusService::class)->sendNotification($user, 'welcome');
             redirect()->intended(default: route('dashboard', absolute: false));
         }
 

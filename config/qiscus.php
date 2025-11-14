@@ -1,18 +1,46 @@
 <?php
 
 return [
-    'base_url' => env('QICUS_BASE_URL', 'https://qicus.com/api/v1'),
-    'app_id' => env('QICUS_APP_ID', ''),
-    'secret_key' => env('QICUS_SECRET_KEY', ''),
+    /**
+     * ----------------------------------------------------------------
+     * API Credentials
+     * ----------------------------------------------------------------
+     */
+    'base_url' => env('QISCUS_BASE_URL', 'https://omnichannel.qiscus.com'),
+    'app_id' => env('QISCUS_APP_ID', ''),
+    'secret_key' => env('QISCUS_SECRET_KEY', ''),
+    'channel_id' => env('QISCUS_CHANNEL_ID', ''),
 
-    'channel_id' => env('QICUS_CHANNEL_ID', ''),
+    'default_language' => [
+        'policy' => 'deterministic',
+        'code' => 'id', ],
 
-    'otp_namespace' => env('QICUS_OTP_NAMESPACE', ''),
-    'otp_template_name' => env('QICUS_OTP_TEMPLATE_NAME', ''),
+    /**
+     * ----------------------------------------------------------------
+     * Template Definitions
+     * ----------------------------------------------------------------
+     */
+    'templates' => [
 
-    'utils_accepted_namespace' => env('QICUS_UTILS_ACCEPTED_NAMESPACE', ''),
-    'utils_accepted_template_name' => env('QICUS_UTILS_ACCEPTED_TEMPLATE_NAME', ''),
+        'otp' => [
+            'namespace' => env('QISCUS_OTP_NAMESPACE', ''),
+            'name' => env('QISCUS_OTP_TEMPLATE_NAME', ''),
+        ],
 
-    'utils_rejected_namespace' => env('QICUS_UTILS_REJECTED_NAMESPACE', ''),
-    'utils_rejected_template_name' => env('QICUS_UTILS_REJECTED_TEMPLATE_NAME', ''),
+        'welcome' => [
+            'namespace' => env('QISCUS_NOTIFICATION_NAMESPACE', ''),
+            'name' => env('QISCUS_TEMPLATE_WELCOME', ''),
+        ],
+
+        'ticket_accepted' => [
+            'namespace' => env('QISCUS_UTILS_ACCEPTED_NAMESPACE', ''),
+            'name' => env('QISCUS_UTILS_ACCEPTED_TEMPLATE_NAME', ''),
+        ],
+
+        'ticket_rejected' => [
+            'namespace' => env('QISCUS_UTILS_REJECTED_NAMESPACE', ''),
+            'name' => env('QISCUS_UTILS_REJECTED_TEMPLATE_NAME', ''),
+        ],
+    ],
+
 ];
