@@ -1,67 +1,107 @@
 {
-  "resources/assets/fonts/Anton-Regular.woff": {
-    "file": "assets/Anton-Regular-BlEeBMxD.woff",
-    "src": "resources/assets/fonts/Anton-Regular.woff"
+  "resources/assets/fonts/BebasNeue-Regular.woff": {
+    "file": "assets/BebasNeue-Regular-D3EjCNNz.woff",
+    "src": "resources/assets/fonts/BebasNeue-Regular.woff"
   },
-  "resources/assets/fonts/Anton-Regular.woff2": {
-    "file": "assets/Anton-Regular-CbN_Wi6n.woff2",
-    "src": "resources/assets/fonts/Anton-Regular.woff2"
+  "resources/assets/fonts/BebasNeue-Regular.woff2": {
+    "file": "assets/BebasNeue-Regular-CLoul1ni.woff2",
+    "src": "resources/assets/fonts/BebasNeue-Regular.woff2"
   },
   "resources/assets/fonts/BebasNeue.woff": {
-    "file": "assets/BebasNeue-DNUGtbY5.woff",
+    "file": "assets/BebasNeue-pnk3x1OP.woff",
     "src": "resources/assets/fonts/BebasNeue.woff"
   },
   "resources/assets/fonts/BebasNeue.woff2": {
-    "file": "assets/BebasNeue-BLPErh3J.woff2",
+    "file": "assets/BebasNeue-Cxh6leOv.woff2",
     "src": "resources/assets/fonts/BebasNeue.woff2"
   },
-  "resources/assets/fonts/BebasNeueBold.woff": {
-    "file": "assets/BebasNeueBold-C46nr6jN.woff",
-    "src": "resources/assets/fonts/BebasNeueBold.woff"
+  "resources/assets/fonts/EmojiOneColor.woff": {
+    "file": "assets/EmojiOneColor-BgY3PaGX.woff",
+    "src": "resources/assets/fonts/EmojiOneColor.woff"
   },
-  "resources/assets/fonts/BebasNeueBold.woff2": {
-    "file": "assets/BebasNeueBold-DPQKB4fX.woff2",
-    "src": "resources/assets/fonts/BebasNeueBold.woff2"
+  "resources/assets/fonts/EmojiOneColor.woff2": {
+    "file": "assets/EmojiOneColor-HFo4Bu2x.woff2",
+    "src": "resources/assets/fonts/EmojiOneColor.woff2"
   },
-  "resources/assets/fonts/FiraSansCondensed-Light.woff": {
-    "file": "assets/FiraSansCondensed-Light-9qAEhCUB.woff",
-    "src": "resources/assets/fonts/FiraSansCondensed-Light.woff"
+  "resources/assets/fonts/Montserrat-Bold.woff": {
+    "file": "assets/Montserrat-Bold-C82vcNHf.woff",
+    "src": "resources/assets/fonts/Montserrat-Bold.woff"
   },
-  "resources/assets/fonts/FiraSansCondensed-Light.woff2": {
-    "file": "assets/FiraSansCondensed-Light-BMwk5dkX.woff2",
-    "src": "resources/assets/fonts/FiraSansCondensed-Light.woff2"
+  "resources/assets/fonts/Montserrat-Bold.woff2": {
+    "file": "assets/Montserrat-Bold-BewGjw5v.woff2",
+    "src": "resources/assets/fonts/Montserrat-Bold.woff2"
   },
-  "resources/assets/fonts/Marimpa.woff": {
-    "file": "assets/Marimpa-dcnWlS26.woff",
-    "src": "resources/assets/fonts/Marimpa.woff"
+  "resources/assets/fonts/Montserrat-ExtraBold.woff": {
+    "file": "assets/Montserrat-ExtraBold-CIN-MP3P.woff",
+    "src": "resources/assets/fonts/Montserrat-ExtraBold.woff"
   },
-  "resources/assets/fonts/Marimpa.woff2": {
-    "file": "assets/Marimpa-esTYmbZE.woff2",
-    "src": "resources/assets/fonts/Marimpa.woff2"
+  "resources/assets/fonts/Montserrat-ExtraBold.woff2": {
+    "file": "assets/Montserrat-ExtraBold-VKHfTdqv.woff2",
+    "src": "resources/assets/fonts/Montserrat-ExtraBold.woff2"
+  },
+  "resources/assets/fonts/Montserrat-Medium.woff": {
+    "file": "assets/Montserrat-Medium-DeCsG39C.woff",
+    "src": "resources/assets/fonts/Montserrat-Medium.woff"
+  },
+  "resources/assets/fonts/Montserrat-Medium.woff2": {
+    "file": "assets/Montserrat-Medium-DFfcsv-k.woff2",
+    "src": "resources/assets/fonts/Montserrat-Medium.woff2"
+  },
+  "resources/assets/fonts/Montserrat-MediumItalic.woff": {
+    "file": "assets/Montserrat-MediumItalic-BXqFwRG1.woff",
+    "src": "resources/assets/fonts/Montserrat-MediumItalic.woff"
+  },
+  "resources/assets/fonts/Montserrat-MediumItalic.woff2": {
+    "file": "assets/Montserrat-MediumItalic-CPSP6jbI.woff2",
+    "src": "resources/assets/fonts/Montserrat-MediumItalic.woff2"
+  },
+  "resources/assets/fonts/Montserrat-Regular.woff": {
+    "file": "assets/Montserrat-Regular-CTas2xAE.woff",
+    "src": "resources/assets/fonts/Montserrat-Regular.woff"
+  },
+  "resources/assets/fonts/Montserrat-Regular.woff2": {
+    "file": "assets/Montserrat-Regular-DdmCM1HE.woff2",
+    "src": "resources/assets/fonts/Montserrat-Regular.woff2"
+  },
+  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff": {
+    "file": "assets/Montserrat-SemiBoldItalic-Btu5bhfz.woff",
+    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff"
+  },
+  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2": {
+    "file": "assets/Montserrat-SemiBoldItalic-B_WM60V4.woff2",
+    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2"
   },
   "resources/assets/fonts/MyriadPro-Bold.woff": {
-    "file": "assets/MyriadPro-Bold-DU61Ko2q.woff",
+    "file": "assets/MyriadPro-Bold-lJeHIBH0.woff",
     "src": "resources/assets/fonts/MyriadPro-Bold.woff"
   },
   "resources/assets/fonts/MyriadPro-Bold.woff2": {
-    "file": "assets/MyriadPro-Bold-zG4D89kw.woff2",
+    "file": "assets/MyriadPro-Bold-g-zm4sPC.woff2",
     "src": "resources/assets/fonts/MyriadPro-Bold.woff2"
   },
-  "resources/assets/fonts/MyriadPro-Regular.woff": {
-    "file": "assets/MyriadPro-Regular-BUWPKxVA.woff",
-    "src": "resources/assets/fonts/MyriadPro-Regular.woff"
+  "resources/assets/fonts/Poppins-Black.woff": {
+    "file": "assets/Poppins-Black-fB12cViq.woff",
+    "src": "resources/assets/fonts/Poppins-Black.woff"
   },
-  "resources/assets/fonts/MyriadPro-Regular.woff2": {
-    "file": "assets/MyriadPro-Regular-50XRb6xz.woff2",
-    "src": "resources/assets/fonts/MyriadPro-Regular.woff2"
+  "resources/assets/fonts/Poppins-Black.woff2": {
+    "file": "assets/Poppins-Black-CrKy-4ZW.woff2",
+    "src": "resources/assets/fonts/Poppins-Black.woff2"
   },
-  "resources/assets/fonts/MyriadPro-SemiboldIt.woff": {
-    "file": "assets/MyriadPro-SemiboldIt-Dro2XJLS.woff",
-    "src": "resources/assets/fonts/MyriadPro-SemiboldIt.woff"
+  "resources/assets/fonts/Poppins-Bold.woff": {
+    "file": "assets/Poppins-Bold-BdBYEG91.woff",
+    "src": "resources/assets/fonts/Poppins-Bold.woff"
   },
-  "resources/assets/fonts/MyriadPro-SemiboldIt.woff2": {
-    "file": "assets/MyriadPro-SemiboldIt-6D2EO4Uh.woff2",
-    "src": "resources/assets/fonts/MyriadPro-SemiboldIt.woff2"
+  "resources/assets/fonts/Poppins-Bold.woff2": {
+    "file": "assets/Poppins-Bold-DkyIvnv-.woff2",
+    "src": "resources/assets/fonts/Poppins-Bold.woff2"
+  },
+  "resources/assets/fonts/Poppins-ExtraBold.woff": {
+    "file": "assets/Poppins-ExtraBold-DbcnyoZH.woff",
+    "src": "resources/assets/fonts/Poppins-ExtraBold.woff"
+  },
+  "resources/assets/fonts/Poppins-ExtraBold.woff2": {
+    "file": "assets/Poppins-ExtraBold-DQUrO0Zp.woff2",
+    "src": "resources/assets/fonts/Poppins-ExtraBold.woff2"
   },
   "resources/assets/fonts/Poppins-Medium.woff": {
     "file": "assets/Poppins-Medium-LVgVSt0Y.woff",
@@ -108,7 +148,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Br8I06o9.css",
+    "file": "assets/app-DueCfHsF.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",

@@ -1,5 +1,6 @@
 import SwupLivewirePlugin from "@swup/livewire-plugin";
 import Swup from "swup";
+import "./globals/modals.js";
 
 const swup = new Swup({
     plugins: [new SwupLivewirePlugin()],
