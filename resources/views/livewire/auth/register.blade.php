@@ -75,7 +75,6 @@
             </flux:label>
         </div>
 
-
         <div class="flex items-center justify-center">
             <flux:button class="px-8! w-fit bg-amber-400" data-test="login-button" variant="primary" type="submit">
                 Daftar sekarang

@@ -23,54 +23,6 @@
     "file": "assets/EmojiOneColor-HFo4Bu2x.woff2",
     "src": "resources/assets/fonts/EmojiOneColor.woff2"
   },
-  "resources/assets/fonts/Montserrat-Bold.woff": {
-    "file": "assets/Montserrat-Bold-C82vcNHf.woff",
-    "src": "resources/assets/fonts/Montserrat-Bold.woff"
-  },
-  "resources/assets/fonts/Montserrat-Bold.woff2": {
-    "file": "assets/Montserrat-Bold-BewGjw5v.woff2",
-    "src": "resources/assets/fonts/Montserrat-Bold.woff2"
-  },
-  "resources/assets/fonts/Montserrat-ExtraBold.woff": {
-    "file": "assets/Montserrat-ExtraBold-CIN-MP3P.woff",
-    "src": "resources/assets/fonts/Montserrat-ExtraBold.woff"
-  },
-  "resources/assets/fonts/Montserrat-ExtraBold.woff2": {
-    "file": "assets/Montserrat-ExtraBold-VKHfTdqv.woff2",
-    "src": "resources/assets/fonts/Montserrat-ExtraBold.woff2"
-  },
-  "resources/assets/fonts/Montserrat-Medium.woff": {
-    "file": "assets/Montserrat-Medium-DeCsG39C.woff",
-    "src": "resources/assets/fonts/Montserrat-Medium.woff"
-  },
-  "resources/assets/fonts/Montserrat-Medium.woff2": {
-    "file": "assets/Montserrat-Medium-DFfcsv-k.woff2",
-    "src": "resources/assets/fonts/Montserrat-Medium.woff2"
-  },
-  "resources/assets/fonts/Montserrat-MediumItalic.woff": {
-    "file": "assets/Montserrat-MediumItalic-BXqFwRG1.woff",
-    "src": "resources/assets/fonts/Montserrat-MediumItalic.woff"
-  },
-  "resources/assets/fonts/Montserrat-MediumItalic.woff2": {
-    "file": "assets/Montserrat-MediumItalic-CPSP6jbI.woff2",
-    "src": "resources/assets/fonts/Montserrat-MediumItalic.woff2"
-  },
-  "resources/assets/fonts/Montserrat-Regular.woff": {
-    "file": "assets/Montserrat-Regular-CTas2xAE.woff",
-    "src": "resources/assets/fonts/Montserrat-Regular.woff"
-  },
-  "resources/assets/fonts/Montserrat-Regular.woff2": {
-    "file": "assets/Montserrat-Regular-DdmCM1HE.woff2",
-    "src": "resources/assets/fonts/Montserrat-Regular.woff2"
-  },
-  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff": {
-    "file": "assets/Montserrat-SemiBoldItalic-Btu5bhfz.woff",
-    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff"
-  },
-  "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2": {
-    "file": "assets/Montserrat-SemiBoldItalic-B_WM60V4.woff2",
-    "src": "resources/assets/fonts/Montserrat-SemiBoldItalic.woff2"
-  },
   "resources/assets/fonts/MyriadPro-Bold.woff": {
     "file": "assets/MyriadPro-Bold-lJeHIBH0.woff",
     "src": "resources/assets/fonts/MyriadPro-Bold.woff"
@@ -148,7 +100,7 @@
     "src": "resources/assets/patterns/scratch-transparent-1.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DueCfHsF.css",
+    "file": "assets/app-DE-GADm7.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -166,7 +118,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CXYqEm_G.js",
+    "file": "assets/app-JsOKvP49.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

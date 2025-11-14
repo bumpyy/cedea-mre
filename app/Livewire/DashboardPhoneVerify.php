@@ -2,8 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Exceptions\WhatsAppException;
+use App\Services\QiscusService;          // Import our new service
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
@@ -25,17 +26,14 @@ class DashboardPhoneVerify extends Component
     public function handleShowOtpForm(): void
     {
         $this->showOtpForm = true;
-        $this->sendOtp();
-    }
-
-    public function sendOtp(): void
-    {
         $this->resendOtp();
     }
 
+    /**
+     * Send or resend the OTP.
+     */
     public function resendOtp(): void
     {
-
         if (Auth::user()->hasVerifiedPhone()) {
             $this->showOtpForm = false;
             redirect()->intended(default: route('dashboard', absolute: false));
@@ -45,57 +43,20 @@ class DashboardPhoneVerify extends Component
 
         $otp = auth()->user()->createOneTimePassword();
 
-        // TODO: Handle whatsapp api to send otp
-        // TODO: clean up
         try {
-            $response = Http::withHeaders([
-                'Qiscus-App-Id' => config('qiscus.app_id'),
-                'Qiscus-Secret-Key' => config('qiscus.secret_key'),
-            ])->post(config('qiscus.base_url').'/whatsapp/v1/'.config('qiscus.app_id').'/'.config('qiscus.channel_id').'/messages', [
-                'to' => auth()->user()->phone,
-                'type' => 'template',
-                'template' => [
-                    'namespace' => config('qiscus.otp_namespace'),
-                    'name' => config('qiscus.otp_template_name'),
-                    'language' => [
-                        'policy' => 'deterministic',
-                        'code' => 'id',
-                    ],
-                    'components' => [
-                        [
-                            'type' => 'body',
-                            'parameters' => [
-                                [
-                                    'type' => 'text',
-                                    'text' => $otp->password,
-                                ],
-                            ],
-                        ],
-                        [
-                            'type' => 'button',
-                            'sub_type' => 'url',
-                            'index' => '0',
-                            'parameters' => [
-                                [
-                                    'type' => 'text',
-                                    'text' => $otp->password,
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
+            app(QiscusService::class)->sendOtp(auth()->user(), $otp->password);
+        } catch (WhatsAppException $e) {
+            // Catch the *specific* exception from our service
+            Log::warning('Qiscus API failure: '.$e->getMessage());
+            throw ValidationException::withMessages([
+                'one_time_password' => $e->getMessage(), // Show the user-friendly message
             ]);
 
-            if (! $response->successful()) {
-                Log::error($response->status().': '.$response->body());
-                throw ValidationException::withMessages([
-                    'one_time_password' => $response->body(),
-                ]);
-            }
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
+            // Catch any other *unexpected* errors
+            Log::error('Unexpected error sending OTP: '.$e->getMessage());
             throw ValidationException::withMessages([
-                'one_time_password' => $e->getMessage(),
+                'one_time_password' => 'An unexpected error occurred. Please try again.',
             ]);
         }
     }
@@ -117,7 +78,6 @@ class DashboardPhoneVerify extends Component
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);
-
     }
 
     public function render()

@@ -114,6 +114,7 @@ class Register extends Component
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['formatted_phone'] = formatPhoneNumber($validated['phone']);
 
         if ($this->email) {
             event(new Registered(($user = User::create($validated))));

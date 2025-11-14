@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,6 +57,25 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             'password' => 'hashed',
             'social' => 'array',
         ];
+    }
+
+    /**
+     * Mutator untuk 'phone_original'.
+     *
+     * Secara otomatis mengisi 'phone_formatted'
+     * setiap kali 'phone_original' diatur.
+     */
+    protected function phoneOriginal(): Attribute
+    {
+        return Attribute::make(
+            // 'set' akan dipanggil setiap kali Anda melakukan:
+            // $contact->phone_original = '08123...'
+            // Contact::create(['phone_original' => '08123...'])
+            set: fn ($value) => [
+                'phone_original' => $value, // Simpan nilai asli
+                'phone_formatted' => formatPhoneTo62($value), // Simpan nilai yang diformat
+            ],
+        );
     }
 
     /**

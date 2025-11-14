@@ -149,7 +149,8 @@
 
         // Handle paste: distribute valid chars across remaining inputs
         handlePaste(e) {
-            const pasted = e.clipboardData.getData('text');
+            const pasted = (e.clipboardData || window.clipboardData).getData('text');
+
             const regex = new RegExp(`^${this.allowedPattern}$`);
             const validChars = Array.from(pasted).filter(char => regex.test(char));
             const startIndex = parseInt(e.target.dataset.order);
@@ -304,8 +305,8 @@
             }
         }
     }
-}"
-    {{ $attributes->except('class') }} x-on:otp-clear.window="clear()"  x-on:otp-focus.window="focus()">
+}" {{ $attributes->except('class') }} x-on:otp-clear.window="clear()"
+    x-on:otp-focus.window="focus()">
     <div class="max-w-md rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8">
         @if ($title && $desc)
             <header class="mb-8">
@@ -317,7 +318,8 @@
                 @endif
             </header>
         @endif
-        <div x-ref="inputsWrapper" role="group" aria-label="One Time Password Input" {{ $attributes->class('text-start') }}>
+        <div x-ref="inputsWrapper" role="group" aria-label="One Time Password Input"
+            {{ $attributes->class('text-start') }}>
             <div @class([
                 'flex rounded-box items-center justify-center gap-1 sm:gap-3',
                 '[:where(&>[data-slot=otp-input]:has(+[data-slot=separator]))]:rounded-r-box', // give right rounded to the input that cames before separator
@@ -334,7 +336,7 @@
                 @endif
             </div>
             @error('one_time_password')
-                <div class="mt-4 text-center mx-auto text-sm text-red-600">
+                <div class="mx-auto mt-4 text-center text-sm text-red-600">
                     {{ $message }}
                 </div>
             @enderror

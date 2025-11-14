@@ -16,7 +16,7 @@ class IndonesianPhoneNumber implements ValidationRule
     {
         // Validasi format nomor telepon Indonesia
         if (! checkPhoneFormat($value)) {
-            $fail('Format nomor telepon tidak valid. Harap gunakan format 628xxxxxxxxxx.');
+            $fail('Format nomor telepon tidak valid.');
         }
     }
 }
