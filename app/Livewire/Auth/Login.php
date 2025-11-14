@@ -63,11 +63,10 @@ class Login extends Component
         if (isEmail($this->emailOrPhone)) {
             $credentials = ['email' => $this->emailOrPhone];
         } else {
-            $credentials = ['phone' => $this->emailOrPhone];
+            $credentials = ['phone' => formatPhoneNumber($this->emailOrPhone)];
         }
 
         $user = Auth::getProvider()->retrieveByCredentials([...$credentials, 'password' => $this->password]);
-
         if (! $user || ! Auth::getProvider()->validateCredentials($user, ['password' => $this->password])) {
             RateLimiter::hit($this->throttleKey());
 

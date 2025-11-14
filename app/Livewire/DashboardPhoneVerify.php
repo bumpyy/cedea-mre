@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 
@@ -41,10 +42,10 @@ class DashboardPhoneVerify extends Component
             return;
         }
 
-        $otp = auth()->user()->createOneTimePassword();
-
         try {
+            $otp = auth()->user()->createOneTimePassword();
             app(QiscusService::class)->sendOtp(auth()->user(), $otp->password);
+            $this->dispatch('otp-sent');
         } catch (WhatsAppException $e) {
             // Catch the *specific* exception from our service
             Log::warning('Qiscus API failure: '.$e->getMessage());
@@ -61,6 +62,7 @@ class DashboardPhoneVerify extends Component
         }
     }
 
+    #[On('otp-complete')]
     public function verifyOtp(): void
     {
         if (env('MOCK_PHONE_OTP', false)) {

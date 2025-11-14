@@ -60,20 +60,20 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     }
 
     /**
-     * Mutator untuk 'phone_original'.
+     * Mutator untuk 'phone'.
      *
      * Secara otomatis mengisi 'phone_formatted'
-     * setiap kali 'phone_original' diatur.
+     * setiap kali 'phone' diatur.
      */
-    protected function phoneOriginal(): Attribute
+    protected function phone(): Attribute
     {
         return Attribute::make(
             // 'set' akan dipanggil setiap kali Anda melakukan:
-            // $contact->phone_original = '08123...'
-            // Contact::create(['phone_original' => '08123...'])
+            // $contact->phone = '08123...'
+            // Contact::create(['phone' => '08123...'])
             set: fn ($value) => [
                 'phone_original' => $value, // Simpan nilai asli
-                'phone_formatted' => formatPhoneTo62($value), // Simpan nilai yang diformat
+                'phone' => formatPhoneNumber($value), // Simpan nilai yang diformat
             ],
         );
     }
@@ -123,5 +123,15 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function submissions(): HasMany
     {
         return $this->hasMany(Submission::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->phone_original = $user->phone;
+            $user->phone = formatPhoneTo62($user->phone);
+        });
     }
 }

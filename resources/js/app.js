@@ -36,3 +36,35 @@ Alpine.data("navigation", () => ({
         this.navigationMenu = "";
     },
 }));
+
+Alpine.data("otpTimer", (minute) => ({
+    loading: false,
+    countDown: minute * 60 * 1000,
+    countDownTimer: new Date(Date.now() + minute * 60 * 1000).getTime(),
+    intervalID: null,
+    init() {
+        if (!this.intervalID) {
+            this.intervalID = setInterval(() => {
+                this.countDown = this.countDownTimer - new Date().getTime();
+            }, 1000);
+        }
+    },
+    getTime() {
+        if (this.countDown < 0) {
+            this.clearTimer();
+        }
+
+        return this.countDown;
+    },
+    formatTime(num) {
+        var date = new Date(num);
+        return new Date(this.countDown).toLocaleTimeString(navigator.language, {
+            minute: "2-digit",
+            second: "2-digit",
+        });
+    },
+    clearTimer() {
+        clearInterval(this.intervalID);
+        this.intervalID = null;
+    },
+}));
