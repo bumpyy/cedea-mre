@@ -53,6 +53,6 @@ class ListSubmissions extends ListRecords
 
     public function getDefaultActiveTab(): string|int|null
     {
-        return SubmissionStatusEnum::PENDING->value;
+        return 'assigned';
     }
 }

@@ -21,8 +21,10 @@ class ViewSubmission extends ViewRecord
 
         return [
             EditAction::make()
-                ->visible(fn ($record) => $record->admin_id == $admin->id)
-                ->disabled(fn ($record) => $record->admin_id != $admin->id),
+                ->visible(fn ($record) => $record->status === SubmissionStatusEnum::PENDING)
+                ->disabled(fn ($record) => $record->status !== SubmissionStatusEnum::PENDING),
+            // ->visible(fn ($record) => $record->admin_id == $admin->id)
+            // ->disabled(fn ($record) => $record->admin_id != $admin->id),
             // EditAction::make()
             //     // ->visible(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
             //     ->requiresConfirmation(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
