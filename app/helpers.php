@@ -81,7 +81,7 @@ if (! function_exists('formatPhoneNumber')) {
     }
 }
 
-if (! function_exists('generateUniqueRaffleCode')) {
+if (! function_exists('generateUniqueCode')) {
     /**
      * Generates a unique raffle code of a given length.
      * Will keep generating codes until a unique one is found.
@@ -89,10 +89,10 @@ if (! function_exists('generateUniqueRaffleCode')) {
      * @param  int  $length  The length of the code to generate.
      * @return string The generated code.
      */
-    function generateUniqueRaffleCode(int $length = 10): string
+    function generateUniqueCode(string $prefix = 'CEDEA-', int $length = 10, int $second_part = 0): string
     {
         do {
-            $code = 'CEDEA-'.Str::upper(Str::random($length));
+            $code = strtoupper($prefix.Str::random($length).($second_part > 0 ? '-'.Str::random($second_part) : ''));
         } while (Submission::where('raffle_number', $code)->exists());
 
         return $code;

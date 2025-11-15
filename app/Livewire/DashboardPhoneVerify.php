@@ -75,7 +75,9 @@ class DashboardPhoneVerify extends Component
         if ($result->isOk()) {
             $this->showOtpForm = false;
             $user->markPhoneAsVerified();
-            app(QiscusService::class)->sendNotification($user, 'welcome');
+            app(QiscusService::class)->sendNotification($user, 'welcome', bodyParams: [
+                $user->name,
+            ]);
             redirect()->intended(default: route('dashboard', absolute: false));
         }
 

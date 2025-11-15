@@ -25,10 +25,13 @@ class EditSubmission extends EditRecord
             case SubmissionStatusEnum::ACCEPTED:
                 if (! $record->raffle_number) {
                     $record->update([
-                        'raffle_number' => generateUniqueRaffleCode(),
+                        'raffle_number' => generateUniqueCode(),
                     ]);
                 }
-                app(QiscusService::class)->sendNotification($record->user, 'submission_accepted');
+                app(QiscusService::class)->sendNotification($record->user, 'submission_accepted', bodyParams: [
+                    $record->uuid,
+                    $record->raffle_number,
+                ]);
                 break;
 
             case SubmissionStatusEnum::REJECTED:
@@ -36,7 +39,8 @@ class EditSubmission extends EditRecord
                     $record->raffle_number = null;
                 }
                 app(QiscusService::class)->sendNotification($record->user, 'submission_rejected', bodyParams: [
-                    'text' => $record->note ?? '-',
+                    $record->uuid,
+                    $record->note ?? '-',
                 ]);
                 break;
 
@@ -46,6 +50,11 @@ class EditSubmission extends EditRecord
                 ]);
                 break;
         }
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('view', ['record' => $this->getRecord()]);
     }
 
     protected function getHeaderActions(): array

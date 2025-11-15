@@ -6,7 +6,6 @@ use App\Enum\SubmissionStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Str;
 use Kenepa\ResourceLock\Models\Concerns\HasLocks;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -83,7 +82,7 @@ class Submission extends Model implements HasMedia
 
             if (! $submission->uuid) {
                 do {
-                    $uuid = Str::uuid();
+                    $uuid = generateUniqueCode('', 3, 3);
                 } while (Submission::where('uuid', $uuid)->exists());
 
                 $submission->uuid = $uuid;
