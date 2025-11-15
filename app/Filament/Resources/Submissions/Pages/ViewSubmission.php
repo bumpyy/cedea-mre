@@ -17,8 +17,12 @@ class ViewSubmission extends ViewRecord
 
     protected function getHeaderActions(): array
     {
+        $admin = auth('admin')->user();
+
         return [
-            EditAction::make(),
+            EditAction::make()
+                ->visible(fn ($record) => $record->admin_id == $admin->id)
+                ->disabled(fn ($record) => $record->admin_id != $admin->id),
             // EditAction::make()
             //     // ->visible(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
             //     ->requiresConfirmation(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)

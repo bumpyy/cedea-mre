@@ -37,7 +37,7 @@ class SubmissionForm
                         SubmissionStatusEnum::REJECTED->value => SubmissionStatusEnum::REJECTED->getColor(),
                     ])
                     ->required(),
-                TextInput::make('note')
+                \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('note')
                     ->characterLimit(255),
             ])
             ->columns(1);
