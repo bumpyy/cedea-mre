@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Submission;
+use Illuminate\Support\Str;
+
 if (! function_exists('checkPhoneFormat')) {
     /**
      * Check if given phone number is a valid Indonesian phone number.
@@ -75,5 +78,23 @@ if (! function_exists('formatPhoneNumber')) {
 
         // 4. Jika sudah 62 (atau format tidak dikenal), kembalikan apa adanya
         return $cleaned;
+    }
+}
+
+if (! function_exists('generateUniqueRaffleCode')) {
+    /**
+     * Generates a unique raffle code of a given length.
+     * Will keep generating codes until a unique one is found.
+     *
+     * @param  int  $length  The length of the code to generate.
+     * @return string The generated code.
+     */
+    function generateUniqueRaffleCode(int $length = 10): string
+    {
+        do {
+            $code = 'CEDEA-'.Str::upper(Str::random($length));
+        } while (Submission::where('raffle_number', $code)->exists());
+
+        return $code;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Submissions;
 
 use App\Filament\Resources\Submissions\Pages\EditSubmission;
+use App\Filament\Resources\Submissions\Pages\ListSubmissionActivity;
 use App\Filament\Resources\Submissions\Pages\ListSubmissions;
 use App\Filament\Resources\Submissions\Pages\ViewSubmission;
 use App\Filament\Resources\Submissions\Schemas\SubmissionForm;
@@ -48,7 +49,8 @@ class SubmissionResource extends Resource
         return [
             'index' => ListSubmissions::route('/'),
             'view' => ViewSubmission::route('/{record}'),
-            // 'edit' => EditSubmission::route('/{record}/edit'),
+            'activities' => ListSubmissionActivity::route('/{record}/activities'),
+            'edit' => EditSubmission::route('/{record}/edit'),
         ];
     }
 }

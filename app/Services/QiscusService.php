@@ -14,7 +14,7 @@ class QiscusService
 
     protected string $url;
 
-    protected array $templates; // This will hold all template configs
+    protected array $templates;
 
     protected array $defaultLanguage;
 
@@ -27,11 +27,11 @@ class QiscusService
         string $appId,
         string $channelId,
         array $templates,
-        array $defaultLanguage // <-- NEW PARAMETER
+        array $defaultLanguage
     ) {
         $this->client = $client;
         $this->templates = $templates;
-        $this->defaultLanguage = $defaultLanguage; // <-- Store it
+        $this->defaultLanguage = $defaultLanguage;
         $this->url = "{$baseUrl}/whatsapp/v1/{$appId}/{$channelId}/messages";
     }
 
@@ -56,7 +56,7 @@ class QiscusService
     /**
      * Send a notification message to the user.
      *
-     * @param  string  $type  ('welcome', 'ticket_accepted', 'ticket_rejected')
+     * @param  string  $type  ('welcome', 'submission.accepted', 'submission.rejected')
      * @param  array  $headerParams  A list of strings for header parameters.
      * @param  array  $bodyParams  A list of strings for body parameters.
      *
@@ -114,10 +114,11 @@ class QiscusService
             }
 
         } catch (\Illuminate\Http\Client\RequestException $e) {
-            Log::error('Qiscus API RequestException: '.$e->getMessage(), ['exception' => $e]);
+            Log::error('Qiscus API RequestException: '.$e->getMessage());
+
             throw new WhatsAppException('Could not connect to the messaging service. Please try again later.');
         } catch (\Exception $e) {
-            Log::error('Qiscus general error: '.$e->getMessage(), ['exception' => $e]);
+            Log::error('Qiscus general error: '.$e->getMessage());
             throw new WhatsAppException('An unexpected error occurred while sending your message.');
         }
     }
@@ -167,7 +168,7 @@ class QiscusService
         if (! empty($bodyParams)) {
             $components[] = [
                 'type' => 'body',
-                'parameters' => $this->buildTextParameters($bodyParams),
+                'parameters' => array_values($this->buildTextParameters($bodyParams)),
             ];
         }
 
@@ -186,7 +187,7 @@ class QiscusService
     {
         return array_map(function ($param) {
             return ['type' => 'text', 'text' => (string) $param];
-        }, $params);
+        }, array_values($params));
     }
 
     /**

@@ -15,7 +15,6 @@ class SubmissionForm
 
         return $schema
             ->components([
-
                 PanZoom::make('receipt_image_preview')
                     ->imageUrl(fn ($record) => $record->getFirstMediaUrl('submissions'))
                     ->imageId(fn ($record) => 'receipt-'.$record->id),
@@ -38,6 +37,8 @@ class SubmissionForm
                         SubmissionStatusEnum::REJECTED->value => SubmissionStatusEnum::REJECTED->getColor(),
                     ])
                     ->required(),
+                TextInput::make('note')
+                    ->characterLimit(255),
             ])
             ->columns(1);
 

@@ -28,6 +28,11 @@ class ListSubmissions extends ListRecords
     {
         return [
             'all' => Tab::make(),
+            'assigned' => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', SubmissionStatusEnum::PENDING)->where('admin_id', auth('admin')->user()->id))
+                ->badge(Submission::query()->where('status', SubmissionStatusEnum::PENDING)->where('admin_id', auth('admin')->user()->id)->count())
+                ->badgeColor(SubmissionStatusEnum::PENDING->getColor())
+                ->icon(SubmissionStatusEnum::PENDING->getIcon()),
             SubmissionStatusEnum::PENDING->value => Tab::make()
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', SubmissionStatusEnum::PENDING))
                 ->badge(Submission::query()->where('status', SubmissionStatusEnum::PENDING)->count())

@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use Asmit\ResizedColumn\ResizedColumnPlugin;
+use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Cmsmaxinc\FilamentErrorPages\FilamentErrorPagesPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -14,15 +15,16 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
+use Hugomyb\FilamentErrorMailer\FilamentErrorMailerPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Kenepa\ResourceLock\ResourceLockPlugin;
-use Saade\FilamentLaravelLog\FilamentLaravelLogPlugin;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use SolutionForest\FilamentPanzoom\FilamentPanzoomPlugin;
 
 class AdminPanelProvider extends PanelProvider
@@ -66,18 +68,16 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 ResizedColumnPlugin::make(),
                 FilamentPanzoomPlugin::make(),
-                ResourceLockPlugin::make(),
-                FilamentLoggerPlugin::make(),
+                ResourceLockPlugin::make()
+                    ->usesPollingToDetectPresence()
+                    ->displayResourceLockOwner()
+                    ->presencePollingInterval(5)
+                    ->lockTimeout(15),
+                FilamentSpatieLaravelHealthPlugin::make(),
+                FilamentErrorMailerPlugin::make(),
                 FilamentErrorPagesPlugin::make(),
-                FilamentLaravelLogPlugin::make()
-                    ->navigationGroup('System')
-                 // ->navigationParentItem('Tools')
-                    ->navigationLabel('Logs')
-                    ->navigationIcon('heroicon-o-bug-ant')
-                    ->activeNavigationIcon('heroicon-s-bug-ant')
-                    ->navigationSort(1)
-                    ->title('Application Logs')
-                    ->slug('logs'),
+                FilamentLogViewerPlugin::make(),
+                FilamentSpatieLaravelBackupPlugin::make(),
             ]);
 
     }

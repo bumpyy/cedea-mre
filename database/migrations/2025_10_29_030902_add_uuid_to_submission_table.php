@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('submissions', function (Blueprint $table) {
-            $table->uuid('uuid')->nullable()->unique();
+            $table->uuid('uuid')->nullable();
         });
     }
 

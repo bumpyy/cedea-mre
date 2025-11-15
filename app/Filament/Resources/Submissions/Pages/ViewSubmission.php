@@ -18,20 +18,20 @@ class ViewSubmission extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            // EditAction::make(),
-            EditAction::make()
-                // ->visible(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
-                ->requiresConfirmation(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
-                ->modalIcon('heroicon-o-exclamation-triangle')
-                ->modalHeading('Edit Submission')
-                ->modalDescription('Apakan anda yakin ingin mengedit submission ini?')
-                ->modalSubmitActionLabel('Tetap edit')
-                ->modalFooterActionsAlignment(Alignment::CENTER)
-                ->modalAlignment(Alignment::CENTER)
-                ->modalWidth('lg')
-                ->after(function (EditAction $action, Submission $record) {
-                    Mail::to($record->user->email)->send(new SubmissionNotification($record, $record->user));
-                }),
+            EditAction::make(),
+            // EditAction::make()
+            //     // ->visible(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
+            //     ->requiresConfirmation(fn (Submission $record) => $record->status !== SubmissionStatusEnum::PENDING)
+            //     ->modalIcon('heroicon-o-exclamation-triangle')
+            //     ->modalHeading('Edit Submission')
+            //     ->modalDescription('Apakan anda yakin ingin mengedit submission ini?')
+            //     ->modalSubmitActionLabel('Tetap edit')
+            //     ->modalFooterActionsAlignment(Alignment::CENTER)
+            //     ->modalAlignment(Alignment::CENTER)
+            //     ->modalWidth('lg')
+            //     ->after(function (EditAction $action, Submission $record) {
+            //         Mail::to($record->user->email)->send(new SubmissionNotification($record, $record->user));
+            //     }),
         ];
     }
 }

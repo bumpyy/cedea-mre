@@ -125,6 +125,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return $this->hasMany(Submission::class);
     }
 
+    /**
+     * Perform any actions required during the boot process of the User model.
+     *
+     * @return void
+     */
     protected static function boot()
     {
         parent::boot();

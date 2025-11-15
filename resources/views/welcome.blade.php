@@ -6,7 +6,7 @@
         </div>
 
         <div class="relative grid grid-cols-2 gap-x-4 md:flex md:gap-x-8">
-            <div class="flex flex-col items-center justify-start gap-2 max-md:z-[1] max-md:w-fit sm:gap-4">
+            <div class="max-md:z-1 flex flex-col items-center justify-start gap-2 max-md:w-fit sm:gap-4">
                 <div class="w-11/12 sm:w-1/3 lg:w-3/5">
                     <img class="max-md:drop-shadow-xl" src="{{ asset('img/eomuk-bar-text.png') }}"
                         alt="snack ala korea Eomuk Bar">
@@ -20,32 +20,32 @@
             </div>
 
             <div
-                class="relative -mt-[5%] flex w-full basis-full max-md:-z-0 sm:-mt-12 md:-ml-12 md:-mt-24 md:basis-3/5 md:[&:hover>div>div>img.peer:not(:hover)~img]:scale-50 md:[&:hover>div>div>img.peer:not(:hover)~img]:opacity-0">
+                class="relative -mt-[5%] flex w-full basis-full max-md:z-0 sm:-mt-12 md:-ml-12 md:-mt-24 md:basis-3/5 md:[&:hover>div>div>img.peer:not(:hover)~img]:scale-50 md:[&:hover>div>div>img.peer:not(:hover)~img]:opacity-0">
 
                 {{--  cheese eomuk --}}
-                <div class="w-1/2 drop-shadow-2xl hover:z-[1] md:relative md:ml-20">
+                <div class="hover:z-1 w-1/2 drop-shadow-2xl md:relative md:ml-20">
                     <div class="group relative">
-                        <img class="peer relative -rotate-3 transition-[rotate,scale] duration-[600ms] ease-in-out hover:scale-105 group-hover:-rotate-1"
+                        <img class="duration-600 peer relative -rotate-3 transition-[rotate,scale] ease-in-out hover:scale-105 group-hover:-rotate-1"
                             src="{{ asset('img/eomuk-cheese-4.png') }}" alt="">
 
-                        <img class="absolute -left-[22%] bottom-[30%] w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out"
+                        <img class="duration-600 absolute -left-[22%] bottom-[30%] w-2/5 transition-[scale,opacity] ease-in-out"
                             src="{{ asset('img/cheese-combine.png') }}" alt="">
 
-                        <img class="absolute -left-[15%] bottom-[5%] w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out"
+                        <img class="duration-600 absolute -left-[15%] bottom-[5%] w-3/5 transition-[scale,opacity] ease-in-out"
                             src="{{ asset('img/cheese-mascot-plus-border-2.png') }}" alt="">
                     </div>
                 </div>
 
                 {{--  chili eomuk --}}
-                <div class="-ml-[8%] mt-[10%] w-1/2 drop-shadow-2xl hover:z-[1] md:relative md:-ml-[5.3rem] md:mt-14">
+                <div class="hover:z-1 -ml-[8%] mt-[10%] w-1/2 drop-shadow-2xl md:relative md:-ml-[5.3rem] md:mt-14">
                     <div class="group relative">
-                        <img class="peer rotate-3 transition-[rotate,scale] duration-[600ms] ease-in-out hover:scale-105 group-hover:rotate-3 md:rotate-6"
+                        <img class="duration-600 peer rotate-3 transition-[rotate,scale] ease-in-out hover:scale-105 group-hover:rotate-3 md:rotate-6"
                             src="{{ asset('img/eomuk-chili-4.png') }}" alt="">
 
-                        <img class="absolute -right-[22%] bottom-[30%] w-2/5 transition-[scale,opacity] duration-[600ms] ease-in-out"
+                        <img class="duration-600 absolute -right-[22%] bottom-[30%] w-2/5 transition-[scale,opacity] ease-in-out"
                             src="{{ asset('img/chili-combine.png') }}" alt="">
 
-                        <img class="absolute -right-[25%] bottom-0 w-3/5 transition-[scale,opacity] duration-[600ms] ease-in-out"
+                        <img class="duration-600 absolute -right-[25%] bottom-0 w-3/5 transition-[scale,opacity] ease-in-out"
                             src="{{ asset('img/chili-mascot-plus-border-2.png') }}" alt="">
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         <div class="mt-10 sm:mt-10 2xl:-mt-40">
             <div class="grid-overlay -mb-28 grid w-4/5 max-md:mx-auto md:-mb-64 md:w-2/5">
                 <img src="{{ asset('img/zee-how-person.png') }}" alt="zee">
-                <img class="z-[1]" src="{{ asset('img/zee-how-coin.png') }}" alt="gold coins">
+                <img class="z-1" src="{{ asset('img/zee-how-coin.png') }}" alt="gold coins">
             </div>
 
             <div

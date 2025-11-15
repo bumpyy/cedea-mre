@@ -5,12 +5,11 @@ namespace App\Providers;
 use App\Services\QiscusService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Client\Factory as HttpFactory;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
-use LLoadout\Microsoftgraph\EventListeners\MicrosoftGraphCallbackReceived;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Spatie\Health\Checks\Checks\DebugModeCheck;
+use Spatie\Health\Checks\Checks\EnvironmentCheck;
+use Spatie\Health\Checks\Checks\OptimizedAppCheck;
+use Spatie\Health\Facades\Health;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Health::checks([
+            OptimizedAppCheck::new(),
+            DebugModeCheck::new(),
+            EnvironmentCheck::new(),
+        ]);
+
         // Livewire::setUpdateRoute(function ($handle) {
         //     return Route::post('/livewire/update', $handle)
         //         ->middleware('web')

@@ -32,12 +32,12 @@ return [
             'name' => env('QISCUS_TEMPLATE_WELCOME', ''),
         ],
 
-        'ticket_accepted' => [
+        'submission_accepted' => [
             'namespace' => env('QISCUS_UTILS_ACCEPTED_NAMESPACE', ''),
             'name' => env('QISCUS_UTILS_ACCEPTED_TEMPLATE_NAME', ''),
         ],
 
-        'ticket_rejected' => [
+        'submission_rejected' => [
             'namespace' => env('QISCUS_UTILS_REJECTED_NAMESPACE', ''),
             'name' => env('QISCUS_UTILS_REJECTED_TEMPLATE_NAME', ''),
         ],
