@@ -3,13 +3,16 @@
 namespace App\Filament\Resources\Submissions\Pages;
 
 use App\Enum\SubmissionStatusEnum;
+use App\Exports\Sheets\StatusSheet;
 use App\Filament\Resources\Submissions\SubmissionResource;
 use App\Models\Submission;
 use Asmit\ResizedColumn\HasResizableColumn;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Database\Eloquent\Builder;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Columns\Column;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class ListSubmissions extends ListRecords
 {
@@ -20,7 +23,30 @@ class ListSubmissions extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            // CreateAction::make(),
+            ExportAction::make()->exports([
+                ExcelExport::make()->withColumns([
+                    Column::make('uuid'),
+                    Column::make('receipt_number'),
+                    Column::make('user.name')
+                        ->heading('User Name'),
+                    Column::make('status'),
+                    Column::make('admin.name')
+                        ->heading('Assigned To'),
+                    Column::make('note'),
+                    Column::make('created_at'),
+                    Column::make('updated_at'),
+
+                ])
+                    ->withSheets(
+
+                        append: [
+                            new StatusSheet(SubmissionStatusEnum::PENDING),
+                            new StatusSheet(SubmissionStatusEnum::ACCEPTED),
+                            new StatusSheet(SubmissionStatusEnum::REJECTED),
+                        ]
+                    )
+                    ->queue(),
+            ]),
         ];
     }
 

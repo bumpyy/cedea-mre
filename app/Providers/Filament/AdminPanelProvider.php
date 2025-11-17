@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Asmit\ResizedColumn\ResizedColumnPlugin;
 use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Cmsmaxinc\FilamentErrorPages\FilamentErrorPagesPlugin;
+use Filament\Enums\DatabaseNotificationsPosition;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -65,6 +66,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authGuard('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
+            ->databaseNotifications(position: DatabaseNotificationsPosition::Sidebar)
+            ->databaseNotificationsPolling('30s')
             ->plugins([
                 ResizedColumnPlugin::make(),
                 FilamentPanzoomPlugin::make(),
