@@ -6,9 +6,10 @@ use App\Enum\SubmissionStatusEnum;
 use App\Events\SubmissionProcessed;
 use App\Mail\SubmissionNotification;
 use App\Services\QiscusService;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendNotification
+class SendNotification implements ShouldQueue
 {
     /**
      * The number of times the queued listener may be attempted.

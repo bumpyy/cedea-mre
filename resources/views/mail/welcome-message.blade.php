@@ -439,7 +439,7 @@
                                     <td class="content-cell">
                                         <div class="f-fallback">
                                             <h1>Selamat, {{ $user->name }}!</h1>
-                                            <p>Terima kasih telah memverifikasi akun anda. selanjutnya kamu bisa
+                                            <p>Terima kasih telah memverifikasi kontak anda. selanjutnya kamu bisa
                                                 langsung upload struk di dashboard kamu:</p>
                                             <!-- Action -->
                                             <table class="body-action" align="center" width="100%" cellpadding="0"
