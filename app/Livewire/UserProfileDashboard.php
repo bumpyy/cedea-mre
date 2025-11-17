@@ -40,19 +40,19 @@ class UserProfileDashboard extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:190'],
 
             'email' => [
                 'required',
                 'string',
                 'lowercase',
                 'email',
-                'max:255',
+                'max:190',
                 Rule::unique(User::class)->ignore($user->id),
             ],
 
-            'phone' => ['required', 'string', 'max:255', new IndonesianPhoneNumber],
-            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:190', new IndonesianPhoneNumber],
+            'address' => ['required', 'string', 'max:190'],
 
             'social' => ['array'],
 

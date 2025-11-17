@@ -76,16 +76,16 @@ class Register extends Component
         }
 
         $baseRule = [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:190'],
 
-            'address' => ['string', 'max:255'],
+            'address' => ['string', 'max:190'],
 
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'accept_terms' => ['required', 'accepted'],
         ];
 
         $phoneRule = ['required', 'string', 'unique:'.User::class, new IndonesianPhoneNumber];
-        $emailRule = ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class];
+        $emailRule = ['required', 'string', 'lowercase', 'email', 'max:190', 'unique:'.User::class];
 
         // if (! $this->email) {
         //     $baseRule = [

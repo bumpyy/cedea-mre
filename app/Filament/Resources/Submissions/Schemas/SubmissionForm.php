@@ -42,7 +42,7 @@ class SubmissionForm
                     ->live()
                     ->required(),
                 \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('note')
-                    ->characterLimit(255),
+                    ->characterLimit(190),
             ])
             ->columns(1);
 
