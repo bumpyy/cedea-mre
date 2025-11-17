@@ -20,6 +20,7 @@ class SubmissionForm
                     ->imageUrl(fn ($record) => $record->getFirstMediaUrl('submissions'))
                     ->imageId(fn ($record) => 'receipt-'.$record->id),
                 TextInput::make('receipt_number')
+                    ->unique()
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)

@@ -1,5 +1,5 @@
 {{-- When using this button in another component that supports icons, this button will automatically inherit the icon-related props without needing to pass them explicitly each time. --}}
-@aware(['icon', 'iconClasses', 'iconVariant', 'iconAfter']);
+@aware(['icon', 'iconClasses', 'iconVariant', 'iconAfter'])
 
 @props([
     'type' => 'button',

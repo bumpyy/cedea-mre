@@ -13,6 +13,7 @@ use Filament\Actions\ViewAction;
 use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use pxlrbt\FilamentExcel\Actions\ExportBulkAction;
 
 class SubmissionsTable
 {
@@ -72,6 +73,7 @@ class SubmissionsTable
                     })
                     ->visible(fn ($livewire) => $livewire->activeTab === 'assigned'),
                 BulkActionGroup::make([
+                    ExportBulkAction::make(),
                     // DeleteBulkAction::make(),
                 ]),
             ]);

@@ -59,13 +59,18 @@ class Register extends Component
         $this->accept_terms = true;
     }
 
+    public function showTermsModal(): void
+    {
+        $this->dispatch('open-modal', id: 'terms');
+    }
+
     /**
      * Handle an incoming registration request.
      */
     public function register(): void
     {
         if (! $this->accept_terms) {
-            $this->dispatch('openModal', component: 'terms-list');
+            $this->showTermsModal();
 
             return;
         }
