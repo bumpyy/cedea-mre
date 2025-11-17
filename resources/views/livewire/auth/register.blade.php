@@ -66,9 +66,9 @@
                 <flux:error name="accept_terms" />
             </flux:field>
             <flux:label>
-                <p class="cursor-pointer text-white" wire:click="$dispatch('openModal', { component: 'terms-list' })">
+                <p class="text-white">
                     Dengan mendaftar, saya setuju dengan
-                    <span class="font-bold">
+                    <span class="cursor-pointer font-bold" wire:click="showTermsModal">
                         Syarat & Ketentuan yang berlaku
                     </span>
                 </p>
@@ -83,4 +83,9 @@
     </form>
 
     <flux:link class="text-center text-white" :href="route('login')">Sudah punya akun</flux:link>
+
+    <x-ui.modal id="terms" closeButton="false" heading="Syarat dan Ketentuan"
+        description="Baca syarat dan ketentuan dulu" width="4xl">
+        <livewire:terms-list />
+    </x-ui.modal>
 </div>
