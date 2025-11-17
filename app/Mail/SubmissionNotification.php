@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Enum\SubmissionStatusEnum;
 use App\Models\Submission;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -17,15 +18,27 @@ class SubmissionNotification extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Submission $submission, public User $user) {}
+    public function __construct(public Submission $submission, public User $user, public SubmissionStatusEnum $status) {}
 
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
+        switch ($this->status) {
+            case SubmissionStatusEnum::ACCEPTED:
+                $subject = "CEDEA RTE - Submission {$this->submission->id} diterima";
+                break;
+            case SubmissionStatusEnum::REJECTED:
+                $subject = "CEDEA RTE - Submission {$this->submission->id} ditolak";
+                break;
+            default:
+                $subject = "CEDEA RTE - Submission {$this->submission->id} diproses";
+                break;
+        }
+
         return new Envelope(
-            subject: 'Submission Notification',
+            subject: $subject,
         );
     }
 
@@ -34,9 +47,17 @@ class SubmissionNotification extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            view: 'mail.submission-rejected',
-        );
+        switch ($this->status) {
+            case SubmissionStatusEnum::ACCEPTED:
+                return new Content(view: 'mail.submission-accepted');
+                break;
+            case SubmissionStatusEnum::REJECTED:
+                return new Content(view: 'mail.submission-rejected');
+                break;
+            default:
+                return new Content(view: 'mail.submission-rejected');
+                break;
+        }
     }
 
     /**

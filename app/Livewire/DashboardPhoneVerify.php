@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Exceptions\WhatsAppException;
 use App\Services\QiscusService;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
@@ -75,15 +76,19 @@ class DashboardPhoneVerify extends Component
         if ($result->isOk()) {
             $this->showOtpForm = false;
             $user->markPhoneAsVerified();
-            app(QiscusService::class)->sendNotification($user, 'welcome', bodyParams: [
-                $user->name,
-            ]);
+            // app(QiscusService::class)->sendNotification($user, 'welcome', bodyParams: [
+            //     $user->name,
+            // ]);
+
+            event(new Verified($this->user()));
+
             redirect()->intended(default: route('dashboard', absolute: false));
         }
 
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);
+
     }
 
     public function render()

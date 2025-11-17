@@ -139,11 +139,11 @@
         }
 
         .button--red {
-            background-color: #b22931;
-            border-top: 10px solid #b22931;
-            border-right: 18px solid #b22931;
-            border-bottom: 10px solid #b22931;
-            border-left: 18px solid #b22931;
+            background-color: #FF6136;
+            border-top: 10px solid #FF6136;
+            border-right: 18px solid #FF6136;
+            border-bottom: 10px solid #FF6136;
+            border-left: 18px solid #FF6136;
         }
 
         @media only screen and (max-width: 500px) {
@@ -406,11 +406,6 @@
                 width: 100% !important;
             }
         }
-
-        :root {
-            color-scheme: light;
-            supported-color-schemes: light;
-        }
     </style>
     <!--[if mso]>
     <style type="text/css">
@@ -422,7 +417,7 @@
 </head>
 
 <body>
-    <span class="preheader">Submission kamu sudah kami proses!</span>
+    <span class="preheader">Terima kasih telah memverifikasi akun kamu.</span>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
             <td align="center">
@@ -443,50 +438,10 @@
                                 <tr>
                                     <td class="content-cell">
                                         <div class="f-fallback">
-                                            <h1>Hi {{ $user->name }},</h1>
-                                            <p>Wah sayang banget submission kamu dengan id {{ $submission->uuid }} harus
-                                                kami tolak</p>
+                                            <h1>Selamat, {{ $user->name }}!</h1>
+                                            <p>Terima kasih telah memverifikasi akun anda. selanjutnya kamu bisa
+                                                langsung upload struk di dashboard kamu:</p>
                                             <!-- Action -->
-
-                                            <table class="attributes" width="100%" cellpadding="0" cellspacing="0"
-                                                role="presentation">
-                                                <tr>
-                                                    <td class="attributes_content">
-                                                        <table width="100%" cellpadding="0" cellspacing="0"
-                                                            role="presentation">
-                                                            <tr>
-                                                                <td class="attributes_item">
-                                                                    <div class="f-fallback">
-
-                                                                        @if ($submission->note)
-                                                                            <h2>Kenapa submission kamu harus kami tolak?
-                                                                            </h2>
-                                                                            <p>{{ $submission->note }}</p>
-                                                                        @else
-                                                                            <p>Submission kamu harus kami tolak bisa
-                                                                                karena</p>
-                                                                            <ul>
-                                                                                <li>Gambar buram</li>
-                                                                                <li>Duplikat</li>
-                                                                                <li>tidak sesuai syarat dan ketentuan
-                                                                                </li>
-                                                                            </ul>
-                                                                        @endif
-                                                                        <p class="u-margin-bottom-none">Kamu bisa baca
-                                                                            lebih jelas di halaman
-                                                                            <a href="{{ route('terms') }}">syarat dan
-                                                                                ketentuan</a>.
-                                                                        </p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                            <p>tapi jangan berkecil hati, kamu bisa coba lagi kok</p>
-
                                             <table class="body-action" align="center" width="100%" cellpadding="0"
                                                 cellspacing="0" role="presentation">
                                                 <tr>
@@ -497,10 +452,9 @@
                                                             cellpadding="0" role="presentation">
                                                             <tr>
                                                                 <td align="center">
-                                                                    <a class="f-fallback button button--red"
+                                                                    <a class="f-fallback button"
                                                                         href="{{ route('dashboard') }}"
-                                                                        target="_blank">Cek Submission kamu di
-                                                                        Dashboard →</a>
+                                                                        target="_blank">Upload Sekarang</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -508,31 +462,17 @@
                                                 </tr>
                                             </table>
 
-                                            <p>Thanks,
-                                                <br>Tim Cedea
+                                            <p>Terima kasih,
+                                                <br>tim Cedea
                                             </p>
+
                                         </div>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
-                    {{-- <tr>
-                        <td>
-                            <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0"
-                                role="presentation">
-                                <tr>
-                                    <td class="content-cell" align="center">
-                                        <p class="f-fallback sub align-center">
-                                            [Company Name, LLC]
-                                            <br>1234 Street Rd.
-                                            <br>Suite 1234
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr> --}}
+
                 </table>
             </td>
         </tr>

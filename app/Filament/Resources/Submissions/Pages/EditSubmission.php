@@ -3,12 +3,15 @@
 namespace App\Filament\Resources\Submissions\Pages;
 
 use App\Enum\SubmissionStatusEnum;
+use App\Events\SubmissionProcessed;
 use App\Filament\Resources\Submissions\SubmissionResource;
+use App\Mail\SubmissionNotification;
 use App\Services\QiscusService;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Kenepa\ResourceLock\Resources\Pages\Concerns\UsesResourceLock;
 
 class EditSubmission extends EditRecord
@@ -28,20 +31,40 @@ class EditSubmission extends EditRecord
                         'raffle_number' => generateUniqueCode(),
                     ]);
                 }
-                app(QiscusService::class)->sendNotification($record->user, 'submission_accepted', bodyParams: [
-                    $record->uuid,
-                    $record->raffle_number,
-                ]);
+
+                // Mail::to($record->user->email)->send(new SubmissionNotification($record, $record->user, SubmissionStatusEnum::ACCEPTED));
+                // app(QiscusService::class)->sendNotification($record->user, 'submission_accepted', bodyParams: [
+                //     $record->uuid,
+                //     $record->raffle_number,
+                // ]);
+                event(new SubmissionProcessed(
+                    $record,
+                    $record->user, SubmissionStatusEnum::ACCEPTED, bodyParams: [
+                        $record->uuid,
+                        $record->raffle_number,
+                    ]
+                ));
                 break;
 
             case SubmissionStatusEnum::REJECTED:
                 if ($record->raffle_number) {
                     $record->raffle_number = null;
                 }
-                app(QiscusService::class)->sendNotification($record->user, 'submission_rejected', bodyParams: [
-                    $record->uuid,
-                    $record->note ?? '-',
-                ]);
+
+                // Mail::to($record->user->email)->send(new SubmissionNotification($record, $record->user, SubmissionStatusEnum::REJECTED));
+                // app(QiscusService::class)->sendNotification($record->user, 'submission_rejected', bodyParams: [
+                //     $record->uuid,
+                //     $record->note ?? '-',
+                // ]);
+
+                event(new SubmissionProcessed(
+                    $record,
+                    $record->user, SubmissionStatusEnum::REJECTED, bodyParams: [
+                        $record->uuid,
+                        $record->note ?? '-',
+                    ]
+                ));
+
                 break;
 
             default:

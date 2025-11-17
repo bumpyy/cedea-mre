@@ -444,8 +444,8 @@
                                     <td class="content-cell">
                                         <div class="f-fallback">
                                             <h1>Hi {{ $user->name }},</h1>
-                                            <p>Wah sayang banget submission kamu dengan id {{ $submission->uuid }} harus
-                                                kami tolak</p>
+                                            <p>Selamat submission kamu dengan id: {{ $submission->uuid }} telah kami
+                                                terima</p>
                                             <!-- Action -->
 
                                             <table class="attributes" width="100%" cellpadding="0" cellspacing="0"
@@ -457,26 +457,9 @@
                                                             <tr>
                                                                 <td class="attributes_item">
                                                                     <div class="f-fallback">
-
-                                                                        @if ($submission->note)
-                                                                            <h2>Kenapa submission kamu harus kami tolak?
-                                                                            </h2>
-                                                                            <p>{{ $submission->note }}</p>
-                                                                        @else
-                                                                            <p>Submission kamu harus kami tolak bisa
-                                                                                karena</p>
-                                                                            <ul>
-                                                                                <li>Gambar buram</li>
-                                                                                <li>Duplikat</li>
-                                                                                <li>tidak sesuai syarat dan ketentuan
-                                                                                </li>
-                                                                            </ul>
-                                                                        @endif
-                                                                        <p class="u-margin-bottom-none">Kamu bisa baca
-                                                                            lebih jelas di halaman
-                                                                            <a href="{{ route('terms') }}">syarat dan
-                                                                                ketentuan</a>.
-                                                                        </p>
+                                                                        <p>Berikut nomor undian kamu untuk submission
+                                                                            ini:</p>
+                                                                        <h2>{{ $submission->raffle_number }}</h2>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -485,7 +468,8 @@
                                                 </tr>
                                             </table>
 
-                                            <p>tapi jangan berkecil hati, kamu bisa coba lagi kok</p>
+                                            <p>Ayo upload lebih banyak lagi biar dapat kesempatan menang lebih besar.
+                                            </p>
 
                                             <table class="body-action" align="center" width="100%" cellpadding="0"
                                                 cellspacing="0" role="presentation">
