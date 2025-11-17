@@ -44,11 +44,11 @@
 
                     <ol
                         class="font-poppings grid gap-x-6 gap-y-12 font-bold uppercase md:grid-cols-3 md:grid-rows-[auto_minmax(auto,1fr)]">
-                        <x-how-item img="{{ asset('img/how-eomuk.png') }}" text="beli cedea snack korea <br/> eomuk bar"
-                            number="1" />
-                        <x-how-item img="{{ asset('img/how-qr.png') }}"
+                        <x-how-item img="{{ asset('img/final/how-eomuk.png') }}"
+                            text="beli cedea snack korea <br/> eomuk bar" number="1" />
+                        <x-how-item img="{{ asset('img/final/how-qr.png') }}"
                             text="scan qr code pada kemasan cedea snack korea <br/> eomuk bar" number="2" />
-                        <x-how-item img="{{ asset('img/how-prize.png') }}"
+                        <x-how-item img="{{ asset('img/final/how-prize.png') }}"
                             text="menangkan liburan ke korea & uang tunai ratusan juta" number="3" />
                     </ol>
 
