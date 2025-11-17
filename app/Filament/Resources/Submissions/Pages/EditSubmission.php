@@ -6,6 +6,7 @@ use App\Enum\SubmissionStatusEnum;
 use App\Events\SubmissionProcessed;
 use App\Filament\Resources\Submissions\SubmissionResource;
 use App\Mail\SubmissionNotification;
+use App\Models\Submission;
 use App\Services\QiscusService;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
@@ -23,6 +24,20 @@ class EditSubmission extends EditRecord
     protected function beforeValidate(): void
     {
         $this->data['receipt_number'] = trim($this->data['receipt_number']);
+        $record = $this->getRecord();
+
+        $storeName = trim($this->data['store_name']);
+        $receiptNumber = trim($this->data['receipt_number']);
+
+        if (Submission::where('store_name', $storeName)
+            ->where('receipt_number', $receiptNumber)
+            ->where('id', '<>', $record->id)
+            ->exists()) {
+
+            $this->throwValidationException([
+                'store_name' => 'Store name and receipt number must be unique.',
+            ]);
+        }
     }
 
     protected function mutateFormDataBeforeSave(array $data): array

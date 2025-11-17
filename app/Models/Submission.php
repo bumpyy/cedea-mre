@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\StoreEnum;
 use App\Enum\SubmissionStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,7 @@ class Submission extends Model implements HasMedia
      */
     protected $casts = [
         'status' => SubmissionStatusEnum::class,
+        'store_name' => StoreEnum::class,
     ];
 
     /**

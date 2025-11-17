@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\Submissions\Schemas;
 
+use App\Enum\StoreEnum;
 use App\Enum\SubmissionStatusEnum;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
@@ -22,6 +24,11 @@ class SubmissionForm
                 TextInput::make('receipt_number')
                     ->unique()
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
+
+                Select::make('store_name')
+                    ->options(StoreEnum::class)
+                    ->selectablePlaceholder(false),
+
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)
                     ->icons([
