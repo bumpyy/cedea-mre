@@ -24,7 +24,8 @@ class ListSubmissions extends ListRecords
     {
         return [
             ExportAction::make()->exports([
-                ExcelExport::make()->withColumns([
+                ExcelExport::make()->
+                withColumns([
                     Column::make('uuid'),
                     Column::make('receipt_number'),
                     Column::make('user.name')
@@ -35,10 +36,8 @@ class ListSubmissions extends ListRecords
                     Column::make('note'),
                     Column::make('created_at'),
                     Column::make('updated_at'),
-
                 ])
                     ->withSheets(
-
                         append: [
                             new StatusSheet(SubmissionStatusEnum::PENDING),
                             new StatusSheet(SubmissionStatusEnum::ACCEPTED),
