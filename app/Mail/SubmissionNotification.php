@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use InvalidArgumentException;
 
 class SubmissionNotification extends Mailable
 {
@@ -27,13 +28,13 @@ class SubmissionNotification extends Mailable
     {
         switch ($this->status) {
             case SubmissionStatusEnum::ACCEPTED:
-                $subject = "CEDEA RTE - Submission {$this->submission->id} diterima";
+                $subject = "CEDEA RTE - Submission {$this->submission->uuid} diterima";
                 break;
             case SubmissionStatusEnum::REJECTED:
-                $subject = "CEDEA RTE - Submission {$this->submission->id} ditolak";
+                $subject = "CEDEA RTE - Submission {$this->submission->uuid} ditolak";
                 break;
             default:
-                $subject = "CEDEA RTE - Submission {$this->submission->id} diproses";
+                $subject = "CEDEA RTE - Submission {$this->submission->uuid} diproses";
                 break;
         }
 
@@ -47,17 +48,12 @@ class SubmissionNotification extends Mailable
      */
     public function content(): Content
     {
-        switch ($this->status) {
-            case SubmissionStatusEnum::ACCEPTED:
-                return new Content(view: 'mail.submission-accepted');
-                break;
-            case SubmissionStatusEnum::REJECTED:
-                return new Content(view: 'mail.submission-rejected');
-                break;
-            default:
-                return new Content(view: 'mail.submission-rejected');
-                break;
-        }
+        return match ($this->status) {
+            SubmissionStatusEnum::ACCEPTED => new Content(view: 'mail.submission-accepted'),
+            SubmissionStatusEnum::REJECTED => new Content(view: 'mail.submission-rejected'),
+            default => throw new InvalidArgumentException('Invalid submission status'),
+        };
+
     }
 
     /**

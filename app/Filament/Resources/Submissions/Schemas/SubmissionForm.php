@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Submissions\Schemas;
 
 use App\Enum\SubmissionStatusEnum;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use JaOcero\RadioDeck\Forms\Components\RadioDeck;
 use SolutionForest\FilamentPanzoom\Components\PanZoom;
@@ -18,7 +19,8 @@ class SubmissionForm
                 PanZoom::make('receipt_image_preview')
                     ->imageUrl(fn ($record) => $record->getFirstMediaUrl('submissions'))
                     ->imageId(fn ($record) => 'receipt-'.$record->id),
-                TextInput::make('receipt_number'),
+                TextInput::make('receipt_number')
+                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)
                     ->icons([
@@ -36,6 +38,7 @@ class SubmissionForm
                         SubmissionStatusEnum::ACCEPTED->value => SubmissionStatusEnum::ACCEPTED->getColor(),
                         SubmissionStatusEnum::REJECTED->value => SubmissionStatusEnum::REJECTED->getColor(),
                     ])
+                    ->live()
                     ->required(),
                 \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('note')
                     ->characterLimit(255),

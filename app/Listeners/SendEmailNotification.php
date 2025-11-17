@@ -2,14 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Enum\SubmissionStatusEnum;
 use App\Events\SubmissionProcessed;
 use App\Mail\SubmissionNotification;
-use App\Services\QiscusService;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class SendNotification implements ShouldQueue
+class SendEmailNotification implements ShouldQueue
 {
     /**
      * The number of times the queued listener may be attempted.
@@ -31,12 +30,12 @@ class SendNotification implements ShouldQueue
      */
     public function handle(SubmissionProcessed $event): void
     {
-        $type = match ($event->type) {
-            SubmissionStatusEnum::ACCEPTED => 'submission_accepted',
-            SubmissionStatusEnum::REJECTED => 'submission_rejected',
-        };
-
-        Mail::to($event->user->email)->send(new SubmissionNotification($event->submission, $event->user, $event->type));
-        app(QiscusService::class)->sendNotification($event->user, $type, bodyParams: $event->bodyParams);
+        try {
+            Mail::to($event->user->email)->send(new SubmissionNotification($event->submission, $event->user, $event->type));
+        } catch (\Exception $e) {
+            Log::error(sprintf('Failed to send mail notification for submission %s', $event->submission->uuid), [
+                'exception' => $e,
+            ]);
+        }
     }
 }

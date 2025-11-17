@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Users\RelationManagers;
 
+use App\Enum\SubmissionStatusEnum;
 use App\Filament\Resources\Submissions\Schemas\SubmissionForm;
 use App\Filament\Resources\Submissions\Schemas\SubmissionInfolist;
+use App\Filament\Resources\Submissions\SubmissionResource;
 use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
@@ -17,6 +19,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class SubmissionRelationManager extends RelationManager
 {
@@ -68,7 +71,12 @@ class SubmissionRelationManager extends RelationManager
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()
+                    ->url(fn (Model $record): string => SubmissionResource::getUrl('edit', [
+                        'record' => $record,
+                    ]))
+                    ->visible(fn ($record) => $record->status === SubmissionStatusEnum::PENDING)
+                    ->disabled(fn ($record) => $record->status !== SubmissionStatusEnum::PENDING),
                 // DissociateAction::make(),
                 // DeleteAction::make(),
             ])

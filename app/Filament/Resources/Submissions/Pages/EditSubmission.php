@@ -20,6 +20,15 @@ class EditSubmission extends EditRecord
 
     protected static string $resource = SubmissionResource::class;
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['status'] !== SubmissionStatusEnum::ACCEPTED) {
+            $data['receipt_number'] = null;
+        }
+
+        return $data;
+    }
+
     protected function afterSave(): void
     {
         $record = $this->getRecord();
