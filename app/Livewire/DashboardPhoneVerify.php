@@ -11,7 +11,6 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 
 class DashboardPhoneVerify extends Component
 {
@@ -66,12 +65,8 @@ class DashboardPhoneVerify extends Component
     #[On('otp-complete')]
     public function verifyOtp(): void
     {
-        $user = Auth::user();
-        if (env('MOCK_PHONE_OTP', false)) {
-            $result = $this->otpCode == '482915' ? ConsumeOneTimePasswordResult::Ok : ConsumeOneTimePasswordResult::IncorrectOneTimePassword;
-        } else {
-            $result = $user->consumeOneTimePassword($this->otpCode);
-        }
+        $user = auth()->user();
+        $result = $user->consumeOneTimePassword($this->otpCode);
 
         if ($result->isOk()) {
             $this->showOtpForm = false;
@@ -84,6 +79,8 @@ class DashboardPhoneVerify extends Component
 
             redirect()->intended(default: route('dashboard', absolute: false));
         }
+
+        Log::info('OTP verification: otp='.$this->otp);
 
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
