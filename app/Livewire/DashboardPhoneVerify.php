@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Events\PhoneVerified;
 use App\Exceptions\WhatsAppException;
 use App\Services\QiscusService;
 use Illuminate\Support\Facades\Auth;
@@ -80,7 +79,7 @@ class DashboardPhoneVerify extends Component
             //     $user->name,
             // ]);
 
-            event(new PhoneVerified(auth()->user()));
+            event(new PhoneVerifiedListener(auth()->user()));
 
             redirect()->intended(default: route('dashboard', absolute: false));
         }
