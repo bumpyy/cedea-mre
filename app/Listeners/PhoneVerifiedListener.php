@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\PhoneVerified;
 use App\Mail\WelcomeMessage;
 use App\Services\QiscusService;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,7 +22,7 @@ class PhoneVerifiedListener implements ShouldQueue
     /**
      * Handle the event.
      */
-    public function handle(PhoneVerifiedListener $event): void
+    public function handle(PhoneVerified $event): void
     {
         try {
             // Mail::to($event->user->email)->send(new WelcomeMessage($event->user));
