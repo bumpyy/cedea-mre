@@ -118,7 +118,9 @@ class Register extends Component
             'phone_formatted' => $phoneRule,
         ];
 
-        $this->phone_formatted = formatPhoneNumber($this->phone);
+        if (! is_null($this->phone)) {
+            $this->phone_formatted = formatPhoneNumber($this->phone);
+        }
 
         $validated = $this->validate([
             ...$baseRule,
