@@ -16,8 +16,8 @@
         <!-- Email Address -->
         <flux:field>
             <flux:label class="text-white">E-mail</flux:label>
-            <flux:input class="text-black" name="email" type="email" wire:model="email" autocomplete="email"
-                placeholder="email@example.com" />
+            <flux:input class="text-black" name="email" type="email" wire:model="email" required
+                autocomplete="email" placeholder="email@example.com" />
             <flux:error class="" name="email" />
         </flux:field>
 
@@ -34,8 +34,8 @@
 
             <flux:input.group>
                 {{-- <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix> --}}
-                <flux:input class="text-black" name="phone" type="phone" wire:model="phone" autocomplete="phone"
-                    placeholder="Isi nomor handphone kamu (cth: 62823xxxxxxx)" />
+                <flux:input class="text-black" name="phone" type="phone" required wire:model="phone"
+                    autocomplete="phone" placeholder="Isi nomor handphone kamu (cth: 62823xxxxxxx)" />
             </flux:input.group>
 
             <flux:error class="" name="phone_formatted" />
