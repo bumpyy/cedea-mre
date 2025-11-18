@@ -75,11 +75,11 @@
             return;
         }
 
-        // Trigger completion event when all boxes filled
-        if (value.length === this.length) {
-            // if so wait until the last input get filled then call `onComplete`
-            $nextTick(() => this.onComplete());
-        }
+        // // Trigger completion event when all boxes filled
+        // if (value.length === this.length) {
+        //     // if so wait until the last input get filled then call `onComplete`
+        //     $nextTick(() => this.onComplete());
+        // }
     },
     handlePaste(event) {
         event.preventDefault();
@@ -187,7 +187,7 @@
                 </div>
             </div>
 
-            <input {{ $attributes->except(['digits']) }} type="hidden" x-ref="code" wire:model='otpCode'
+            <input {{ $attributes->except(['digits']) }} type="hidden" x-ref="code" wire:model="otpCode"
                 name="{{ $name }}" minlength="{{ $digits }}" maxlength="{{ $digits }}" />
 
         </div>

@@ -80,8 +80,6 @@ class DashboardPhoneVerify extends Component
             redirect()->intended(default: route('dashboard', absolute: false));
         }
 
-        Log::info('OTP verification: otp='.$this->otpCode);
-
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);

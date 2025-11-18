@@ -17,5 +17,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
 
+@if (config('analytics.google.enabled') && config('analytics.google.id'))
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW5Y5QHNPB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', "{{ config('analytics.google.id') }}");
+    </script>
+@endif
+
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 {{-- @fluxAppearance --}}
