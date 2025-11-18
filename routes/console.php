@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schedule;
 use Spatie\OneTimePasswords\Models\OneTimePassword;
 
@@ -26,6 +27,8 @@ Schedule::call(function () {
             File::delete($file->getRealPath());
         }
     }
+
+    Log::info('this is from scheduler');
 })->daily();
 
 Schedule::command('queue:work --stop-when-empty')
