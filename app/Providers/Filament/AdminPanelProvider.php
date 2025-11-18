@@ -68,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->databaseNotifications(position: DatabaseNotificationsPosition::Sidebar)
             ->databaseNotificationsPolling('30s')
+            ->profile()
             ->plugins([
                 ResizedColumnPlugin::make(),
                 FilamentPanzoomPlugin::make(),
