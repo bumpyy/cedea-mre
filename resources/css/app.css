@@ -60,11 +60,11 @@
 }
 
 @layer theme {
-    .dark {
+    /* .dark {
         --color-accent: var(--color-red-500);
         --color-accent-content: var(--color-red-400);
         --color-accent-foreground: var(--color-white);
-    }
+    } */
 }
 
 @layer base {
