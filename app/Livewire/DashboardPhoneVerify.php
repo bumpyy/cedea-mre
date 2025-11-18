@@ -80,7 +80,7 @@ class DashboardPhoneVerify extends Component
             //     $user->name,
             // ]);
 
-            event(new Verified($this->user()));
+            event(new Verified(auth()->user()));
 
             redirect()->intended(default: route('dashboard', absolute: false));
         }
