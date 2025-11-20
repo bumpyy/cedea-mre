@@ -50,6 +50,6 @@ class ListUsers extends ListRecords
 
     public function getDefaultActiveTab(): string|int|null
     {
-        return 'assigned';
+        return 'not_disqualified';
     }
 }

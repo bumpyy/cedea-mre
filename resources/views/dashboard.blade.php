@@ -15,8 +15,6 @@
 
                 <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
 
-                <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
-
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
 
                 @if (!auth()->user()->isVerified())
