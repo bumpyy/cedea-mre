@@ -12,6 +12,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Kenepa\ResourceLock\Resources\Pages\Concerns\UsesResourceLock;
@@ -37,8 +38,9 @@ class EditSubmission extends EditRecord
             ->exists()) {
 
             Notification::make()
-                ->warning()
-                ->title('Duplicate')
+                ->danger()
+                ->color(Color::Red)
+                ->title('Duplicate receipt number && store name')
                 ->send();
 
             $this->halt();
@@ -101,7 +103,9 @@ class EditSubmission extends EditRecord
                 ));
 
                 break;
+            case SubmissionStatusEnum::PENDING:
 
+                break;
             default:
                 Log::warning('Error saving submission: ', [
                     'exception' => 'Submission status not found',

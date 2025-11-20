@@ -4,9 +4,12 @@ namespace App\Filament\Resources\Submissions\Schemas;
 
 use App\Enum\StoreEnum;
 use App\Enum\SubmissionStatusEnum;
+use App\Models\Submission;
 use Filament\Forms\Components\Select;
+use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Filament\Support\Colors\Color;
 use JaOcero\RadioDeck\Forms\Components\RadioDeck;
 use SolutionForest\FilamentPanzoom\Components\PanZoom;
 
@@ -22,7 +25,23 @@ class SubmissionForm
                 \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('receipt_number')
                     ->unique()
                     ->characterLimit(190)
-                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
+                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED)
+                    ->live()
+                    ->afterStateUpdated(
+                        function (Get $get, ?string $state, $record) {
+                            if (Submission::where('store_name', $get('store_name'))
+                                ->where('receipt_number', $state)
+                                ->where('id', '<>', $record->id)
+                                ->exists()) {
+                                Notification::make()
+                                    ->danger()
+                                    ->color(Color::Red)
+                                    ->title('Duplicate receipt number && store name')
+                                    ->send();
+                            }
+                        }
+
+                    ),
                 Select::make('store_name')
                     ->options(StoreEnum::class)
                     ->default(StoreEnum::INDOMARET->value)
