@@ -15,7 +15,10 @@
 
                 <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
 
+                <p class="max-md:text-sm">{{ auth()->user()->name }}</p>
+
                 <p class="max-md:text-sm">{{ auth()->user()->address }}</p>
+
                 @if (!auth()->user()->isVerified())
                     <p class="text-cedea-red/70 max-md:text-xs">Silahkan verifikasi email atau whatsapp anda terlebih
                         dahulu</p>

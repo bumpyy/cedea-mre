@@ -10,6 +10,7 @@ use App\Models\Submission;
 use App\Services\QiscusService;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -27,6 +28,7 @@ class EditSubmission extends EditRecord
         $record = $this->getRecord();
 
         $storeName = trim($this->data['store_name']);
+
         $receiptNumber = trim($this->data['receipt_number']);
 
         if (Submission::where('store_name', $storeName)
@@ -34,9 +36,13 @@ class EditSubmission extends EditRecord
             ->where('id', '<>', $record->id)
             ->exists()) {
 
-            $this->throwValidationException([
-                'store_name' => 'Store name and receipt number must be unique.',
-            ]);
+            Notification::make()
+                ->warning()
+                ->title('Duplicate')
+                ->send();
+
+            $this->halt();
+
         }
     }
 

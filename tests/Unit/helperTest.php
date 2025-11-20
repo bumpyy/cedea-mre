@@ -5,6 +5,7 @@ test('formatPhoneNumber formats various inputs to 62 standard', function ($input
     expect(formatPhoneNumber($input))->toBe($expected);
 })->with([
     'awalan 0' => ['08123456789', '628123456789'],
+    'awalan 8' => ['8123456789', '628123456789'],
     'awalan +62' => ['+628123456789', '628123456789'],
     'awalan 62 (sudah benar)' => ['628123456789', '628123456789'],
     'awalan 0 dengan spasi' => ['0812 345 678', '62812345678'],
@@ -26,6 +27,7 @@ dataset('isPhone_valid_numbers', [
 // Dataset 'isPhone' yang tidak valid
 dataset('isPhone_invalid_numbers', [
     'terlalu pendek' => '08123',
+    'gak ada 8' => '81234567890123',
     'terlalu panjang' => '081234567890123',
     'awalan salah' => '123456789',
     'huruf' => '0812-abc-def',

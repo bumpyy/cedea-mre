@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Log;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\LivewireFilepond\WithFilePond;
 
@@ -41,6 +42,7 @@ class UploadForm extends ModalComponent
                 Submissions::class => 'submission-created',
             ]);
         } catch (\Throwable $th) {
+            Log::error('file', 'An error occurred while uploading the file: '.$th->getMessage());
             $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
         }
 

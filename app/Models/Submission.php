@@ -24,7 +24,8 @@ class Submission extends Model implements HasMedia
      * @var array
      */
     protected $guarded = [
-        'id', 'created_at', 'updated_at', 'uuid',     ];
+        'id', 'created_at', 'updated_at', 'uuid',
+    ];
 
     // only the `updated` event will get logged automatically
     protected static $recordEvents = ['updated'];

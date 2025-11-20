@@ -39,16 +39,17 @@ class SubmissionsTable
                 TextColumn::make('note')
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                \Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter::make('created_at')
+                    ->timezone('GMT+7'),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -61,6 +62,7 @@ class SubmissionsTable
                     ->action(function () {
                         $admin = auth('admin')->user();
                         $pendingSubmissions = Submission::where('admin_id', $admin->id)
+                            ->orderBy('created_at', 'asc')
                             ->where('status', SubmissionStatusEnum::PENDING)
                             ->count();
 

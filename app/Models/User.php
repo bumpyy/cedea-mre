@@ -56,6 +56,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'social' => 'array',
+            'disqualified' => 'boolean',
         ];
     }
 

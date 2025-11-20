@@ -1,10 +1,10 @@
-import SwupLivewirePlugin from "@swup/livewire-plugin";
-import Swup from "swup";
+// import SwupLivewirePlugin from "@swup/livewire-plugin";
+// import Swup from "swup";
 import "./globals/modals.js";
 
-const swup = new Swup({
-    plugins: [new SwupLivewirePlugin()],
-});
+// const swup = new Swup({
+//     plugins: [new SwupLivewirePlugin()],
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
     Flux.dark = false;

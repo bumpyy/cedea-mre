@@ -9,7 +9,7 @@ return [
     ],
 
     'disabledOn' => [
-        //
+        'local',
     ],
 
     'cacheCooldown' => 10, // in minutes

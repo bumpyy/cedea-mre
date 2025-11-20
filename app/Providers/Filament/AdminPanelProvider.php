@@ -74,7 +74,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentPanzoomPlugin::make(),
                 ResourceLockPlugin::make()
                     ->usesPollingToDetectPresence()
-                    ->displayResourceLockOwner()
+                    // ->displayResourceLockOwner()
                     ->presencePollingInterval(5)
                     ->lockTimeout(15),
                 FilamentSpatieLaravelHealthPlugin::make(),

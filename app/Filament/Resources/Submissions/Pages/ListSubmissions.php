@@ -30,12 +30,18 @@ class ListSubmissions extends ListRecords
                     Column::make('receipt_number'),
                     Column::make('user.name')
                         ->heading('User Name'),
+                    Column::make('user.phone')
+                        ->heading('User Phone'),
+                    Column::make('user.email')
+                        ->heading('User email'),
                     Column::make('status'),
                     Column::make('admin.name')
                         ->heading('Assigned To'),
                     Column::make('note'),
-                    Column::make('created_at'),
-                    Column::make('updated_at'),
+                    Column::make('created_at')
+                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('GMT+7'))->format('Y-m-d H:i:s')),
+                    Column::make('updated_at')
+                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('GMT+7'))->format('Y-m-d H:i:s')),
                 ])
                     ->withSheets(
                         append: [

@@ -76,7 +76,13 @@ if (! function_exists('formatPhoneNumber')) {
             return substr($cleaned, 1);
         }
 
-        // 4. Jika sudah 62 (atau format tidak dikenal), kembalikan apa adanya
+        // 4. Ubah awalan 8 menjadi 62
+        // cth: 81... -> 6281...
+        if (str_starts_with($cleaned, '8')) {
+            return '628'.substr($cleaned, 1);
+        }
+
+        // 5. Jika sudah 62 (atau format tidak dikenal), kembalikan apa adanya
         return $cleaned;
     }
 }

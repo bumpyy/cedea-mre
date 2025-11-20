@@ -14,22 +14,20 @@ class SubmissionForm
 {
     public static function configure(Schema $schema): Schema
     {
-
         return $schema
             ->components([
                 PanZoom::make('receipt_image_preview')
                     ->imageUrl(fn ($record) => $record->getFirstMediaUrl('submissions'))
                     ->imageId(fn ($record) => 'receipt-'.$record->id),
-
                 \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('receipt_number')
                     ->unique()
                     ->characterLimit(190)
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
-
                 Select::make('store_name')
                     ->options(StoreEnum::class)
-                    ->selectablePlaceholder(false),
-
+                    ->default(StoreEnum::INDOMARET->value)
+                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
+                // ->selectablePlaceholder(false),
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)
                     ->icons([
