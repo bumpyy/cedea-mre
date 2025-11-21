@@ -15,6 +15,26 @@ use SolutionForest\FilamentPanzoom\Components\PanZoom;
 
 class SubmissionForm
 {
+    /**
+     * Checks if there is already a submission with the same store name and receipt number.
+     */
+    private static function submissionExists(
+        Submission $record,
+        StoreEnum|string|null $storeName,
+        ?string $receiptNumber
+    ): void {
+        if (Submission::where('store_name', $storeName)
+            ->where('receipt_number', $receiptNumber)
+            ->where('id', '<>', $record->id)
+            ->exists()) {
+            Notification::make()
+                ->danger()
+                ->color(Color::Red)
+                ->title('Duplicate receipt number & store name')
+                ->send();
+        }
+    }
+
     public static function configure(Schema $schema): Schema
     {
         return $schema
@@ -29,22 +49,18 @@ class SubmissionForm
                     ->live()
                     ->afterStateUpdated(
                         function (Get $get, ?string $state, $record) {
-                            if (Submission::where('store_name', $get('store_name'))
-                                ->where('receipt_number', $state)
-                                ->where('id', '<>', $record->id)
-                                ->exists()) {
-                                Notification::make()
-                                    ->danger()
-                                    ->color(Color::Red)
-                                    ->title('Duplicate receipt number && store name')
-                                    ->send();
-                            }
+                            SubmissionForm::submissionExists($record, $get('store_name'), $state);
                         }
-
                     ),
                 Select::make('store_name')
                     ->options(StoreEnum::class)
                     ->default(StoreEnum::INDOMARET->value)
+                    ->live()
+                    ->afterStateUpdated(
+                        function (Get $get, ?StoreEnum $state, $record) {
+                            SubmissionForm::submissionExists($record, $state, $get('receipt_number'));
+                        }
+                    )
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
                 // ->selectablePlaceholder(false),
                 RadioDeck::make('status')

@@ -8,6 +8,7 @@ use App\Filament\Resources\Submissions\SubmissionResource;
 use App\Mail\SubmissionNotification;
 use App\Models\Submission;
 use App\Services\QiscusService;
+use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
@@ -23,20 +24,21 @@ class EditSubmission extends EditRecord
 
     protected static string $resource = SubmissionResource::class;
 
+    private function submissionExists(): bool
+    {
+        if ($this->data['status'] == SubmissionStatusEnum::ACCEPTED->value && (! empty($this->data['store_name']) && ! empty($this->data['receipt_number']))) {
+            return Submission::where('store_name', $this->data['store_name'])
+                ->where('receipt_number', $this->data['receipt_number'])
+                ->where('id', '<>', $this->getRecord()->id)
+                ->exists();
+        }
+
+        return false;
+    }
+
     protected function beforeValidate(): void
     {
-        $this->data['receipt_number'] = trim($this->data['receipt_number']);
-        $record = $this->getRecord();
-
-        $storeName = trim($this->data['store_name']);
-
-        $receiptNumber = trim($this->data['receipt_number']);
-
-        if (Submission::where('store_name', $storeName)
-            ->where('receipt_number', $receiptNumber)
-            ->where('id', '<>', $record->id)
-            ->exists()) {
-
+        if ($this->submissionExists()) {
             Notification::make()
                 ->danger()
                 ->color(Color::Red)
@@ -44,6 +46,8 @@ class EditSubmission extends EditRecord
                 ->send();
 
             $this->halt();
+
+            return;
 
         }
     }
@@ -112,6 +116,19 @@ class EditSubmission extends EditRecord
                 ]);
                 break;
         }
+    }
+
+    protected function getSaveFormAction(): Action
+    {
+        $hasFormWrapper = $this->hasFormWrapper();
+
+        return Action::make('save')
+            ->label($this->submissionExists() ? 'Submission sudah ada' : __('filament-panels::resources/pages/edit-record.form.actions.save.label'))
+            ->disabled($this->submissionExists())
+            ->submit($hasFormWrapper ? $this->getSubmitFormLivewireMethodName() : null)
+            ->action($hasFormWrapper ? null : $this->getSubmitFormLivewireMethodName())
+            ->keyBindings(['mod+s'])
+            ->requiresConfirmation();
     }
 
     protected function getRedirectUrl(): string
