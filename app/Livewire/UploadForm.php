@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\LivewireFilepond\WithFilePond;
@@ -28,7 +29,7 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
-        $this->validate();
+        DB::beginTransaction();
 
         try {
             $submission = auth()->user()->submissions()->create();
@@ -36,16 +37,20 @@ class UploadForm extends ModalComponent
             $submission->addMedia($this->file->getPathname())
                 ->toMediaCollection('submissions');
 
+            DB::commit();
+
             $this->reset('file');
 
             $this->closeModalWithEvents([
                 Submissions::class => 'submission-created',
             ]);
+
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             Log::error('file', 'An error occurred while uploading the file: '.$th->getMessage());
             $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
         }
-
     }
 
     /**
