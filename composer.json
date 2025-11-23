@@ -15,7 +15,7 @@
         "deldius/filament-user-field": "^1.0",
         "filament/filament": "^4.0",
         "filament/spatie-laravel-media-library-plugin": "^4.1",
-        "gboquizosanchez/filament-log-viewer": "^2.1",
+        "gboquizosanchez/filament-log-viewer": "^2.2",
         "hugomyb/filament-error-mailer": "^4.0",
         "innoge/laravel-msgraph-mail": "^1.4",
         "jacobtims/filament-logger": "^1.0",

@@ -22,12 +22,16 @@ class UsersTable
             ->columns([
 
                 UserColumn::make('id')
-                    ->size(Size::Small) // Set avatar size
-                    ->label('User')// Column label
-                ,
+                    ->size(Size::Small)
+                    ->label('User'),
+
+                TextColumn::make('submissions_count')
+                    ->counts('submissions'),
+
                 // TextColumn::make('name')
                 //     ->toggleable(isToggledHiddenByDefault: true)
                 //     ->searchable(),
+
                 CopyableTextColumn::make('email')
                     ->label('Email address')
                     ->toggleable(isToggledHiddenByDefault: true)

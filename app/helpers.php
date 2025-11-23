@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Submission;
 use Illuminate\Support\Str;
 
 if (! function_exists('checkPhoneFormat')) {
@@ -97,10 +96,6 @@ if (! function_exists('generateUniqueCode')) {
      */
     function generateUniqueCode(string $prefix = 'CEDEA-', int $length = 10, int $second_part = 0): string
     {
-        do {
-            $code = strtoupper($prefix.Str::random($length).($second_part > 0 ? '-'.Str::random($second_part) : ''));
-        } while (Submission::where('raffle_number', $code)->exists());
-
-        return $code;
+        return strtoupper($prefix.Str::random($length).($second_part > 0 ? '-'.Str::random($second_part) : ''));
     }
 }

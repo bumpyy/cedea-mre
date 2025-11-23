@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class DashboardPhoneVerify extends Component
@@ -62,28 +61,36 @@ class DashboardPhoneVerify extends Component
         }
     }
 
-    #[On('otp-complete')]
-    public function verifyOtp(): void
+    public function verifyOtp($otp = null): void
     {
+        $code = $otp ?? $this->otpCode;
+
+        if (empty($code) || strlen($code) < 6) {
+            Log::warning('Wrong OTP: '.$code);
+
+            throw ValidationException::withMessages([
+                'one_time_password' => 'Kode OTP wajib diisi.',
+            ]);
+        }
+
         $user = auth()->user();
-        $result = $user->consumeOneTimePassword($this->otpCode);
+        $result = $user->consumeOneTimePassword($code);
 
         if ($result->isOk()) {
+            Log::info('User verified phone: '.$user->phone);
             $this->showOtpForm = false;
             $user->markPhoneAsVerified();
-            // app(QiscusService::class)->sendNotification($user, 'welcome', bodyParams: [
-            //     $user->name,
-            // ]);
-
+            $this->reset('otpCode'); // Clean up
             event(new PhoneVerified(auth()->user()));
 
             redirect()->intended(default: route('dashboard', absolute: false));
+
+            return;
         }
 
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);
-
     }
 
     public function render()

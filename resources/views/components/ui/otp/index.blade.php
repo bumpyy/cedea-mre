@@ -8,108 +8,84 @@
 <div class="mx-auto w-full max-w-6xl bg-white md:px-6" x-data="{
     totalDigits: @js($digits),
     digitIndices: @js(range(1, $digits)),
+    otpValue: @entangle($attributes->wire('model')),
+
     init() {
-        $nextTick(() => {
-            this.$refs.input1?.focus();
+        this.$nextTick(() => { this.$refs.input1?.focus(); });
+        this.$watch('otpValue', (value) => {
+            if (!value) this.clearInputsOnly();
         });
     },
-    getInput(index) {
-        return this.$refs['input' + index];
-    },
-    setValue(index, value) {
-        this.getInput(index).value = value;
-    },
+    getInput(index) { return this.$refs['input' + index]; },
+    setValue(index, value) { this.getInput(index).value = value; },
     getCode() {
-        return this.digitIndices
-            .map(i => this.getInput(i).value)
-            .join('');
+        return this.digitIndices.map(i => this.getInput(i).value).join('');
     },
     updateHiddenField() {
-        this.$refs.code.value = this.getCode();
-        this.$refs.code.dispatchEvent(new Event('input', { bubbles: true }));
-        this.$refs.code.dispatchEvent(new Event('change', { bubbles: true }));
+        this.otpValue = this.getCode();
+        this.$refs.code.value = this.otpValue;
     },
     handleNumberKey(index, key) {
         this.setValue(index, key);
-
         if (index < this.totalDigits) {
             this.getInput(index + 1).focus();
         }
+        this.updateHiddenField();
 
-        $nextTick(() => {
-            this.updateHiddenField();
-        });
+        if (index === this.totalDigits) {
+            this.manualSubmit(); // Uncomment if you want auto-submit
+        }
     },
     handleBackspace(index) {
         const currentInput = this.getInput(index);
-
         if (currentInput.value !== '') {
             currentInput.value = '';
             this.updateHiddenField();
             return;
         }
-
-        if (index <= 1) {
-            return;
-        }
-
+        if (index <= 1) return;
         const previousInput = this.getInput(index - 1);
-
         previousInput.value = '';
         previousInput.focus();
-
         this.updateHiddenField();
     },
     handleKeyDown(index, event) {
         const key = event.key;
-
         if (/^[0-9]$/.test(key)) {
             event.preventDefault();
             this.handleNumberKey(index, key);
             return;
         }
-
         if (key === 'Backspace') {
             event.preventDefault();
             this.handleBackspace(index);
             return;
         }
-
-        // // Trigger completion event when all boxes filled
-        // if (value.length === this.length) {
-        //     // if so wait until the last input get filled then call `onComplete`
-        //     $nextTick(() => this.onComplete());
-        // }
     },
     handlePaste(event) {
         event.preventDefault();
-
         const pastedText = (event.clipboardData || window.clipboardData).getData('text');
         const numericOnly = pastedText.replace(/[^0-9]/g, '');
         const digitsToFill = Math.min(numericOnly.length, this.totalDigits);
-
-        this.digitIndices
-            .slice(0, digitsToFill)
-            .forEach(index => {
-                this.setValue(index, numericOnly[index - 1]);
-            });
-
-        if (numericOnly.length >= this.totalDigits) {
-            this.updateHiddenField();
-            $nextTick(() => this.onComplete());
-        }
-
-    },
-    onComplete() {
-        this.$dispatch('otp-complete');
+        this.digitIndices.slice(0, digitsToFill).forEach(index => {
+            this.setValue(index, numericOnly[index - 1]);
+        });
+        this.updateHiddenField();
     },
     clearAll() {
-        this.digitIndices.forEach(index => {
-            this.setValue(index, '');
-        });
-
+        this.clearInputsOnly();
+        this.otpValue = '';
+    },
+    clearInputsOnly() {
+        this.digitIndices.forEach(index => { this.setValue(index, ''); });
         this.$refs.code.value = '';
         this.$refs.input1?.focus();
+    },
+
+    manualSubmit() {
+        let code = this.getCode();
+        this.otpValue = code;
+        this.$dispatch('otp-complete', code);
     }
 }">
     <div class="flex justify-center">
@@ -142,56 +118,39 @@
             </div>
 
             @error('one_time_password')
-                <div class="mx-auto mt-4 text-center text-sm text-red-600">
-                    {{ $message }}
-                </div>
+                <div class="mx-auto mt-4 text-center text-sm text-red-600">{{ $message }}</div>
             @enderror
 
             <div class="mx-auto mt-4 max-w-[260px]">
                 <flux:button
                     class="bg-cedea-red hover:bg-cedea-dark focus:ring-cedea-red/30 focus-visible:ring-cedea-red/focus:ring-cedea-red/30 inline-flex w-full justify-center whitespace-nowrap rounded-lg px-3.5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 focus:outline-none focus:ring focus-visible:outline-none focus-visible:ring"
-                    data-test="otp-button" variant="primary" type="submit">
+                    data-test="otp-button" variant="primary" type="button" @click="manualSubmit">
                     Verifikasi
                 </flux:button>
             </div>
 
             <div class="grid gap-y-2 text-center" x-data="otpTimer(2)"
-                x-on:otp-sent="() => {
-                this.loading=false;
-                init();}
-            "
-                x-init="init()">
+                x-on:otp-sent="() => { this.loading=false; init(); }" x-init="init()">
                 <div class="mt-4 text-sm text-slate-500">
                     <template x-if="getTime() <= 0">
-
                         <div>
-                            <p x-show="loading">
-                                Mengirim OTP lagi
-                            </p>
-
+                            <p x-show="loading">Mengirim OTP lagi</p>
                             <p x-show="!loading">
                                 Tidak menerima OTP?
                                 <span class="text-cedea-red/80 hover:text-cedea-red cursor-pointer font-medium"
-                                    wire:click="resendOtp" @click="loading=true">Kirim
-                                    ulang</span>
+                                    wire:click="resendOtp" @click="loading=true">Kirim ulang</span>
                             </p>
                         </div>
                     </template>
-
                     <template x-if="getTime() > 0">
-                        <p>
-                            kirim lagi OTP dalam
-                            <span x-text="formatTime(getTime())"></span>
-                        </p>
+                        <p>kirim lagi OTP dalam <span x-text="formatTime(getTime())"></span></p>
                     </template>
                 </div>
             </div>
 
-            <input {{ $attributes->except(['digits']) }} type="hidden" x-ref="code" wire:model="otpCode"
-                name="{{ $name }}" minlength="{{ $digits }}" maxlength="{{ $digits }}" />
+            <input {{ $attributes->except(['digits', 'title', 'desc', 'wire:model']) }} type="hidden" x-ref="code"
+                name="{{ $name }}" />
 
         </div>
     </div>
-
-
 </div>

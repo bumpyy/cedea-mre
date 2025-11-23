@@ -63,12 +63,14 @@ class SubmissionsTable
                         $admin = auth('admin')->user();
                         $pendingSubmissions = Submission::where('admin_id', $admin->id)
                             ->orderBy('created_at', 'asc')
+                            ->whereRelation('user', 'disqualified', false)
                             ->where('status', SubmissionStatusEnum::PENDING)
                             ->count();
 
                         if ($pendingSubmissions < 5) {
                             Submission::where('status', SubmissionStatusEnum::PENDING)
                                 ->whereNull('admin_id')
+                                ->whereRelation('user', 'disqualified', false)
                                 ->take(max(0, 5 - $pendingSubmissions))
                                 ->update(['admin_id' => $admin->id]);
                         }

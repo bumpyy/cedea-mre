@@ -18,11 +18,12 @@
         <form method="POST" wire:submit="submit">
             <x-filepond::upload required wire:model="file" :credits="false" max-file-size="5MB" :accepted-file-types="['image/png', 'image/jpeg', 'image/jpg']" />
 
-            <div class="flex items-center justify-center">
+            <div class="flex flex-col items-center justify-center">
                 <flux:button class="px-8! w-fit bg-amber-400" data-test="submit-button" x-bind:loading="uploading"
                     variant="primary" type="submit">
                     Submit
                 </flux:button>
+                <flux:error class="" name="file" />
             </div>
         </form>
     @else

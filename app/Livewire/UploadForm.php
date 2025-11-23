@@ -29,27 +29,46 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
-        DB::beginTransaction();
 
-        try {
-            $submission = auth()->user()->submissions()->create();
+        if ($this->file) {
+            DB::beginTransaction();
 
-            $submission->addMedia($this->file->getPathname())
-                ->toMediaCollection('submissions');
+            try {
 
-            DB::commit();
+                $submission = auth()->user()->submissions()->create();
 
-            $this->reset('file');
+                $submission->addMedia($this->file->getPathname())
+                    ->toMediaCollection('submissions');
 
-            $this->closeModalWithEvents([
-                Submissions::class => 'submission-created',
-            ]);
+                DB::commit();
 
-        } catch (\Throwable $th) {
-            DB::rollBack();
+                Log::info('File Submission Success', [
+                    'message' => 'File uploaded successfully.',
+                    'user_id' => auth()->id(),
+                    'file_name' => $this->file->getClientOriginalName() ?? 'N/A',
+                ]);
 
-            Log::error('file', 'An error occurred while uploading the file: '.$th->getMessage());
-            $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
+                $this->reset('file');
+
+                $this->closeModalWithEvents([
+                    Submissions::class => 'submission-created',
+                ]);
+
+            } catch (\Throwable $th) {
+                DB::rollBack();
+
+                Log::error('File Submission Error', [
+                    'message' => 'An error occurred while uploading the file.',
+                    'exception_message' => $th->getMessage(), // Detailed error message
+                    'stack_trace' => $th->getTraceAsString(), // Full stack trace (very useful for debugging)
+                    'user_id' => auth()->id(), // Contextual information
+                    'file_name' => $this->file->getClientOriginalName() ?? 'N/A',
+                ]);
+
+                $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
+            }
+        } else {
+            $this->addError('file', 'Upload file first');
         }
     }
 
