@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="scale-105">
-                    <img src="{{ asset('img/final/eomuk-qr.png') }}" />
+                    <img src="{{ asset('img/final/eomuk-qr-2.png') }}" />
                 </div>
 
                 <div>

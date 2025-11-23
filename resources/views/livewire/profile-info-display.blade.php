@@ -56,14 +56,20 @@
             </p>
     @endif
 
-    <ul class="my-2 flex w-full list-inside list-none flex-col space-y-1 max-md:text-sm">
-        @foreach ($user->social as $key => $value)
-            <li>
-                <p class="flex flex-wrap items-center text-ellipsis">
-                    <span class="text-cedea-blue inline-flex items-center uppercase">
-                        <flux:icon.at-symbol class="max-w-12" />{{ $key }}:&nbsp;</span>
-                    {{ !empty($value) ? $value : '-' }}
-                </p>
-        @endforeach
-        </li>
+    @if (!empty($user->social))
+        <p class="text-cedea-blue mb-2">Sosial Media:</p>
+        <ul class="my-2 flex w-full list-inside list-none flex-col space-y-1 max-md:text-sm">
+            @foreach ($user->social as $key => $value)
+                <li>
+                    <p class="flex flex-wrap items-center text-ellipsis">
+                        <span class="text-cedea-blue inline-flex items-center uppercase">
+                            <flux:icon.at-symbol class="max-w-12" />{{ $key }}:&nbsp;</span>
+                        {{ !empty($value) ? $value : '-' }}
+                    </p>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p class="text-cedea-red">Edit profile untuk menambah sosial media kamu</p>
+    @endif
 </div>
