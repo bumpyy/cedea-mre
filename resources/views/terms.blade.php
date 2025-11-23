@@ -2,7 +2,7 @@
     <div
         class="font-montserrat clamp-[p,12,28] clamp-[mt,5.5rem,30rem] container rounded-3xl bg-white md:rounded-[3rem]">
         <div class="-mt-[40%] mb-8 drop-shadow-2xl">
-            <img src="{{ asset('img/hero-4.png') }}" alt="">
+            <img src="{{ asset('img/final/headline-header2x.png') }}" alt="">
         </div>
 
         <h1 class="clamp-[text,lg,5xl] mb-4 font-bold">

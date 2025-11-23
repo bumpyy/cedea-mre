@@ -27,7 +27,7 @@
                                 @mouseleave="navigationMenuLeave()">
                                 <a @class([
                                     'relative font-medium transition-colors after:absolute after:left-0 after:top-8 after:h-1 after:w-0 after:bg-transparent after:transition-all after:duration-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
-                                    'after:!bg-white after:!w-1/2' => url()->current() === $item['route'],
+                                    'after:bg-white! after:w-1/2!' => url()->current() === $item['route'],
                                 ])
                                     :class="{
                                         'after:bg-white after:w-1/2': navigationMenu=='{{ Str::kebab($item['label']) }}',
@@ -45,7 +45,7 @@
 
                         <a @class([
                             'relative font-medium transition-colors after:absolute after:left-0 after:top-8 after:h-1 after:w-0 after:bg-transparent after:transition-all after:duration-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
-                            'after:!bg-white after:!w-1/2' =>
+                            'after:bg-white! after:w-1/2!' =>
                                 url()->current() === route('login') ||
                                 url()->current() === route('dashboard'),
                         ])
@@ -55,7 +55,7 @@
                             }"
                             href="{{ auth()->check() ? route('dashboard') : route('login') }}">
                             @auth
-                                Dashboard
+                                Dashboard/Upload
                             @else
                                 Login / Register
                             @endauth
@@ -67,9 +67,8 @@
                     @auth
                         <li>
                             <flux:dropdown class="text-white" align="end">
-                                <flux:profile class="[&_[data-flux-icon]]:text-white"
-                                    :initials="auth()->user()->initials()" />
-                                <flux:navmenu class="max-w-[12rem]">
+                                <flux:profile class="**:data-flux-icon:text-white" :initials="auth()->user()->initials()" />
+                                <flux:navmenu class="max-w-48">
                                     <div class="px-2 py-1.5">
                                         <flux:text size="sm">Signed in as</flux:text>
                                         <flux:heading class="mt-1! truncate">{{ auth()->user()->email }}</flux:heading>
@@ -121,9 +120,9 @@
                                                 <div class="invisible absolute -right-1 top-1/2 mr-1 -translate-y-1/2 translate-x-full opacity-0 duration-200 ease-out group-hover:visible group-hover:mr-0 group-hover:opacity-100"
                                                     data-submenu="">
                                                     <div
-                                                        class="animate-in slide-in-from-left-1 bg-cedea-red z-50 w-52 min-w-[8rem] max-w-sm overflow-hidden text-center">
+                                                        class="animate-in slide-in-from-left-1 bg-cedea-red z-50 w-52 min-w-32 max-w-sm overflow-hidden text-center">
                                                         @foreach ($item_submenu['submenu'] as $sub_submenu)
-                                                            <a class="hover:shadow-nav relative flex cursor-pointer select-none items-center justify-center rounded px-2 py-3 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                                                            <a class="hover:shadow-nav data-disabled:pointer-events-none data-disabled:opacity-50 relative flex cursor-pointer select-none items-center justify-center rounded px-2 py-3 outline-none"
                                                                 href="{{ $sub_submenu['route'] }}">{{ $sub_submenu['label'] }}</a>
                                                             <div class="mx-auto h-0.5 w-2/6 bg-neutral-200 last:hidden">
                                                             </div>
@@ -161,13 +160,13 @@
         <label class="flex h-10 w-9 cursor-pointer flex-col items-center justify-center lg:hidden">
             <input class="peer hidden" type="checkbox" x-model="mobileNavOpen" />
             <div
-                class="h-[2px] w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-white transition-all duration-300 peer-checked:rotate-[-45deg]">
+                class="h-0.5 w-[50%] origin-left translate-y-[0.45rem] rounded-sm bg-white transition-all duration-300 peer-checked:-rotate-45">
             </div>
             <div
-                class="h-[2px] w-[50%] origin-center rounded-md bg-white transition-all duration-300 peer-checked:hidden">
+                class="h-0.5 w-[50%] origin-center rounded-md bg-white transition-all duration-300 peer-checked:hidden">
             </div>
             <div
-                class="h-[2px] w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-white transition-all duration-300 peer-checked:rotate-[45deg]">
+                class="h-0.5 w-[50%] origin-left -translate-y-[0.45rem] rounded-md bg-white transition-all duration-300 peer-checked:rotate-45">
             </div>
         </label>
     </div>
@@ -215,10 +214,10 @@
                                     @if (array_key_exists('submenu', $item_submenu) && count($item_submenu['submenu']))
                                         <li class="relative w-full focus:outline-none">
                                             <ul
-                                                class="animate-in slide-in-from-top-1 bg-cedea-red z-50 min-w-[8rem] max-w-sm overflow-hidden p-1 pl-6">
+                                                class="animate-in slide-in-from-top-1 bg-cedea-red z-50 min-w-32 max-w-sm overflow-hidden p-1 pl-6">
                                                 @foreach ($item_submenu['submenu'] as $sub_submenu)
                                                     <li class="relative cursor-pointer py-3 focus:outline-none">
-                                                        <a class="data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                                                        <a class="data-disabled:pointer-events-none data-disabled:opacity-50"
                                                             @click="closeMobileNav()"
                                                             href="{{ $sub_submenu['route'] }}">{{ $sub_submenu['label'] }}</a>
                                                     </li>
@@ -238,9 +237,9 @@
                 <a class="relative inline-flex cursor-pointer flex-col rounded-md font-medium transition-colors"
                     @click="closeMobileNav()" href="{{ auth()->check() ? route('dashboard') : route('login') }}">
                     @auth
-                        Dashboard
+                        Dashboard/Upload
                     @else
-                        Login
+                        Login / Register
                     @endauth
                 </a>
 
@@ -255,7 +254,7 @@
 
                     <form class="w-full" method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <flux:menu.item class="w-full cursor-pointer !text-white" data-test="logout-button"
+                        <flux:menu.item class="text-white! w-full cursor-pointer" data-test="logout-button"
                             as="button" type="submit" icon="arrow-right-start-on-rectangle">
                             {{ __('Log Out') }}
                         </flux:menu.item>

@@ -44,11 +44,11 @@ class UsersTable
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

@@ -8,7 +8,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-
 {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet"> --}}
@@ -19,7 +18,7 @@
 
 @if (config('analytics.google.enabled') && config('analytics.google.id'))
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW5Y5QHNPB"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('analytics.google.id') }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 

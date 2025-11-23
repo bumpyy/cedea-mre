@@ -39,17 +39,17 @@ class SubmissionsTable
                 TextColumn::make('note')
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('updated_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 \Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter::make('created_at')
-                    ->timezone('GMT+7'),
+                    ->timezone('Asia/Jakarta'),
             ])
             ->recordActions([
                 ViewAction::make(),

@@ -51,7 +51,8 @@ class SubmissionForm
                         function (Get $get, ?string $state, $record) {
                             SubmissionForm::submissionExists($record, $get('store_name'), $state);
                         }
-                    ),
+                    )
+                    ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
                 Select::make('store_name')
                     ->options(StoreEnum::class)
                     ->default(StoreEnum::INDOMARET->value)
@@ -81,9 +82,17 @@ class SubmissionForm
                         SubmissionStatusEnum::REJECTED->value => SubmissionStatusEnum::REJECTED->getColor(),
                     ])
                     ->live()
-                    ->required(),
+                    ->required()
+                    ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
+
                 \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('note')
-                    ->characterLimit(190),
+                    ->datalist([
+                        'Struk tertutup tangan',
+                        'Struk terpotong',
+                    ])
+                    ->characterLimit(190)
+                    ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
+
             ])
             ->columns(1);
 

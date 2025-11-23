@@ -33,10 +33,10 @@ class SubmissionInfolist
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('created_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
-                    ->dateTime('Y-m-d H:i:s', 'GMT+7')
+                    ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->placeholder('-'),
             ])
             ->columns(1);

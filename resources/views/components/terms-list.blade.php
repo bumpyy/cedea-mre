@@ -74,6 +74,24 @@
                 </li>
 
                 <li>Penyelenggara berhak menolak struk yang tidak memenuhi syarat atau diduga palsu.</li>
+
+                <li>
+                    Contoh Struk yang Benar:
+                    <ul class="flex flex-wrap justify-center">
+                        <li class="w-1/2 p-2 md:w-1/4">
+                            <img class="w-full" src="{{ asset('img/struk/struk-sah-1.jpg') }}" alt="struk-sah-1">
+                        </li>
+                        <li class="w-1/2 p-2 md:w-1/4">
+                            <img class="w-full" src="{{ asset('img/struk/struk-sah-2.jpg') }}" alt="struk-sah-2">
+                        </li>
+                        <li class="w-1/2 p-2 md:w-1/4">
+                            <img class="w-full" src="{{ asset('img/struk/struk-sah-3.jpg') }}" alt="struk-sah-3">
+                        </li>
+                        <li class="w-1/2 p-2 md:w-1/4">
+                            <img class="w-full" src="{{ asset('img/struk/struk-sah-4.jpg') }}" alt="struk-sah-4">
+                        </li>
+                    </ul>
+                </li>
             </ol>
         </li>
 
@@ -143,6 +161,8 @@
                     tambahan.</li>
             </ol>
         </li>
+
+
     </ol>
 
     @if ($register ?? false)

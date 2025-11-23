@@ -28,7 +28,7 @@ class ListUsers extends ListRecords
                     Column::make('phone_formatted'),
                     Column::make('address'),
                     Column::make('created_at')
-                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('GMT+7'))->format('Y-m-d H:i:s')),
+                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
 
                 ])
                     ->modifyQueryUsing(fn ($query) => $query->where('disqualified', false))

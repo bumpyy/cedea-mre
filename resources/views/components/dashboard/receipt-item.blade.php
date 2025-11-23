@@ -24,9 +24,21 @@
                 'text-red-500' =>
                     $submission->status == \App\Enum\SubmissionStatusEnum::REJECTED,
             ])>{{ $submission->status->value }}</p>
-            <p class="text-xs opacity-70 md:text-sm">{{ $submission->status->getDescription() }}</p>
+            <div @class([
+                'flex flex-col',
+                'py-1' => $submission->status == \App\Enum\SubmissionStatusEnum::REJECTED,
+            ])>
+                <p class="text-xs opacity-70 md:text-sm">{{ $submission->status->getDescription() }}</p>
+                @if ($submission->status == \App\Enum\SubmissionStatusEnum::REJECTED)
+                    <p class="text-xs opacity-70">
+                        {{ 'Alasan: ' . ($submission->note ? $submission->note : '-') }}
+                    </p>
+                @endif
+            </div>
             <p class="text-xs opacity-70 md:text-sm">
-                {{ $submission->created_at ? $submission->created_at->format('d F Y, g:i a') : '-' }}</p>
+                {{ $submission->created_at ? $submission->created_at->timezone('Asia/Jakarta')->format('d F Y, H:i') : '-' }}
+                WIB
+            </p>
         </div>
 
         <div class="ml-auto basis-8">

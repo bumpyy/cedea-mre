@@ -3,7 +3,7 @@
     <section class="container -mt-12 flex flex-col gap-y-12 pb-32">
 
         <div class="-ml-[7%] mb-4 md:mb-20">
-            <img src="{{ asset('img/hero-4.png') }}" alt="">
+            <img src="{{ asset('img/final/headline-header2x.png') }}" alt="">
         </div>
 
         <div class="max-md:grid-overlay md:rounded-4xl relative grid rounded-2xl bg-white md:grid-cols-2">

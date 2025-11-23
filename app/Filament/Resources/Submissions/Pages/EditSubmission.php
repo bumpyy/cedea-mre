@@ -114,7 +114,7 @@ class EditSubmission extends EditRecord
             ->disabled($this->submissionExists())
             ->submit($hasFormWrapper ? $this->getSubmitFormLivewireMethodName() : null)
             ->action($hasFormWrapper ? null : $this->getSubmitFormLivewireMethodName())
-            ->keyBindings(['mod+s'])
+            ->keyBindings([])
             ->requiresConfirmation();
     }
 

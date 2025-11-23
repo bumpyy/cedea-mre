@@ -39,9 +39,9 @@ class ListSubmissions extends ListRecords
                         ->heading('Assigned To'),
                     Column::make('note'),
                     Column::make('created_at')
-                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('GMT+7'))->format('Y-m-d H:i:s')),
+                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
                     Column::make('updated_at')
-                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('GMT+7'))->format('Y-m-d H:i:s')),
+                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
                 ])
                     ->withSheets(
                         append: [
