@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
 use App\Services\QiscusService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Client\Factory as HttpFactory;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Health\Checks\Checks\DebugModeCheck;
@@ -52,6 +54,14 @@ class AppServiceProvider extends ServiceProvider
             DebugModeCheck::new(),
             EnvironmentCheck::new(),
         ]);
+
+        Gate::define('download-backup', function (Admin $admin) {
+            return true;
+        });
+
+        Gate::define('delete-backup', function (Admin $admin) {
+            return true;
+        });
 
         // Livewire::setUpdateRoute(function ($handle) {
         //     return Route::post('/livewire/update', $handle)

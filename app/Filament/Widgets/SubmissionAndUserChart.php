@@ -14,7 +14,7 @@ class SubmissionAndUserChart extends ChartWidget
 {
     use InteractsWithPageFilters;
 
-    protected ?string $heading = 'Store Performance Comparison';
+    protected ?string $heading = 'Submission and User Chart';
 
     protected int|string|array $columnSpan = 'full';
 

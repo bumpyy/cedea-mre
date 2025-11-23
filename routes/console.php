@@ -38,5 +38,5 @@ Schedule::call(function () {
 })->daily();
 
 Schedule::command('queue:work --stop-when-empty')
-    ->everyFourMinutes()
-    ->withoutOverlapping(10);
+    ->everyThreeMinutes()
+    ->withoutOverlapping(5);
