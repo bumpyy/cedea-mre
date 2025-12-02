@@ -29,6 +29,17 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
+        if (auth()->user()->isDisqualified()) {
+            $this->addError('file', 'Anda telah didisqualifikasi');
+
+            return;
+        }
+
+        if (! auth()->user()->isVerified()) {
+            $this->addError('file', 'Verifikasi Akun Dulu');
+
+            return;
+        }
 
         if ($this->file) {
             DB::beginTransaction();
@@ -53,7 +64,6 @@ class UploadForm extends ModalComponent
                 $this->closeModalWithEvents([
                     Submissions::class => 'submission-created',
                 ]);
-
             } catch (\Throwable $th) {
                 DB::rollBack();
 
@@ -68,7 +78,7 @@ class UploadForm extends ModalComponent
                 $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
             }
         } else {
-            $this->addError('file', 'Upload file first');
+            $this->addError('file', 'Upload dulu');
         }
     }
 

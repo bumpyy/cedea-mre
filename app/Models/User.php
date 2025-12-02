@@ -123,9 +123,26 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         ])->save();
     }
 
+    /**
+     * Check if the user is verified.
+     *
+     * A user is verified if either their phone or email is verified.
+     *
+     * @return bool
+     */
     public function isVerified()
     {
         return $this->hasVerifiedPhone() || $this->hasVerifiedEmail();
+    }
+
+    /**
+     * Check if the user is disqualified.
+     *
+     * @return bool
+     */
+    public function isDisqualified()
+    {
+        return $this->disqualified ?? false;
     }
 
     /**

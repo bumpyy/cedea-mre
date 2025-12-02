@@ -9,17 +9,27 @@
 
             <div class="z-1 flex flex-col p-6 text-lg leading-relaxed md:p-12">
 
-                <livewire:profile-info-display />
+                @if (!auth()->user()->isDisqualified())
+                    <livewire:profile-info-display />
+                @else
+                    <h1 class="text-cedea-blue clamp-[text,2xl,5xl] font-bold">
+                        Kamu telah didisqualifikasi
+                    </h1>
+                @endif
+
 
             </div>
 
             <div class="relative z-0">
-                <img class="absolute bottom-0 right-0 max-md:w-1/3" src='{{ asset('img/zee-wave.png') }}' alt="zee waving">
+                <img class="absolute bottom-0 right-0 max-md:w-1/3" src='{{ asset('img/zee-wave.png') }}'
+                    alt="zee waving">
             </div>
 
         </div>
 
-        <livewire:submissions />
+        @if (!auth()->user()->isDisqualified())
+            <livewire:submissions />
+        @endif
     </section>
 
     <livewire:edit-profile />

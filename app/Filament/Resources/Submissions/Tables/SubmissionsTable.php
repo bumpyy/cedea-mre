@@ -13,6 +13,7 @@ use Filament\Actions\ViewAction;
 use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use pxlrbt\FilamentExcel\Actions\ExportBulkAction;
 
 class SubmissionsTable
@@ -31,6 +32,15 @@ class SubmissionsTable
                 UserColumn::make('user_id')
                     ->size(Size::Small)
                     ->label('User'),
+                TextColumn::make('user.name')
+                    ->toggleable(isToggledHiddenByDefault: false)
+                    ->searchable(),
+                TextColumn::make('user.email')
+                    ->toggleable(isToggledHiddenByDefault: false)
+                    ->searchable(),
+                TextColumn::make('user.phone')
+                    ->toggleable(isToggledHiddenByDefault: false)
+                    ->searchable(),
                 TextColumn::make('status')
                     ->badge(),
                 TextColumn::make('admin.name')
@@ -46,6 +56,18 @@ class SubmissionsTable
                     ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->searchable([
+                function (Builder $query, string $search): Builder {
+                    if (! is_numeric($search)) {
+                        return $query;
+                    }
+
+                    return $query
+                        ->whereHas('user', function (Builder $query) use ($search) {
+                            $query->where('phone_formatted', 'like', '%'.formatPhoneNumber($search).'%');
+                        });
+                },
             ])
             ->filters([
                 \Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter::make('created_at')

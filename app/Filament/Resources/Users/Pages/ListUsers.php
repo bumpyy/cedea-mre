@@ -16,22 +16,41 @@ class ListUsers extends ListRecords
 
     protected function getHeaderActions(): array
     {
+        $columns = [
+            Column::make('name')
+                ->heading('Nama'),
+            Column::make('email')
+                ->heading('Email'),
+            Column::make('phone')
+                ->heading('Phone'),
+            Column::make('phone_formatted')
+                ->heading('Phone formatted'),
+            Column::make('submissions_count')
+                ->getStateUsing(fn ($record) => $record->submissions->count()),
+            Column::make('phone_formatted'),
+            Column::make('address'),
+            Column::make('social'),
+            Column::make('disqualified'),
+            Column::make('email_verified_at')
+                ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d')),
+            Column::make('phone_verified_at')
+                ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d')),
+            Column::make('created_at')
+                ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
+        ];
+
         return [
             ExportAction::make()->exports([
-                ExcelExport::make()->withColumns([
-                    Column::make('name')
-                        ->heading('Nama'),
-                    Column::make('email')
-                        ->heading('Email'),
-                    Column::make('phone')
-                        ->heading('Phone'),
-                    Column::make('phone_formatted'),
-                    Column::make('address'),
-                    Column::make('created_at')
-                        ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
-
-                ])
+                ExcelExport::make('all')
+                    ->withColumns($columns)
+                    ->queue(),
+                ExcelExport::make('not_disqualified')
+                    ->withColumns($columns)
                     ->modifyQueryUsing(fn ($query) => $query->where('disqualified', false))
+                    ->queue(),
+                ExcelExport::make('only_disqualified')
+                    ->withColumns($columns)
+                    ->modifyQueryUsing(fn ($query) => $query->where('disqualified', true))
                     ->queue(),
             ]),
         ];

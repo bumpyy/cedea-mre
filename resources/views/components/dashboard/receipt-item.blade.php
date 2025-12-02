@@ -33,6 +33,10 @@
                     <p class="text-xs opacity-70">
                         {{ 'Alasan: ' . ($submission->note ? $submission->note : '-') }}
                     </p>
+                @elseif ($submission->status == \App\Enum\SubmissionStatusEnum::ACCEPTED && $submission->raffle_number)
+                    <p class="text-xs opacity-70">
+                        {{ 'Nomor undian: ' . ($submission->raffle_number ? $submission->raffle_number : '-') }}
+                    </p>
                 @endif
             </div>
             <p class="text-xs opacity-70 md:text-sm">

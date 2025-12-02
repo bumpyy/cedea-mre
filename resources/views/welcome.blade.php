@@ -61,10 +61,10 @@
 
         </div>
 
-        <div
-            class="font-poppings clamp-[text,base,3xl] clamp-[mt,6,12] mx-auto w-full rounded-full bg-[#FCC500] px-2 py-4 text-center font-extrabold uppercase text-white drop-shadow-2xl md:w-4/5">
-            <a href="{{ route('login') }}">join sekarang</a>
-        </div>
+        <a class="font-poppings clamp-[text,base,3xl] clamp-[mt,6,12] mx-auto block w-full rounded-full bg-[#FCC500] px-2 py-4 text-center font-extrabold uppercase text-white drop-shadow-2xl md:w-4/5"
+            href="{{ route('login') }}">
+            join sekarang
+        </a>
 
     </div>
 </x-layouts.app>

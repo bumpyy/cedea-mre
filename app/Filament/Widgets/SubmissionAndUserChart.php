@@ -26,6 +26,8 @@ class SubmissionAndUserChart extends ChartWidget
         $endDateFilter = $this->filters['endDate'] ?? null;
         $filterStore = $this->filters['store_name'] ?? null;
 
+        $includeDisqualified = filter_var($this->filters['includeDisqualified'] ?? false, FILTER_VALIDATE_BOOLEAN);
+
         $end = $endDateFilter
             ? Carbon::parse($endDateFilter)->timezone('Asia/Jakarta')->endOfDay()
             : now()->timezone('Asia/Jakarta')->endOfDay();
@@ -56,6 +58,11 @@ class SubmissionAndUserChart extends ChartWidget
             $submissions = Submission::query()
                 ->whereBetween('created_at', [$queryStart, $queryEnd])
                 ->where('store_name', $filterStore)
+                ->when(! $includeDisqualified, function ($q) {
+                    $q->whereHas('user', function ($query) {
+                        $query->where('disqualified', false);
+                    });
+                })
                 ->get();
 
             $dataValues = $skeletonData;
@@ -80,6 +87,11 @@ class SubmissionAndUserChart extends ChartWidget
             $allSubmissions = Submission::query()
                 ->select('store_name', 'created_at')
                 ->whereBetween('created_at', [$queryStart, $queryEnd])
+                ->when(! $includeDisqualified, function ($q) {
+                    $q->whereHas('user', function ($query) {
+                        $query->where('disqualified', false);
+                    });
+                })
                 ->get();
 
             $totalValues = $skeletonData;
@@ -171,7 +183,6 @@ class SubmissionAndUserChart extends ChartWidget
         return 'line';
     }
 
-    // Fallback colors untuk toko yang tidak ada di Enum
     private function getColorPalette(): array
     {
         return ['#FF6384', '#FF9F40', '#FFCD56', '#4BC0C0', '#9966FF', '#C9CBCF'];

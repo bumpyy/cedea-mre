@@ -36,6 +36,8 @@ class StatsOverview extends StatsOverviewWidget
         $status = $this->filters['status'] ?? null;
         $storeName = $this->filters['store_name'] ?? null;
 
+        $includeDisqualified = filter_var($this->filters['includeDisqualified'] ?? false, FILTER_VALIDATE_BOOLEAN);
+
         $filterStart = null;
         $filterEnd = null;
 
@@ -63,6 +65,11 @@ class StatsOverview extends StatsOverviewWidget
                 ->when($filterEnd, fn ($q) => $q->where('created_at', '<=', $filterEnd))
                 ->when($status, fn ($q) => $q->where('status', $status))
                 ->when($storeName, fn ($q) => $q->where('store_name', $storeName))
+                ->when(! $includeDisqualified, function ($q) {
+                    $q->whereHas('user', function ($query) {
+                        $query->where('disqualified', false);
+                    });
+                })
                 ->count()
             )->description(self::getDateFilterText("Total {$status} submission", $startDate, $endDate)),
 

@@ -1,7 +1,7 @@
 <div wire:poll.10s>
     {{-- Tombol Edit dan Heading Nama disatukan --}}
     <div class="mb-2 flex items-start md:mb-12">
-        <h1 class="text-cedea-blue text-3xl font-bold md:text-5xl">
+        <h1 class="text-cedea-blue clamp-[text,2xl,5xl] font-bold">
             Halo, {{ $user->name }}
         </h1>
 
@@ -15,7 +15,7 @@
 
     <div class="mb-2 w-fit rounded-full bg-green-400 px-3 py-1 text-white opacity-70" x-data="{ showToast: @entangle('showToast') }"
         x-effect="if (showToast) setTimeout(function() {showToast = false}, 5000)" x-on:profile-updated="showToast = true"
-        x-show.transition.duration.300ms x-show="showToast" x-cloak>
+        x-show.transition.duration.300ms="showToast" x-cloak>
         Profile berhasil diupdate
     </div>
 
