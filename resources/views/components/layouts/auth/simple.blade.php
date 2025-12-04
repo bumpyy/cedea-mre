@@ -1,8 +1,8 @@
 <div class="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
     <div class="max-w-lg">
         <picture class="mx-auto w-11/12">
-            <source srcset="{{ asset('img/hero-text.png') }}" media="(min-width: 1024px)" />
-            <img src="{{ asset('img/hero-4-alt.png') }}" alt="">
+            <source srcset="{{ asset('img/final/auth_header.png') }}" media="(min-width: 1024px)" />
+            <img src="{{ asset('img/final/headline-header2x.png') }}" alt="">
 
         </picture>
     </div>

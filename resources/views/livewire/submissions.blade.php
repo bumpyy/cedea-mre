@@ -23,6 +23,7 @@
                 'grayscale' => !auth()->user()->isVerified(),
                 'cursor-pointer' => auth()->user()->isVerified(),
             ])>
+
             <img class="text-cedea-red max-w-1/6" src="{{ asset('img/receipt-up.svg') }}" />
             <div @class([
                 'text-cedea-red font-montserrat text-xl font-bold md:w-2/3 md:text-3xl',
@@ -36,6 +37,13 @@
                                 Coba refresh browser jika form tidak muncul
                             </p>
                         </div>
+                    </div>
+                    <div class="mx-auto mb-2 mt-2 w-fit rounded-full bg-green-400 px-3 py-1 text-base text-white opacity-70"
+                        x-data="{ submissionSubmitted: @entangle('submissionSubmitted') }"
+                        x-effect="if (submissionSubmitted) setTimeout(function() {submissionSubmitted = false}, 5000)"
+                        x-on:profile-updated="submissionSubmitted = true"
+                        x-show.transition.duration.300ms="submissionSubmitted" x-cloak>
+                        Submission berhasil diupload
                     </div>
                 @else
                     <p>Harap verifikasi akun Anda terlebih dahulu</p>

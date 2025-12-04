@@ -10,12 +10,16 @@ class Submissions extends Component
 {
     use WithPagination;
 
+    public $submissionSubmitted = false;
+
     #[On('submission-created')]
     public function refreshSubmissions()
     {
         // When a new submission is created, we reset the page number
         // to ensure the user sees the new item on page 1.
+
         $this->resetPage();
+        $this->submissionSubmitted = true;
 
         // Livewire automatically re-runs the render() method after this call.
     }

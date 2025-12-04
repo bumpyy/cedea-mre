@@ -1,7 +1,7 @@
 <div class="text-cedea-red rounded-4xl flex flex-col bg-white p-4 text-center text-xl md:p-8">
     @if (auth()->user()->isVerified())
 
-        <div class="text-justify">
+        <div class="mb-2 flex-col gap-1 text-center">
             <img class="text-cedea-red max-w-1/6 mx-auto" src="{{ asset('img/receipt-up.svg') }}" />
             <p>Silahkan lampirkan</p>
             <p>maksimal 1 struk pembelian (Max 5 MB/struk)</p>
