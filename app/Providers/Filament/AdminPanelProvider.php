@@ -85,9 +85,9 @@ class AdminPanelProvider extends PanelProvider
                 FilamentErrorPagesPlugin::make(),
                 FilamentLogViewerPlugin::make()
                     ->timezone('Asia/Jakarta'),
-                // FilamentFailedJobsPlugin::make()
-                //     ->hideConnectionOnIndex()
-                //     ->hideQueueOnIndex(),
+                FilamentFailedJobsPlugin::make()
+                    ->hideConnectionOnIndex()
+                    ->hideQueueOnIndex(),
                 FilamentSpatieLaravelBackupPlugin::make(),
             ])
             ->assets([

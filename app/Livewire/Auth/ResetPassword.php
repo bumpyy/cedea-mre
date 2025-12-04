@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User; // Pastikan Model User diimport
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
@@ -18,7 +19,7 @@ class ResetPassword extends Component
     #[Locked]
     public string $token = '';
 
-    public string $email = '';
+    public string $emailOrPhone = '';
 
     public string $password = '';
 
@@ -30,8 +31,9 @@ class ResetPassword extends Component
     public function mount(string $token): void
     {
         $this->token = $token;
-
-        $this->email = request()->string('email')->value();
+        // Tangkap query ?email=... atau ?phone=...
+        // Prioritaskan 'email', jika tidak ada ambil 'phone', jika tidak ada string kosong.
+        $this->emailOrPhone = request()->query('email', request()->query('phone', ''));
     }
 
     /**
@@ -41,35 +43,41 @@ class ResetPassword extends Component
     {
         $this->validate([
             'token' => ['required'],
-            'email' => ['required', 'string', 'email'],
+            'emailOrPhone' => ['required', 'string'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
-        $status = Password::reset(
-            $this->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) {
-                $user->forceFill([
-                    'password' => Hash::make($this->password),
-                    'remember_token' => Str::random(60),
-                ])->save();
+        $isEmail = isEmail($this->emailOrPhone);
+        $userColumn = $isEmail ? 'email' : 'phone_formatted';
 
-                event(new PasswordReset($user));
-            }
-        );
+        $user = User::where($userColumn, $this->emailOrPhone)->first();
 
-        // If the password was successfully reset, we will redirect the user back to
-        // the application's home authenticated view. If there is an error we can
-        // redirect them back to where they came from with their error message.
-        if ($status != Password::PasswordReset) {
-            $this->addError('email', __($status));
+        if (! $user) {
+            $this->addError('emailOrPhone', __('passwords.user'));
 
             return;
         }
 
-        Session::flash('status', __($status));
+        $record = DB::table('password_reset_tokens')
+            ->where('email', $this->emailOrPhone)
+            ->first();
+
+        if (! $record || ! Hash::check($this->token, $record->token)) {
+            $this->addError('emailOrPhone', __('passwords.token'));
+
+            return;
+        }
+
+        $user->forceFill([
+            'password' => Hash::make($this->password),
+            'remember_token' => Str::random(60),
+        ])->save();
+
+        DB::table('password_reset_tokens')->where('email', $this->emailOrPhone)->delete();
+
+        event(new PasswordReset($user));
+
+        Session::flash('status', __('passwords.reset'));
 
         redirect()->route('login');
     }

@@ -11,7 +11,7 @@
     "require": {
         "php": "^8.2",
         "asmit/resized-column": "^1.1",
-        "binarybuilds/filament-failed-jobs": "^1.1",
+        "binarybuilds/filament-failed-jobs": "^2.0",
         "cmsmaxinc/filament-error-pages": "^2.0",
         "deldius/filament-user-field": "^1.0",
         "filament/filament": "^4.0",

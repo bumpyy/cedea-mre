@@ -41,6 +41,10 @@ return [
             'namespace' => env('QISCUS_UTILS_REJECTED_NAMESPACE', ''),
             'name' => env('QISCUS_UTILS_REJECTED_TEMPLATE_NAME', ''),
         ],
+        'password_reset' => [
+            'namespace' => env('QISCUS_PASSWORD_RESET_NAMESPACE', ''),
+            'name' => env('QISCUS_PASSWORD_RESET_TEMPLATE_NAME', 'forgot_pass_1'),
+        ],
     ],
 
 ];

@@ -2,14 +2,21 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
+use App\Notifications\ResetPasswordRequest;
+use App\Rules\IndonesianPhoneNumber;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 #[Layout('components.layouts.auth')]
 class ForgotPassword extends Component
 {
-    public string $email = '';
+    public string $emailOrPhone = '';
 
     /**
      * Send a password reset link to the provided email address.
@@ -17,11 +24,44 @@ class ForgotPassword extends Component
     public function sendPasswordResetLink(): void
     {
         $this->validate([
-            'email' => ['required', 'string', 'email'],
+            'emailOrPhone' => ['required', 'string', isEmail($this->emailOrPhone) ? 'email' : new IndonesianPhoneNumber],
         ]);
 
-        Password::sendResetLink($this->only('email'));
+        $inputType = isEmail($this->emailOrPhone) ? 'email' : 'phone_formatted';
+        $identifier = isEmail($this->emailOrPhone) ? $this->emailOrPhone : formatPhoneNumber($this->emailOrPhone);
+        $user = User::where($inputType, isEmail($this->emailOrPhone) ? $this->emailOrPhone : formatPhoneNumber($this->emailOrPhone))->first();
 
-        session()->flash('status', 'Link reset kata sandi akan dikirim jika akun ada.');
+        if (! $user) {
+            $this->addError('input', 'User tidak ditemukan.');
+
+            return;
+        }
+
+        DB::table('password_reset_tokens')->whereIn('email', [
+            $user->email,
+            $user->phone_formatted,
+        ])->delete();
+
+        $tokenRaw = Str::random(40);
+        $tokenHash = Hash::make($tokenRaw);
+
+        DB::table('password_reset_tokens')->insert([
+            'email' => $identifier,
+            'token' => $tokenHash,
+            'created_at' => now(),
+        ]);
+
+        $channel = $inputType === 'email' ? 'email' : 'whatsapp';
+
+        try {
+            $user->notify(new ResetPasswordRequest($tokenRaw, $channel, $identifier));
+            session()->flash('status', "Link reset telah dikirim ke {$channel} Anda.");
+        } catch (\Exception $e) {
+            $this->addError('input', 'Gagal mengirim link reset kata sandi. Silakan coba lagi.');
+            Log::error(sprintf('Failed to send password reset link to user %s', $identifier), [
+                'exception' => $e,
+            ]);
+        }
+
     }
 }

@@ -62,7 +62,7 @@ class QiscusService
      *
      * @throws \App\Exceptions\WhatsAppException
      */
-    public function sendNotification(User $user, string $type, array $headerParams = [], array $bodyParams = []): void
+    public function sendNotification(User $user, string $type, array $headerParams = [], array $bodyParams = [], array $buttonParams = []): void
     {
         $config = $this->getTemplateConfig($type);
 
@@ -70,7 +70,8 @@ class QiscusService
             $config['namespace'],
             $config['name'],
             $headerParams,
-            $bodyParams
+            $bodyParams,
+            $buttonParams
         );
 
         $this->sendTemplateMessage($user->phone_formatted, $template);
@@ -154,7 +155,7 @@ class QiscusService
     /**
      * Build the Qiscus notification template payload.
      */
-    private function buildNotificationTemplatePayload(string $namespace, string $name, array $headerParams, array $bodyParams): array
+    private function buildNotificationTemplatePayload(string $namespace, string $name, array $headerParams, array $bodyParams, array $buttonParams): array
     {
         $components = [];
 
@@ -169,6 +170,20 @@ class QiscusService
             $components[] = [
                 'type' => 'body',
                 'parameters' => array_values($this->buildTextParameters($bodyParams)),
+            ];
+        }
+
+        if (! empty($buttonParams)) {
+            $components[] = [
+                'type' => 'button',
+                'sub_type' => 'url',
+                'index' => '0',
+                'parameters' => [
+                    [
+                        'type' => 'text',
+                        'text' => $buttonParams[0],
+                    ],
+                ],
             ];
         }
 

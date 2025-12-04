@@ -83,11 +83,12 @@ class DashboardPhoneVerify extends Component
             $this->reset('otpCode'); // Clean up
             event(new PhoneVerified(auth()->user()));
 
-            redirect()->intended(default: route('dashboard', absolute: false));
+            redirect()->intended(route('dashboard', absolute: false).'?verified=1');
 
             return;
         }
 
+        Log::warning('Wrong OTP: '.$result->validationMessage());
         throw ValidationException::withMessages([
             'one_time_password' => $result->validationMessage(),
         ]);

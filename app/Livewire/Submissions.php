@@ -20,6 +20,15 @@ class Submissions extends Component
         // Livewire automatically re-runs the render() method after this call.
     }
 
+    public function mount()
+    {
+        if (auth()->user()->isVerified() && ! auth()->user()->isDisqualified()) {
+            if (request()->query('verified') === '1') {
+                $this->dispatch('openModal', component: 'upload-form');
+            }
+        }
+    }
+
     public function render()
     {
         return view('livewire.submissions', [

@@ -7,9 +7,9 @@
     <form class="flex flex-col gap-6" method="POST" wire:submit="resetPassword">
         <!-- Email Address -->
         <flux:field>
-            <flux:label class="text-white">Email</flux:label>
-            <flux:input class="text-black" name="email" type="email" wire:model="email" autocomplete="email" required />
-            <flux:error class="bg-white" name="email" />
+            <flux:label class="text-white">Email atau nomor WhatsApp</flux:label>
+            <flux:input class="text-black" name="emailOrPhone" wire:model="emailOrPhone" autocomplete="email" required />
+            <flux:error class="bg-white" name="emailOrPhone" />
         </flux:field>
 
 

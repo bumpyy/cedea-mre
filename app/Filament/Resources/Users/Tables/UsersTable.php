@@ -12,6 +12,7 @@ use Filament\Actions\ViewAction;
 use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
 
 class UsersTable
@@ -27,16 +28,18 @@ class UsersTable
 
                 TextColumn::make('submissions_count')
                     ->counts('submissions'),
-
-                // TextColumn::make('name')
-                //     ->toggleable(isToggledHiddenByDefault: true)
-                //     ->searchable(),
-
+                TextColumn::make('name')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
+                TextColumn::make('phone')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
                 CopyableTextColumn::make('email')
                     ->label('Email address')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                CopyableTextColumn::make('phone'),
+                CopyableTextColumn::make('phone')
+                    ->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
@@ -51,6 +54,18 @@ class UsersTable
                     ->dateTime('Y-m-d H:i:s', 'Asia/Jakarta')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->searchable([
+                function (Builder $query, string $search): Builder {
+                    if (! is_numeric($search)) {
+                        return $query;
+                    }
+
+                    return $query
+                        ->whereHas('user', function (Builder $query) use ($search) {
+                            $query->where('phone_formatted', 'like', '%'.formatPhoneNumber($search).'%');
+                        });
+                },
             ])
             ->filters([
                 //

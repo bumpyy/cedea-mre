@@ -8,10 +8,10 @@
      <form class="flex flex-col gap-6" method="POST" wire:submit="sendPasswordResetLink">
          <!-- Email Address -->
          <flux:field>
-             <flux:label class="text-white">E-mail</flux:label>
-             <flux:input class="text-black" name="email" type="email" wire:model="email" required autocomplete="email"
-                 placeholder="email@example.com" />
-             <flux:error class="" name="email" />
+             <flux:label class="text-white">E-mail atau No WhatsApp</flux:label>
+             <flux:input class="text-black" name="emailOrPhone" wire:model="emailOrPhone" required
+                 autocomplete="emailOrPhone" placeholder="email@contoh.com atau 0812345678" />
+             <flux:error class="" name="emailOrPhone" />
          </flux:field>
 
 
