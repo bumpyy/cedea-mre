@@ -21,7 +21,7 @@
                 </div>
 
                 <div>
-                    <img src="{{ asset('img/final/marketplace.png') }}" />
+                    <img src="{{ asset('img/final/marketplace-2.png') }}" />
                 </div>
             </div>
 
