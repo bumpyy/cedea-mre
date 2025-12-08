@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Mail;
 
 class PhoneVerifiedListener implements ShouldQueue
 {
+    public $tries = 3;
+
+    public $backoff = 60;
+
     /**
      * Create the event listener.
      */
@@ -33,6 +37,8 @@ class PhoneVerifiedListener implements ShouldQueue
             Log::error(sprintf('Failed to send welcome message to user %s', $event->user->phone), [
                 'exception' => $e,
             ]);
+
+            throw $e;
         }
     }
 }

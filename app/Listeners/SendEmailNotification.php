@@ -17,6 +17,8 @@ class SendEmailNotification implements ShouldQueue
      */
     public $tries = 3;
 
+    public $backoff = 60;
+
     /**
      * Create the event listener.
      */
@@ -36,6 +38,8 @@ class SendEmailNotification implements ShouldQueue
             Log::error(sprintf('Failed to send mail notification for submission %s', $event->submission->uuid), [
                 'exception' => $e,
             ]);
+
+            throw $e;
         }
     }
 }
