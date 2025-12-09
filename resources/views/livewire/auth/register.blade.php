@@ -35,7 +35,7 @@
             <flux:input.group>
                 {{-- <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix> --}}
                 <flux:input class="text-black" name="phone" type="phone" required wire:model="phone"
-                    autocomplete="phone" placeholder="Isi nomor handphone kamu (cth: 62823xxxxxxx)" />
+                    autocomplete="phone" placeholder="Isi nomor WhatsApp kamu (cth: 62823xxxxxxx)" />
             </flux:input.group>
 
             <flux:error class="" name="phone_formatted" />

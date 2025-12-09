@@ -22,7 +22,7 @@
             {{-- Email --}}
             {{-- <flux:input type="email" label="Email" wire:model="email" icon="envelope" autocomplete="email" /> --}}
 
-            {{-- No Handphone (08...) --}}
+            {{-- No WhatsApp (08...) --}}
             {{-- <flux:input type="tel" label="No. WhatsApp" wire:model="phone" icon="phone" autocomplete="tel"
                 placeholder="08xxxxxxxxxx" description="Pastikan nomor terhubung dengan WhatsApp." /> --}}
 

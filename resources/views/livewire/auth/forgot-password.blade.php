@@ -3,7 +3,7 @@
          description="Masukkan alamat email Anda untuk menerima tautan kata sandi yang baru" />
 
      <!-- Session Status -->
-     <x-auth-session-status class="text-center" :status="session('status')" />
+     <x-auth-session-status class="rounded-full bg-white px-2 py-1 text-center" :status="session('status')" />
 
      <form class="flex flex-col gap-6" method="POST" wire:submit="sendPasswordResetLink">
          <!-- Email Address -->

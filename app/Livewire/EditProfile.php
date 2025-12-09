@@ -36,9 +36,9 @@ class EditProfile extends Component
         // 'name.required' => 'Nama lengkap harus diisi.',
         // 'email.unique' => 'Alamat email sudah terdaftar.',
         // 'email.email' => 'Alamat email tidak valid.',
-        // 'email.required' => 'Alamat email atau nomor handphone harus diisi.',
-        // 'phone_formatted.required' => 'Alamat email atau nomor handphone harus diisi.',
-        // 'phone_formatted.unique' => 'Nomor handphone sudah terdaftar.',
+        // 'email.required' => 'Alamat email atau nomor WhatsApp harus diisi.',
+        // 'phone_formatted.required' => 'Alamat email atau nomor WhatsApp harus diisi.',
+        // 'phone_formatted.unique' => 'Nomor WhatsApp sudah terdaftar.',
         'new_password.confirmed' => 'Kata sandi tidak cocok.',
     ];
 

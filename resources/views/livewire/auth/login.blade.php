@@ -7,7 +7,7 @@
     <form class="flex flex-col gap-6" method="POST" wire:submit="login">
         <!-- Email Address or Phone -->
         <flux:field class="text-5xl">
-            <flux:label class="text-white">Alamat email atau nomor handphone</flux:label>
+            <flux:label class="text-white">Alamat email atau nomor WhatsApp</flux:label>
 
             <flux:input class="text-black" icon="user" name="emailOrPhone" wire:model="emailOrPhone" required
                 autofocus autocomplete="email" placeholder="email@contoh.com atau 0812345678" />

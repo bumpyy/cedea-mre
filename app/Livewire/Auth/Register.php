@@ -38,16 +38,16 @@ class Register extends Component
         'name.required' => 'Nama lengkap harus diisi.',
         'email.unique' => 'Alamat email sudah terdaftar.',
         'email.email' => 'Alamat email tidak valid.',
-        'email.required' => 'Alamat email atau nomor handphone harus diisi.',
-        'phone_formatted.required' => 'Alamat email atau nomor handphone harus diisi.',
-        'phone_formatted.unique' => 'Nomor handphone sudah terdaftar.',
+        'email.required' => 'Alamat email atau nomor WhatsApp harus diisi.',
+        'phone_formatted.required' => 'Alamat email atau nomor WhatsApp harus diisi.',
+        'phone_formatted.unique' => 'Nomor WhatsApp sudah terdaftar.',
         'password.confirmed' => 'Kata sandi tidak cocok.',
         'accept_terms.accepted' => 'Anda harus menyetujui Syarat & Ketentuan.',
     ];
 
     protected $validationAttributes = [
         'name' => 'Nama lengkap',
-        'phone_formatted' => 'Nomor handphone',
+        'phone_formatted' => 'Nomor WhatsApp',
         'address' => 'Alamat',
         'email' => 'Alamat email',
         'accept_terms' => 'Syarat & Ketentuan',
