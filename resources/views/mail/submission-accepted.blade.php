@@ -493,7 +493,7 @@
                                             </table>
 
                                             <p>Thanks,
-                                                <br>Tim Cedea
+                                                <br>Tim CEDEA
                                             </p>
                                         </div>
                                     </td>

@@ -29,6 +29,7 @@ class QiscusChannel
             );
         } catch (\Exception $e) {
             Log::error('Qiscus Channel Error: '.$e->getMessage());
+            throw $e;
         }
     }
 }

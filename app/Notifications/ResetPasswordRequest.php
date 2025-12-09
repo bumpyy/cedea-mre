@@ -20,7 +20,6 @@ class ResetPasswordRequest extends Notification
      */
     public function __construct(string $token, string $channelType, string $identifier)
     {
-
         $this->token = $token;
         $this->channelType = $channelType;
         $this->identifier = $identifier;

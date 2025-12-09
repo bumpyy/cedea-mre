@@ -11,9 +11,8 @@
              <flux:label class="text-white">E-mail atau No WhatsApp</flux:label>
              <flux:input class="text-black" name="emailOrPhone" wire:model="emailOrPhone" required
                  autocomplete="emailOrPhone" placeholder="email@contoh.com atau 0812345678" />
-             <flux:error class="" name="emailOrPhone" />
+             <flux:error class="w-fit rounded-full bg-white px-2 py-1" name="emailOrPhone" />
          </flux:field>
-
 
          <flux:button class="w-full" variant="primary" type="submit">Kirim tautan kata sandi yang baru</flux:button>
      </form>

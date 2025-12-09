@@ -463,7 +463,7 @@
                                             </table>
 
                                             <p>Terima kasih,
-                                                <br>tim Cedea
+                                                <br>tim CEDEA
                                             </p>
 
                                         </div>
