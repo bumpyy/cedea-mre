@@ -2,7 +2,7 @@
     <x-auth-header title="Log in" description="Ketik alamat email dan kata sandi untuk log in" />
 
     <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    <x-auth-session-status class="rounded-full bg-white px-2 py-1 text-center" :status="session('status')" />
 
     <form class="flex flex-col gap-6" method="POST" wire:submit="login">
         <!-- Email Address or Phone -->

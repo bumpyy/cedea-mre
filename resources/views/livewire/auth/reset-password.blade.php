@@ -2,14 +2,14 @@
     <x-auth-header :title="__('Reset password')" :description="__('Please enter your new password below')" />
 
     <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    <x-auth-session-status class="rounded-full bg-white px-2 py-1 text-center" :status="session('status')" />
 
     <form class="flex flex-col gap-6" method="POST" wire:submit="resetPassword">
         <!-- Email Address -->
         <flux:field>
             <flux:label class="text-white">Email atau nomor WhatsApp</flux:label>
             <flux:input class="text-black" name="emailOrPhone" wire:model="emailOrPhone" autocomplete="email" required />
-            <flux:error class="bg-white" name="emailOrPhone" />
+            <flux:error class="w-fit rounded-full bg-white px-2 py-1" name="emailOrPhone" />
         </flux:field>
 
 
@@ -18,7 +18,7 @@
             <flux:label class="text-white">{{ __('Password') }}</flux:label>
             <flux:input class="text-black" name="password" type="password" wire:model="password" required
                 autocomplete="new-password" :placeholder="__('Password')" viewable />
-            <flux:error class="bg-white" name="password" />
+            <flux:error class="w-fit rounded-full bg-white px-2 py-1" name="password" />
         </flux:field>
 
         <!-- Confirm Password -->
@@ -27,7 +27,7 @@
             <flux:input class="text-black" name="password_confirmation" type="password"
                 wire:model="password_confirmation" required autocomplete="new-password"
                 :placeholder="__('Confirm password')" viewable />
-            <flux:error class="bg-white" name="password_confirmation" />
+            <flux:error class="w-fit rounded-full bg-white px-2 py-1" name="password_confirmation" />
         </flux:field>
 
         <div class="flex items-center justify-end">
