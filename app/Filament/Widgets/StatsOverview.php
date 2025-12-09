@@ -76,6 +76,9 @@ class StatsOverview extends StatsOverviewWidget
             Stat::make('Total User Stats', User::query()
                 ->when($filterStart, fn ($q) => $q->where('created_at', '>=', $filterStart))
                 ->when($filterEnd, fn ($q) => $q->where('created_at', '<=', $filterEnd))
+                ->when(! $includeDisqualified, function ($q) {
+                    $q->where('disqualified', false);
+                })
                 ->count()
             )->description(self::getDateFilterText('Total registered User', $startDate, $endDate)),
         ];

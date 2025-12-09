@@ -33,7 +33,7 @@
         this.updateHiddenField();
 
         if (index === this.totalDigits) {
-            this.manualSubmit(); // Uncomment if you want auto-submit
+            // this.manualSubmit(); // Uncomment if you want auto-submit
         }
     },
     handleBackspace(index) {
