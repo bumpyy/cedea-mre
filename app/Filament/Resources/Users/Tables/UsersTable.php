@@ -31,14 +31,13 @@ class UsersTable
                 TextColumn::make('name')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                TextColumn::make('phone')
-                    ->toggleable(isToggledHiddenByDefault: true)
+                CopyableTextColumn::make('phone')
                     ->searchable(),
+                TextColumn::make('phone_formatted')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 CopyableTextColumn::make('email')
                     ->label('Email address')
                     ->toggleable(isToggledHiddenByDefault: true)
-                    ->searchable(),
-                CopyableTextColumn::make('phone')
                     ->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
