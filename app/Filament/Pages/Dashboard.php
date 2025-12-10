@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Enum\StoreEnum;
 use App\Enum\SubmissionStatusEnum;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
@@ -30,13 +31,10 @@ class Dashboard extends BaseDashboard
                                     ->timezone('Asia/Jakarta'),
                             ])
                             ->columns(2),
-                        Select::make('includeDisqualified')
+                        Radio::make('includeDisqualified')
                             ->default(false)
-                            ->selectablePlaceholder(false)
-                            ->options([
-                                true => 'Yes',
-                                false => 'No',
-                            ]),
+                            ->boolean()
+                            ->inline(),
                     ])
                     ->columnSpan('2'),
                 Section::make()

@@ -45,7 +45,6 @@ class EditSubmission extends EditRecord
             $this->halt();
 
             return;
-
         }
     }
 

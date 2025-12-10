@@ -63,10 +63,11 @@ class SubmissionForm
                         }
                     )
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
-                \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('store_area')
+                \Schmeits\FilamentCharacterCounter\Forms\Components\Textarea::make('store_area')
                     ->characterLimit(190)
-                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED)
-                    ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
+                    ->autosize()
+                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
+                // ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
                 // ->selectablePlaceholder(false),
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)
@@ -95,6 +96,7 @@ class SubmissionForm
                         'Struk terpotong',
                     ])
                     ->characterLimit(190)
+                    ->visible(fn (Get $get): bool => $get('status') != SubmissionStatusEnum::ACCEPTED)
                     ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
 
             ])
