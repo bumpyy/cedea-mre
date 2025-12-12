@@ -79,8 +79,8 @@ class SubmissionsTable
             ])
             ->defaultSort('created_at', 'desc')
             ->toolbarActions([
-                Action::make('assign')
-                    ->label('Assign to me')
+                Action::make('assign_5')
+                    ->label('Assign 5 to me')
                     ->action(function () {
                         $admin = auth('admin')->user();
                         $pendingSubmissions = Submission::where('admin_id', $admin->id)
@@ -94,6 +94,26 @@ class SubmissionsTable
                                 ->whereNull('admin_id')
                                 ->whereRelation('user', 'disqualified', false)
                                 ->take(max(0, 5 - $pendingSubmissions))
+                                ->update(['admin_id' => $admin->id]);
+                        }
+                    })
+                    ->visible(fn ($livewire) => $livewire->activeTab === 'assigned'),
+
+                Action::make('assign_10')
+                    ->label('Assign 10 to me')
+                    ->action(function () {
+                        $admin = auth('admin')->user();
+                        $pendingSubmissions = Submission::where('admin_id', $admin->id)
+                            ->orderBy('created_at', 'asc')
+                            ->whereRelation('user', 'disqualified', false)
+                            ->where('status', SubmissionStatusEnum::PENDING)
+                            ->count();
+
+                        if ($pendingSubmissions < 10) {
+                            Submission::where('status', SubmissionStatusEnum::PENDING)
+                                ->whereNull('admin_id')
+                                ->whereRelation('user', 'disqualified', false)
+                                ->take(max(0, 10 - $pendingSubmissions))
                                 ->update(['admin_id' => $admin->id]);
                         }
                     })
