@@ -7,6 +7,12 @@
         <p class="cursor-progress text-red-600 max-md:text-sm" wire:loading>Mengirim email...</p>
 
     </div>
+
+    @error('email_not_sent')
+        <flux:error class="mb-2" name="email_not_sent" />
+    @enderror
+
+
     @if (session('status') == 'verification-link-sent')
         <flux:text class="!dark:text-green-400 text-green-600! font-medium">
             Tautan verifikasi baru telah dikirim ke alamat surel yang Anda berikan saat registrasi.
