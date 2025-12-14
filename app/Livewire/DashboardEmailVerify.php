@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -27,6 +28,7 @@ class DashboardEmailVerify extends Component
 
             Session::flash('status', 'verification-link-sent');
         } catch (\Exception $e) {
+            Log::error('Unexpected error sending email verification: '.$e->getMessage());
             throw ValidationException::withMessages([
                 'email_not_sent' => 'Gagal mengirim email, Coba lagi nanti', // Show the user-friendly message
             ]);
