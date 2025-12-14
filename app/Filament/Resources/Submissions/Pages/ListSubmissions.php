@@ -4,10 +4,18 @@ namespace App\Filament\Resources\Submissions\Pages;
 
 use App\Enum\SubmissionStatusEnum;
 use App\Filament\Resources\Submissions\SubmissionResource;
+use App\Filament\Resources\Submissions\Widgets\AdminStatsOverview;
 use App\Models\Submission;
 use Asmit\ResizedColumn\HasResizableColumn;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Pages\Dashboard\Actions\FilterAction;
+use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Builder;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
 use pxlrbt\FilamentExcel\Columns\Column;
@@ -15,9 +23,42 @@ use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class ListSubmissions extends ListRecords
 {
+    use HasFiltersForm;
     use HasResizableColumn;
 
+    public function filtersForm(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make()
+                    ->schema([
+                        Group::make()
+                            ->schema([
+                                DatePicker::make('startDate')
+                                    ->timezone('Asia/Jakarta'),
+                                DatePicker::make('endDate')
+                                    ->timezone('Asia/Jakarta'),
+                            ])
+                            ->columns(2),
+                    ])
+                    ->columnSpan('full'),
+            ]);
+    }
+
     protected static string $resource = SubmissionResource::class;
+
+    protected function getFooterWidgets(): array
+    {
+        $admin = auth('admin')->user();
+
+        if ($admin->id != 1) {
+            return [];
+        }
+
+        return [
+            AdminStatsOverview::class,
+        ];
+    }
 
     protected function getHeaderActions(): array
     {
@@ -44,7 +85,31 @@ class ListSubmissions extends ListRecords
                 ->formatStateUsing(fn ($state) => (new \DateTime($state))->setTimezone(new \DateTimeZone('Asia/Jakarta'))->format('Y-m-d H:i:s')),
         ];
 
+        $admin = auth('admin')->user();
+
+        if ($admin->id != 1) {
+            $adminStatsFilter = [];
+        } else {
+            $adminStatsFilter = [
+                FilterAction::make()
+                    ->schema([
+                        DatePicker::make('startDate')
+                            ->timezone('Asia/Jakarta'),
+                        DatePicker::make('endDate')
+                            ->timezone('Asia/Jakarta'),
+                        Select::make('processed_column')
+                            ->options([
+                                'processed_at' => 'processed at',
+                                'updated_at' => 'Edited at',
+                            ])
+                            ->default('processed_at')
+                            ->selectablePlaceholder(false),
+                    ]),
+            ];
+        }
+
         return [
+            ...$adminStatsFilter,
             ExportAction::make()->exports([
                 ExcelExport::make('all')
                     ->withColumns($columns)

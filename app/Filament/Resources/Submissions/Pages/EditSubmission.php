@@ -73,6 +73,12 @@ class EditSubmission extends EditRecord
                     ]);
                 }
 
+                if (! $record->processed_at) {
+                    $record->update([
+                        'processed_at' => now(),
+                    ]);
+                }
+
                 event(new SubmissionProcessed(
                     $record,
                     $record->user, SubmissionStatusEnum::ACCEPTED, bodyParams: [
@@ -91,6 +97,12 @@ class EditSubmission extends EditRecord
                         $record->note ?? '-',
                     ]
                 ));
+
+                if (! $record->processed_at) {
+                    $record->update([
+                        'processed_at' => now(),
+                    ]);
+                }
 
                 break;
             case SubmissionStatusEnum::PENDING:

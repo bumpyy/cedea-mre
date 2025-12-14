@@ -94,7 +94,10 @@ class SubmissionsTable
                                 ->whereNull('admin_id')
                                 ->whereRelation('user', 'disqualified', false)
                                 ->take(max(0, 5 - $pendingSubmissions))
-                                ->update(['admin_id' => $admin->id]);
+                                ->update([
+                                    'assigned_at' => now(),
+                                    'admin_id' => $admin->id,
+                                ]);
                         }
                     })
                     ->visible(fn ($livewire) => $livewire->activeTab === 'assigned'),
@@ -114,7 +117,10 @@ class SubmissionsTable
                                 ->whereNull('admin_id')
                                 ->whereRelation('user', 'disqualified', false)
                                 ->take(max(0, 10 - $pendingSubmissions))
-                                ->update(['admin_id' => $admin->id]);
+                                ->update([
+                                    'assigned_at' => now(),
+                                    'admin_id' => $admin->id,
+                                ]);
                         }
                     })
                     ->visible(fn ($livewire) => $livewire->activeTab === 'assigned'),
