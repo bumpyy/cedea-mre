@@ -93,10 +93,8 @@ class ListSubmissions extends ListRecords
             $adminStatsFilter = [
                 FilterAction::make()
                     ->schema([
-                        DatePicker::make('adminFilterStartDate')
-                            ->timezone('Asia/Jakarta'),
-                        DatePicker::make('adminFilterEndDate')
-                            ->timezone('Asia/Jakarta'),
+                        DatePicker::make('adminFilterStartDate'),
+                        DatePicker::make('adminFilterEndDate'),
                         Select::make('processed_column')
                             ->options([
                                 'processed_at' => 'processed at',
