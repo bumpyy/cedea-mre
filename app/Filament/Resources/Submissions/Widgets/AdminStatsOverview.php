@@ -40,7 +40,7 @@ class AdminStatsOverview extends StatsOverviewWidget
 
         $startDate = $this->filters['startDate'] ?? null;
         $endDate = $this->filters['endDate'] ?? null;
-        $processedColumn = $this->filters['processed_column'] ?? null;
+        $processedColumn = $this->filters['processed_column'] ?? 'processed_at';
 
         $filterStart = $startDate ? Carbon::parse($startDate)->timezone('Asia/Jakarta')->startOfDay()->utc() : null;
         $filterEnd = $endDate ? Carbon::parse($endDate)->timezone('Asia/Jakarta')->endOfDay()->utc() : null;
