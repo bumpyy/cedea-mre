@@ -63,11 +63,50 @@ class SubmissionForm
                         }
                     )
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
-                \Schmeits\FilamentCharacterCounter\Forms\Components\Textarea::make('store_area')
+                \Schmeits\FilamentCharacterCounter\Forms\Components\TextInput::make('store_area')
                     ->characterLimit(190)
-                    ->autosize()
-                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED),
-                // ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
+                    ->datalist([
+                        'ACEH',
+                        'SUMATERA UTARA',
+                        'SUMATERA BARAT',
+                        'RIAU',
+                        'JAMBI',
+                        'SUMATERA SELATAN',
+                        'BENGKULU',
+                        'LAMPUNG',
+                        'KEPULAUAN BANGKA BELITUNG',
+                        'KEPULAUAN RIAU',
+                        'DKI JAKARTA',
+                        'JAWA BARAT',
+                        'JAWA TENGAH',
+                        'DAERAH ISTIMEWA YOGYAKARTA',
+                        'JAWA TIMUR',
+                        'BANTEN',
+                        'BALI',
+                        'NUSA TENGGARA BARAT',
+                        'NUSA TENGGARA TIMUR',
+                        'KALIMANTAN BARAT',
+                        'KALIMANTAN TENGAH',
+                        'KALIMANTAN SELATAN',
+                        'KALIMANTAN TIMUR',
+                        'KALIMANTAN UTARA',
+                        'SULAWESI UTARA',
+                        'SULAWESI TENGAH',
+                        'SULAWESI SELATAN',
+                        'SULAWESI TENGGARA',
+                        'GORONTALO',
+                        'SULAWESI BARAT',
+                        'MALUKU',
+                        'MALUKU UTARA',
+                        'PAPUA',
+                        'PAPUA BARAT',
+                        'PAPUA SELATAN',
+                        'PAPUA TENGAH',
+                        'PAPUA PEGUNUNGAN',
+                        'PAPUA BARAT DAYA',
+                    ])
+                    ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED)
+                    ->extraInputAttributes(['@keydown.enter.prevent' => 'return false']),
                 // ->selectablePlaceholder(false),
                 RadioDeck::make('status')
                     ->options(SubmissionStatusEnum::class)
