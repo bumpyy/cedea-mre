@@ -96,10 +96,10 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      *
      * @return void
      */
-    // public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new \App\Notifications\VerifyEmailQueued);
-    // }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\VerifyEmailQueued);
+    }
 
     /**
      * Determine if the user has verified their Whatsapp.
