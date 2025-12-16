@@ -30,7 +30,8 @@
 
         <!-- no hp -->
         <flux:field>
-            <flux:label class="text-white">No. WhatsApp</flux:label>
+            {{-- <flux:label class="text-white">No. WhatsApp</flux:label> --}}
+            <flux:label class="text-white">No. WhatsApp (untuk verifikasi)</flux:label>
 
             <flux:input.group>
                 {{-- <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix> --}}

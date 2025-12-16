@@ -24,12 +24,16 @@
     <p class="max-md:text-sm">{{ $user->address }}</p>
 
     {{-- Pesan Verifikasi Umum --}}
-    @if (!$user->isVerified())
+    {{-- @if (!$user->isVerified())
         <p class="text-cedea-red/70 max-md:text-xs">Silahkan verifikasi email atau whatsapp anda terlebih dahulu</p>
+    @endif --}}
+
+    @if (!$user->isVerified())
+        <p class="text-cedea-red/70 max-md:text-xs">Silahkan verifikasi whatsapp anda terlebih dahulu</p>
     @endif
 
     {{-- Display Email --}}
-    @if (!empty($user->email) && !$user->hasVerifiedEmail())
+    {{-- @if (!empty($user->email) && !$user->hasVerifiedEmail())
         <livewire:dashboard-email-verify>
         @else
             <p class="inline-flex items-center max-md:text-sm">
@@ -40,7 +44,16 @@
                     </span>
                 @endif
             </p>
-    @endif
+    @endif --}}
+
+    <p class="inline-flex items-center max-md:text-sm">
+        {{ $user->email }}
+        {{-- @if ($user->hasVerifiedEmail())
+            <span class="ml-2 inline-block size-6 rounded-full text-green-300">
+                <x-lucide-circle-check-big />
+            </span>
+        @endif --}}
+    </p>
 
     {{-- Display Phone --}}
     @if (!empty($user->phone) && !$user->hasVerifiedPhone())
