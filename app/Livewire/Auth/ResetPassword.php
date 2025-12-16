@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Auth;
 
-use App\Models\User; // Pastikan Model User diimport
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
-use Livewire\Component;
+use Livewire\Component; // Don't forget this import
 
 #[Layout('components.layouts.auth')]
 class ResetPassword extends Component
@@ -25,20 +26,12 @@ class ResetPassword extends Component
 
     public string $password_confirmation = '';
 
-    /**
-     * Mount the component.
-     */
     public function mount(string $token): void
     {
         $this->token = $token;
-        // Tangkap query ?email=... atau ?phone=...
-        // Prioritaskan 'email', jika tidak ada ambil 'phone', jika tidak ada string kosong.
         $this->emailOrPhone = request()->query('email', request()->query('phone', ''));
     }
 
-    /**
-     * Reset the password for the given user.
-     */
     public function resetPassword(): void
     {
         $this->validate([
@@ -49,7 +42,6 @@ class ResetPassword extends Component
 
         $isEmail = isEmail($this->emailOrPhone);
         $userColumn = $isEmail ? 'email' : 'phone_formatted';
-
         $user = User::where($userColumn, $this->emailOrPhone)->first();
 
         if (! $user) {
@@ -68,8 +60,15 @@ class ResetPassword extends Component
             return;
         }
 
+        $expiration = config('auth.passwords.users.expire', 60);
+        if (Carbon::parse($record->created_at)->addMinutes($expiration)->isPast()) {
+            $this->addError('emailOrPhone', __('passwords.token'));
+
+            return;
+        }
+
         $user->forceFill([
-            'password' => Hash::make($this->password),
+            'password' => $this->password,
             'remember_token' => Str::random(60),
         ])->save();
 
