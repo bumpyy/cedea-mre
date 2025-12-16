@@ -34,7 +34,7 @@ class SendEmailNotification implements ShouldQueue
     {
         try {
             Mail::to($event->user->email)->send(new SubmissionNotification($event->submission, $event->user, $event->type));
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error(sprintf('Failed to send mail notification for submission %s', $event->submission->uuid), [
                 'exception' => $e,
             ]);

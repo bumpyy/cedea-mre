@@ -33,7 +33,7 @@ class EmailVerified implements ShouldQueue
             // app(QiscusService::class)->sendNotification($event->user, 'welcome', bodyParams: [
             //     $event->user->name,
             // ]);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error(sprintf('Failed to send welcome message to user %s', $event->user->email), [
                 'exception' => $e,
             ]);
