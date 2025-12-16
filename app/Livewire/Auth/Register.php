@@ -132,13 +132,12 @@ class Register extends Component
 
         $user = User::create($validated);
 
-        try {
-            event(new Registered($user));
-        } catch (\Throwable $e) {
-            Log::error('Registration email failed: '.$e->getMessage());
-
-            // session()->flash('warning', 'Account created, but verification email could not be sent.');
-        }
+        // try {
+        //     event(new Registered($user));
+        // } catch (\Throwable $e) {
+        //     Log::error('Registration email failed: '.$e->getMessage());
+        //     // session()->flash('warning', 'Account created, but verification email could not be sent.');
+        // }
 
         Auth::login($user);
 
