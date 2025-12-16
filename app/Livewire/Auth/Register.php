@@ -7,6 +7,7 @@ use App\Rules\IndonesianPhoneNumber;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
@@ -129,10 +130,16 @@ class Register extends Component
         // $validated['password'] = Hash::make($validated['password']);
         $validated['phone'] = $this->phone;
 
+        $user = User::create($validated);
+
         if ($this->email) {
-            event(new Registered(($user = User::create($validated))));
-        } else {
-            $user = User::create($validated);
+            try {
+                event(new Registered($user));
+            } catch (\Exception $e) {
+                Log::error('Registration email failed: '.$e->getMessage());
+
+                // session()->flash('warning', 'Account created, but verification email could not be sent.');
+            }
         }
 
         Auth::login($user);
