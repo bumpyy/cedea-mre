@@ -56,11 +56,10 @@ class ForgotPassword extends Component
         try {
             $user->notify(new ResetPasswordRequest($tokenRaw, $channel, $identifier));
             session()->flash('status', "Link reset telah dikirim ke {$channel} Anda.");
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
+            Log::error("Mail Error for {$identifier}: ".$e->getMessage());
             $this->addError('emailOrPhone', 'Gagal mengirim link reset kata sandi. Silakan coba lagi.');
-            Log::error(sprintf('Failed to send password reset link to user %s', $identifier), [
-                'exception' => $e,
-            ]);
+
         }
 
     }
