@@ -126,7 +126,7 @@ class Register extends Component
             ...$baseRule,
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
+        // $validated['password'] = Hash::make($validated['password']);
         $validated['phone'] = $this->phone;
 
         if ($this->email) {
