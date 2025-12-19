@@ -48,7 +48,7 @@ class UploadForm extends ModalComponent
 
                 $submission = auth()->user()->submissions()->create();
 
-                $submission->addMedia($this->file->getPathname())
+                $submission->addMedia($this->file)
                     ->toMediaCollection('submissions');
 
                 DB::commit();
