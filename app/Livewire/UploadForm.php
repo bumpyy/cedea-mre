@@ -75,7 +75,7 @@ class UploadForm extends ModalComponent
                     'file_name' => $this->file->getClientOriginalName() ?? 'N/A',
                 ]);
 
-                $this->addError('file', 'An error occurred while uploading the file: '.$th->getMessage());
+                $this->addError('file', 'Gagal upload submission, coba lagi nanti.');
             }
         } else {
             $this->addError('file', 'Upload dulu');
