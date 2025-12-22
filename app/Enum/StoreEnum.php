@@ -9,7 +9,7 @@ enum StoreEnum: string implements HasLabel
     case INDOMARET = 'indomaret';
     case ALFAMART = 'alfamart';
     case ALFAMIDI = 'alfamidi';
-    case FAMILYMART = 'famima';
+    case FAMILYMART = 'familymart';
     case LAWSON = 'lawson';
     case OTHER = 'other';
 
