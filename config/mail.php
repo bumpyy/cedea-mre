@@ -37,18 +37,6 @@ return [
 
     'mailers' => [
 
-        'microsoft-graph' => [
-            'transport' => 'microsoft-graph',
-            'client_id' => env('MICROSOFT_GRAPH_CLIENT_ID'),
-            'client_secret' => env('MICROSOFT_GRAPH_CLIENT_SECRET'),
-            'tenant_id' => env('MICROSOFT_GRAPH_TENANT_ID'),
-            'from' => [
-                'address' => env('MAIL_FROM_ADDRESS'),
-                'name' => env('MAIL_FROM_NAME'),
-            ],
-            'save_to_sent_items' => env('MAIL_SAVE_TO_SENT_ITEMS', false),
-        ],
-
         'smtp' => [
             'transport' => 'smtp',
             'scheme' => env('MAIL_SCHEME'),
@@ -60,6 +48,21 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
+
+        // 'smtp' => [
+        //     'transport' => 'smtp',
+        //     'scheme' => env('MAIL_SCHEME'),
+        //     'url' => env('MAIL_URL'),
+        //     'host' => env('MAIL_HOST', '127.0.0.1'),
+        //     'port' => env('MAIL_PORT', 2525),
+        //     'username' => env('MAIL_USERNAME'),
+        //     'password' => env('MAIL_PASSWORD'),
+        //     'timeout' => null,
+        //     'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+
+        //     'auth_mode' => null,
+        //     'verify_peer' => false,
+        // ],
 
         'ses' => [
             'transport' => 'ses',

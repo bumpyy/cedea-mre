@@ -14,8 +14,11 @@
 
 
     @if (session('status') == 'verification-link-sent')
-        <flux:text class="!dark:text-green-400 text-green-600! font-medium">
+        <flux:text class="!dark:text-green-400 text-green-600! flex flex-col gap-1 font-medium">
             Tautan verifikasi baru telah dikirim ke alamat surel yang Anda berikan saat registrasi.
+            <span class="text-sm opacity-50">
+                Cek spam jika email verifikasi tidak muncul.
+            </span>
         </flux:text>
     @endif
 </div>

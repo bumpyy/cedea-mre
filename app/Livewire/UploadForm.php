@@ -42,6 +42,13 @@ class UploadForm extends ModalComponent
         }
 
         if ($this->file) {
+
+            if (! file_exists($this->file->getRealPath())) {
+                $this->addError('file', 'File kadaluarsa atau tidak ditemukan. Silakan upload ulang.');
+
+                return;
+            }
+
             DB::beginTransaction();
 
             try {

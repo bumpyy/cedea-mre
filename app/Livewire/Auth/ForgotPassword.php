@@ -25,14 +25,18 @@ class ForgotPassword extends Component
     {
         $this->validate([
             'emailOrPhone' => ['required', 'string', isEmail($this->emailOrPhone) ? 'email' : new IndonesianPhoneNumber],
-        ]);
+        ],
+            [
+                'emailOrPhone' => 'Format tidak valid.',
+            ]
+        );
 
         $inputType = isEmail($this->emailOrPhone) ? 'email' : 'phone_formatted';
         $identifier = isEmail($this->emailOrPhone) ? $this->emailOrPhone : formatPhoneNumber($this->emailOrPhone);
         $user = User::where($inputType, isEmail($this->emailOrPhone) ? $this->emailOrPhone : formatPhoneNumber($this->emailOrPhone))->first();
 
         if (! $user) {
-            $this->addError('input', 'User tidak ditemukan.');
+            $this->addError('emailOrPhone', 'User tidak ditemukan.');
 
             return;
         }
@@ -55,7 +59,11 @@ class ForgotPassword extends Component
 
         try {
             $user->notify(new ResetPasswordRequest($tokenRaw, $channel, $identifier));
-            session()->flash('status', "Link reset telah dikirim ke {$channel} Anda.");
+            if ($channel === 'email') {
+                session()->flash('status', "Link reset telah dikirim ke {$channel} Anda. Jika tidak ada, silakan coba cek spam.");
+            } else {
+                session()->flash('status', "Link reset telah dikirim ke {$channel} Anda.");
+            }
         } catch (\Throwable $e) {
             Log::error("Mail Error for {$identifier}: ".$e->getMessage());
             $this->addError('emailOrPhone', 'Gagal mengirim link reset kata sandi. Silakan coba lagi.');
