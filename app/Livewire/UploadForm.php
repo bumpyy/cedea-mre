@@ -46,6 +46,11 @@ class UploadForm extends ModalComponent
             if (! file_exists($this->file->getRealPath())) {
                 $this->addError('file', 'File kadaluarsa atau tidak ditemukan. Silakan upload ulang.');
 
+                Log::warning('File Submission Failed', [
+                    'message' => 'File kadaluarsa atau tidak ditemukan.',
+                    'file' => $this->file ? $this->file->getRealPath() : null,
+                ]);
+
                 return;
             }
 
