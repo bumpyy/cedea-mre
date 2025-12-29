@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class EditProfile extends Component
 {
-    // public $name;
+    public $name;
 
     // public $email;
 
@@ -33,7 +33,9 @@ class EditProfile extends Component
     protected $messages = [
         // 'phone.required' => 'Nomor WhatsApp wajib diisi.',
         // 'phone.max' => 'Nomor WhatsApp tidak boleh lebih dari 15 karakter.',
-        // 'name.required' => 'Nama lengkap harus diisi.',
+        'name.max' => 'Maksimal 190 karakter.',
+        'name.required' => 'Nama lengkap harus diisi.',
+        'address.max' => 'Maksimal 190 karakter.',
         // 'email.unique' => 'Alamat email sudah terdaftar.',
         // 'email.email' => 'Alamat email tidak valid.',
         // 'email.required' => 'Alamat email atau nomor WhatsApp harus diisi.',
@@ -50,6 +52,7 @@ class EditProfile extends Component
         // $this->email = $user->email;
         // $this->phone = $user->phone;
 
+        $this->name = $user->name;
         $this->address = $user->address;
 
         $socialData = $user->social ?? [];
@@ -70,12 +73,12 @@ class EditProfile extends Component
 
         // 1. Validasi
         $rules = [
-            // 'name' => ['required', 'string', 'max:191'],
-            // 'email' => ['required', 'email', 'max:191', Rule::unique('users')->ignore($user->id)],
+            'name' => ['required', 'string', 'max:190'],
+            // 'email' => ['required', 'email', 'max:190', Rule::unique('users')->ignore($user->id)],
             // Menggunakan Rule kustom
             // 'phone_formatted' => ['required', 'string', 'max:15', Rule::unique('users')->ignore($user->id), new IndonesianPhoneNumber],
 
-            'address' => ['nullable', 'string', 'max:191'],
+            'address' => ['nullable', 'string', 'max:190'],
             'social.x' => ['nullable', 'string', 'max:100'],
             'social.tiktok' => ['nullable', 'string', 'max:100'],
             'social.instagram' => ['nullable', 'string', 'max:100'],
@@ -98,7 +101,7 @@ class EditProfile extends Component
         // $phoneChanged = ($user->phone_formatted !== $this->phone_formatted);
         // $emailChanged = ($user->email !== $this->email);
 
-        // $user->name = $this->name;
+        $user->name = $this->name;
         // $user->email = $this->email;
 
         $user->address = $this->address;

@@ -23,7 +23,7 @@
 
         <!-- Address -->
         <flux:field>
-            <flux:label class="text-white">Alamat <span class="ml-2 text-xs text-gray-400">Optional</span></flux:label>
+            <flux:label class="text-white">Alamat <span class="ml-2 text-xs opacity-80">Optional</span></flux:label>
             <flux:textarea class="text-black" name="address" wire:model="address" placeholder="Alamat lengkap" />
             <flux:error class="" name="address" />
         </flux:field>
@@ -31,7 +31,8 @@
         <!-- no hp -->
         <flux:field>
             {{-- <flux:label class="text-white">No. WhatsApp</flux:label> --}}
-            <flux:label class="text-white">No. WhatsApp (untuk verifikasi)</flux:label>
+            <flux:label class="text-white">No. WhatsApp <span class="ml-2 text-xs opacity-80">(untuk verifikasi
+                    akun)</span></flux:label>
 
             <flux:input.group>
                 {{-- <flux:input.group.prefix class="text-white">+62</flux:input.group.prefix> --}}

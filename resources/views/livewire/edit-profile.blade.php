@@ -10,8 +10,8 @@
             <flux:separator text="Informasi Pribadi" />
 
             {{-- Nama Lengkap --}}
-            {{-- <flux:input label="Nama Lengkap" wire:model="name" icon="user" autocomplete="name"
-                placeholder="Nama sesuai KTP" /> --}}
+            <flux:input label="Nama Lengkap" wire:model="name" icon="user" autocomplete="name"
+                placeholder="Nama kamu" />
 
             {{-- Alamat / Domisili --}}
             <flux:textarea label="Domisili / Kota" wire:model="address" icon="map-pin" autocomplete="street-address"
