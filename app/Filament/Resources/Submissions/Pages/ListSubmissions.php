@@ -67,6 +67,7 @@ class ListSubmissions extends ListRecords
             Column::make('raffle_number'),
             Column::make('receipt_number'),
             Column::make('store_name'),
+            Column::make('store_area'),
             Column::make('user.name')
                 ->heading('User Name'),
             Column::make('user.phone')
