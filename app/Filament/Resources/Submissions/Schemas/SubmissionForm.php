@@ -24,6 +24,7 @@ class SubmissionForm
         ?string $receiptNumber
     ): void {
         if (Submission::where('store_name', $storeName)
+            ->where('status', SubmissionStatusEnum::ACCEPTED->value)
             ->where('receipt_number', $receiptNumber)
             ->where('id', '<>', $record->id)
             ->exists()) {

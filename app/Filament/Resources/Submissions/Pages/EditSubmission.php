@@ -25,6 +25,7 @@ class EditSubmission extends EditRecord
     {
         if ($this->data['status'] == SubmissionStatusEnum::ACCEPTED->value && (! empty($this->data['store_name']) && ! empty($this->data['receipt_number']))) {
             return Submission::where('store_name', $this->data['store_name'])
+                ->where('status', SubmissionStatusEnum::ACCEPTED->value)
                 ->where('receipt_number', $this->data['receipt_number'])
                 ->where('id', '<>', $this->getRecord()->id)
                 ->exists();
