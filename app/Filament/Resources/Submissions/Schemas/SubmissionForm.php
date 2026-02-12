@@ -47,7 +47,7 @@ class SubmissionForm
                     ->unique()
                     ->characterLimit(190)
                     ->required(fn (Get $get): bool => $get('status') == SubmissionStatusEnum::ACCEPTED)
-                    ->live()
+                    ->live(debounce: '1s', onBlur: true)
                     ->afterStateUpdated(
                         function (Get $get, ?string $state, $record) {
                             SubmissionForm::submissionExists($record, $get('store_name'), $state);
