@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Submissions\Widgets;
 
+use App\Models\Admin;
 use App\Models\Submission;
 use Carbon\Carbon;
 use Filament\Schemas\Components\Group;
@@ -50,7 +51,8 @@ class AdminStatsOverview extends StatsOverviewWidget
 
         $dateDescription = self::getDateFilterText('', $startDate, $endDate);
 
-        $adminIds = [1, 2, 3];
+        $admins = Admin::all();
+        $adminIds = $admins->pluck('id')->toArray();
 
         $stats = [];
 
