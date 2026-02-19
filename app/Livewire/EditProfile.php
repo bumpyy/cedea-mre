@@ -67,7 +67,7 @@ class EditProfile extends Component
 
     public function save()
     {
-        $user = auth()->user();
+        $user = auth('web')->user();
 
         $passwordChanged = ! empty($this->new_password);
 

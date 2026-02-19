@@ -13,8 +13,7 @@
                     bentuk apresiasi kepada konsumen produk <strong>CEDEA Snack Korea Eomuk Bar</strong>.
                 </li>
                 <li>
-                    Program berlangsung selama periode 17 November 2025 hingga <strong>17 Februari
-                        2026</strong>.
+                    Program berlangsung selama periode 17 November 2025 hingga <strong>27 Maret 2026</strong>.
                 </li>
                 <li>
                     Program ini terbuka untuk seluruh warga negara Indonesia yang berdomisili di wilayah
