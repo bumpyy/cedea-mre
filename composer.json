@@ -22,7 +22,7 @@
         "jaocero/radio-deck": "^2.0",
         "kenepa/resource-lock": "^4.0",
         "laravel/fortify": "^1.30",
-        "livewire/livewire": "3.7.5",
+        "livewire/livewire": "3.7.4",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
