@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2755f941058686876bc7c37e61842182",
+    "content-hash": "d9417459b3036dbf4b88c27bb9c01bc0",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4480,16 +4480,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.7.10",
+            "version": "v3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "0dc679eb4c8b4470cb12522b5927ef08ca2358bb"
+                "reference": "b48b1e5ecb6c4740f49e18b1c2bc14ed33f8ebff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/0dc679eb4c8b4470cb12522b5927ef08ca2358bb",
-                "reference": "0dc679eb4c8b4470cb12522b5927ef08ca2358bb",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/b48b1e5ecb6c4740f49e18b1c2bc14ed33f8ebff",
+                "reference": "b48b1e5ecb6c4740f49e18b1c2bc14ed33f8ebff",
                 "shasum": ""
             },
             "require": {
@@ -4544,7 +4544,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.7.10"
+                "source": "https://github.com/livewire/livewire/tree/v3.7.5"
             },
             "funding": [
                 {
@@ -4552,7 +4552,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-09T22:49:33+00:00"
+            "time": "2026-01-21T08:08:00+00:00"
         },
         {
             "name": "livewire/volt",
