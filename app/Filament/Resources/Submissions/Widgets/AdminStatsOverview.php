@@ -35,19 +35,39 @@ class AdminStatsOverview extends StatsOverviewWidget
     {
         $admin = auth('admin')->user();
 
-        if ($admin->id != 1) {
+        if (! $admin->id) {
             return [];
         }
 
         $startDate = $this->filters['adminFilterStartDate'] ?? null;
         $endDate = $this->filters['adminFilterEndDate'] ?? null;
         $processedColumn = $this->filters['processed_column'] ?? 'processed_at';
+        $todayStart = now()->timezone('Asia/Jakarta')->startOfDay()->utc();
+        $todayEnd = now()->timezone('Asia/Jakarta')->endOfDay()->utc();
+        if ($admin->id != 1) {
+            return [
+                Section::make()
+                    ->schema([
+                        Group::make()
+                            ->schema([
+                                Stat::make("Today submission assigned to admin $admin->id",
+                                    Submission::whereAdminId($admin->id)
+                                        ->whereBetween('assigned_at', [$todayStart, $todayEnd])
+                                        ->count()
+                                ),
+
+                                Stat::make("Today processed submission by admin $admin->id",
+                                    Submission::whereAdminId($admin->id)
+                                        ->whereBetween('processed_at', [$todayStart, $todayEnd])
+                                        ->count()
+                                ),
+                            ]),
+                    ]),
+            ];
+        }
 
         $filterStart = $startDate ? Carbon::parse($startDate)->timezone('Asia/Jakarta')->startOfDay()->utc() : null;
         $filterEnd = $endDate ? Carbon::parse($endDate)->timezone('Asia/Jakarta')->endOfDay()->utc() : null;
-
-        $todayStart = now()->timezone('Asia/Jakarta')->startOfDay()->utc();
-        $todayEnd = now()->timezone('Asia/Jakarta')->endOfDay()->utc();
 
         $dateDescription = self::getDateFilterText('', $startDate, $endDate);
 

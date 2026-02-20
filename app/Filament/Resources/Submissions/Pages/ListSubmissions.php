@@ -51,9 +51,11 @@ class ListSubmissions extends ListRecords
     {
         $admin = auth('admin')->user();
 
-        if ($admin->id != 1) {
-            return [];
-        }
+        // if ($admin->id != 1) {
+        //     return [
+
+        //     ];
+        // }
 
         return [
             AdminStatsOverview::class,
