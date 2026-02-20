@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('img/final/periode-2.png') }}" alt="">
+                        <img src="{{ asset('img/final/periode-3.png') }}" alt="">
                     </div>
                 </div>
                 <div
