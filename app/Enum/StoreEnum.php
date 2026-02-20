@@ -11,6 +11,9 @@ enum StoreEnum: string implements HasLabel
     case ALFAMIDI = 'alfamidi';
     case FAMILYMART = 'familymart';
     case LAWSON = 'lawson';
+    case INDOGROSIR = 'indogrosir';
+    case LOTTEMART = 'lotte-mart';
+    case LOTTESHOPPING = 'lotte-shopping';
     case OTHER = 'other';
 
     public function getLabel(): ?string
@@ -21,6 +24,9 @@ enum StoreEnum: string implements HasLabel
             self::FAMILYMART => 'FamilyMart',
             self::ALFAMIDI => 'Alfamidi',
             self::LAWSON => 'Lawson',
+            self::INDOGROSIR => 'Indogrosir',
+            self::LOTTEMART => 'Lotte Mart',
+            self::LOTTESHOPPING => 'Lotte Shopping',
             self::OTHER => 'Other',
         };
     }
@@ -33,6 +39,9 @@ enum StoreEnum: string implements HasLabel
             self::ALFAMIDI => '#4a0300',
             self::FAMILYMART => '#009b3f',
             self::LAWSON => '#006CB7',
+            self::INDOGROSIR => '#FFC107',
+            self::LOTTEMART => '#007bff',
+            self::LOTTESHOPPING => '#00b5fd',
             self::OTHER => '#808080',
         };
     }
