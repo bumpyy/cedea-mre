@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "135a4044d9fd7cf34977054213ae60d8",
+    "content-hash": "b19e24c46848d755601f8dab1cdaf97f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -1009,6 +1009,76 @@
                 }
             ],
             "time": "2025-02-21T08:52:11+00:00"
+        },
+        {
+            "name": "darvis/livewire-injection-stopper",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ArvidDeJong/livewire-injection-stopper.git",
+                "reference": "a305e3ce10baab1b32e726c38a9a72482887b79c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ArvidDeJong/livewire-injection-stopper/zipball/a305e3ce10baab1b32e726c38a9a72482887b79c",
+                "reference": "a305e3ce10baab1b32e726c38a9a72482887b79c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.1|^8.2|^8.3"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.18",
+                "livewire/livewire": "^3.0",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LivewireInjectionStopper": "Darvis\\LivewireInjectionStopper\\Facades\\LivewireInjectionStopper"
+                    },
+                    "providers": [
+                        "Darvis\\LivewireInjectionStopper\\LivewireInjectionStopperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Darvis\\LivewireInjectionStopper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arvid de Jong",
+                    "email": "info@arvid.nl",
+                    "homepage": "https://arvid.nl"
+                }
+            ],
+            "description": "Laravel middleware package to block spam robots and injection attempts, with Livewire security audit tools",
+            "homepage": "https://github.com/ArvidDeJong/livewire-injection-stopper",
+            "keywords": [
+                "injection-protection",
+                "laravel",
+                "livewire",
+                "middleware",
+                "security",
+                "security-audit",
+                "spam-protection"
+            ],
+            "support": {
+                "issues": "https://github.com/ArvidDeJong/livewire-injection-stopper/issues",
+                "source": "https://github.com/ArvidDeJong/livewire-injection-stopper"
+            },
+            "time": "2026-02-20T16:14:30+00:00"
         },
         {
             "name": "dasprid/enum",
