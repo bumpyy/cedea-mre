@@ -97,53 +97,51 @@
     }
 }
 
-@layer animation {
-    @keyframes init {
-        0% {
-            transform: scale(0);
-        }
-
-        40% {
-            transform: scale(1.1);
-        }
-
-        60% {
-            transform: scale(0.9);
-        }
-
-        80% {
-            transform: scale(1.05);
-        }
-
-        100% {
-            transform: scale(1);
-        }
+@keyframes init {
+    0% {
+        transform: scale(0);
     }
 
-    @keyframes init-sign-move {
-        100% {
-            transform: rotate(3deg);
-        }
+    40% {
+        transform: scale(1.1);
     }
 
-    @keyframes sign-move {
-        0% {
-            transform: rotate(3deg);
-        }
-
-        50% {
-            transform: rotate(-3deg);
-        }
-
-        100% {
-            transform: rotate(3deg);
-        }
+    60% {
+        transform: scale(0.9);
     }
 
-    .signboard-wrapper {
-        animation: 1000ms init forwards, 1000ms init-sign-move ease-out 1000ms,
-            3000ms sign-move 2000ms infinite;
+    80% {
+        transform: scale(1.05);
     }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes init-sign-move {
+    100% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes sign-move {
+    0% {
+        transform: rotate(3deg);
+    }
+
+    50% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(3deg);
+    }
+}
+
+.signboard-wrapper {
+    animation: 1000ms init forwards, 1000ms init-sign-move ease-out 1000ms,
+        3000ms sign-move 2000ms infinite;
 }
 
 .signboard-wrapper {
