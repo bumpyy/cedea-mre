@@ -159,7 +159,7 @@ class Register extends Component
     public function mount()
     {
         $now = \Carbon\Carbon::now('Asia/Jakarta');
-        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-24 00:00:00', 'Asia/Jakarta');
+        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-25 00:00:00', 'Asia/Jakarta');
         $this->is_campaign_end = false;
 
         if ($now->gte($campaign_end_date)) {
