@@ -18,6 +18,9 @@ use Livewire\Component;
 #[Layout('components.layouts.auth')]
 class Register extends Component
 {
+    #[Locked]
+    public $is_campaign_end = false;
+
     public string $name = '';
 
     public $email;
@@ -70,6 +73,13 @@ class Register extends Component
      */
     public function register(): void
     {
+
+        if ($this->is_campaign_end) {
+            $this->reset();
+
+            return;
+        }
+
         if (! $this->accept_terms) {
             $this->showTermsModal();
 
@@ -144,5 +154,27 @@ class Register extends Component
         Session::regenerate();
 
         redirect(route('dashboard', absolute: false));
+    }
+
+    public function mount()
+    {
+        $now = \Carbon\Carbon::now('Asia/Jakarta');
+        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-24 00:00:00', 'Asia/Jakarta');
+        $this->is_campaign_end = false;
+
+        if ($now->gte($campaign_end_date)) {
+            return $this->is_campaign_end = true;
+        }
+    }
+
+    public function render()
+    {
+
+        if ($this->is_campaign_end) {
+            return view('livewire.auth.register-closed');
+        }
+
+        return view('livewire.auth.register');
+
     }
 }

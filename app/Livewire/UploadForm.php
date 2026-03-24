@@ -29,6 +29,15 @@ class UploadForm extends ModalComponent
 
     public function submit(): void
     {
+        $now = \Carbon\Carbon::now('Asia/Jakarta');
+        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-24 00:00:00', 'Asia/Jakarta');
+
+        if ($now->gte($campaign_end_date)) {
+            $this->addError('file', 'Masa upload struk sudah lewat.');
+
+            return;
+        }
+
         if (auth()->user()->isDisqualified()) {
             $this->addError('file', 'Anda telah didisqualifikasi');
 
