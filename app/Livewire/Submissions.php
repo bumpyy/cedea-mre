@@ -31,7 +31,7 @@ class Submissions extends Component
     public function mount()
     {
         $now = \Carbon\Carbon::now('Asia/Jakarta');
-        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-27 00:00:00', 'Asia/Jakarta');
+        $campaign_end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2026-03-28 00:00:00', 'Asia/Jakarta');
 
         if ($now->gte($campaign_end_date)) {
             return $this->is_campaign_end = true;
