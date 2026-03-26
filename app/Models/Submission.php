@@ -68,6 +68,14 @@ class Submission extends Model implements HasMedia
         return $this->belongsTo(Admin::class);
     }
 
+    /**
+     * Get the admin that owns the Submission Area
+     */
+    public function adminArea(): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'admin_id_area', 'id');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

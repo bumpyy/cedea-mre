@@ -55,6 +55,14 @@ class Admin extends Authenticatable implements FilamentUser
         return $this->hasMany(Submission::class, 'admin_id', 'id');
     }
 
+    /**
+     * Get all of the assignedAreaSubmission for the Admin
+     */
+    public function assignedAreaSubmission(): HasMany
+    {
+        return $this->hasMany(Submission::class, 'admin_id_area', 'id');
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
